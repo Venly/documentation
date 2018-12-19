@@ -1,0 +1,2237 @@
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_wallet">Wallet</a>
+<ul class="sectlevel2">
+<li><a href="#_get_all_wallets">Get all wallets</a>
+<ul class="sectlevel3">
+<li><a href="#_filtered_on_clientid">(Filtered on clientId)</a>
+<ul class="sectlevel4">
+<li><a href="#example_curl_request_get-wallets-filtered-client-id">Example Curl Request</a></li>
+<li><a href="#example_request_fields_get-wallets-filtered-client-id">Request Fields</a></li>
+<li><a href="#example_http_response_get-wallets-filtered-client-id">Example Http Response</a></li>
+<li><a href="#example_response_fields_get-wallets-filtered-client-id">Response Fields</a></li>
+</ul>
+</li>
+<li><a href="#_filtered_on_status">(Filtered on status)</a>
+<ul class="sectlevel4">
+<li><a href="#example_curl_request_get-wallets-filtered-by-status">Example Curl Request</a></li>
+<li><a href="#example_request_fields_get-wallets-filtered-by-status">Request Fields</a></li>
+<li><a href="#example_http_response_get-wallets-filtered-by-status">Example Http Response</a></li>
+<li><a href="#example_response_fields_get-wallets-filtered-by-status">Response Fields</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_create_a_wallet">Create a wallet</a>
+<ul class="sectlevel3">
+<li><a href="#example_curl_request_create-wallets">Example Curl Request</a></li>
+<li><a href="#example_request_body_create-wallets">Request Body</a></li>
+<li><a href="#example_request_fields_create-wallets">Request Fields</a></li>
+<li><a href="#example_http_response_create-wallets">Example Http Response</a></li>
+<li><a href="#example_response_fields_create-wallets">Response Fields</a></li>
+</ul>
+</li>
+<li><a href="#_update_wallet_metadata">Update wallet metadata</a>
+<ul class="sectlevel3">
+<li><a href="#example_curl_request_update-wallet-metadata">Example Curl Request</a></li>
+<li><a href="#example_path_parameters_update-wallet-metadata">Path Parameters</a></li>
+<li><a href="#example_request_body_update-wallet-metadata">Request Body</a></li>
+<li><a href="#example_request_fields_update-wallet-metadata">Request Fields</a></li>
+<li><a href="#example_response_body_update-wallet-metadata">Response Body</a></li>
+</ul>
+</li>
+<li><a href="#_update_wallet_security">Update wallet security</a>
+<ul class="sectlevel3">
+<li><a href="#example_curl_request_update-wallet-security">Example Curl Request</a></li>
+<li><a href="#example_path_parameters_update-wallet-security">Path Parameters</a></li>
+<li><a href="#example_request_body_update-wallet-security">Request Body</a></li>
+<li><a href="#example_request_fields_update-wallet-security">Request Fields</a></li>
+<li><a href="#example_response_body_update-wallet-security">Response Body</a></li>
+</ul>
+</li>
+<li><a href="#_link_a_wallet">Link a wallet</a>
+<ul class="sectlevel3">
+<li><a href="#example_curl_request_link-wallet">Example Curl Request</a></li>
+<li><a href="#example_path_parameters_link-wallet">Path Parameters</a></li>
+<li><a href="#example_request_body_link-wallet">Request Body</a></li>
+<li><a href="#example_request_fields_link-wallet">Request Fields</a></li>
+<li><a href="#example_response_body_link-wallet">Response Body</a></li>
+</ul>
+</li>
+<li><a href="#_connected_apps_for_wallet">Connected apps for wallet</a>
+<ul class="sectlevel3">
+<li><a href="#example_curl_request_list-connected-apps-for-wallet">Example Curl Request</a></li>
+<li><a href="#example_path_parameters_list-connected-apps-for-wallet">Path Parameters</a></li>
+<li><a href="#example_response_body_list-connected-apps-for-wallet">Response Body</a></li>
+</ul>
+</li>
+<li><a href="#_claim_wallets">Claim wallets</a>
+<ul class="sectlevel3">
+<li><a href="#example_curl_request_claim-wallets">Example Curl Request</a></li>
+<li><a href="#example_request_body_claim-wallets">Request Body</a></li>
+<li><a href="#example_request_fields_claim-wallets">Request Fields</a></li>
+<li><a href="#example_response_body_claim-wallets">Response Body</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_importing">Importing</a>
+<ul class="sectlevel2">
+<li><a href="#_import_an_ethereum_wallet_utcjson">Import an Ethereum Wallet (UTC/JSON)</a>
+<ul class="sectlevel3">
+<li><a href="#example_curl_request_import-ethereum-json">Example Curl Request</a></li>
+<li><a href="#example_request_body_import-ethereum-json">Request Body</a></li>
+<li><a href="#example_request_fields_import-ethereum-json">Request Fields</a></li>
+<li><a href="#example_response_body_import-ethereum-json">Response Body</a></li>
+<li><a href="#example_response_fields_import-ethereum-json">Response Fields</a></li>
+</ul>
+</li>
+<li><a href="#_import_an_ethereum_private_key">Import an Ethereum Private Key</a>
+<ul class="sectlevel3">
+<li><a href="#example_curl_request_import-ethereum-privatekey">Example Curl Request</a></li>
+<li><a href="#example_request_body_import-ethereum-privatekey">Request Body</a></li>
+<li><a href="#example_request_fields_import-ethereum-privatekey">Request Fields</a></li>
+<li><a href="#example_response_body_import-ethereum-privatekey">Response Body</a></li>
+<li><a href="#example_response_fields_import-ethereum-privatekey">Response Fields</a></li>
+</ul>
+</li>
+<li><a href="#_import_an_vechain_private_key">Import an VeChain Private Key</a>
+<ul class="sectlevel3">
+<li><a href="#example_curl_request_import-vechain-privatekey">Example Curl Request</a></li>
+<li><a href="#example_request_body_import-vechain-privatekey">Request Body</a></li>
+<li><a href="#example_request_fields_import-vechain-privatekey">Request Fields</a></li>
+<li><a href="#example_response_body_import-vechain-privatekey">Response Body</a></li>
+<li><a href="#example_response_fields_import-vechain-privatekey">Response Fields</a></li>
+</ul>
+</li>
+<li><a href="#_import_an_vechain_keystore">Import an VeChain Keystore</a>
+<ul class="sectlevel3">
+<li><a href="#example_curl_request_import-vechain-json">Example Curl Request</a></li>
+<li><a href="#example_request_body_import-vechain-json">Request Body</a></li>
+<li><a href="#example_request_fields_import-vechain-json">Request Fields</a></li>
+<li><a href="#example_response_body_import-vechain-json">Response Body</a></li>
+<li><a href="#example_response_fields_import-vechain-json">Response Fields</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_profile">Profile</a>
+<ul class="sectlevel2">
+<li><a href="#_update_your_profile">Update your profile</a>
+<ul class="sectlevel3">
+<li><a href="#example_curl_request_update-profile">Example Curl Request</a></li>
+<li><a href="#example_request_body_update-profile">Request Body</a></li>
+<li><a href="#example_request_fields_update-profile">Request Fields</a></li>
+<li><a href="#example_response_body_update-profile">Response Body</a></li>
+</ul>
+</li>
+<li><a href="#_initialize_a_profile">Initialize a profile</a></li>
+<li><a href="#_connected_apps_for_user">Connected apps for user</a>
+<ul class="sectlevel3">
+<li><a href="#example_curl_request_list-connected-apps">Example Curl Request</a></li>
+<li><a href="#example_response_body_list-connected-apps">Response Body</a></li>
+<li><a href="#example_response_fields_list-connected-apps">Response Fields</a></li>
+</ul>
+</li>
+<li><a href="#_intercom_verification">Intercom verification</a>
+<ul class="sectlevel3">
+<li><a href="#example_curl_request_get-intercom-verification">Example Curl Request</a></li>
+<li><a href="#example_response_body_get-intercom-verification">Response Body</a></li>
+<li><a href="#example_response_fields_get-intercom-verification">Response Fields</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_api_token">Api Token</a>
+<ul class="sectlevel2">
+<li><a href="#_create_an_api_token">Create an API token</a>
+<ul class="sectlevel3">
+<li><a href="#example_curl_request_create-api-token">Example Curl Request</a></li>
+<li><a href="#example_request_fields_create-api-token">Request Fields</a></li>
+<li><a href="#example_http_response_create-api-token">Example Http Response</a></li>
+<li><a href="#example_response_fields_create-api-token">Response Fields</a></li>
+</ul>
+</li>
+<li><a href="#_delete_an_api_token">Delete an API token</a>
+<ul class="sectlevel3">
+<li><a href="#example_curl_request_delete-api-token">Example Curl Request</a></li>
+<li><a href="#example_path_parameters_delete-api-token">Path Parameters</a></li>
+<li><a href="#example_http_response_delete-api-token">Example Http Response</a></li>
+<li><a href="#example_response_fields_delete-api-token">Response Fields</a></li>
+</ul>
+</li>
+<li><a href="#_get_api_tokens_by_wallet_id">Get API Tokens by Wallet ID</a>
+<ul class="sectlevel3">
+<li><a href="#example_curl_request_get-api-token-by-wallet">Example Curl Request</a></li>
+<li><a href="#example_path_parameters_get-api-token-by-wallet">Path Parameters</a></li>
+<li><a href="#example_http_response_get-api-token-by-wallet">Example Http Response</a></li>
+<li><a href="#example_response_fields_get-api-token-by-wallet">Response Fields</a></li>
+</ul>
+</li>
+<li><a href="#_update_api_token">Update API Token</a>
+<ul class="sectlevel3">
+<li><a href="#example_curl_request_update-api-token">Example Curl Request</a></li>
+<li><a href="#example_path_parameters_update-api-token">Path Parameters</a></li>
+<li><a href="#example_http_response_update-api-token">Example Http Response</a></li>
+<li><a href="#example_response_fields_update-api-token">Response Fields</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_events">Events</a>
+<ul class="sectlevel2">
+<li><a href="#_get_all_events_for_a_wallet">Get all events for a wallet</a>
+<ul class="sectlevel3">
+<li><a href="#example_curl_request_get-wallet-events">Example Curl Request</a></li>
+<li><a href="#example_path_parameters_get-wallet-events">Path Parameters</a></li>
+<li><a href="#example_http_response_get-wallet-events">Example Http Response</a></li>
+<li><a href="#example_response_fields_get-wallet-events">Response Fields</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This documentation is not intended for outside use. It&#8217;s not a private API, but calling these APIs is only possible by Arkane.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_wallet">Wallet</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_get_all_wallets">Get all wallets</h3>
+<div class="sect3">
+<h4 id="_filtered_on_clientid">(Filtered on clientId)</h4>
+<div class="sect4">
+<h5 id="example_curl_request_get-wallets-filtered-client-id">Example Curl Request</h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/api/wallets?clientId=ThorBlock' -i -X GET</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="example_request_fields_get-wallets-filtered-client-id">Request Fields</h5>
+<div class="paragraph">
+<p>Unresolved directive in &lt;stdin&gt; - include::../rest/target/generated-snippets/get-wallets-filtered-client-id/request-fields.adoc[]</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="example_http_response_get-wallets-filtered-client-id">Example Http Response</h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+Content-Length: 207
+
+{"success":true,"result":[{"id":"3","address":null,"walletType":null,"secretType":null,"createdAt":null,"archived":false,"alias":null,"description":null,"primary":false,"balance":null,"hasCustomPin":false}]}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="example_response_fields_get-wallets-filtered-client-id">Response Fields</h5>
+<div class="paragraph">
+<p>Unresolved directive in &lt;stdin&gt; - include::../rest/target/generated-snippets/get-wallets-filtered-client-id/response-fields.adoc[]</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_filtered_on_status">(Filtered on status)</h4>
+<div class="sect4">
+<h5 id="example_curl_request_get-wallets-filtered-by-status">Example Curl Request</h5>
+<div class="paragraph">
+<p>Unresolved directive in &lt;stdin&gt; - include::../rest/target/generated-snippets/get-wallets-filtered-by-status/curl-request.adoc[]</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="example_request_fields_get-wallets-filtered-by-status">Request Fields</h5>
+<div class="paragraph">
+<p>Unresolved directive in &lt;stdin&gt; - include::../rest/target/generated-snippets/get-wallets-filtered-by-status/request-fields.adoc[]</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="example_http_response_get-wallets-filtered-by-status">Example Http Response</h5>
+<div class="paragraph">
+<p>Unresolved directive in &lt;stdin&gt; - include::../rest/target/generated-snippets/get-wallets-filtered-by-status/http-response.adoc[]</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="example_response_fields_get-wallets-filtered-by-status">Response Fields</h5>
+<div class="paragraph">
+<p>Unresolved directive in &lt;stdin&gt; - include::../rest/target/generated-snippets/get-wallets-filtered-by-status/response-fields.adoc[]</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_create_a_wallet">Create a wallet</h3>
+<div class="sect3">
+<h4 id="example_curl_request_create-wallets">Example Curl Request</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/api/wallets' -i -X POST \
+    -H 'Content-Type: application/json' \
+    -d '{
+  "pincode" : "1234",
+  "alias" : null,
+  "hasCustomPin" : true,
+  "description" : null,
+  "primary" : false,
+  "secretType" : "ETHEREUM",
+  "clients" : [ "ThorBlock" ]
+}'</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_request_body_create-wallets">Request Body</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code>{
+  "pincode" : "1234",
+  "alias" : null,
+  "hasCustomPin" : true,
+  "description" : null,
+  "primary" : false,
+  "secretType" : "ETHEREUM",
+  "clients" : [ "ThorBlock" ]
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_request_fields_create-wallets">Request Fields</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Constraints</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pincode</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If hasCustomPin (see below), the custom pincode to be used with this wallet, otherwise: the master pin code of the user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mandatory, 4-6 digits</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>alias</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Null</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Alias of the wallet. Needs to be unique across your account</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">optional, max 50 chars, allowed charachters: A-Z, a-z, 0-9, - and _</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>description</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Null</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">General description of your wallet</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">optional, max 200 chars</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>primary</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Makes the wallet primary. Will reset any other primary of that chain</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">optional, default false</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>secretType</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of secret to be generated. (possible values: ETHEREUM)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mandator, allowed values: [ETHEREUM, VECHAIN]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>hasCustomPin</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether the wallet should have a custom pincode, instead of the master pincode</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">optional, by default false</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>clients</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">New wallet will be automatically linked to given clients</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">optional, only valid clients</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="example_http_response_create-wallets">Example Http Response</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+Content-Length: 640
+
+{
+  "success" : true,
+  "result" : {
+    "id" : "1",
+    "address" : "0xdc72b72db54e227e65a45004ab2798d31e8934c2",
+    "walletType" : "THREEWAY_SHARED",
+    "secretType" : "ETHEREUM",
+    "createdAt" : "2018-11-20T09:08:44.13",
+    "archived" : false,
+    "alias" : "aliasEth",
+    "description" : "descriptionEth",
+    "primary" : false,
+    "balance" : {
+      "secretType" : "ETHEREUM",
+      "balance" : 1.0,
+      "gasBalance" : 1.0,
+      "symbol" : null,
+      "gasSymbol" : null,
+      "rawBalance" : "1000000000000000000",
+      "rawGasBalance" : "1000000000000000000",
+      "decimals" : 18
+    },
+    "hasCustomPin" : false
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_response_fields_create-wallets">Response Fields</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>success</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">See if the response contains a result</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">id of the wallet</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.hasCustomPin</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether the wallet has a custom pincode or not</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.address</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">address of the wallet</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.walletType</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">type of the wallet</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.secretType</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">type of the secret (ex: ETHEREUM)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.createdAt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">date and time the secret was created or imported</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.archived</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">is the wallet archived or not</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.primary</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">is the wallet the primary wallet for the secrettype?</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.alias</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">alias of the wallet</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.description</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">description of the wallet</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.balance</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The native token balance of the wallet</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.balance.balance</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Normalized balance of the native coin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.balance.secretType</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of the secret</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.balance.symbol</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Null</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The symbol of the native coin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.balance.gasSymbol</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Null</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The symbol of the gas coin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.balance.gasBalance</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Normalized balance of the gas coin (same as <code>balance</code> when the coin for paying gas/fees is the same native coin)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.balance.rawBalance</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Raw balance of the native coin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.balance.rawGasBalance</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Raw balance of the gas coin (same as <code>balance</code> when the coin for paying gas/fees is the same native coin)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.balance.decimals</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Decimals of the native coin</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_update_wallet_metadata">Update wallet metadata</h3>
+<div class="sect3">
+<h4 id="example_curl_request_update-wallet-metadata">Example Curl Request</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/api/wallets/1' -i -X PATCH \
+    -H 'Content-Type: application/json;charset=UTF-8' \
+    -d '{
+  "alias" : "alias",
+  "description" : "description",
+  "archived" : "false",
+  "primary" : "false"
+}'</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_path_parameters_update-wallet-metadata">Path Parameters</h4>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. /api/wallets/{id}</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Id of the wallet to update</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="example_request_body_update-wallet-metadata">Request Body</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code>{
+  "alias" : "alias",
+  "description" : "description",
+  "archived" : "false",
+  "primary" : "false"
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_request_fields_update-wallet-metadata">Request Fields</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Constraints</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>alias</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Alias of the wallet. Needs to be unique across your account</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">optional, max 50 chars, allowed charachters: A-Z, a-z, 0-9, - and _</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>description</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">General description of your wallet</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">optional, max 200 chars</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>archived</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Archives/unarchives the wallet</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">optional, true or false</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>primary</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Primary</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Updates the primary status of the wallet</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">optional, true or false</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="example_response_body_update-wallet-metadata">Response Body</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code>{
+  "success" : true
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_update_wallet_security">Update wallet security</h3>
+<div class="sect3">
+<h4 id="example_curl_request_update-wallet-security">Example Curl Request</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/api/wallets/1/security' -i -X PATCH \
+    -H 'Content-Type: application/json;charset=UTF-8' \
+    -d '{
+  "pincode" : "1234",
+  "newPincode" : "4321",
+  "hasCustomPin" : "true",
+  "recoverable" : "true"
+}'</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_path_parameters_update-wallet-security">Path Parameters</h4>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 2. /api/wallets/{id}/security</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Id of the wallet to update</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="example_request_body_update-wallet-security">Request Body</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code>{
+  "pincode" : "1234",
+  "newPincode" : "4321",
+  "hasCustomPin" : "true",
+  "recoverable" : "true"
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_request_fields_update-wallet-security">Request Fields</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Constraints</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pincode</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The pincode of the specified wallet</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mandatory, must be between 4-6 digits</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>newPincode</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The new pincode of the wallet</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mandatory, must be between 4-6 digits</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>hasCustomPin</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether or not the wallet should have a custom pincode</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">optional, true or false</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>recoverable</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether or not the wallet should be recoverable or not</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">optional, true or false</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="example_response_body_update-wallet-security">Response Body</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code>{
+  "success" : true
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+If you want to remove a custom pincode, you need to set <strong>hasCustomPin</strong> to false, put the current pincode in <strong>pincode</strong> and the master pincode in <strong>newPincode</strong>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_link_a_wallet">Link a wallet</h3>
+<div class="sect3">
+<h4 id="example_curl_request_link-wallet">Example Curl Request</h4>
+<div class="paragraph">
+<p>Unresolved directive in &lt;stdin&gt; - include::../rest/target/generated-snippets/link-wallet/curl-request.adoc[]</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_path_parameters_link-wallet">Path Parameters</h4>
+<div class="paragraph">
+<p>Unresolved directive in &lt;stdin&gt; - include::../rest/target/generated-snippets/link-wallet/path-parameters.adoc[]</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_request_body_link-wallet">Request Body</h4>
+<div class="paragraph">
+<p>Unresolved directive in &lt;stdin&gt; - include::../rest/target/generated-snippets/link-wallet/request-body.adoc[]</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_request_fields_link-wallet">Request Fields</h4>
+<div class="paragraph">
+<p>Unresolved directive in &lt;stdin&gt; - include::../rest/target/generated-snippets/link-wallet/request-fields.adoc[]</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_response_body_link-wallet">Response Body</h4>
+<div class="paragraph">
+<p>Unresolved directive in &lt;stdin&gt; - include::../rest/target/generated-snippets/link-wallet/response-body.adoc[]</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_connected_apps_for_wallet">Connected apps for wallet</h3>
+<div class="sect3">
+<h4 id="example_curl_request_list-connected-apps-for-wallet">Example Curl Request</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/api/wallets/1/apps' -i -X GET</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_path_parameters_list-connected-apps-for-wallet">Path Parameters</h4>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 3. /api/wallets/{id}/apps</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Id of the wallet to retrieve the connected apps for</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="example_response_body_list-connected-apps-for-wallet">Response Body</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code>{
+  "success" : true,
+  "result" : [ {
+    "id" : "FundRequest",
+    "name" : "FundRequest",
+    "description" : "Harness the power of Open Source developers",
+    "url" : "https://fundrequest.io",
+    "logo" : "https://raw.githubusercontent.com/ArkaneNetwork/content-management/master/third-party-logos/FundRequest.png"
+  } ]
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_claim_wallets">Claim wallets</h3>
+<div class="paragraph">
+<p>When a user has unclaimed wallets (ex. via email), this operation can be used to claim them.</p>
+</div>
+<div class="sect3">
+<h4 id="example_curl_request_claim-wallets">Example Curl Request</h4>
+<div class="paragraph">
+<p>Unresolved directive in &lt;stdin&gt; - include::../rest/target/generated-snippets/claim-wallets/curl-request.adoc[]</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_request_body_claim-wallets">Request Body</h4>
+<div class="paragraph">
+<p>Unresolved directive in &lt;stdin&gt; - include::../rest/target/generated-snippets/claim-wallets/request-body.adoc[]</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_request_fields_claim-wallets">Request Fields</h4>
+<div class="paragraph">
+<p>Unresolved directive in &lt;stdin&gt; - include::../rest/target/generated-snippets/claim-wallets/request-fields.adoc[]</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_response_body_claim-wallets">Response Body</h4>
+<div class="paragraph">
+<p>Unresolved directive in &lt;stdin&gt; - include::../rest/target/generated-snippets/claim-wallets/response-body.adoc[]</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_importing">Importing</h2>
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+It&#8217;s not possible to specify a custom pincode when importing a wallet. You&#8217;ll need to import it first with your master pincode, and update it later if you wish to use a custom pincode.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_import_an_ethereum_wallet_utcjson">Import an Ethereum Wallet (UTC/JSON)</h3>
+<div class="sect3">
+<h4 id="example_curl_request_import-ethereum-json">Example Curl Request</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/api/wallets/import' -i -X POST \
+    -H 'Content-Type: application/json;charset=UTF-8' \
+    -d '{
+  "importWalletType" : "ETHEREUM_KEYSTORE",
+  "pincode" : "1234",
+  "keystore" : "\"{\\\"address\\\":\\\"7d5c8b4826472f48e918b5fdd9b0f9ab3efe971c\\\",\"\n                                                                                   + \"\\\"id\\\":\\\"417540ff-0a05-4bd1-9d35-0879f0208ec4\\\",\\\"version\\\":3,\\\"crypto\\\":{\\\"cipher\\\":\\\"aes-128-ctr\\\",\\\"ciphertext\\\":\\\"6f02140c22674055bc34750011163bac71062f0ec00dd09ccbbe9ded14783324\\\",\\\"cipherparams\\\":{\\\"iv\\\":\\\"d5d5330d89b57a5b71a4f3ef4f8fa74f\\\"},\\\"kdf\\\":\\\"scrypt\\\",\\\"kdfparams\\\":{\\\"dklen\\\":32,\\\"n\\\":262144,\\\"p\\\":1,\\\"r\\\":8,\\\"salt\\\":\\\"a2110f7dd9d3ec219634f455e0a25c76bf5329c5915a0ba9c748d813b1b21fdc\\\"},\\\"mac\\\":\\\"74d9c18dad028f55989bf878ba21b3696d2d2ff4119b6bddbaefbb1a0c76b116\\\"}}\"",
+  "password" : "password"
+}'</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_request_body_import-ethereum-json">Request Body</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code>{
+  "importWalletType" : "ETHEREUM_KEYSTORE",
+  "pincode" : "1234",
+  "keystore" : "\"{\\\"address\\\":\\\"7d5c8b4826472f48e918b5fdd9b0f9ab3efe971c\\\",\"\n                                                                                   + \"\\\"id\\\":\\\"417540ff-0a05-4bd1-9d35-0879f0208ec4\\\",\\\"version\\\":3,\\\"crypto\\\":{\\\"cipher\\\":\\\"aes-128-ctr\\\",\\\"ciphertext\\\":\\\"6f02140c22674055bc34750011163bac71062f0ec00dd09ccbbe9ded14783324\\\",\\\"cipherparams\\\":{\\\"iv\\\":\\\"d5d5330d89b57a5b71a4f3ef4f8fa74f\\\"},\\\"kdf\\\":\\\"scrypt\\\",\\\"kdfparams\\\":{\\\"dklen\\\":32,\\\"n\\\":262144,\\\"p\\\":1,\\\"r\\\":8,\\\"salt\\\":\\\"a2110f7dd9d3ec219634f455e0a25c76bf5329c5915a0ba9c748d813b1b21fdc\\\"},\\\"mac\\\":\\\"74d9c18dad028f55989bf878ba21b3696d2d2ff4119b6bddbaefbb1a0c76b116\\\"}}\"",
+  "password" : "password"
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_request_fields_import-ethereum-json">Request Fields</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Constraints</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pincode</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The pincode of the specified wallet</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mandatory, must be between 4-6 digits</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>importWalletType</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The type of the wallet import</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mandatory, must be one of: [ETHEREUM_KEYSTORE, ETHEREUM_PRIVATE_KEY, VECHAIN_PRIVATE_KEY, VECHAIN_KEYSTORE]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>keystore</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The JSON keystore of your ethereum wallet</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mandatory, cannot be empty</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>password</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The password of the wallet</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mandatory, cannot be empty</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="example_response_body_import-ethereum-json">Response Body</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code>{
+  "success" : true,
+  "result" : {
+    "id" : "1",
+    "address" : "0xdc72b72db54e227e65a45004ab2798d31e8934c2",
+    "secretType" : "ETHEREUM",
+    "walletType" : "THREEWAY_SHARED",
+    "createdAt" : null,
+    "archived" : false,
+    "alias" : "aliasEth",
+    "description" : "descriptionEth",
+    "primary" : false,
+    "hasCustomPin" : false,
+    "balance" : {
+      "secretType" : "ETHEREUM",
+      "balance" : 1.0,
+      "gasBalance" : 1.0,
+      "symbol" : null,
+      "gasSymbol" : null,
+      "rawBalance" : "1000000000000000000",
+      "rawGasBalance" : "1000000000000000000",
+      "decimals" : 18
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_response_fields_import-ethereum-json">Response Fields</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>success</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">See if the response contains a result</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">id of the wallet</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.hasCustomPin</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether the wallet has a custom pincode or not</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.address</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">address of the wallet</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.walletType</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">type of the wallet</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.secretType</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">type of the secret (ex: ETHEREUM)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.createdAt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Null</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">date and time the secret was created or imported</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.archived</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">is the wallet archived or not</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.primary</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">is the wallet the primary wallet for the secrettype?</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.alias</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">alias of the wallet</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.description</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">description of the wallet</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.balance</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The native token balance of the wallet</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.balance.balance</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Normalized balance of the native coin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.balance.secretType</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of the secret</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.balance.symbol</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Null</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The symbol of the native coin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.balance.gasSymbol</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Null</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The symbol of the gas coin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.balance.gasBalance</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Normalized balance of the gas coin (same as <code>balance</code> when the coin for paying gas/fees is the same native coin)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.balance.rawBalance</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Raw balance of the native coin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.balance.rawGasBalance</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Raw balance of the gas coin (same as <code>balance</code> when the coin for paying gas/fees is the same native coin)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.balance.decimals</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Decimals of the native coin</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_import_an_ethereum_private_key">Import an Ethereum Private Key</h3>
+<div class="sect3">
+<h4 id="example_curl_request_import-ethereum-privatekey">Example Curl Request</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/api/wallets/import' -i -X POST \
+    -H 'Content-Type: application/json;charset=UTF-8' \
+    -d '{
+  "importWalletType" : "ETHEREUM_PRIVATE_KEY",
+  "pincode" : "1234",
+  "privateKey" : "90765a22db47a27042be069adb38635da9fc55768a958119d6063286a1d7ed28"
+}'</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_request_body_import-ethereum-privatekey">Request Body</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code>{
+  "importWalletType" : "ETHEREUM_PRIVATE_KEY",
+  "pincode" : "1234",
+  "privateKey" : "90765a22db47a27042be069adb38635da9fc55768a958119d6063286a1d7ed28"
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_request_fields_import-ethereum-privatekey">Request Fields</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Constraints</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pincode</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The master pincode of the account</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mandatory, must be between 4-6 digits</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>importWalletType</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The type of the wallet import</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mandatory, must be one of: [ETHEREUM_KEYSTORE, ETHEREUM_PRIVATE_KEY, VECHAIN_PRIVATE_KEY, VECHAIN_KEYSTORE]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>privateKey</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The private key to be imported</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mandatory, cannot be empty</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="example_response_body_import-ethereum-privatekey">Response Body</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code>{
+  "success" : true,
+  "result" : {
+    "id" : "1",
+    "address" : "0xdc72b72db54e227e65a45004ab2798d31e8934c2",
+    "secretType" : "ETHEREUM",
+    "walletType" : "THREEWAY_SHARED",
+    "createdAt" : null,
+    "archived" : false,
+    "alias" : "aliasEth",
+    "description" : "descriptionEth",
+    "primary" : false,
+    "hasCustomPin" : false,
+    "balance" : {
+      "secretType" : "ETHEREUM",
+      "balance" : 1.0,
+      "gasBalance" : 1.0,
+      "symbol" : null,
+      "gasSymbol" : null,
+      "rawBalance" : "1000000000000000000",
+      "rawGasBalance" : "1000000000000000000",
+      "decimals" : 18
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_response_fields_import-ethereum-privatekey">Response Fields</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>success</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">See if the response contains a result</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">id of the wallet</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.hasCustomPin</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether the wallet has a custom pincode or not</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.address</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">address of the wallet</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.walletType</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">type of the wallet</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.secretType</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">type of the secret (ex: ETHEREUM)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.createdAt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Null</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">date and time the secret was created or imported</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.archived</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">is the wallet archived or not</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.primary</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">is the wallet the primary wallet for the secrettype?</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.alias</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">alias of the wallet</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.description</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">description of the wallet</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.balance</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The native token balance of the wallet</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.balance.balance</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Normalized balance of the native coin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.balance.secretType</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of the secret</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.balance.symbol</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Null</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The symbol of the native coin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.balance.gasSymbol</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Null</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The symbol of the gas coin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.balance.gasBalance</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Normalized balance of the gas coin (same as <code>balance</code> when the coin for paying gas/fees is the same native coin)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.balance.rawBalance</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Raw balance of the native coin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.balance.rawGasBalance</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Raw balance of the gas coin (same as <code>balance</code> when the coin for paying gas/fees is the same native coin)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.balance.decimals</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Decimals of the native coin</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_import_an_vechain_private_key">Import an VeChain Private Key</h3>
+<div class="sect3">
+<h4 id="example_curl_request_import-vechain-privatekey">Example Curl Request</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/api/wallets/import' -i -X POST \
+    -H 'Content-Type: application/json;charset=UTF-8' \
+    -d '{
+  "importWalletType" : "VECHAIN_PRIVATE_KEY",
+  "pincode" : "1234",
+  "privateKey" : "90765a22db47a27042be069adb38635da9fc55768a958119d6063286a1d7ed28"
+}'</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_request_body_import-vechain-privatekey">Request Body</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code>{
+  "importWalletType" : "VECHAIN_PRIVATE_KEY",
+  "pincode" : "1234",
+  "privateKey" : "90765a22db47a27042be069adb38635da9fc55768a958119d6063286a1d7ed28"
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_request_fields_import-vechain-privatekey">Request Fields</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Constraints</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pincode</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The master pincode of the account</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mandatory, must be between 4-6 digits</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>importWalletType</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The type of the wallet import</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mandatory, must be one of: [ETHEREUM_KEYSTORE, ETHEREUM_PRIVATE_KEY, VECHAIN_PRIVATE_KEY, VECHAIN_KEYSTORE]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>privateKey</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The private key to be imported</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mandatory, cannot be empty</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="example_response_body_import-vechain-privatekey">Response Body</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code>{
+  "success" : true,
+  "result" : {
+    "id" : "1",
+    "address" : "0xdc72b72db54e227e65a45004ab2798d31e8934c2",
+    "secretType" : "ETHEREUM",
+    "walletType" : "THREEWAY_SHARED",
+    "createdAt" : null,
+    "archived" : false,
+    "alias" : "aliasEth",
+    "description" : "descriptionEth",
+    "primary" : false,
+    "hasCustomPin" : false,
+    "balance" : {
+      "secretType" : "ETHEREUM",
+      "balance" : 1.0,
+      "gasBalance" : 1.0,
+      "symbol" : null,
+      "gasSymbol" : null,
+      "rawBalance" : "1000000000000000000",
+      "rawGasBalance" : "1000000000000000000",
+      "decimals" : 18
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_response_fields_import-vechain-privatekey">Response Fields</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>success</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">See if the response contains a result</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">id of the wallet</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.hasCustomPin</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether the wallet has a custom pincode or not</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.address</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">address of the wallet</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.walletType</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">type of the wallet</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.secretType</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">type of the secret (ex: ETHEREUM)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.createdAt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Null</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">date and time the secret was created or imported</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.archived</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">is the wallet archived or not</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.primary</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">is the wallet the primary wallet for the secrettype?</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.alias</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">alias of the wallet</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.description</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">description of the wallet</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.balance</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The native token balance of the wallet</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.balance.balance</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Normalized balance of the native coin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.balance.secretType</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of the secret</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.balance.symbol</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Null</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The symbol of the native coin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.balance.gasSymbol</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Null</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The symbol of the gas coin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.balance.gasBalance</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Normalized balance of the gas coin (same as <code>balance</code> when the coin for paying gas/fees is the same native coin)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.balance.rawBalance</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Raw balance of the native coin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.balance.rawGasBalance</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Raw balance of the gas coin (same as <code>balance</code> when the coin for paying gas/fees is the same native coin)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.balance.decimals</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Decimals of the native coin</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_import_an_vechain_keystore">Import an VeChain Keystore</h3>
+<div class="sect3">
+<h4 id="example_curl_request_import-vechain-json">Example Curl Request</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/api/wallets/import' -i -X POST \
+    -H 'Content-Type: application/json;charset=UTF-8' \
+    -d '{
+  "importWalletType" : "VECHAIN_KEYSTORE",
+  "pincode" : "1234",
+  "keystore" : "\"{\\\"address\\\":\\\"7d5c8b4826472f48e918b5fdd9b0f9ab3efe971c\\\",\"\n                                                                                   + \"\\\"id\\\":\\\"417540ff-0a05-4bd1-9d35-0879f0208ec4\\\",\\\"version\\\":3,\\\"crypto\\\":{\\\"cipher\\\":\\\"aes-128-ctr\\\",\\\"ciphertext\\\":\\\"6f02140c22674055bc34750011163bac71062f0ec00dd09ccbbe9ded14783324\\\",\\\"cipherparams\\\":{\\\"iv\\\":\\\"d5d5330d89b57a5b71a4f3ef4f8fa74f\\\"},\\\"kdf\\\":\\\"scrypt\\\",\\\"kdfparams\\\":{\\\"dklen\\\":32,\\\"n\\\":262144,\\\"p\\\":1,\\\"r\\\":8,\\\"salt\\\":\\\"a2110f7dd9d3ec219634f455e0a25c76bf5329c5915a0ba9c748d813b1b21fdc\\\"},\\\"mac\\\":\\\"74d9c18dad028f55989bf878ba21b3696d2d2ff4119b6bddbaefbb1a0c76b116\\\"}}\"",
+  "password" : "password"
+}'</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_request_body_import-vechain-json">Request Body</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code>{
+  "importWalletType" : "VECHAIN_KEYSTORE",
+  "pincode" : "1234",
+  "keystore" : "\"{\\\"address\\\":\\\"7d5c8b4826472f48e918b5fdd9b0f9ab3efe971c\\\",\"\n                                                                                   + \"\\\"id\\\":\\\"417540ff-0a05-4bd1-9d35-0879f0208ec4\\\",\\\"version\\\":3,\\\"crypto\\\":{\\\"cipher\\\":\\\"aes-128-ctr\\\",\\\"ciphertext\\\":\\\"6f02140c22674055bc34750011163bac71062f0ec00dd09ccbbe9ded14783324\\\",\\\"cipherparams\\\":{\\\"iv\\\":\\\"d5d5330d89b57a5b71a4f3ef4f8fa74f\\\"},\\\"kdf\\\":\\\"scrypt\\\",\\\"kdfparams\\\":{\\\"dklen\\\":32,\\\"n\\\":262144,\\\"p\\\":1,\\\"r\\\":8,\\\"salt\\\":\\\"a2110f7dd9d3ec219634f455e0a25c76bf5329c5915a0ba9c748d813b1b21fdc\\\"},\\\"mac\\\":\\\"74d9c18dad028f55989bf878ba21b3696d2d2ff4119b6bddbaefbb1a0c76b116\\\"}}\"",
+  "password" : "password"
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_request_fields_import-vechain-json">Request Fields</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Constraints</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pincode</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The pincode of the specified wallet</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mandatory, must be between 4-6 digits</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>importWalletType</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The type of the wallet import</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mandatory, must be one of: [ETHEREUM_KEYSTORE, ETHEREUM_PRIVATE_KEY, VECHAIN_PRIVATE_KEY, VECHAIN_KEYSTORE]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>keystore</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The JSON keystore of your vechain wallet</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mandatory, cannot be empty</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>password</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The password of the wallet</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mandatory, cannot be empty</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="example_response_body_import-vechain-json">Response Body</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code>{
+  "success" : true,
+  "result" : {
+    "id" : "3",
+    "address" : "0xae52b72db54e137a65a42434ab2543d31f8454c3",
+    "secretType" : "VECHAIN",
+    "walletType" : "THREEWAY_SHARED",
+    "createdAt" : null,
+    "archived" : false,
+    "alias" : "aliasVechain",
+    "description" : "descriptionVechain",
+    "primary" : false,
+    "hasCustomPin" : false,
+    "balance" : {
+      "secretType" : "ETHEREUM",
+      "balance" : 1.0,
+      "gasBalance" : 1.0,
+      "symbol" : null,
+      "gasSymbol" : null,
+      "rawBalance" : "1000000000000000000",
+      "rawGasBalance" : "1000000000000000000",
+      "decimals" : 18
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_response_fields_import-vechain-json">Response Fields</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>success</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">See if the response contains a result</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">id of the wallet</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.hasCustomPin</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether the wallet has a custom pincode or not</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.address</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">address of the wallet</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.walletType</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">type of the wallet</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.secretType</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">type of the secret (ex: ETHEREUM)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.createdAt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Null</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">date and time the secret was created or imported</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.archived</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">is the wallet archived or not</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.primary</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">is the wallet the primary wallet for the secrettype?</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.alias</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">alias of the wallet</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.description</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">description of the wallet</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.balance</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The native token balance of the wallet</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.balance.balance</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Normalized balance of the native coin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.balance.secretType</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of the secret</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.balance.symbol</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Null</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The symbol of the native coin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.balance.gasSymbol</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Null</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The symbol of the gas coin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.balance.gasBalance</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Normalized balance of the gas coin (same as <code>balance</code> when the coin for paying gas/fees is the same native coin)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.balance.rawBalance</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Raw balance of the native coin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.balance.rawGasBalance</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Raw balance of the gas coin (same as <code>balance</code> when the coin for paying gas/fees is the same native coin)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.balance.decimals</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Decimals of the native coin</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_profile">Profile</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_update_your_profile">Update your profile</h3>
+<div class="sect3">
+<h4 id="example_curl_request_update-profile">Example Curl Request</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/api/profile' -i -X PATCH \
+    -H 'Content-Type: application/json;charset=UTF-8' \
+    -d '{
+  "pincode" : "1234",
+  "newPincode" : "5678"
+}'</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_request_body_update-profile">Request Body</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code>{
+  "pincode" : "1234",
+  "newPincode" : "5678"
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_request_fields_update-profile">Request Fields</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Constraints</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pincode</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Your current master pincode, which is required to update your profile</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional when initializing profile, otherwise mandatory. Must be between 4-6 digits</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>newPincode</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The new master pincode that needs to be set globally</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional, must be between 4-6 digits</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="example_response_body_update-profile">Response Body</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code>{
+  "success" : true
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_initialize_a_profile">Initialize a profile</h3>
+<div class="paragraph">
+<p>If a profile has not been initialized yet (ie: the user does not have a master pincode yet), you can call the <strong>Update Profile</strong> with newPincode. Pincode can be left blank.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_connected_apps_for_user">Connected apps for user</h3>
+<div class="sect3">
+<h4 id="example_curl_request_list-connected-apps">Example Curl Request</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/api/profile/apps' -i -X GET</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_response_body_list-connected-apps">Response Body</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code>{
+  "success" : true,
+  "result" : [ {
+    "id" : "FundRequest",
+    "name" : "FundRequest",
+    "description" : "Harness the power of Open Source developers",
+    "url" : "https://fundrequest.io",
+    "logo" : "https://raw.githubusercontent.com/ArkaneNetwork/content-management/master/third-party-logos/FundRequest.png"
+  } ]
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_response_fields_list-connected-apps">Response Fields</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>success</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">See if the response contains a result</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The list of connected apps for this wallet</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.[].id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The id of the connected app</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.[].name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the connected app</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.[].description</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The description of the connected app</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.[].url</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The URL of the homepage of the connected app</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.[].logo</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The logo for the connected app</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_intercom_verification">Intercom verification</h3>
+<div class="sect3">
+<h4 id="example_curl_request_get-intercom-verification">Example Curl Request</h4>
+<div class="paragraph">
+<p>Unresolved directive in &lt;stdin&gt; - include::../rest/target/generated-snippets/get-intercom-verification/curl-request.adoc[]</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_response_body_get-intercom-verification">Response Body</h4>
+<div class="paragraph">
+<p>Unresolved directive in &lt;stdin&gt; - include::../rest/target/generated-snippets/get-intercom-verification/response-body.adoc[]</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_response_fields_get-intercom-verification">Response Fields</h4>
+<div class="paragraph">
+<p>Unresolved directive in &lt;stdin&gt; - include::../rest/target/generated-snippets/get-intercom-verification/response-fields.adoc[]</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_api_token">Api Token</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can use an API token to easily authenticate, for example when using truffle, scripts, custom backends&#8230;&#8203;</p>
+</div>
+<div class="sect2">
+<h3 id="_create_an_api_token">Create an API token</h3>
+<div class="sect3">
+<h4 id="example_curl_request_create-api-token">Example Curl Request</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/api/apitokens' -i -X POST \
+    -H 'Content-Type: application/json' \
+    -d '{
+  "walletId" : 1,
+  "claim" : "SIGN_WALLETS"
+}'</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_request_fields_create-api-token">Request Fields</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Constraints</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>walletId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The id of the wallet</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Must not be null.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>claim</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The claims associated to this token</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Can not be empty, must be one of: [VIEW_WALLETS, SIGN_WALLETS, MANAGE_WALLETS]</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="example_http_response_create-api-token">Example Http Response</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+Content-Length: 168
+
+{
+  "success" : true,
+  "result" : {
+    "token" : "b711d293-e045-4d13-b918-a23fe60505f7",
+    "userId" : "davy",
+    "walletId" : 1,
+    "claim" : "SIGN_WALLETS"
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_response_fields_create-api-token">Response Fields</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>success</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">True if operation was successful</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.token</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The id of the secret that was written</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.userId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The user that is the owner of the token</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.walletId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The id of the wallet associated to this token</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.claim</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The claim associated to this token (can the token only read the address or also sign transactions)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_delete_an_api_token">Delete an API token</h3>
+<div class="sect3">
+<h4 id="example_curl_request_delete-api-token">Example Curl Request</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/api/apitokens/1234' -i -X DELETE</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_path_parameters_delete-api-token">Path Parameters</h4>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 4. /api/apitokens/{token}</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>token</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">the token to be deleted</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="example_http_response_delete-api-token">Example Http Response</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+Content-Length: 16
+
+{"success":true}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_response_fields_delete-api-token">Response Fields</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>success</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">True if operation was successful</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_get_api_tokens_by_wallet_id">Get API Tokens by Wallet ID</h3>
+<div class="sect3">
+<h4 id="example_curl_request_get-api-token-by-wallet">Example Curl Request</h4>
+<div class="paragraph">
+<p>Unresolved directive in &lt;stdin&gt; - include::../rest/target/generated-snippets/get-api-token-by-wallet/curl-request.adoc[]</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_path_parameters_get-api-token-by-wallet">Path Parameters</h4>
+<div class="paragraph">
+<p>Unresolved directive in &lt;stdin&gt; - include::../rest/target/generated-snippets/get-api-token-by-wallet/path-parameters.adoc[]</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_http_response_get-api-token-by-wallet">Example Http Response</h4>
+<div class="paragraph">
+<p>Unresolved directive in &lt;stdin&gt; - include::../rest/target/generated-snippets/get-api-token-by-wallet/http-response.adoc[]</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_response_fields_get-api-token-by-wallet">Response Fields</h4>
+<div class="paragraph">
+<p>Unresolved directive in &lt;stdin&gt; - include::../rest/target/generated-snippets/get-api-token-by-wallet/response-fields.adoc[]</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_update_api_token">Update API Token</h3>
+<div class="sect3">
+<h4 id="example_curl_request_update-api-token">Example Curl Request</h4>
+<div class="paragraph">
+<p>Unresolved directive in &lt;stdin&gt; - include::../rest/target/generated-snippets/update-api-token/curl-request.adoc[]</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_path_parameters_update-api-token">Path Parameters</h4>
+<div class="paragraph">
+<p>Unresolved directive in &lt;stdin&gt; - include::../rest/target/generated-snippets/update-api-token/path-parameters.adoc[]</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_http_response_update-api-token">Example Http Response</h4>
+<div class="paragraph">
+<p>Unresolved directive in &lt;stdin&gt; - include::../rest/target/generated-snippets/update-api-token/http-response.adoc[]</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_response_fields_update-api-token">Response Fields</h4>
+<div class="paragraph">
+<p>Unresolved directive in &lt;stdin&gt; - include::../rest/target/generated-snippets/update-api-token/response-fields.adoc[]</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_events">Events</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_get_all_events_for_a_wallet">Get all events for a wallet</h3>
+<div class="sect3">
+<h4 id="example_curl_request_get-wallet-events">Example Curl Request</h4>
+<div class="paragraph">
+<p>Unresolved directive in &lt;stdin&gt; - include::../rest/target/generated-snippets/get-wallet-events/curl-request.adoc[]</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_path_parameters_get-wallet-events">Path Parameters</h4>
+<div class="paragraph">
+<p>Unresolved directive in &lt;stdin&gt; - include::../rest/target/generated-snippets/get-wallet-events/path-parameters.adoc[]</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_http_response_get-wallet-events">Example Http Response</h4>
+<div class="paragraph">
+<p>Unresolved directive in &lt;stdin&gt; - include::../rest/target/generated-snippets/get-wallet-events/http-response.adoc[]</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_response_fields_get-wallet-events">Response Fields</h4>
+<div class="paragraph">
+<p>Unresolved directive in &lt;stdin&gt; - include::../rest/target/generated-snippets/get-wallet-events/response-fields.adoc[]</p>
+</div>
+</div>
+</div>
+</div>
+</div>

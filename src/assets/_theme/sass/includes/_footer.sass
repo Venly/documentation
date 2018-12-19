@@ -1,0 +1,92 @@
+.footer
+  background-color: #ccc
+  color: #000
+  font-size: 14px
+  padding: 20px 0 10px 0
+  margin-left: -20px
+  margin-right: -20px
+
+  &__logo
+    height: 36px
+
+  &__title
+    display: block
+    width: 100%
+    margin-bottom: 48px
+
+  &__contact-details
+    p
+      font-size: 12px
+      margin-bottom: 12px
+
+  &__container
+    padding: 20px
+    margin: 0 auto 0 auto
+    display: flex
+    justify-content: center
+    flex-wrap: wrap
+
+  &__content
+    display: flex
+    margin: 0 auto
+    text-align: left
+    flex-wrap: wrap
+    width: 100%
+    justify-content: center
+
+  &__section
+    display: flex
+    flex-direction: column
+    margin-bottom: 16px
+    align-items: center
+    padding: 0 32px
+    width: 100%
+    flex: 1
+
+    &--social
+      align-items: center
+      width: 100%
+      text-align: left
+
+    &--address
+      display: block
+
+    &__title
+      line-height: 36px
+      font-weight: 600
+
+    &__links
+      list-style: none
+      padding-left: 0
+
+    &__link
+      margin-bottom: 20px
+
+    &__social
+      margin-bottom: 32px
+      text-align: right
+
+  .link--social
+    display: inline-flex
+    width: 32px
+    height: 32px
+    color: $color-white
+    justify-content: center
+    align-items: center
+    border-radius: 9999px
+    background-color: $color-white
+    margin: 0 0 0 20px
+    &:hover
+      box-shadow: 0 2px 9px 0 rgba(0, 0, 0, 0.99)
+
+    .icon
+      display: inline-block
+      width: 16px
+      height: 16px
+      fill: $color-greyish-brown
+      stroke: $color-greyish-brown
+
+  &__powered-by
+    font-size: 10px
+    text-align: center
+    margin-top: 40px

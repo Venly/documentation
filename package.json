@@ -1,0 +1,86 @@
+{
+  "engines": {
+    "node": ">=6",
+    "npm": ">=3"
+  },
+  "babel": {
+    "presets": [
+      "env"
+    ]
+  },
+  "configs": {
+    "directories": {
+      "dist": "dist",
+      "src": "src"
+    }
+  },
+  "homepage": "https://docs.arkane.network/",
+  "license": "",
+  "name": "arkane-network-documentation",
+  "scripts": {
+    "gulp": "gulp build",
+    "assemble": "gulp gulp-assemble",
+    "watch": "gulp watch",
+    "asciidoc": "ts-node generateDoc.ts",
+    "serve": "serve ./dist",
+    "build": "npm run gulp && npm run asciidoc && npm run assemble",
+    "build-serve": "npm run build && npm run serve"
+  },
+  "version": "0.0.1",
+  "description": "A professional front-end template for building fast, robust, and adaptable web apps or sites.",
+  "files": [
+    "package.json",
+    "dist/",
+    "modernizr-config.json",
+  ],
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "devDependencies": {
+    "@alrra/travis-scripts": "^3.0.1",
+    "@types/node": "^10.12.14",
+    "apache-server-configs": "^3.0.0",
+    "archiver": "^2.1.1",
+    "asciidoctor.js": "^1.5.9",
+    "assemble": "^0.24.3",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.6.1",
+    "babel-register": "^6.26.0",
+    "del": "^3.0.0",
+    "eslint": "^4.19.1",
+    "eslint-config-recommended": "^2.0.0",
+    "eslint-plugin-mocha": "^5.0.0",
+    "glob": "^7.1.2",
+    "grunt": "^0.4.5",
+    "grunt-assemble": "^0.6.3",
+    "grunt-cli": "^1.3.2",
+    "grunt-contrib-clean": "~0.4.1",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-compass": "^2.1.0",
+    "gulp-eslint": "^4.0.2",
+    "gulp-header": "^2.0.5",
+    "gulp-jscs": "^4.1.0",
+    "gulp-load-plugins": "^1.5.0",
+    "gulp-npm-dist": "^1.0.2",
+    "gulp-rename": "^1.4.0",
+    "gulp-replace": "^0.6.1",
+    "gulp-watch": "^5.0.1",
+    "handlebars": "^4.0.12",
+    "mocha": "^5.1.1",
+    "modernizr": "3.6.0",
+    "normalize.css": "8.0.0",
+    "run-sequence": "^2.2.1",
+    "ssri": "^6.0.0",
+    "strip-json-comments": "^2.0.1",
+    "travis-after-all": "^1.4.5",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.2.2"
+  },
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "waypoints": "^4.0.1"
+  }
+}

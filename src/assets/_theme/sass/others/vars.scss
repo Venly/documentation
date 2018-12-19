@@ -1,0 +1,104 @@
+$grid-gap: rem(20px);
+$container-width: rem(1200px);
+$container-padding: rem(0 20px);
+$container-padding-desktop: rem(0 60px);
+
+// colors
+$base: #F7F6F0;
+$darken: darken(#F7F6F0, 30%);
+$back: darken(#F7F6F0, 40%);
+
+$color-bg: #f5f5f5;
+$color-grass: #62a420;
+$color-brand-dark: #620d63;
+$color-brand: #d633bb;
+$color-brand-light: #f74989;
+$color-transparent: rgba(255, 255, 255, 0);
+
+$color-black: #000000;
+$color-white: #ffffff;
+$color-white: #ffffff;
+$color-bg-grey: #f8f8f8;
+$color-bluish: #278dae;
+$color-blue-light: #4a90e2;
+$color-blue-cerulean: #007cbb;
+$color-grey: #777777;
+$color-light-grey: #aaaaaa;
+$color-medium-grey: #cccccc;
+$color-lightest-grey: #eaeaea;
+$color-greyish-brown: #4a4a4a;
+$color-warm-grey: #9b9b9b;
+$color-red: #e62700;
+$color-orange: #E6781A;
+
+$color-primary: $color-brand-dark;
+$color-secondary: $color-bluish;
+$color-default: $color-blue-cerulean;
+$color-success: $color-grass;
+$color-error: $color-red;
+$color-warning: $color-orange;
+
+$color-text: $color-greyish-brown;
+$color-text-light: $color-warm-grey;
+$color-border: $color-medium-grey;
+$color-border-light: $color-light-grey;
+
+$color-white-smoke: #f5f5f5;
+$color-border: $color-grey;
+$color-border-light: #cccccc;
+
+$color-muted: #777;
+$color-danger: #ff2a48;
+$color-info: #007cbb;
+
+$color-link-default: $color-brand-light;
+
+$gradient-blue-pink: linear-gradient(269deg, #f6c6db, $color-brand-dark 30%, #5e1769 60%, #278dae);
+$gradient-purple-pink: linear-gradient(73deg, #611162, #fba5c5 84%, #f6c6db);
+
+$types: (
+  primary: $color-primary,
+  secondary: $color-secondary,
+  success: $color-success,
+  danger: $color-danger,
+  muted: $color-muted,
+  dark: $color-greyish-brown,
+  brand-dark: $color-brand-dark,
+  brand: $color-brand,
+  brand-light: $color-brand-light,
+  light: $color-white
+);
+
+// vars
+$font-size-xsmall: rem(9px);
+$font-size-small: rem(12px);
+$font-size-regular: rem(14px);
+$font-size-base: 16px;
+$font-size-default: rem(16px);
+$font-size-big: rem(18px);
+$font-size-bigger: rem(20px);
+
+$font-weight-normal: 300;
+$font-weight-400: 400;
+$font-weight-500: 500;
+$font-weight-bold: 700;
+$font-weight-btn: $font-weight-400;
+
+$line-height-xsmall: rem(11px);
+$line-height-small: rem(14px);
+$line-height-regular: rem(16px);
+$line-height-base: rem(18px);
+$line-height-big: rem(20px);
+$line-height-bigger: rem(22px);
+$font-size-heading-h1: rem(26px);
+
+$border-radius-circle: 9999px;
+$border-radius-small: rem(4px);
+$border-radius: rem(6px);
+$box-shadow: rem(0 2px 9px 0) rgba(0, 0, 0, 0.03);
+$box-shadow-light: rem(0 2px 9px 0) rgba(0, 0, 0, 0.20);
+$box-shadow-dark: rem(0 2px 9px 0) rgba(0, 0, 0, 0.99);
+$box-shadow-floating: rem(0 2px 4px 0) rgba(125, 125, 125, 0.5);
+$drop-shadow: rem(0 2px 9px) rgba(0, 0, 0, 0.03);
+
+$transition-default: 200ms ease-out

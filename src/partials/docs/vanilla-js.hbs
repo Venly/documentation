@@ -1,0 +1,569 @@
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_what_youll_build">What you&#8217;ll build</a></li>
+<li><a href="#_what_youll_need">What you&#8217;ll need</a></li>
+<li><a href="#_lets_get_started">Let&#8217;s get started</a></li>
+<li><a href="#_arkane_connect_dependency">Arkane-connect dependency</a></li>
+<li><a href="#_authenticating">Authenticating</a>
+<ul class="sectlevel2">
+<li><a href="#_check_if_authenticated">Check if authenticated</a></li>
+<li><a href="#_handling_the_authentication_outcome">Handling the authentication outcome</a></li>
+<li><a href="#_login_logout">Login / Logout</a></li>
+</ul>
+</li>
+<li><a href="#_fetch_the_users_wallets">Fetch the user&#8217;s wallets</a></li>
+<li><a href="#_manage_wallets">Manage Wallets</a></li>
+<li><a href="#_show_wallet_details">Show wallet details</a></li>
+<li><a href="#_show_transaction_form">Show transaction form</a></li>
+<li><a href="#_executing_the_transaction">Executing the transaction</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This guide will walk you trough the process of creating a multi blockchain wallet, able to transfer native coins and tokens to any address specified.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_what_youll_build">What you&#8217;ll build</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We&#8217;ll build a page which will:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>authenticate the user using the Arkane Connect authentication provider</p>
+</li>
+<li>
+<p>fetch a list of the user&#8217;s wallets</p>
+</li>
+<li>
+<p>fetch the balance of the selected wallet</p>
+</li>
+<li>
+<p>execute a transaction, from the selected wallet, to a specified address</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_what_youll_need">What you&#8217;ll need</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>a text editor or IDE</p>
+</li>
+<li>
+<p>node &amp; npm must be installed</p>
+</li>
+<li>
+<p>git must be installed</p>
+</li>
+<li>
+<p>a minimal understanding of jQuery since we&#8217;ll be using it to do the DOM manipulation throughout this guide</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lets_get_started">Let&#8217;s get started</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>First of all, let&#8217;s setup a our development environment. Checkout the Arketype project from GitHub, go to the <code>boilerplate</code> branch and run <code>npm install</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>git clone https://github.com/ArkaneNetwork/Arketype.git
+cd Arketype
+git checkout boilerplate
+npm install</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_arkane_connect_dependency">Arkane-connect dependency</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now lets add Arkane Connect as a dependency to our project. To do this, open up <code>package.json</code> and add <code>"@arkane-network/arkane-connect": "latest"</code> to the <code>dependencies</code> section.</p>
+</div>
+<div class="listingblock">
+<div class="title">/package.json</div>
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">"dependencies": {
+    "@arkane-network/arkane-connect": "latest",
+    "jquery": "^3.3.1"
+  },</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After this is done, rerun <code>npm install</code>.</p>
+</div>
+<div class="paragraph">
+<p>Now we can add <code>connect.js</code> to our application by adding it in the <code>&lt;head&gt;</code> section of <code>/public/index.html</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">/public/index.html</div>
+<div class="content">
+<pre class="highlight"><code class="language-html" data-lang="html">&lt;head&gt;
+  ...
+  &lt;link rel="stylesheet" href="/assets/css/auth.css"/&gt;
+  &lt;link rel="stylesheet" href="/assets/css/arketype.css"/&gt;
+
+  &lt;script src="/node_modules/@arkane-network/arkane-connect/connect.js"&gt;&lt;/script&gt;
+&lt;/head&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We&#8217;ll also want to add jQuery and our own <code>main.js</code> as scripts to the body of the page.</p>
+</div>
+<div class="listingblock">
+<div class="title">/public/index.html</div>
+<div class="content">
+<pre class="highlight"><code class="language-html" data-lang="html">...
+&lt;body&gt;
+  &lt;script src="/node_modules/jquery/dist/jquery.min.js"&gt;&lt;/script&gt;
+  &lt;script src="/assets/js/main.js"&gt;&lt;/script&gt;
+&lt;/body&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After adding it in our html, we can create the ArkaneConnect instance. In <code>/public/assets/js/main.js</code> add the following snippet:</p>
+</div>
+<div class="listingblock">
+<div class="title">/public/assets/js/main.js</div>
+<div class="content">
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">var app = app || {};
+
+app.initApp = function() {
+    window.arkaneConnect = new ArkaneConnect('Arketype', { environment: 'staging'});
+};
+
+app.initApp();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>By adding this snippet, we will create an ArkaneConnect instance that will connect to the Arkane Connect staging environment (for production, you can just omit the <code>environment</code> property).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_authenticating">Authenticating</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this guide, we&#8217;re going to use the authentication client baked into Arkane Connect. This client will authenticate against the Arkane Connect authentication provider and then store (and refresh when needed) the bearer token necessary for any calls to Arkane Connect.</p>
+</div>
+<div class="sect2">
+<h3 id="_check_if_authenticated">Check if authenticated</h3>
+<div class="paragraph">
+<p>The first thing we&#8217;ll want to do is check if the user is already autheticated.</p>
+</div>
+<div class="listingblock">
+<div class="title">/public/assets/js/main.js</div>
+<div class="content">
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">...
+app.initApp = async function() {
+    window.arkaneConnect = new ArkaneConnect('Arketype', { environment: 'staging'});
+    try {
+            const authenticationResult = await window.arkaneConnect.checkAuthenticated();
+            authenticationResult.authenticated((auth) =&gt; {
+                                    console.log("This user is authenticated", auth);
+                                })
+                                .notAuthenticated((auth) =&gt; {
+                                    console.log("This user is not authenticated", auth);
+                                });
+    }
+    catch (reason) {
+        console.error(reason);
+    }
+};
+
+app.initApp();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the snippet above, you can see that the <code>checkAuthenticated()</code> function is called. This will redirect the current page to our authentication provider were it will check if the user is authenticated and then redirect back to our original page.</p>
+</div>
+<div class="paragraph">
+<p>The outcome of this function is a Promise containing an authentication result, which on his turn contains two callback methods <code>authenticated((auth) &#8658; { &#8230;&#8203; });</code> and <code>notAuthenticated((auth) &#8658; { &#8230;&#8203; });</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_handling_the_authentication_outcome">Handling the authentication outcome</h3>
+<div class="paragraph">
+<p>Let&#8217;s make this check determine if the user sees a 'Login' link or the app based on the outcome.</p>
+</div>
+<div class="paragraph">
+<p>First we&#8217;ll add some html to the <code>&lt;body&gt;</code> of our page</p>
+</div>
+<div class="listingblock">
+<div class="title">/public/index.html</div>
+<div class="content">
+<pre class="highlight"><code class="language-html" data-lang="html">&lt;body&gt;
+  &lt;div class="auth-logged-in"&gt;
+    &lt;div&gt;
+      &lt;div id="user"&gt;
+        &lt;h1&gt;User &lt;span id="auth-username"&gt;&lt;/span&gt;&lt;/h1&gt;
+         &lt;a id="auth-logout" href="javascript:void(0)"&gt;&lt;span&gt;Logout&lt;/span&gt;&lt;/a&gt;
+      &lt;/div&gt;
+      &lt;!-- Here the rest of our app will go --&gt;
+    &lt;div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="auth-not-logged-in"&gt;
+    &lt;a id="auth-loginlink" href="javascript:void(0)"&gt;Login&lt;/a&gt;
+  &lt;/div&gt;
+  ...
+&lt;/body&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After that, we&#8217;ll hide and show based on the authentication outcome</p>
+</div>
+<div class="listingblock">
+<div class="title">/public/assets/js/main.js</div>
+<div class="content">
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">    ...
+    try {
+        const authenticationResult = await window.arkaneConnect.checkAuthenticated();
+        authenticationResult.authenticated((auth) =&gt; {
+                                console.log("This user is authenticated", auth);
+                                document.body.classList.add('logged-in');
+                                $('#auth-username').text(auth.idTokenParsed.name);
+                            })
+                            .notAuthenticated((auth) =&gt; {
+                                console.log("This user is not authenticated", auth);
+                            });
+    }
+    ...</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will add the <code>logged-in</code> class to the body when authenticated, letting the CSS in <code>public/assets/css/auth.css</code> handle the displaying and hiding of the correct section.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_login_logout">Login / Logout</h3>
+<div class="paragraph">
+<p>Next we&#8217;ll want to allow the user to authenticate when he clicks the login-link and logout when he calls the logout-link.</p>
+</div>
+<div class="paragraph">
+<p>We&#8217;ll do this by adding 'click' event listeners to the bottom of our script. These will handle a click by calling the <code>arkaneConnect.authenticate()</code> or <code>arkaneConnect.logout()</code> functions.</p>
+</div>
+<div class="listingblock">
+<div class="title">/public/assets/js/main.js</div>
+<div class="content">
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">...
+app.initApp();
+
+document.getElementById('auth-loginlink').addEventListener('click', function(e) {
+    e.preventDefault();
+    window.arkaneConnect.authenticate();
+});
+
+document.getElementById('auth-logout').addEventListener('click', function(e) {
+    e.preventDefault();
+    window.arkaneConnect.logout();
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>That&#8217;s it, we&#8217;ve now integrated the authentication client of Arkane Connect. It checks if we&#8217;re authenticated and displays a login- / logout-link when appropriate.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_fetch_the_users_wallets">Fetch the user&#8217;s wallets</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We can fetch the user&#8217;s wallets using the <code>api</code> which is a property on ArkaneConnect. The <code>api</code> is a one-on-one mapping for all public rest-endpoints available on <a href="https://api.arkane.network" class="bare">https://api.arkane.network</a> (more documentation of these endpoints can be found on <a href="https://api.arkane.network/docs/index.html" class="bare">https://api.arkane.network/docs/index.html</a>). So using it, you don&#8217;t have to construct and execute the rest calls yourself.</p>
+</div>
+<div class="paragraph">
+<p>For this example we&#8217;ll fetch the user&#8217;s wallets right after he logs in, store these in local storage and populate a dropdown with them.</p>
+</div>
+<div class="paragraph">
+<p>First of all, we&#8217;ll add a dropdown (<code>&lt;select&gt;</code>) to the page</p>
+</div>
+<div class="listingblock">
+<div class="title">/public/index.html</div>
+<div class="content">
+<pre class="highlight"><code class="language-html" data-lang="html">       ...
+       &lt;!-- Below the 'user' &lt;div&gt; --&gt;
+
+       &lt;div id="wallets"&gt;
+         &lt;h1&gt;Wallets&lt;/h1&gt;
+         &lt;select id="walletsSelect"&gt;
+           &lt;option value=""&gt;Please select a wallet&lt;/option&gt;
+         &lt;/select&gt;
+       &lt;/div&gt;
+       ...</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Next, we&#8217;ll extend the <code>authenticated(&#8230;&#8203;)</code> handler to fetch the wallets, convert the array to a map (by id), store the map in local storage and populate the dropdown.</p>
+</div>
+<div class="paragraph">
+<p>(note that the callback function has been made <code>async</code> to be able to use <code>await</code>)</p>
+</div>
+<div class="listingblock">
+<div class="title">/public/assets/js/main.js</div>
+<div class="content">
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">    ...
+    try {
+        const authenticationResult = await window.arkaneConnect.checkAuthenticated();
+        authenticationResult.authenticated(async (auth) =&gt; {
+                                console.log("This user is authenticated", auth);
+                                document.body.classList.add('logged-in');
+                                $('#auth-username').text(auth.idTokenParsed.name);
+
+                                try {
+                                    const wallets = await window.arkaneConnect.api.getWallets();
+                                    const walletsMap = app.convertArrayToMap(wallets, 'id');
+                                    localStorage.setItem('wallets', JSON.stringify(walletsMap));
+                                    app.populateWalletsDropDown(wallets);
+                                }
+                                catch (err) {
+                                    console.error('Something went wrong while fetching the user\'s wallets');
+                                }
+                            })
+                            .notAuthenticated((auth) =&gt; {
+                                console.log("This user is not authenticated", auth);
+                            });
+    }
+    ...
+)</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">/public/assets/js/main.js</div>
+<div class="content">
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">// Below the app.initApp(...) function //
+...
+app.convertArrayToMap = (array, key) =&gt; {
+    return array.reduce((obj, item) =&gt; {
+        obj[item[key]] = item;
+        return obj;
+    }, {});
+};
+
+app.populateWalletsDropdown = (wallets) =&gt; {
+    const walletsDropDown = $('#walletsSelect');
+    wallets.forEach((wallet) =&gt; {
+        walletsDropDown.append($('&lt;option&gt;', { value : wallet.id }).text(wallet.address));
+    });
+};
+...</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_manage_wallets">Manage Wallets</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>sfdf</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_show_wallet_details">Show wallet details</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When the user selects a wallet in the dropdown, we would like to show some details of this wallet.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s add some html for this.</p>
+</div>
+<div class="listingblock">
+<div class="title">/public/index.html</div>
+<div class="content">
+<pre class="highlight"><code class="language-html" data-lang="html">      ...
+      &lt;!-- below the 'walletsSelect' dropdown --&gt;
+      &lt;div&gt;
+        &lt;h2 id="details"&gt;Details&lt;/h2&gt;
+        &lt;dl&gt;
+          &lt;dt&gt;Balance&lt;/dt&gt;
+          &lt;dd id="wallet-balance"&gt;&lt;/dd&gt;
+          &lt;dt&gt;Gas Balance&lt;/dt&gt;
+          &lt;dd id="wallet-gas-balance"&gt;&lt;/dd&gt;
+          &lt;dt&gt;Tokens&lt;/dt&gt;
+          &lt;dd id="wallet-tokens"&gt;&lt;/dd&gt;
+        &lt;/dl&gt;
+      &lt;/div&gt;
+      ...</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now let&#8217;s populate and show <code>wallet-balance</code> and <code>wallet-gas-balance</code> when the dropdown value changes, by adding a <code>change</code> event listener on <code>wallets-select</code></p>
+</div>
+<div class="listingblock">
+<div class="title">/public/assets/js/main.js</div>
+<div class="content">
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">// At the bottom of the file //
+...
+
+document.getElementById('wallets-select').addEventListener('change', function(event) {
+    event.preventDefault();
+    if(event.target.value) {
+        const wallets = JSON.parse(localStorage.getItem('wallets'));
+        const wallet = wallets[event.target.value];
+        $('#wallet-balance').html(`${wallet.balance.balance} ${wallet.balance.symbol}`);
+        $('#wallet-gas-balance').html(`${wallet.balance.gasBalance} ${wallet.balance.gasSymbol}`);
+        $('#wallet-details').removeClass('hidden');
+    }
+    else {
+        $('#wallet-details').addClass('hidden');
+    }
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Next we would like to show the tokens that are available for this wallet. We can fetch these using the <code>api.getTokenBalances(walletId)</code> function. Let&#8217;s extend the <code>change</code> event listener to do this (note that the callback function is made <code>async</code>).</p>
+</div>
+<div class="listingblock">
+<div class="title">/public/assets/js/main.js</div>
+<div class="content">
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">document.getElementById('wallets-select').addEventListener('change', async function(event) {
+    event.preventDefault();
+    if (event.target.value) {
+        const wallets = JSON.parse(localStorage.getItem('wallets'));
+        const wallet = wallets[event.target.value];
+        $('#wallet-balance').html(`${wallet.balance.balance} ${wallet.balance.symbol}`);
+        $('#wallet-gas-balance').html(`${wallet.balance.gasBalance} ${wallet.balance.gasSymbol}`);
+
+        const tokenBalances = await window.arkaneConnect.api.getTokenBalances(wallet.id);
+        $('#wallet-tokens').html(tokenBalances.map((tokenBalance) =&gt; `${tokenBalance.balance} ${tokenBalance.symbol}`).join('&lt;br/&gt;'));
+
+        $('#wallet-details').removeClass('hidden');
+    }
+    else {
+        $('#wallet-details').addClass('hidden');
+    }
+});</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_show_transaction_form">Show transaction form</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We&#8217;ll also want a transaction form to allow the user to execute a transaction with the selected wallet. Therefor we&#8217;ll add a form and extend the <code>wallets-select</code> <code>change</code> event listener to prefill the walletId (From) and populate a dropdown to select the token you want to transfer.</p>
+</div>
+<div class="paragraph">
+<p>To start off, we&#8217;ll add the html of the form</p>
+</div>
+<div class="listingblock">
+<div class="title">/public/index.html</div>
+<div class="content">
+<pre class="highlight"><code class="language-html" data-lang="html">  &lt;!-- public/index.html --&gt;
+
+  ...
+  &lt;!-- below the 'wallets' div --&gt;
+  &lt;div id="transaction" class=""hidden&gt;
+   &lt;h1&gt;Transaction&lt;/h1&gt;
+   &lt;form id="transaction-form"&gt;
+     &lt;label for="transaction-from"&gt;From:&lt;/label&gt;
+     &lt;input type="text" id="transaction-from" name="from" readonly="readonly" value=""/&gt;
+     &lt;label for="transaction-to"&gt;To:&lt;/label&gt;
+     &lt;input type="text" id="transaction-to" name="to" value=""/&gt;
+     &lt;label for="transaction-token"&gt;Token (optional):&lt;/label&gt;
+     &lt;select id="transaction-token" name="tokenAddress"&gt;
+       &lt;option value=""&gt;&lt;/option&gt;
+     &lt;/select&gt;
+     &lt;label for="transaction-amount"&gt;Amount:&lt;/label&gt;
+     &lt;input type="text" id="transaction-amount" name="amount" value=""/&gt;
+     &lt;input type="submit" value="Execute transaction"/&gt;
+   &lt;/form&gt;
+  &lt;/div&gt;
+  ...</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Next we&#8217;ll extend the <code>wallets-select</code> <code>change</code> event listener to prefill and display the form</p>
+</div>
+<div class="listingblock">
+<div class="title">/public/assets/js/main.js</div>
+<div class="content">
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">        ...
+        const tokenBalances = await window.arkaneConnect.api.getTokenBalances(wallet.id);
+        $('#wallet-tokens').html(tokenBalances.map((tokenBalance) =&gt; `${tokenBalance.balance} ${tokenBalance.symbol}`).join('&lt;br/&gt;'));
+
+        // New code //
+        /////////////////////////
+        $('#transaction-from').val(wallet.id);
+        $('#secret-type').val(wallet.secretType);
+        const transactionTokens = $('#transaction-token');
+        transactionTokens.empty();
+        transactionTokens.append($('&lt;option&gt;', {value: ''}).text(wallet.balance.symbol));
+        tokenBalances.forEach((tokenBalance) =&gt; {
+            transactionTokens.append($('&lt;option&gt;', {value: tokenBalance.tokenAddress}).text(tokenBalance.symbol));
+        });
+
+        $('#transaction').removeClass('hidden');
+        /////////////////////////
+
+        $('#wallet-details').removeClass('hidden');
+    }</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_executing_the_transaction">Executing the transaction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To wrap things up, we&#8217;ll want to execute a transaction. Using Arkane Connect, this is done by creating a new <code>Signer</code> via <code>arkaneConnect.createSigner()</code> and then calling its <code>signer.executeTransaction(genericTransactionRequest)</code> function.</p>
+</div>
+<div class="paragraph">
+<p>We&#8217;ll implement this by adding a <code>submit</code> event listener on the form to process the transaction.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Important</div>
+</td>
+<td class="content">
+If you&#8217;re executing a transaction in an event handler (as in the example below), create the signer at the very beginning of your listener function. Otherwise the popup blocker of the browser might block the signer popup.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">public/assets/js/main.js</div>
+<div class="content">
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">// At the bottom of the file //
+...
+
+document.getElementById('transaction-form').addEventListener('submit', async (e) =&gt; {
+    e.preventDefault();
+    const signer = window.arkaneConnect.createSigner();
+
+    try {
+        const transactionResult = await signer.executeTransaction(
+            {
+                walletId: $("#transaction-form input[name='from']").val(),
+                to: $("#transaction-form input[name='to']").val(),
+                value: ($("#transaction-form input[name='amount']").val()),
+                secretType: $("#transaction-form input[name='secretType']").val(),
+                tokenAddress: $("#transaction-form select[name='tokenAddress']").val(),
+            }
+        );
+        console.log(transactionResult.result.transactionHash);
+    }
+    catch (reason) {
+        console.error(reason);
+    }
+});</code></pre>
+</div>
+</div>
+</div>
+</div>

@@ -1,0 +1,29 @@
+$breakpoint-phone: 320px !default
+$breakpoint-phone-ls: 480px !default
+$breakpoint-tablet: 768px !default
+$breakpoint-tablet-ls: 1024px !default
+$breakpoint-desktop: 1140px !default
+$breakpoint-wide: 1280px !default
+
+@mixin media($media)
+  @if $media == phone
+    @media only screen and (min-width: $breakpoint-phone)
+      @content
+  @if $media == phone-ls
+    @media only screen and (min-width: $breakpoint-phone-ls)
+      @content
+  @if $media == tablet
+    @media only screen and (min-width: $breakpoint-tablet)
+      @content
+  @if $media == tablet-ls
+    @media only screen and (min-width: $breakpoint-tablet-ls)
+      @content
+  @if $media == desktop
+    @media only screen and (min-width: $breakpoint-desktop)
+      @content
+  @if $media == wide
+    @media only screen and (min-width: $breakpoint-wide)
+      @content
+  @if $media == print
+    @media print, (-o-min-device-pixel-ratio: 5/4), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi)
+      @content

@@ -1,0 +1,79 @@
+.literalblock > .content,
+.listingblock > .content
+  pre
+    background: #efefef
+    border: 1px solid #f5f5f5
+    border-radius: .25rem
+    padding: 0
+    word-wrap: break-word
+    @media only screen
+      font-size: 0.72em
+    @media only screen and (min-width: 768px)
+      font-size: 0.81em
+    @media only screen and (min-width: 1280px)
+      font-size: 0.9em
+
+    &.nowrap
+      overflow-x: auto
+      white-space: pre
+      word-wrap: normal
+    > code
+      display: block
+      border-radius: .25rem
+
+.listingblock > .content
+  position: relative
+
+.listingblock:hover
+  code[class*=" language-"]
+    &:before
+      text-transform: uppercase
+      font-size: 0.9em
+      color: #999999
+      position: absolute
+      top: 0.375em
+      right: 0.375em
+
+  code.asciidoc:before
+    content: "asciidoc"
+
+  code.clojure:before
+    content: "clojure"
+
+  code.css:before
+    content: "css"
+
+  code.groovy:before
+    content: "groovy"
+
+  code.html:before
+    content: "html"
+
+  code.java:before
+    content: "java"
+
+  code.javascript:before
+    content: "javascript"
+
+  code.python:before
+    content: "python"
+
+  code.ruby:before
+    content: "ruby"
+
+  code.scss:before
+    content: "scss"
+
+  code.xml:before
+    content: "xml"
+
+  code.yaml:before
+    content: "yaml"
+
+.listingblock.terminal pre .command:before
+  content: attr(data-prompt)
+  padding-right: 0.5em
+  color: #999
+
+.listingblock.terminal pre .command:not([data-prompt]):before
+  content: '$'

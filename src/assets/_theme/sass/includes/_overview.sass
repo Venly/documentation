@@ -1,0 +1,39 @@
+.overview__container
+  display: flex
+  justify-content: center
+  padding: 2rem 5rem
+  margin-bottom: 2rem
+
+.quickstart
+  background: $color-white
+  text-align: center
+  display: flex
+  flex-wrap: wrap
+  justify-content: center
+  align-items: flex-start
+  padding: rem(20px)
+  margin: 0 rem(28px) rem(28px) rem(28px)
+  border-radius: $border-radius-small
+  font-size: $font-size-small
+  transition: background-color $transition-default
+  text-decoration: none
+  color: $color-text
+  > *
+    width: 100%
+
+  .title
+    font-size: $font-size-regular
+    margin-bottom: rem(20px)
+
+  .btn
+    opacity: 0
+    align-self: flex-end
+    transition: opacity $transition-default
+
+  &:hover
+    text-decoration: none
+    color: $color-text
+    background-color: $color-white-smoke
+    .btn
+      opacity: 1
+

@@ -1,0 +1,69 @@
+body, html
+  background-color: $color-greyish-brown
+
+.stuck
+  position: fixed !important
+  top: 0
+
+.page-content
+  background-color: $color-white
+  width: 100%
+  margin: 0 auto
+  padding: 0 1.25rem
+  position: relative
+  *zoom: 1
+
+.sect1, .sect2, .sect3
+  margin-left: -1.25rem
+  margin-right: -1.25rem
+  padding: 1.25rem
+  &:last-child
+    padding-bottom: 0
+
+  > h2, > h3, > h4
+    margin-top: 0
+
+.sect1 + .sect1,
+.sect2 + .sect2,
+.sect3 + .sect3
+  border-top: solid #f5f5f5
+.sect1 + .sect1
+  border-top-width: 10px
+.sect2 + .sect2
+  border-top-width: 4px
+.sect3 + .sect3
+  border-top-width: 1px
+
+@include media(tablet)
+  $toc-width: 320px
+  $content-width: $breakpoint-tablet - $toc-width
+
+  .toc
+    width: 320px
+
+  .page-content,
+  .header__container
+    min-width: $content-width
+    max-width: $container-width
+    margin: 0 auto
+
+  .toc-left
+    .page-content
+      padding-left: $toc-width + 20px
+    .toc
+      transform: translateX(calc(-100% - 20px))
+
+  .toc-right
+    .page-content
+      padding-right: $toc-width + 20px
+    .toc
+      transform: translateX(calc(100% + 20px))
+
+  [id="toc"]
+    position: absolute
+    border: 0 none
+    z-index: 1000
+    padding: 1.25rem
+    height: 100%
+    overflow: auto
+    top: 0

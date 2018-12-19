@@ -6,11 +6,12 @@ import plugins from 'gulp-load-plugins';
 // https://github.com/gulpjs/gulp/issues/355
 import runSequence from 'run-sequence';
 import del from 'del';
-import compass from 'gulp-compass';
 import watch from 'gulp-watch';
 import grunt from 'grunt';
 import npmDist from 'gulp-npm-dist';
 import rename from 'gulp-rename';
+import sass from 'gulp-sass';
+import compass from 'compass-importer';
 
 import pkg from './package.json';
 
@@ -83,11 +84,8 @@ gulp.task('copy', [
 gulp.task('sass', function() {
     const themeSrc = `${dirs.src}/assets/_theme`;
     gulp.src(`${themeSrc}/sass/*`)
-        .pipe(compass({
-            config_file: `${themeSrc}/config.rb`,
-                   css: `${dirs.dist}/assets/css`,
-                   sass: `${themeSrc}/sass`,
-        }))
+        .pipe(sass({ importer: compass }).on('error', sass.logError))
+        .pipe(gulp.dest(`${dirs.dist}/assets/css`));
 });
 
 gulp.task('copy:misc', () =>

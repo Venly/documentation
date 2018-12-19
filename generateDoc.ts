@@ -5,8 +5,7 @@ import * as readline    from 'readline';
 import { Interface }    from 'readline';
 import * as fs          from 'fs';
 
-letsGenerateSomeDocs('/Users/dev/DEV/FundRequest/arkane-connect/documentation/getting-started/');
-letsGenerateSomeDocs('../rest/src/main/asciidoc/', '../rest/target/generated-snippets');
+// letsGenerateSomeDocs('../rest/src/main/asciidoc/', '../rest/target/generated-snippets');
 letsGenerateSomeDocs('./adoc/');
 
 

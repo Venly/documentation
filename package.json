@@ -31,7 +31,7 @@
   "files": [
     "package.json",
     "dist/",
-    "modernizr-config.json",
+    "modernizr-config.json"
   ],
   "repository": {
     "type": "git",
@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "@alrra/travis-scripts": "^3.0.1",
-    "@types/node": "^10.12.14",
+    "@types/node": "^10.12.17",
     "apache-server-configs": "^3.0.0",
     "archiver": "^2.1.1",
     "asciidoctor.js": "^1.5.9",
@@ -73,6 +73,7 @@
     "modernizr": "3.6.0",
     "normalize.css": "8.0.0",
     "run-sequence": "^2.2.1",
+    "serve": "^10.1.1",
     "ssri": "^6.0.0",
     "strip-json-comments": "^2.0.1",
     "travis-after-all": "^1.4.5",

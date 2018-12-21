@@ -1,0 +1,343 @@
+= Building a multi-chain wallet
+
+This guide will walk you trough the process of creating a multi blockchain wallet, able to transfer native coins and tokens.
+
+
+== What you'll build
+
+We will build an Android app that will:
+
+. authenticate the user with Arkane
+. manage Arkane wallets for our app
+. fetch a list of the user's wallets
+. fetch the balance of the selected wallet
+. execute a transaction, from the selected wallet, to a specified address
+
+
+== What you'll need
+
+* Development tools for android (https://developer.android.com/studio/intro/)
+* a minimal understanding of Java / Android apps
+
+== Let's get started
+
+First of all, let's setup a our development environment. Open a terminal window, checkout the Arketype project from GitHub, go to the `js-multi-chain-wallet-initial`-branch and run `npm install`.
+```
+git clone https://github.com/ArkaneNetwork/ArketypeMobile.git
+cd ArketypeMobile
+```
+Building your project:
+
+image::img/initial_build.png[Make Project]
+
+Running the project:
+
+image::img/initial_run.png[Run]
+
+After clicking run, you have to setup a virtual device (or connect your android phone). When everything is setup correctly, the app should start on your device:
+
+image::img/initial_device.png[Device,225,388]
+
+== Authentication
+Arkane uses link:https://openid.net/connect/[OpenID connect] for user authentication. For more information on the authorization flow, please check the reference documentation.
+
+You can implement the OpenId connect flow yourself or use an existing library that supports this:
+
+- link:https://appauth.io/[AppAuth]
+- link:https://aerogear.org/[Aerogear]
+
+In this example we will be using *AppAuth*. First we need to add it as a dependency inside the `build.gradle` of the app:
+
+=== Configure AppAuth library
+
+.app/build.gradle
+
+./package.json
+[source,groovy]
+----
+dependencies {
+    implementation group: 'net.openid', name: 'appauth', version: '0.7.1'
+}
+
+----
+We also need a config file that will configure the library:
+
+./package.json
+[source,json]
+----
+{
+  "client_id": "Arketype",
+  "redirect_uri": "network.arkane.arketype://oauth2redirect",
+  "authorization_scope": "openid",
+  "discovery_uri": "https://login-staging.arkane.network/auth/realms/Arkane/.well-known/openid-configuration",
+  "https_required": true
+}
+----
+.Explanation of the fields
+|===
+|Field |Explanation
+
+|client_id
+|The id of the client, on staging you can use Arkane. For production please contact Arkane.
+
+|redirect_uri
+|To where does it need to redirect when authentication is done. Important note, *this must be equal to the value inside the defaultConfig of the app.gradle*: manifestPlaceholders = ["appAuthRedirectScheme": "network.arkane.arketype"]
+
+|discovery_uri
+|Discovery endpoint for all other endpoints that are necessary for authentication.
+
+|===
+
+=== Implement LoginActivity
+
+==== onCreate
+In the onCreate section we will setup everything that is necessary for the authentication:
+
+
+./app/src/main/java/LoginActivity.java
+[source,java]
+----
+        // <1>
+        mAuthStateManager = AuthStateManager.getInstance(this);
+        mConfiguration = Configuration.getInstance(this);
+
+        // <2>
+        if (mAuthStateManager.getCurrent().isAuthorized()
+                && !mConfiguration.hasConfigurationChanged()) {
+            Log.i(TAG, "User is already authenticated, proceeding to token activity");
+            startActivity(new Intent(this, TokenActivity.class));
+            finish();
+            return;
+        }
+
+        // <3>
+        if (!mConfiguration.isValid()) {
+            displayError(mConfiguration.getConfigurationError(), false);
+            return;
+        }
+
+        // <4>
+        if (getIntent().getBooleanExtra(EXTRA_FAILED, false)) {
+            displayAuthCancelled();
+        }
+
+        // <5>
+        mExecutor.submit(this::initializeAppAuth);
+
+        @WorkerThread
+        private void initializeAppAuth() {
+            Log.i(TAG, "Initializing AppAuth");
+            recreateAuthorizationService();
+
+            if (mAuthStateManager.getCurrent().getAuthorizationServiceConfiguration() != null) {
+                // configuration is already created, skip to client initialization
+                Log.i(TAG, "auth config already established");
+                initializeClient();
+                return;
+            }
+
+            // <5.a>
+            // if we are not using discovery, build the authorization service configuration directly
+            // from the static configuration values.
+            if (mConfiguration.getDiscoveryUri() == null) {
+                Log.i(TAG, "Creating auth config from res/raw/auth_config.json");
+                AuthorizationServiceConfiguration config = new AuthorizationServiceConfiguration(
+                        mConfiguration.getAuthEndpointUri(),
+                        mConfiguration.getTokenEndpointUri(),
+                        mConfiguration.getRegistrationEndpointUri());
+
+                mAuthStateManager.replace(new AuthState(config));
+                initializeClient();
+                return;
+            }
+
+            // <5.b>
+            // WrongThread inference is incorrect for lambdas
+            // noinspection WrongThread
+            runOnUiThread(() -> displayLoading("Retrieving discovery document"));
+            Log.i(TAG, "Retrieving OpenID discovery doc");
+            AuthorizationServiceConfiguration.fetchFromUrl(
+                    mConfiguration.getDiscoveryUri(),
+                    this::handleConfigurationRetrievalResult,
+                    mConfiguration.getConnectionBuilder());
+        }
+
+        // <5.c>
+        private void recreateAuthorizationService() {
+            if (mAuthService != null) {
+                Log.i(TAG, "Discarding existing AuthService instance");
+                mAuthService.dispose();
+            }
+            mAuthService = createAuthorizationService();
+            mAuthRequest.set(null);
+            mAuthIntent.set(null);
+        }
+
+        private AuthorizationService createAuthorizationService() {
+            Log.i(TAG, "Creating authorization service");
+            AppAuthConfiguration.Builder builder = new AppAuthConfiguration.Builder();
+            builder.setBrowserMatcher(AnyBrowserMatcher.INSTANCE); // <5.c.i>
+            builder.setConnectionBuilder(mConfiguration.getConnectionBuilder());
+
+            return new AuthorizationService(this, builder.build());
+        }
+
+        // <5.d>
+        @WorkerThread
+        private void initializeClient() {
+            if (mConfiguration.getClientId() != null) {
+                Log.i(TAG, "Using static client ID: " + mConfiguration.getClientId());
+                // use a statically configured client ID
+                mClientId.set(mConfiguration.getClientId());
+                runOnUiThread(this::initializeAuthRequest);
+                return;
+            }
+
+            RegistrationResponse lastResponse =
+                    mAuthStateManager.getCurrent().getLastRegistrationResponse();
+            if (lastResponse != null) {
+                Log.i(TAG, "Using dynamic client ID: " + lastResponse.clientId);
+                // already dynamically registered a client ID
+                mClientId.set(lastResponse.clientId);
+                runOnUiThread(this::initializeAuthRequest);
+                return;
+            }
+
+
+            // WrongThread inference is incorrect for lambdas
+            // noinspection WrongThread
+            runOnUiThread(() -> displayLoading("Dynamically registering client"));
+            Log.i(TAG, "Dynamically registering client");
+
+            RegistrationRequest registrationRequest = new RegistrationRequest.Builder(
+                    mAuthStateManager.getCurrent().getAuthorizationServiceConfiguration(),
+                    Collections.singletonList(mConfiguration.getRedirectUri()))
+                    .setTokenEndpointAuthenticationMethod(ClientSecretBasic.NAME)
+                    .build();
+
+            mAuthService.performRegistrationRequest(
+                    registrationRequest,
+                    this::handleRegistrationResponse);
+        }
+
+        // <5.e>
+        @MainThread
+        private void handleRegistrationResponse(
+                RegistrationResponse response,
+                AuthorizationException ex) {
+            mAuthStateManager.updateAfterRegistration(response, ex);
+            if (response == null) {
+                Log.i(TAG, "Failed to dynamically register client", ex);
+                displayErrorLater("Failed to register client: " + ex.getMessage(), true);
+                return;
+            }
+
+            Log.i(TAG, "Dynamically registered client: " + response.clientId);
+            mClientId.set(response.clientId);
+            initializeAuthRequest();
+        }
+
+        // <5.d.i>
+        @MainThread
+        private void initializeAuthRequest() {
+            createAuthRequest("");
+            warmUpBrowser();
+        }
+
+        // <5.d.ii>
+        private void createAuthRequest(@Nullable String loginHint) {
+            Log.i(TAG, "Creating auth request for login hint: " + loginHint);
+            AuthorizationRequest.Builder authRequestBuilder = new AuthorizationRequest.Builder(
+                    mAuthStateManager.getCurrent().getAuthorizationServiceConfiguration(),
+                    mClientId.get(),
+                    ResponseTypeValues.CODE,
+                    mConfiguration.getRedirectUri())
+                    .setScope(mConfiguration.getScope());
+
+            if (!TextUtils.isEmpty(loginHint)) {
+                authRequestBuilder.setLoginHint(loginHint);
+            }
+            HashMap<String, String> additionalParameters = new HashMap<>();
+            // you can enforce your users to use a specific IDP like: google or facebook
+            // additionalParameters.put("kc_idp_hint", "google");
+            authRequestBuilder.setAdditionalParameters(additionalParameters);
+            mAuthRequest.set(authRequestBuilder.build());
+        }
+
+        // <5.d.iii>
+        private void warmUpBrowser() {
+            mAuthIntentLatch = new CountDownLatch(1);
+            mExecutor.execute(() -> {
+                Log.i(TAG, "Warming up browser instance for auth request");
+                CustomTabsIntent.Builder intentBuilder =
+                        mAuthService.createCustomTabsIntentBuilder(mAuthRequest.get().toUri());
+                intentBuilder.setToolbarColor(getColorCompat(R.color.colorPrimary));
+                mAuthIntent.set(intentBuilder.build());
+                mAuthIntentLatch.countDown();
+            });
+        }
+----
+
+. Create the state manager for the authentication and parse the configuration (the json file)
+. If the user is already authenticated, start the next intent
+. If configuration is invalid, show an error
+. When auth failed, call a function to handle this
+. Setup of the AppAuth library
+.. You can specify each endpoint seperatly if preferred
+.. Use discovery endpoint for getting all the correct endpoints
+.. Create the authorization service
+... Select which browser to use for authentication, use ANY for auto selection
+.. Initialize the client with client id etc.
+... Initialize the authentication request
+... Create the authentication request
+... Warmup browser (performance optimization)
+.. Handle the registration response
+
+[NOTE]
+====
+This code block only contains snippets, please checkout the full source on GitHub
+====
+
+==== Authenticating a user
+
+When a user clicks a button, a custom tab should open where the user can log into Arkane. When this is done correctly, he should return to the app.
+
+./app/src/main/java/LoginActivity.java
+[source,java]
+----
+    // <1>
+    findViewById(R.id.start_auth).setOnClickListener((View view) -> startAuth());
+
+    // <2>
+    @MainThread
+    void startAuth() {
+        displayLoading("Making authorization request");
+
+        // WrongThread inference is incorrect for lambdas
+        // noinspection WrongThread
+        mExecutor.submit(this::doAuth);
+    }
+
+    // <3>
+    @WorkerThread
+    private void doAuth() {
+        try {
+            mAuthIntentLatch.await();
+        } catch (InterruptedException ex) {
+            Log.w(TAG, "Interrupted while waiting for auth intent");
+        }
+        Intent intent = mAuthService.getAuthorizationRequestIntent(
+                mAuthRequest.get(),
+                mAuthIntent.get());
+        startActivityForResult(intent, RC_AUTH);
+    }
+
+----
+
+. Add an on click listener when a user wants to authenticate
+. Submit the authentication to the executor (separate thread)
+. Create an authentication intent and start it
+
+
+== Summary
+Congratulations! You've just build a fully functional multi-chain wallet.

@@ -9,9 +9,9 @@ We'll build a page which will:
 
 1. authenticate the user using the Arkane Connect authentication provider
 2. fetch a list of the user's wallets
-3. fetch the balance of the selected wallet
-4. execute a transaction, from the selected wallet, to a specified address
-
+3. enable the user to manage the wallets connected to our application
+4. fetch the tokens balance of the selected wallet
+5. execute a transaction, from the selected wallet, to a specified address
 
 == What you'll need
 
@@ -301,7 +301,7 @@ document.getElementById('wallets-select').addEventListener('change', function(ev
 });
 ----
 <1> Fetching the wallet (+ balance) from localStorage
-<2> Displaying the token balance
+<2> Displaying the tokens balance
 <3> Displaying the gas balance
 
 Next we would like to show the tokens that are available for this wallet. We can fetch these using `arkaneConnect.api.getTokenBalances(walletId)`. Let's extend the 'change' event listener to do this.
@@ -331,8 +331,8 @@ document.getElementById('wallets-select')
 });
 ----
 <1> Making the callback function `async` so that we can use `await`
-<2> Fetching the token balances for our wallet
-<3> Displaying the token balances
+<2> Fetching the tokens balance for our wallet
+<3> Displaying the tokens balance
 
 == Show transaction form
 The main feature of our multi-chain wallet is the transaction functionality. In `/public/index.html` there is already a form present. We're going to extend `wallets-select` 'change' event listener so that it pre-fills the walletId and populates a `<select>` to select the token the user wants to transfer.
@@ -420,7 +420,7 @@ Here's an overview of what we've covered:
 1. We integrated the Arkane Connect authentication client
 2. We fetched a user's Arkane wallets
 3. We enabled the user to manage the wallets connected to our application
-4. We fetched a wallet's token balance
+4. We fetched a wallet's tokens balance
 5. We enabled the user to execute a transaction from one of his wallets
 
 

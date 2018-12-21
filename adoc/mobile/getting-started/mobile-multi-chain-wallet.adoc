@@ -425,7 +425,7 @@ The endpoint to link wallets:
 |===
 
 ==== Example
-./app/src/main/java/TokenActivity.java
+./app/src/main/java/network/arkane/arketype/TokenActivity.java
 [source,java]
 ----
     // <1>
@@ -443,12 +443,67 @@ The endpoint to link wallets:
     }
 ----
 
-. Add a click listener to manage wallets
+. Add a click listener to link wallets
 . Get current authentication state
 . Get a valid access token
 . Open a custom tabs intent with the correct URL
 
 === View wallets
+If you want to retrieve the wallets for a user, you can call the <<rest-api-public.html#_get_all_user_wallets,API endpoint for listing user wallets>>.
+
+==== Example
+./app/src/main/java/network/arkane/arketype/TokenActivity.java
+[source,java]
+----
+    // <1>
+    Button getWalletsButton = (Button) findViewById(R.id.get_wallets);
+    getWalletsButton.setOnClickListener((View view) -> getWallets());
+
+    private void getWallets() {
+        mExecutor.submit(() -> {
+            AuthState state = mStateManager.getCurrent(); // <2>
+            state.performActionWithFreshTokens(mAuthService, (accessToken, idToken, ex) -> { // <3>
+                List<Wallet> wallets = arkaneClient.getWallets(accessToken); // <4>
+                runOnUiThread(() -> {
+                    openWallets(wallets);
+                });
+            });
+        });
+    }
+
+    @MainThread
+    private void openWallets(List<Wallet> wallets) {
+        Intent intent = new Intent(this, WalletListActivity.class);
+        intent.putExtra("wallets", new WalletListIntentData(wallets));
+        startActivity(intent); // <4>
+    }
+----
+./app/src/main/java/network/arkane/arketype/client/ArkaneClient.java
+[source,java]
+----
+    public List<Wallet> getWallets(String accessToken) {
+        try {
+            URL walletsEndpoint = new URL("https://api-staging.arkane.network/api/wallets");
+            HttpURLConnection conn =
+                    (HttpURLConnection) walletsEndpoint.openConnection();
+            conn.setRequestProperty("Authorization", "Bearer " + accessToken);
+            conn.setInstanceFollowRedirects(false);
+            String response = Okio.buffer(Okio.source(conn.getInputStream()))
+                    .readString(Charset.forName("UTF-8"));
+            return mapToWallets(response);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+----
+
+. Add a click listener to get wallets
+. Get current authentication state
+. Get a valid access token
+. Use the arkane client to retrieve the wallets
+. Open new intent with wallets
+
+
 === View wallet detail
 
 

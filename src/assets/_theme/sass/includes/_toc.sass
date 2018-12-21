@@ -15,13 +15,15 @@
       margin-bottom: 0.5em
 
   > ul
-    margin-left: 0
+    margin-left: rem(10px)
+    @include media(tablet-ls)
+      margin-left: 0
 
   ul a
     color: $color-greyish-brown
     font-size: 14px
     display: block
-    padding: .25rem
+    padding: rem(4px) rem(16px)
     background-color: $color-transparent
     border-right: 2px solid rgba($color-white,0)
     transition: border-color 200ms ease-out, background-color 200ms ease-out

@@ -17,6 +17,7 @@ body, html
   margin-left: -1.25rem
   margin-right: -1.25rem
   padding: 1.25rem
+  overflow: auto
   &:last-child
     padding-bottom: 0
 
@@ -34,9 +35,9 @@ body, html
 .sect3 + .sect3
   border-top-width: 1px
 
-@include media(tablet)
+@include media(tablet-ls)
   $toc-width: 320px
-  $content-width: $breakpoint-tablet - $toc-width
+  $content-width: $breakpoint-tablet-ls - $toc-width
 
   .toc
     width: 320px
@@ -67,3 +68,23 @@ body, html
     height: 100%
     overflow: auto
     top: 0
+
+.toTop
+  position: fixed
+  background-color: $color-brand-light
+  color: $color-white
+  border-radius: 10000px
+  width: rem(50px)
+  height: rem(50px)
+  text-align: center
+  right: rem(30px)
+  bottom: rem(30px)
+  font-family: monospace
+  font-size: rem(64px)
+  line-height: rem(72px)
+  box-shadow: $box-shadow-floating
+  &:active,
+  &:hover,
+  &:focus
+    text-decoration: none
+    color: $color-white

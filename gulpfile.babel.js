@@ -105,18 +105,17 @@ gulp.task('copy:misc', () =>
 
 // Copy dependencies to ./public/libs/
 gulp.task('copy:libs', function() {
-    gulp.task('copy:libs', function() {
-        gulp.src(npmDist(), {base:'./node_modules/'})
-            .pipe(rename(function(path) {
-                path.dirname = path.dirname.replace(/\/dist/, '').replace(/\\dist/, '');
-            }))
-            .pipe(gulp.dest(`${dirs.dist}/assets/vendors`));
-    });
+    gulp.src(npmDist(), {base:'./node_modules/'})
+        .pipe(rename(function(path) {
+            path.dirname = path.dirname.replace(/\/dist/, '').replace(/\\dist/, '');
+        }))
+        .pipe(gulp.dest(`${dirs.dist}/assets/vendors`));
 });
 
 
 gulp.task('startWatch', function () {
     gulp.watch(`${dirs.src}/assets/_theme/**/*.s*ss`, ['sass']);
+    gulp.watch(`${dirs.src}/assets/**/*.js`, ['copy:misc']);
     gulp.watch(`${dirs.src}/**/*.hbs`, ['gulp-assemble']);
 });
 

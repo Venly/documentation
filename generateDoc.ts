@@ -11,7 +11,7 @@ letsGenerateSomeDocs('./adoc/');
 
 function letsGenerateSomeDocs(fileLocation: string, snippetsLocation: string = '') {
     //passsing directoryPath and callback function
-    fs.readdir(fileLocation, (err, fileList) => {
+    fs.readdir(fileLocation, {withFileTypes: true}, (err, fileList) => {
         const files = [];
         //handling error
         if (err) {
@@ -19,10 +19,14 @@ function letsGenerateSomeDocs(fileLocation: string, snippetsLocation: string = '
         }
         const regex = new RegExp(/(.*)\.adoc/i);
         //listing all files using forEach
-        fileList.forEach(function (file) {
-            const result = file.match(regex);
-            if (result) {
-                files.push(result[1]);
+        fileList.forEach(function (file: fs.Dirent) {
+            if (file.isFile()) {
+                const result = file.name.match(regex);
+                if (result) {
+                    files.push(result[1]);
+                }
+            } else if (file.isDirectory()) {
+                letsGenerateSomeDocs(`${fileLocation}${file.name}/`)
             }
         });
 
@@ -68,6 +72,7 @@ function runAsciidoc(content: string, fileName: string, snippetsLocation: string
         'to_dir': './src/partials/docs',
         'to_file': `${fileName}.hbs`,
         'attributes': {
+            'icons': 'font',
             'snippets': snippetsLocation,
             'toc': 'left',
             'toclevels': 4,

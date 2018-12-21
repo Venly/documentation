@@ -374,6 +374,30 @@ The endpoint to manage wallets:
 Make sure all query parameters are url encoded (ex. https://www.urlencoder.org/)
 ====
 
+==== Example
+./app/src/main/java/TokenActivity.java
+[source,java]
+----
+    // <1>
+    Button manageWalletsButton = (Button) findViewById(R.id.manage_wallets);
+            manageWalletsButton.setOnClickListener((View view) -> manageWallets());
+
+    public void manageWallets() {
+        AuthState state = mStateManager.getCurrent(); // <2>
+        state.performActionWithFreshTokens(mAuthService, (accessToken, idToken, ex) -> { // <3>
+            String url = "https://connect-staging.arkane.network/wallets/manage?redirectUri=network.arkane://callback&data=eyJjaGFpbiI6ICJldGhlcmV1bSJ9&bearerToken=" + accessToken;
+            CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+            CustomTabsIntent customTabsIntent = builder.build();
+            customTabsIntent.launchUrl(this, Uri.parse(url)); // <4>
+        });
+    }
+----
+
+. Add a click listener to manage wallets
+. Get current authentication state
+. Get a valid access token
+. Open a custom tabs intent with the correct URL
+
 === Link wallets
 This allows users to link his existing wallets with your application. The difference with <<Manage wallets>>:
 
@@ -399,6 +423,30 @@ The endpoint to link wallets:
 |The bearer token (access token) you get back from the authentication service
 |eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiS...
 |===
+
+==== Example
+./app/src/main/java/TokenActivity.java
+[source,java]
+----
+    // <1>
+    Button linkWalletsButton = (Button) findViewById(R.id.link_wallets);
+    linkWalletsButton.setOnClickListener((View view) -> linkWallets());
+
+    public void linkWallets() {
+        AuthState state = mStateManager.getCurrent(); // <2>
+        state.performActionWithFreshTokens(mAuthService, (accessToken, idToken, ex) -> { // <3>
+            String url = "https://connect-staging.arkane.network/wallets/link?redirectUri=network.arkane://callback&bearerToken=" + accessToken;
+            CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+            CustomTabsIntent customTabsIntent = builder.build();
+            customTabsIntent.launchUrl(this, Uri.parse(url)); // <4>
+        });
+    }
+----
+
+. Add a click listener to manage wallets
+. Get current authentication state
+. Get a valid access token
+. Open a custom tabs intent with the correct URL
 
 === View wallets
 === View wallet detail

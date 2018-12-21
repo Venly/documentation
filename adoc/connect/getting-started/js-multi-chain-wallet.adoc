@@ -422,5 +422,3 @@ Here's an overview of what we've covered:
 3. We enabled the user to manage the wallets connected to our application
 4. We fetched a wallet's tokens balance
 5. We enabled the user to execute a transaction from one of his wallets
-
-

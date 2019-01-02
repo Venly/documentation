@@ -1,28 +1,30 @@
-= Building a multi-chain wallet
+= Building a multi-chain wallet called Arketype
 
-This guide will walk you trough the process of creating a multi blockchain wallet, able to transfer native coins and tokens to any address specified.
+This tutorial demonstrates how to create a multi blockchain wallet using Arkane. The wallet will be able to transfer native coins and tokens to any address specified.
+
+The source code of our sample application can be found https://github.com/ArkaneNetwork/Arketype[here].
 
 
 == What you'll build
 
 We'll build a page which will:
 
-1. authenticate the user using the Arkane Connect authentication provider
-2. fetch a list of the user's wallets
-3. enable the user to manage the wallets connected to our application
-4. fetch the tokens balance of the selected wallet
-5. execute a transaction, from the selected wallet, to a specified address
+1. Authenticate the user using the Arkane Connect authentication provider
+2. Fetch a list of the user's wallets
+3. Enable the user to manage his wallets connected to our application
+4. Fetch the token balances of the selected wallet
+5. Execute a transaction, from the selected wallet to a specified address
 
 == What you'll need
 
-* a text editor or IDE
-* node & npm must be installed (https://www.npmjs.com/get-npm[])
-* git must be installed (https://git-scm.com/downloads[])
-* a minimal understanding of jQuery since we'll be using it throughout this guide to do DOM manipulations
+- A text editor or IDE
+- Git (https://git-scm.com/downloads[Download])
+- Node & npm (https://www.npmjs.com/get-npm[Download]) 
+- A minimal understanding of jQuery (We will be using jQuery to perform DOM manipulations).
 
 == Let's get started
 
-First of all, let's setup our development environment. Open a terminal window, checkout the Arketype project from GitHub, go to the `js-multi-chain-wallet-initial` branch and run `npm install`.
+We'll start by setting up our development environment. Open a terminal window, checkout the https://github.com/ArkaneNetwork/Arketype[sample project], called Arketype, from GitHub, go to the `js-multi-chain-wallet-initial` branch and run `npm install`.
 [source, bash]
 ----
 git clone https://github.com/ArkaneNetwork/Arketype.git
@@ -31,15 +33,15 @@ git checkout js-multi-chain-wallet-initial
 npm install
 ----
 
-This will set us up with a small project that already contains the necessary html, css and configuration files. You can already run the application by executing `npm run start`.
+This will set us up with a small project that contains the necessary HTML, CSS and configuration files. You can already run the application by executing `npm run start`.
 
-Right now the application isn't doing very much, so let's implement the JavaScript to make it all work.
+At the moment the application isn't doing much, so let's go ahead and implement the JavaScript.
 
 == Arkane-connect dependency
 
-Before we can actually start writing the JavaScript, we need to add Arkane Connect as a dependency to our project. To do this, open up `package.json` and add `"@arkane-network/arkane-connect": "latest"` to the `dependencies` section.
+Before we can actually start writing the JavaScript, we need to add https://www.npmjs.com/package/@arkane-network/arkane-connect[Arkane Connect] as a dependency to our project. To do this, open up `package.json` and add `"@arkane-network/arkane-connect": "latest"` to the `dependencies` section.
 
-./package.json
+/package.json
 [source,json]
 ----
 "dependencies": {
@@ -50,10 +52,13 @@ Before we can actually start writing the JavaScript, we need to add Arkane Conne
 <1> The Arkane Connect dependency
 
 After this is done, rerun `npm install`.
+----
+npm install
+----
 
 Now we can add `connect.js` to our application by adding it in the `<head>` section of `/public/index.html`.
 
-./public/index.html
+/public/index.html
 [source,html]
 ----
 <head>
@@ -64,11 +69,11 @@ Now we can add `connect.js` to our application by adding it in the `<head>` sect
 </head>
 ...
 ----
-<1> Adding Arkane Connect to the html page
+<1> Adding Arkane Connect to the HTML page
 
-After adding it in our html, we can create the ArkaneConnect instance. In `/public/assets/js/main.js` add the following snippet:
+After adding it in our HTML, we can create an `ArkaneConnect` instance. In `./public/assets/js/main.js` add the following snippet:
 
-./public/assets/js/main.js
+/public/assets/js/main.js
 [source,javascript]
 ----
 var app = app || {};
@@ -91,14 +96,15 @@ The first thing we'll want to do is check if the user is already authenticated.
 
 In the snippet below, you can see that the `checkAuthenticated()` function is called. This will redirect the user to our authentication provider, were it will check if the user is authenticated and redirect back to our original page passing an authentication result.
 
-The outcome of calling this function is a Promise containing an authentication result, which contains two callback methods `+authenticated((auth) => { ... });+` and `+notAuthenticated((auth) => { ... });+`.
+The outcome of calling this function is a Promise containing an authentication result, which contains two callback methods `+authenticated((auth) => { ... });+` and `+notAuthenticated((auth) => { ... });+`. Please note that because of the Promise the function has become `async`.
 
-./public/assets/js/main.js
+/public/assets/js/main.js
 [source,javascript]
 ----
 ...
 app.initApp = async function() {
   window.arkaneConnect = new ArkaneConnect('Arketype', { environment: 'staging'});
+  
   try {
     const authenticationResult = await window.arkaneConnect.checkAuthenticated(); // <1>
     authenticationResult.authenticated((auth) => {
@@ -125,7 +131,7 @@ Let's make the authentication outcome determine if the user sees a 'Login'-link 
 
 We'll extend the authenticated handler so that it adds the `logged-in` class to the `<body>` element of our page. This will let the CSS in `/public/assets/css/auth.css` handle the displaying and hiding of the correct section.
 
-./public/assets/js/main.js
+/public/assets/js/main.js
 [source,javascript]
 ----
 ...
@@ -147,11 +153,11 @@ try {
 
 === Login / Logout
 
-Next we'll want to allow the user to authenticate when he clicks the login-link and logout when he calls the logout-link.
+Next we'll want to allow the user to authenticate when he clicks the login-link and log out when he calls the logout-link.
 
 We'll do this by adding 'click' event listeners to the bottom of our script. These will handle a click by calling the `arkaneConnect.authenticate()` or `arkaneConnect.logout()` respectively.
 
-./public/assets/js/main.js
+/public/assets/js/main.js
 [source,javascript]
 ----
 ...
@@ -170,7 +176,11 @@ document.getElementById('auth-logout').addEventListener('click', function(e) {
 <1> Authenticate the user
 <2> Log the user out
 
-That's it, we've now integrated the authentication client of Arkane Connect. It checks if we're authenticated and displays a login- / logout-link when appropriate.
+That's it, we've now integrated the authentication client of Arkane Connect. It checks if we're authenticated and displays a login- / logout-link when appropriate. If you want to see it in action go ahead on run `npm run start` and surf to http://localhost:4000.
+
+----
+npm run start
+----
 
 == Fetch the user's wallets
 

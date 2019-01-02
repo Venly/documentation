@@ -179,13 +179,14 @@ document.getElementById('auth-logout').addEventListener('click', function(e) {
 
 That's it, we've now integrated the authentication client of Arkane Connect. It checks if we're authenticated and displays a login- / logout-link when appropriate. If you want to see it in action go ahead on run `npm run start` and surf to http://localhost:4000.
 
+[source, bash]
 ----
 npm run start
 ----
 
 == Fetch the user's wallets
 
-We can fetch the user's wallets using the Arkane Connect API which can be accessed by calling `arkaneConnect.api`. This API is a JavaScript proxy to the http endpoints exposed on https://api.arkane.network[] footnote:[More documentation can be found on https://api.arkane.network/docs/index.html[]]. By using it, you don't have to construct and execute the http calls yourself.
+We can fetch the user's wallets using the Arkane Connect API which can be accessed by calling `arkaneConnect.api`. This API is a JavaScript proxy to the HTTP endpoints exposed on https://api.arkane.network[]. Documentation on the endoints can be found https://api.arkane.network/docs/index.html[here]. By using the Arkane Connect API, you don't have to construct and execute the HTTP calls yourself.
 
 For this example we'll extend the `authenticated(...)` handler so that it fetches the user's wallets right after he logs in, convert the array to a map (where the key is `id`), store the map in local storage and populate the wallets `<select>` with them.
 
@@ -240,11 +241,10 @@ app.populateWalletsSelect = (wallets) => {
 <4> Populate the wallets `<select>`
 
 == Manage Wallets
+The first time a user enters our sample application, he will need to give our our application access to at least one of his wallets. To do this we will launch Arkane Connect’s `Manage wallets` page. +
+This page displays all the user’s wallets for a specified blockchain and allows him to give our application access to one or more. Additionally he has the ability to create a new, or import an existing wallet.
 
-The first time a user enters the application, he needs to give access for our application to access at least one of his wallets. To do this he will need to go to Arkane Connect's `Manage wallets` page. +
-This page displays all the user's wallets for a specified blockchain and allows him to give our application access to one or more of them. He can also create a new wallet or import an existing one, which our application will then be able to access.
-
-To redirect the user to the `Manage wallets` page, we should call `arkaneConnect.manageWallets(blockchain)`. Let's do this right after we've gotten the user's wallets. If no wallets are returned, we'll redirect the user to the manage wallets page (for Ethereum wallets).
+To redirect the user to the `Manage wallets` page, we need to call `arkaneConnect.manageWallets(<blockchain>)`. Let’s do this right after we’ve gotten the user’s wallets. If no wallets are returned, we’ll redirect the user to the manage wallets page (for Ethereum wallets).
 
 ./public/assets/js/main.js
 [source,javascript]
@@ -286,7 +286,7 @@ document.getElementById('manage-vechain-wallets').addEventListener('click', func
 <2> Manage VeChain wallets
 
 == Show wallet details
-When the user selects a wallet in the wallets `<select>`, we would like to show some details of it.
+When the user selects a wallet we would like to show some details.
 
 First, we're going to populate and show `wallet-balance` and `wallet-gas-balance` when the `<select>` value changes, by adding a 'change' event listener on `wallets-select`
 
@@ -315,7 +315,7 @@ document.getElementById('wallets-select').addEventListener('change', function(ev
 <2> Displaying the tokens balance
 <3> Displaying the gas balance
 
-Next we would like to show the tokens that are available for this wallet. We can fetch these using `arkaneConnect.api.getTokenBalances(walletId)`. Let's extend the 'change' event listener to do this.
+Next we would like to show the tokens that are available for this wallet, we  can do this by extending the 'change' event listener with  `arkaneConnect.api.getTokenBalances(walletId)`, which will fetch the token balances.
 
 ./public/assets/js/main.js
 [source,javascript]

@@ -9,18 +9,18 @@ The source code of our sample application can be found https://github.com/Arkane
 
 We'll build a page which will:
 
-1. Authenticate the user using the Arkane Connect authentication provider
-2. Fetch a list of the user's wallets
-3. Enable the user to manage his wallets connected to our application
-4. Fetch the token balances of the selected wallet
-5. Execute a transaction, from the selected wallet to a specified address
+* Authenticate the user using the Arkane Connect authentication provider
+* Fetch a list of the user's wallets
+* Enable the user to manage his wallets connected to our application
+* Fetch the token balances of the selected wallet
+* Execute a transaction, from the selected wallet to a specified address
 
 == What you'll need
 
-- A text editor or IDE
-- Git (https://git-scm.com/downloads[Download])
-- Node & npm (https://www.npmjs.com/get-npm[Download]) 
-- A minimal understanding of jQuery (We will be using jQuery to perform DOM manipulations).
+* A text editor or IDE
+* Git (https://git-scm.com/downloads[Download])
+* Node & npm (https://www.npmjs.com/get-npm[Download]) 
+* A minimal understanding of jQuery (We will be using jQuery to perform DOM manipulations).
 
 == Let's get started
 
@@ -41,7 +41,7 @@ At the moment the application isn't doing much, so let's go ahead and implement 
 
 Before we can actually start writing the JavaScript, we need to add https://www.npmjs.com/package/@arkane-network/arkane-connect[Arkane Connect] as a dependency to our project. To do this, open up `package.json` and add `"@arkane-network/arkane-connect": "latest"` to the `dependencies` section.
 
-/package.json
+./package.json
 [source,json]
 ----
 "dependencies": {
@@ -52,13 +52,14 @@ Before we can actually start writing the JavaScript, we need to add https://www.
 <1> The Arkane Connect dependency
 
 After this is done, rerun `npm install`.
+[source, bash]
 ----
 npm install
 ----
 
 Now we can add `connect.js` to our application by adding it in the `<head>` section of `/public/index.html`.
 
-/public/index.html
+./public/index.html
 [source,html]
 ----
 <head>
@@ -73,7 +74,7 @@ Now we can add `connect.js` to our application by adding it in the `<head>` sect
 
 After adding it in our HTML, we can create an `ArkaneConnect` instance. In `./public/assets/js/main.js` add the following snippet:
 
-/public/assets/js/main.js
+./public/assets/js/main.js
 [source,javascript]
 ----
 var app = app || {};
@@ -98,7 +99,7 @@ In the snippet below, you can see that the `checkAuthenticated()` function is ca
 
 The outcome of calling this function is a Promise containing an authentication result, which contains two callback methods `+authenticated((auth) => { ... });+` and `+notAuthenticated((auth) => { ... });+`. Please note that because of the Promise the function has become `async`.
 
-/public/assets/js/main.js
+./public/assets/js/main.js
 [source,javascript]
 ----
 ...
@@ -131,7 +132,7 @@ Let's make the authentication outcome determine if the user sees a 'Login'-link 
 
 We'll extend the authenticated handler so that it adds the `logged-in` class to the `<body>` element of our page. This will let the CSS in `/public/assets/css/auth.css` handle the displaying and hiding of the correct section.
 
-/public/assets/js/main.js
+./public/assets/js/main.js
 [source,javascript]
 ----
 ...
@@ -157,7 +158,7 @@ Next we'll want to allow the user to authenticate when he clicks the login-link 
 
 We'll do this by adding 'click' event listeners to the bottom of our script. These will handle a click by calling the `arkaneConnect.authenticate()` or `arkaneConnect.logout()` respectively.
 
-/public/assets/js/main.js
+./public/assets/js/main.js
 [source,javascript]
 ----
 ...

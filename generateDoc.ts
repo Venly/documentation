@@ -5,6 +5,10 @@ import * as readline    from 'readline';
 import { Interface }    from 'readline';
 import * as fs          from 'fs';
 
+let imgDir = './dist/pages/img/';
+if(!fs.existsSync(imgDir)) {
+    fs.mkdirSync(imgDir, { recursive: true });
+}
 // letsGenerateSomeDocs('../rest/src/main/asciidoc/', '../rest/target/generated-snippets');
 letsGenerateSomeDocs('./adoc/');
 
@@ -24,6 +28,10 @@ function letsGenerateSomeDocs(fileLocation: string, snippetsLocation: string = '
                 const result = file.name.match(regex);
                 if (result) {
                     files.push(result[1]);
+                } else if (fileLocation.indexOf('/img/') >= 0) {
+                    fs.copyFile(`${fileLocation}${file.name}`, `${imgDir}${file.name}`, (e) => {
+                        console.log(file.name, e);
+                    });
                 }
             } else if (file.isDirectory()) {
                 letsGenerateSomeDocs(`${fileLocation}${file.name}/`)

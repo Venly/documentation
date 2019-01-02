@@ -1,0 +1,838 @@
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_what_youll_build">What you&#8217;ll build</a></li>
+<li><a href="#_what_youll_need">What you&#8217;ll need</a></li>
+<li><a href="#_lets_get_started">Let&#8217;s get started</a></li>
+<li><a href="#_authentication">Authentication</a>
+<ul class="sectlevel2">
+<li><a href="#_configure_appauth_library">Configure AppAuth library</a></li>
+<li><a href="#_implement_loginactivity">Implement LoginActivity</a>
+<ul class="sectlevel3">
+<li><a href="#_oncreate">onCreate</a></li>
+<li><a href="#_authenticating_a_user">Authenticating a user</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_wallets">Wallets</a>
+<ul class="sectlevel2">
+<li><a href="#_manage_wallets">Manage wallets</a>
+<ul class="sectlevel3">
+<li><a href="#_example">Example</a></li>
+</ul>
+</li>
+<li><a href="#_link_wallets">Link wallets</a>
+<ul class="sectlevel3">
+<li><a href="#_example_2">Example</a></li>
+</ul>
+</li>
+<li><a href="#_view_wallets">View wallets</a>
+<ul class="sectlevel3">
+<li><a href="#_example_3">Example</a></li>
+</ul>
+</li>
+<li><a href="#_fetch_balance">Fetch balance</a></li>
+</ul>
+</li>
+<li><a href="#_summary">Summary</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This guide will walk you trough the process of creating a multi blockchain wallet, able to transfer native coins and tokens.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_what_youll_build">What you&#8217;ll build</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We will build an Android app that will:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>authenticate the user with Arkane</p>
+</li>
+<li>
+<p>manage Arkane wallets for our app</p>
+</li>
+<li>
+<p>fetch a list of the user&#8217;s wallets</p>
+</li>
+<li>
+<p>fetch the balance of the selected wallet</p>
+</li>
+<li>
+<p>execute a transaction, from the selected wallet, to a specified address</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_what_youll_need">What you&#8217;ll need</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Development tools for android (<a href="https://developer.android.com/studio/intro/" class="bare">https://developer.android.com/studio/intro/</a>)</p>
+</li>
+<li>
+<p>a minimal understanding of Java / Android apps</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lets_get_started">Let&#8217;s get started</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>First of all, let&#8217;s setup a our development environment. Open a terminal window, checkout the Arketype project from GitHub, go to the <code>js-multi-chain-wallet-initial</code>-branch and run <code>npm install</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>git clone https://github.com/ArkaneNetwork/ArketypeMobile.git
+cd ArketypeMobile</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Building your project:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/initial_build.png" alt="Make Project">
+</div>
+</div>
+<div class="paragraph">
+<p>Running the project:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/initial_run.png" alt="Run">
+</div>
+</div>
+<div class="paragraph">
+<p>After clicking run, you have to setup a virtual device (or connect your android phone). When everything is setup correctly, the app should start on your device:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/initial_device.png" alt="Device" width="225" height="388">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_authentication">Authentication</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Arkane uses <a href="https://openid.net/connect/">OpenID connect</a> for user authentication. For more information on the authorization flow, please check the reference documentation.</p>
+</div>
+<div class="paragraph">
+<p>You can implement the OpenId connect flow yourself or use an existing library that supports this:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://appauth.io/">AppAuth</a></p>
+</li>
+<li>
+<p><a href="https://aerogear.org/">Aerogear</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In this example we will be using <strong>AppAuth</strong>. First we need to add it as a dependency inside the <code>build.gradle</code> of the app:</p>
+</div>
+<div class="sect2">
+<h3 id="_configure_appauth_library">Configure AppAuth library</h3>
+<div class="listingblock">
+<div class="title">/package.json</div>
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">dependencies {
+    implementation group: 'net.openid', name: 'appauth', version: '0.7.1'
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We also need a config file that will configure the library:</p>
+</div>
+<div class="listingblock">
+<div class="title">/package.json</div>
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+  "client_id": "Arketype",
+  "redirect_uri": "network.arkane.arketype://oauth2redirect",
+  "authorization_scope": "openid",
+  "discovery_uri": "https://login-staging.arkane.network/auth/realms/Arkane/.well-known/openid-configuration",
+  "https_required": true
+}</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Explanation of the fields</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Field</th>
+<th class="tableblock halign-left valign-top">Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">client_id</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The id of the client, on staging you can use Arkane. For production please contact Arkane.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">redirect_uri</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">To where does it need to redirect when authentication is done. Important note, <strong>this must be equal to the value inside the defaultConfig of the app.gradle</strong>: manifestPlaceholders = ["appAuthRedirectScheme": "network.arkane.arketype"]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">discovery_uri</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Discovery endpoint for all other endpoints that are necessary for authentication.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_implement_loginactivity">Implement LoginActivity</h3>
+<div class="sect3">
+<h4 id="_oncreate">onCreate</h4>
+<div class="paragraph">
+<p>In the onCreate section we will setup everything that is necessary for the authentication:</p>
+</div>
+<div class="listingblock">
+<div class="title">/app/src/main/java/LoginActivity.java</div>
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">        <i class="conum" data-value="1"></i><b>(1)</b>
+        mAuthStateManager = AuthStateManager.getInstance(this);
+        mConfiguration = Configuration.getInstance(this);
+
+        <i class="conum" data-value="2"></i><b>(2)</b>
+        if (mAuthStateManager.getCurrent().isAuthorized()
+                &amp;&amp; !mConfiguration.hasConfigurationChanged()) {
+            Log.i(TAG, "User is already authenticated, proceeding to token activity");
+            startActivity(new Intent(this, TokenActivity.class));
+            finish();
+            return;
+        }
+
+        <i class="conum" data-value="3"></i><b>(3)</b>
+        if (!mConfiguration.isValid()) {
+            displayError(mConfiguration.getConfigurationError(), false);
+            return;
+        }
+
+        <i class="conum" data-value="4"></i><b>(4)</b>
+        if (getIntent().getBooleanExtra(EXTRA_FAILED, false)) {
+            displayAuthCancelled();
+        }
+
+        <i class="conum" data-value="5"></i><b>(5)</b>
+        mExecutor.submit(this::initializeAppAuth);
+
+        @WorkerThread
+        private void initializeAppAuth() {
+            Log.i(TAG, "Initializing AppAuth");
+            recreateAuthorizationService();
+
+            if (mAuthStateManager.getCurrent().getAuthorizationServiceConfiguration() != null) {
+                // configuration is already created, skip to client initialization
+                Log.i(TAG, "auth config already established");
+                initializeClient();
+                return;
+            }
+
+            // &lt;5.a&gt;
+            // if we are not using discovery, build the authorization service configuration directly
+            // from the static configuration values.
+            if (mConfiguration.getDiscoveryUri() == null) {
+                Log.i(TAG, "Creating auth config from res/raw/auth_config.json");
+                AuthorizationServiceConfiguration config = new AuthorizationServiceConfiguration(
+                        mConfiguration.getAuthEndpointUri(),
+                        mConfiguration.getTokenEndpointUri(),
+                        mConfiguration.getRegistrationEndpointUri());
+
+                mAuthStateManager.replace(new AuthState(config));
+                initializeClient();
+                return;
+            }
+
+            // &lt;5.b&gt;
+            // WrongThread inference is incorrect for lambdas
+            // noinspection WrongThread
+            runOnUiThread(() -&gt; displayLoading("Retrieving discovery document"));
+            Log.i(TAG, "Retrieving OpenID discovery doc");
+            AuthorizationServiceConfiguration.fetchFromUrl(
+                    mConfiguration.getDiscoveryUri(),
+                    this::handleConfigurationRetrievalResult,
+                    mConfiguration.getConnectionBuilder());
+        }
+
+        // &lt;5.c&gt;
+        private void recreateAuthorizationService() {
+            if (mAuthService != null) {
+                Log.i(TAG, "Discarding existing AuthService instance");
+                mAuthService.dispose();
+            }
+            mAuthService = createAuthorizationService();
+            mAuthRequest.set(null);
+            mAuthIntent.set(null);
+        }
+
+        private AuthorizationService createAuthorizationService() {
+            Log.i(TAG, "Creating authorization service");
+            AppAuthConfiguration.Builder builder = new AppAuthConfiguration.Builder();
+            builder.setBrowserMatcher(AnyBrowserMatcher.INSTANCE); // &lt;5.c.i&gt;
+            builder.setConnectionBuilder(mConfiguration.getConnectionBuilder());
+
+            return new AuthorizationService(this, builder.build());
+        }
+
+        // &lt;5.d&gt;
+        @WorkerThread
+        private void initializeClient() {
+            if (mConfiguration.getClientId() != null) {
+                Log.i(TAG, "Using static client ID: " + mConfiguration.getClientId());
+                // use a statically configured client ID
+                mClientId.set(mConfiguration.getClientId());
+                runOnUiThread(this::initializeAuthRequest);
+                return;
+            }
+
+            RegistrationResponse lastResponse =
+                    mAuthStateManager.getCurrent().getLastRegistrationResponse();
+            if (lastResponse != null) {
+                Log.i(TAG, "Using dynamic client ID: " + lastResponse.clientId);
+                // already dynamically registered a client ID
+                mClientId.set(lastResponse.clientId);
+                runOnUiThread(this::initializeAuthRequest);
+                return;
+            }
+
+
+            // WrongThread inference is incorrect for lambdas
+            // noinspection WrongThread
+            runOnUiThread(() -&gt; displayLoading("Dynamically registering client"));
+            Log.i(TAG, "Dynamically registering client");
+
+            RegistrationRequest registrationRequest = new RegistrationRequest.Builder(
+                    mAuthStateManager.getCurrent().getAuthorizationServiceConfiguration(),
+                    Collections.singletonList(mConfiguration.getRedirectUri()))
+                    .setTokenEndpointAuthenticationMethod(ClientSecretBasic.NAME)
+                    .build();
+
+            mAuthService.performRegistrationRequest(
+                    registrationRequest,
+                    this::handleRegistrationResponse);
+        }
+
+        // &lt;5.e&gt;
+        @MainThread
+        private void handleRegistrationResponse(
+                RegistrationResponse response,
+                AuthorizationException ex) {
+            mAuthStateManager.updateAfterRegistration(response, ex);
+            if (response == null) {
+                Log.i(TAG, "Failed to dynamically register client", ex);
+                displayErrorLater("Failed to register client: " + ex.getMessage(), true);
+                return;
+            }
+
+            Log.i(TAG, "Dynamically registered client: " + response.clientId);
+            mClientId.set(response.clientId);
+            initializeAuthRequest();
+        }
+
+        // &lt;5.d.i&gt;
+        @MainThread
+        private void initializeAuthRequest() {
+            createAuthRequest("");
+            warmUpBrowser();
+        }
+
+        // &lt;5.d.ii&gt;
+        private void createAuthRequest(@Nullable String loginHint) {
+            Log.i(TAG, "Creating auth request for login hint: " + loginHint);
+            AuthorizationRequest.Builder authRequestBuilder = new AuthorizationRequest.Builder(
+                    mAuthStateManager.getCurrent().getAuthorizationServiceConfiguration(),
+                    mClientId.get(),
+                    ResponseTypeValues.CODE,
+                    mConfiguration.getRedirectUri())
+                    .setScope(mConfiguration.getScope());
+
+            if (!TextUtils.isEmpty(loginHint)) {
+                authRequestBuilder.setLoginHint(loginHint);
+            }
+            HashMap&lt;String, String&gt; additionalParameters = new HashMap&lt;&gt;();
+            // you can enforce your users to use a specific IDP like: google or facebook
+            // additionalParameters.put("kc_idp_hint", "google");
+            authRequestBuilder.setAdditionalParameters(additionalParameters);
+            mAuthRequest.set(authRequestBuilder.build());
+        }
+
+        // &lt;5.d.iii&gt;
+        private void warmUpBrowser() {
+            mAuthIntentLatch = new CountDownLatch(1);
+            mExecutor.execute(() -&gt; {
+                Log.i(TAG, "Warming up browser instance for auth request");
+                CustomTabsIntent.Builder intentBuilder =
+                        mAuthService.createCustomTabsIntentBuilder(mAuthRequest.get().toUri());
+                intentBuilder.setToolbarColor(getColorCompat(R.color.colorPrimary));
+                mAuthIntent.set(intentBuilder.build());
+                mAuthIntentLatch.countDown();
+            });
+        }</code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create the state manager for the authentication and parse the configuration (the json file)</p>
+</li>
+<li>
+<p>If the user is already authenticated, start the next intent</p>
+</li>
+<li>
+<p>If configuration is invalid, show an error</p>
+</li>
+<li>
+<p>When auth failed, call a function to handle this</p>
+</li>
+<li>
+<p>Setup of the AppAuth library</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>You can specify each endpoint seperatly if preferred</p>
+</li>
+<li>
+<p>Use discovery endpoint for getting all the correct endpoints</p>
+</li>
+<li>
+<p>Create the authorization service</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>Select which browser to use for authentication, use ANY for auto selection</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Initialize the client with client id etc.</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>Initialize the authentication request</p>
+</li>
+<li>
+<p>Create the authentication request</p>
+</li>
+<li>
+<p>Warmup browser (performance optimization)</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Handle the registration response</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This code block only contains snippets, please checkout the full source on GitHub</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_authenticating_a_user">Authenticating a user</h4>
+<div class="paragraph">
+<p>When a user clicks a button, a custom tab should open where the user can log into Arkane. When this is done correctly, he should return to the app.</p>
+</div>
+<div class="listingblock">
+<div class="title">/app/src/main/java/LoginActivity.java</div>
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">    <i class="conum" data-value="1"></i><b>(1)</b>
+    findViewById(R.id.start_auth).setOnClickListener((View view) -&gt; startAuth());
+
+    <i class="conum" data-value="2"></i><b>(2)</b>
+    @MainThread
+    void startAuth() {
+        displayLoading("Making authorization request");
+
+        // WrongThread inference is incorrect for lambdas
+        // noinspection WrongThread
+        mExecutor.submit(this::doAuth);
+    }
+
+    <i class="conum" data-value="3"></i><b>(3)</b>
+    @WorkerThread
+    private void doAuth() {
+        try {
+            mAuthIntentLatch.await();
+        } catch (InterruptedException ex) {
+            Log.w(TAG, "Interrupted while waiting for auth intent");
+        }
+        Intent intent = mAuthService.getAuthorizationRequestIntent(
+                mAuthRequest.get(),
+                mAuthIntent.get());
+        startActivityForResult(intent, RC_AUTH);
+    }</code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Add an on click listener when a user wants to authenticate</p>
+</li>
+<li>
+<p>Submit the authentication to the executor (separate thread)</p>
+</li>
+<li>
+<p>Create an authentication intent and start it</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_wallets">Wallets</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_manage_wallets">Manage wallets</h3>
+<div class="paragraph">
+<p>As an application, it is possible to have a user manage his wallets for a specific chain. During this action, the user can link existing wallets or import a wallet.
+When the user returns to the app, a wallet will be linked to your application for the given chain. When a user does not have any wallets yet, a user can indicate to create a new wallet.</p>
+</div>
+<div class="paragraph">
+<p>To manage wallets, a specific url needs to be opened in the browser (using custom tabs). It is not possible to do this directly in the background since the user needs to enter his PIN. For security reasons, we cannot allow it to be entered inside your own app.</p>
+</div>
+<div class="paragraph">
+<p>The endpoint to manage wallets:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>GET https://connect-staging.arkane.network/wallets/manage?redirectUri={redirectUri}&amp;bearerToken={bearerToken}&amp;data={data}</pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 2. Query parameters</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">redirectUri</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Needs to be replaced with a URI to which should be redirected after, in our example we will use this url to give focus back to our app</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">network.arkane://callback</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bearerToken</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The bearer token (access token) you get back from the authentication service</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiS&#8230;&#8203;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">a Base64 encoded json object containing the chain you would like to manage. Possible values are ethereum and vechain. E.g. Base 64 encoded {"chain": "ethereum"}</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">eyJjaGFpbiI6ICJldGhlcmV1bSJ9</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Make sure all query parameters are url encoded (ex. <a href="https://www.urlencoder.org/" class="bare">https://www.urlencoder.org/</a>)</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_example">Example</h4>
+<div class="listingblock">
+<div class="title">/app/src/main/java/TokenActivity.java</div>
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">    <i class="conum" data-value="1"></i><b>(1)</b>
+    Button manageWalletsButton = (Button) findViewById(R.id.manage_wallets);
+            manageWalletsButton.setOnClickListener((View view) -&gt; manageWallets());
+
+    public void manageWallets() {
+        AuthState state = mStateManager.getCurrent(); <i class="conum" data-value="2"></i><b>(2)</b>
+        state.performActionWithFreshTokens(mAuthService, (accessToken, idToken, ex) -&gt; { <i class="conum" data-value="3"></i><b>(3)</b>
+            String url = "https://connect-staging.arkane.network/wallets/manage?redirectUri=network.arkane://callback&amp;data=eyJjaGFpbiI6ICJldGhlcmV1bSJ9&amp;bearerToken=" + accessToken;
+            CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+            CustomTabsIntent customTabsIntent = builder.build();
+            customTabsIntent.launchUrl(this, Uri.parse(url)); <i class="conum" data-value="4"></i><b>(4)</b>
+        });
+    }</code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Add a click listener to manage wallets</p>
+</li>
+<li>
+<p>Get current authentication state</p>
+</li>
+<li>
+<p>Get a valid access token</p>
+</li>
+<li>
+<p>Open a custom tabs intent with the correct URL</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_link_wallets">Link wallets</h3>
+<div class="paragraph">
+<p>This allows users to link his existing wallets with your application. The difference with <a href="#_manage_wallets">Manage wallets</a>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A user can only link wallets, it is not possible to create or import a wallet</p>
+</li>
+<li>
+<p>A list of all wallets is returned for any chain (it is possible to filter this).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>An example use case could be a portfolio app where a user wants to quickly link all his wallets to get an overview of his complete portfolio.</p>
+</div>
+<div class="paragraph">
+<p>The endpoint to link wallets:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>GET https://connect-staging.arkane.network/wallets/link?redirectUri={redirectUri}&amp;bearerToken={bearerToken}</pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 3. Query parameters</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">redirectUri</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Needs to be replaced with a URI to which should be redirected after, in our example we will use this url to give focus back to our app</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">network.arkane://callback</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bearerToken</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The bearer token (access token) you get back from the authentication service</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiS&#8230;&#8203;</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="_example_2">Example</h4>
+<div class="listingblock">
+<div class="title">/app/src/main/java/network/arkane/arketype/TokenActivity.java</div>
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">    <i class="conum" data-value="1"></i><b>(1)</b>
+    Button linkWalletsButton = (Button) findViewById(R.id.link_wallets);
+    linkWalletsButton.setOnClickListener((View view) -&gt; linkWallets());
+
+    public void linkWallets() {
+        AuthState state = mStateManager.getCurrent(); <i class="conum" data-value="2"></i><b>(2)</b>
+        state.performActionWithFreshTokens(mAuthService, (accessToken, idToken, ex) -&gt; { <i class="conum" data-value="3"></i><b>(3)</b>
+            String url = "https://connect-staging.arkane.network/wallets/link?redirectUri=network.arkane://callback&amp;bearerToken=" + accessToken;
+            CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+            CustomTabsIntent customTabsIntent = builder.build();
+            customTabsIntent.launchUrl(this, Uri.parse(url)); <i class="conum" data-value="4"></i><b>(4)</b>
+        });
+    }</code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Add a click listener to link wallets</p>
+</li>
+<li>
+<p>Get current authentication state</p>
+</li>
+<li>
+<p>Get a valid access token</p>
+</li>
+<li>
+<p>Open a custom tabs intent with the correct URL</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_view_wallets">View wallets</h3>
+<div class="paragraph">
+<p>If you want to retrieve the wallets for a user, you can call the <a href="rest-api-public.html#_get_all_user_wallets">API endpoint for listing user wallets</a>.</p>
+</div>
+<div class="sect3">
+<h4 id="_example_3">Example</h4>
+<div class="listingblock">
+<div class="title">/app/src/main/java/network/arkane/arketype/TokenActivity.java</div>
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">    <i class="conum" data-value="1"></i><b>(1)</b>
+    Button getWalletsButton = (Button) findViewById(R.id.get_wallets);
+    getWalletsButton.setOnClickListener((View view) -&gt; getWallets());
+
+    private void getWallets() {
+        mExecutor.submit(() -&gt; {
+            AuthState state = mStateManager.getCurrent(); <i class="conum" data-value="2"></i><b>(2)</b>
+            state.performActionWithFreshTokens(mAuthService, (accessToken, idToken, ex) -&gt; { <i class="conum" data-value="3"></i><b>(3)</b>
+                List&lt;Wallet&gt; wallets = arkaneClient.getWallets(accessToken); <i class="conum" data-value="4"></i><b>(4)</b>
+                runOnUiThread(() -&gt; {
+                    openWallets(wallets);
+                });
+            });
+        });
+    }
+
+    @MainThread
+    private void openWallets(List&lt;Wallet&gt; wallets) {
+        Intent intent = new Intent(this, WalletListActivity.class);
+        intent.putExtra("wallets", new WalletListIntentData(wallets));
+        startActivity(intent); <i class="conum" data-value="4"></i><b>(4)</b>
+    }</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">/app/src/main/java/network/arkane/arketype/client/ArkaneClient.java</div>
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">    public List&lt;Wallet&gt; getWallets(String accessToken) {
+        try {
+            URL walletsEndpoint = new URL("https://api-staging.arkane.network/api/wallets");
+            HttpURLConnection conn =
+                    (HttpURLConnection) walletsEndpoint.openConnection();
+            conn.setRequestProperty("Authorization", "Bearer " + accessToken);
+            conn.setInstanceFollowRedirects(false);
+            String response = Okio.buffer(Okio.source(conn.getInputStream()))
+                    .readString(Charset.forName("UTF-8"));
+            return mapToWallets(response);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }</code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Add a click listener to get wallets</p>
+</li>
+<li>
+<p>Get current authentication state</p>
+</li>
+<li>
+<p>Get a valid access token</p>
+</li>
+<li>
+<p>Use the arkane client to retrieve the wallets</p>
+</li>
+<li>
+<p>Open new intent with wallets</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fetch_balance">Fetch balance</h3>
+<div class="paragraph">
+<p>To fetch the balance of a wallet, simply view the details of the wallet since it will return the balance:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>GET https://api-staging.arkane.network/api/wallets/{id}</pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 4. Query parameters</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">id</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The id of the wallet</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dec19db8-8b6e-4cdb-8452-886a3a44e364</p></td>
+</tr>
+</tbody>
+</table>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Reference: <a href="https://docs-staging.arkane.network/pages/rest-api-public#_get_a_specific_user_wallet" class="bare">https://docs-staging.arkane.network/pages/rest-api-public#_get_a_specific_user_wallet</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_summary">Summary</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Congratulations! You&#8217;ve just build a fully functional multi-chain wallet.</p>
+</div>
+</div>
+</div>

@@ -1,8 +1,6 @@
 = Building a multi-chain wallet called Arketype
 
-This tutorial demonstrates how to create a multi blockchain wallet using Arkane. The wallet will be able to transfer native coins and tokens to any address specified.
-
-The source code of our sample application can be found https://github.com/ArkaneNetwork/Arketype[here].
+This guide will walk you trough the process of creating a multi blockchain wallet, able to transfer native coins and tokens to any address specified.
 
 
 == What you'll build
@@ -19,7 +17,7 @@ We'll build a page which will:
 
 * A text editor or IDE
 * Git (https://git-scm.com/downloads[Download])
-* Node & npm (https://www.npmjs.com/get-npm[Download]) 
+* Node & npm (https://www.npmjs.com/get-npm[Download])
 * A minimal understanding of jQuery (We will be using jQuery to perform DOM manipulations).
 
 == Let's get started
@@ -97,22 +95,21 @@ The first thing we'll want to do is check if the user is already authenticated.
 
 In the snippet below, you can see that the `checkAuthenticated()` function is called. This will redirect the user to our authentication provider, were it will check if the user is authenticated and redirect back to our original page passing an authentication result.
 
-The outcome of calling this function is a Promise containing an authentication result, which contains two callback methods `+authenticated((auth) => { ... });+` and `+notAuthenticated((auth) => { ... });+`. Please note that because of the Promise the function has become `async`.
+The outcome of calling this function is a Promise containing an authentication result, which contains two callback methods `+authenticated((auth) => { ... });+` and `+notAuthenticated((auth) => { ... });+`.
 
 ./public/assets/js/main.js
 [source,javascript]
 ----
 ...
 app.initApp = async function() {
-  window.arkaneConnect = new ArkaneConnect('Arketype', { environment: 'staging'});
-  
+  window.arkaneConnect = new ArkaneConnect('Arketype', { environment: 'staging'}); // <1>
   try {
-    const authenticationResult = await window.arkaneConnect.checkAuthenticated(); // <1>
+    const authenticationResult = await window.arkaneConnect.checkAuthenticated(); // <2>
     authenticationResult.authenticated((auth) => {
-      console.log("This user is authenticated", auth); // <2>
+      console.log("This user is authenticated", auth); // <3>
     })
     .notAuthenticated((auth) => {
-      console.log("This user is not authenticated", auth); //<3>
+      console.log("This user is not authenticated", auth); // <4>
     });
   }
   catch (reason) {
@@ -122,9 +119,10 @@ app.initApp = async function() {
 
 app.initApp();
 ----
-<1> Checking if the user is authenticated
-<2> Handeling the user is authenticated
-<3> Handeling the user is not authenticated
+<1> Added `async` to the function to be able to use `await`
+<2> Checking if the user is authenticated
+<3> Handeling the user is authenticated
+<4> Handeling the user is not authenticated
 
 === Handling the authentication outcome
 Let's make the authentication outcome determine if the user sees a 'Login'-link or the wallet application.
@@ -177,7 +175,7 @@ document.getElementById('auth-logout').addEventListener('click', function(e) {
 <1> Authenticate the user
 <2> Log the user out
 
-That's it, we've now integrated the authentication client of Arkane Connect. It checks if we're authenticated and displays a login- / logout-link when appropriate. If you want to see it in action go ahead on run `npm run start` and surf to http://localhost:4000.
+That's it, we've now integrated the authentication client of Arkane Connect. It checks if we're authenticated and displays a login- / logout-link when appropriate. If you want to see it in action go ahead and run `npm run start` and surf to http://localhost:4000.
 
 [source, bash]
 ----
@@ -238,7 +236,8 @@ app.populateWalletsSelect = (wallets) => {
 <1> Added `async` to the function to be able to use `await`
 <2> Fetch the wallets using the Arkane Connect API
 <3> Convert the array of wallets to a map with 'id' as key
-<4> Populate the wallets `<select>`
+<4> Store the map of wallets in local storage
+<5> Populate the wallets `<select>`
 
 == Manage Wallets
 The first time a user enters our sample application, he will need to give our our application access to at least one of his wallets. To do this we will launch Arkane Connect’s `Manage wallets` page. +
@@ -364,7 +363,7 @@ The main feature of our multi-chain wallet is the transaction functionality. In 
 <2> Pre-filling the secretType (AKA the type of blockchain)
 <3> Pre-filling the tokens
 
-Just for the sake of completeness, you can find the code of the `app.preFillTransactionTokens(...)` function below.
+To make it work, we'll also need to add the code of the `app.preFillTransactionTokens(...)` function.
 
 ./public/assets/js/main.js
 [source,javascript]

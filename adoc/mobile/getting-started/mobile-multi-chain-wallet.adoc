@@ -639,7 +639,12 @@ So from the app we need to open a custom tab with the URL:
 
 |data
 |Base64 encoded json object containing a generic transaction request you would like to sign/submit. This object is specific for each chain. (This can be the result of building a <<transfer>>).
-|eyJ3YWxsZXRJZCI6ImFmMzVlNTA0LWQ4ZjctNGZjMi05YzFjLTQyODM2NjI4NzlkMyIsInRvIjoiMHg2ODA4MDBEZDQ5MTMwMjE4MjFBOUMwOEQ1NjllRjQzMzhkQjhFOWY2IiwidmFsdWUiOjAuMDMxNCwic2VjcmV0VHlwZSI6IkVUSEVSRVVNIn0=
+|eyJ3YWxsZXRJZCI6ImFmMzVlNTA0L
+WQ4ZjctNGZjMi05YzFjLTQyODM2NjI4Nzlk
+MyIsInRvIjoiMHg2ODA4MDBEZDQ5MTMwM
+jE4MjFBOUMwOEQ1NjllRjQzMzhkQjhFO
+WY2IiwidmFsdWUiOjAuMDMxNCwic2Vj
+cmV0VHlwZSI6IkVUSEVSRVVNIn0=
 
 |===
 

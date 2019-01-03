@@ -1,6 +1,5 @@
 = Single Sign On with Arkane using Spring Boot
 
-
 This guide will walk you through the process of logging in with Arkane using Single Sign On and displaying your Arkane wallets.
 This specific guide will focus on Spring Boot integration.
 
@@ -25,7 +24,7 @@ $ curl https://start.spring.io/starter.tgz -d style=web -d name=simple | tar -xz
 
 === Enabling Arkane Login
 
-To be able to log in using Arkane, we'll have to add oauth2 support to our Spring Boot application.
+To be able to log in using Arkane, we'll have to add OAuth2 support to our Spring Boot application.
 
 ```xml
 <dependency>
@@ -86,7 +85,8 @@ protected void configure(HttpSecurity http) throws Exception {
 }
 ```
 
-The last thing we'll need to do is create a filter, which we'll add to our web security configuration.
+The last thing we'll need to do is create a filter and a `FilterRegistrationBean`, which we'll add to our web security configuration. This will make sure that the
+endpoints require our SSO authentication. Our `FilterRegistrationBean` will make sure that the application will redirect us to Arkane to be able to login.
 
 ```java
 private Filter ssoFilter() {
@@ -98,12 +98,44 @@ private Filter ssoFilter() {
     arkaneFilter.setTokenServices(tokenServices);
     return arkaneFilter;
 }
+
+@Bean
+public FilterRegistrationBean<OAuth2ClientContextFilter> oauth2ClientFilterRegistration(OAuth2ClientContextFilter filter) {
+    FilterRegistrationBean<OAuth2ClientContextFilter> registration = new FilterRegistrationBean<>();
+    registration.setFilter(filter);
+    registration.setOrder(-100);
+    return registration;
+}
 ```
 
+=== Calling the Arkane API: Server Side
 
-== Run the application
+Now that a user is authenticated, we can leverage the power of Spring OAuth2. Calling the Arkane Rest APIs only requires you to provide and autowire an instance of `OAuth2RestOperations`.
 
-Run your application. If you'll navigate to `/login/arkane`, you'll be redirected to Arkane to login. After logging in, you'll be fully authenticated in your application, using the Arkane Single Sign on.
+Somewhere in the configuration file you created before, you can simply add the following.
+
+```java
+@Bean
+public OAuth2RestTemplate arkaneTemplate() {
+    return new OAuth2RestTemplate(arkane(), oauth2ClientContext);
+}
+```
+
+You can now safely autowire this instance anywhere to call the rest API using the credentials of the user that is logged in.
+
+```java
+@Autowired
+private OAuth2RestOperations oAuth2RestOperations;
+
+@GetMapping("/wallets")
+public String wallets() {
+    return oAuth2RestOperations.getForObject("https://api-staging.arkane.network/api/wallets", String.class);
+}
+```
+
+The full
+
+
 
 
 

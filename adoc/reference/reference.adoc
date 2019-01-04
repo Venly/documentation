@@ -1,0 +1,103 @@
+= Arkane for native apps
+
+This documentation applies to:
+
+- A native mobile application (IOS / Android / ...)
+- A native desktop app
+
+== Quickstart
+
+If you want an example on how to build a simple wallet using Arkane, you can follow the quickstart. There you will build a native Android app with wallet functionality based on Arkane.
+
+include::../reference/buildingblocks.adoc[]
+
+== Reference documentation
+
+=== Wallet
+
+This section describes all actions related to wallets.
+
+==== Link
+
+This allows users to link his existing wallets with your application. The difference with <<Manage wallets>>:
+
+* A user can only link wallets, it is not possible to create or import a wallet
+* A list of all wallets is returned for any chain (it is possible to filter this).
+
+An example use case could be a portfolio app where a user wants to quickly link all his wallets to get an overview of his complete portfolio.
+
+The endpoint to link wallets:
+
+ GET https://connect-staging.arkane.network/wallets/link?redirectUri={redirectUri}&bearerToken={bearerToken}
+
+
+.Query parameters
+|===
+|Name |Description| Example
+
+|redirectUri
+|Needs to be replaced with a URI to which should be redirected after, in our example we will use this url to give focus back to our app
+|network.arkane://callback
+
+|bearerToken
+|The bearer token (access token) you get back from the authentication service
+|eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiS...
+|===
+
+
+==== Manage wallets
+As an application, it is possible to have a user manage his wallets for a specific chain. During this action, the user can link existing wallets or import a wallet.
+When the user returns to the app, a wallet will be linked to your application for the given chain. When a user does not have any wallets yet, a user can indicate to create a new wallet.
+
+To manage wallets, a specific url needs to be opened in the browser (using custom tabs). It is not possible to do this directly in the background since the user needs to enter his PIN. For security reasons, we cannot allow it to be entered inside your own app.
+
+The endpoint to manage wallets:
+
+ GET https://connect-staging.arkane.network/wallets/manage?redirectUri={redirectUri}&bearerToken={bearerToken}&data={data}
+
+
+.Query parameters
+|===
+|Name |Description| Example
+
+|redirectUri
+|Needs to be replaced with a URI to which should be redirected after, in our example we will use this url to give focus back to our app
+|network.arkane://callback
+
+|bearerToken
+|The bearer token (access token) you get back from the authentication service
+|eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiS...
+
+|data
+|a Base64 encoded json object containing the chain you would like to manage. Possible values are ethereum and vechain. E.g. Base 64 encoded {"chain": "ethereum"}
+|eyJjaGFpbiI6ICJldGhlcmV1bSJ9
+|===
+
+[NOTE]
+====
+Make sure all query parameters are url encoded (ex. https://www.urlencoder.org/)
+====
+
+==== List user wallets
+
+==== Get specific user wallet
+
+=== Balance
+
+==== Native balance
+
+==== Token balances
+
+==== Specific token balance
+
+=== Transactions
+
+==== Transfer
+
+==== Native Transactions
+
+===== Ethereum
+===== Vechain
+
+=== Profile
+==== User profile

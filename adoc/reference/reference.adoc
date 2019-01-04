@@ -75,8 +75,16 @@ It's also possible to filter based on secret type
 
 operation::get-wallets-filtered[snippets='request-parameters']
 
+==== Get specific user wallet [.bb-api]#api#
+operation::get-wallet[snippets='curl-request,path-parameters,http-response,response-fields,response-body']
 
-==== Get specific user wallet
+It's possible that a wallet is archived. In that case, the response will look slightly different
+
+operation::get-archived-wallet[snippets='http-response,response-fields,response-body']
+
+
+NOTE: Trying to fetch the details of a wallet without the correct credentials will result in a 404 rather than a 403.
+
 
 === Balance
 

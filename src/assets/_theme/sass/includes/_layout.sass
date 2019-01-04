@@ -28,10 +28,13 @@ body, html
 .sect2 + .sect2,
 .sect3 + .sect3
   border-top: solid #f5f5f5
+
 .sect1 + .sect1
   border-top-width: 10px
+
 .sect2 + .sect2
   border-top-width: 4px
+
 .sect3 + .sect3
   border-top-width: 1px
 
@@ -88,3 +91,25 @@ body, html
   &:focus
     text-decoration: none
     color: $color-white
+
+.badge
+  display: inline-block
+  padding: .25em .4em
+  font-weight: 700
+  line-height: 1
+  text-align: center
+  white-space: nowrap
+  vertical-align: baseline
+  border-radius: .25rem
+  font-size: $font-size-small
+
+.bb-connect
+  @extend .badge
+  color: $color-white
+  background-color: $color-brand-light
+
+.bb-api
+  @extend .badge
+  background-color: $color-bluish
+  color: $color-white
+

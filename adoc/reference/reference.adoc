@@ -17,7 +17,7 @@ include::../reference/buildingblocks.adoc[]
 
 This section describes all actions related to wallets.
 
-==== Link
+==== Link [.bb-connect]#connect#
 
 This allows users to link his existing wallets with your application. The difference with <<Manage wallets>>:
 
@@ -26,59 +26,49 @@ This allows users to link his existing wallets with your application. The differ
 
 An example use case could be a portfolio app where a user wants to quickly link all his wallets to get an overview of his complete portfolio.
 
-The endpoint to link wallets:
 
- GET https://connect-staging.arkane.network/wallets/link?redirectUri={redirectUri}&bearerToken={bearerToken}
+To link wallets, use the connect building block with:
 
+.URL
+https://connect-staging.arkane.network/wallets/link
 
-.Query parameters
-|===
-|Name |Description| Example
-
-|redirectUri
-|Needs to be replaced with a URI to which should be redirected after, in our example we will use this url to give focus back to our app
-|network.arkane://callback
-
-|bearerToken
-|The bearer token (access token) you get back from the authentication service
-|eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiS...
-|===
+.Data
+_No data needed_
 
 
-==== Manage wallets
+==== Manage wallets [.bb-connect]#connect#
+
+
 As an application, it is possible to have a user manage his wallets for a specific chain. During this action, the user can link existing wallets or import a wallet.
 When the user returns to the app, a wallet will be linked to your application for the given chain. When a user does not have any wallets yet, a user can indicate to create a new wallet.
 
 To manage wallets, a specific url needs to be opened in the browser (using custom tabs). It is not possible to do this directly in the background since the user needs to enter his PIN. For security reasons, we cannot allow it to be entered inside your own app.
 
-The endpoint to manage wallets:
+To manage wallets, use the connect building block with:
 
- GET https://connect-staging.arkane.network/wallets/manage?redirectUri={redirectUri}&bearerToken={bearerToken}&data={data}
+.URL
+https://connect-staging.arkane.network/wallets/manage
 
-
-.Query parameters
+.Data parameters
 |===
-|Name |Description| Example
+|Name |Description |Example
 
-|redirectUri
-|Needs to be replaced with a URI to which should be redirected after, in our example we will use this url to give focus back to our app
-|network.arkane://callback
+|chain
+|The chain for which you want to manage wallets.
+|ethereum
 
-|bearerToken
-|The bearer token (access token) you get back from the authentication service
-|eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiS...
-
-|data
-|a Base64 encoded json object containing the chain you would like to manage. Possible values are ethereum and vechain. E.g. Base 64 encoded {"chain": "ethereum"}
-|eyJjaGFpbiI6ICJldGhlcmV1bSJ9
 |===
 
-[NOTE]
-====
-Make sure all query parameters are url encoded (ex. https://www.urlencoder.org/)
-====
 
-==== List user wallets
+.Data example
+[source,json]
+----
+{
+  "chain": "ethereum"
+}
+----
+
+==== List user wallets [.bb-api]#api#
 
 ==== Get specific user wallet
 

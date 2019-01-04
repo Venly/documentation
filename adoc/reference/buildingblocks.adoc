@@ -6,8 +6,21 @@
 ==== Calling the Arkane API
 To call an Arkane API endpoint, you need the URL and the bearer token of a user.
 
-=== Connect
-==== what
+WARNING: The Arkane API can also be used with API keys instead of Bearer Tokens. Using this authentication method is only encouraged in small scripts.
 
-==== how
-How to call connect
+=== Connect
+
+==== WHAT
+
+Arkane Connect is an endpoint specifically designed to perform common tasks with Arkane wallets. Connect was created as a way to perform tasks which are
+
+. otherwise not possible due to security reasons, like creating signatures
+. necessary by all applications, like linking wallets your client
+
+Basically, Arkane Connect is a small web application without a central entry point. Calls to Arkane Connect are made by navigating to a specific url. Although you can use it by itself - by manually crafting the urls - we also provide a javascript SDK.  
+
+==== HOW
+
+
+
+NOTE: Make sure all query parameters are url encoded (ex. https://www.urlencoder.org/)

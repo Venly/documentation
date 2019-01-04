@@ -1,0 +1,34 @@
+|===
+|Path|Type|Description|Constraints
+
+|`+type+`
+|`+String+`
+|type of the signature request
+|mandatory, possible values: [ETHEREUM_TRANSACTION,ETHEREUM_RAW,VECHAIN_TRANSACTION]
+
+|`+walletId+`
+|`+String+`
+|The id of the wallet one wants to sign with.
+|mandatory
+
+|`+clauses+`
+|`+Array+`
+|Each transaction may contain multiple clauses, and each clause contains the “To”, “Value”, and “Data” fields that can be used to commence different tasks such as payment or smart contracts
+|At least 1 must be present
+
+|`+clauses[].to+`
+|`+String+`
+|address of the to clause
+|mandatory, valid vechain address
+
+|`+clauses[].amount+`
+|`+Number+`
+|amount of the to clause
+|mandatory, must be >= 0
+
+|`+clauses[].data+`
+|`+String+`
+|data of the to clause
+|optional
+
+|===

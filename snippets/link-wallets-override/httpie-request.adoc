@@ -1,0 +1,8 @@
+[source,bash]
+----
+$ echo '{
+  "client" : "cindercloud",
+  "walletIds" : [ "1" ]
+}' | http POST 'http://localhost:8080/api/wallets/link?override=true' \
+    'Content-Type:application/json'
+----

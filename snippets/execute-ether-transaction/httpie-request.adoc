@@ -1,0 +1,15 @@
+[source,bash]
+----
+$ echo '{
+  "type" : "ETH_TRANSACTION",
+  "walletId" : "1543",
+  "pincode" : "549644",
+  "gasPrice" : 10000000000,
+  "gas" : 23000,
+  "nonce" : 0,
+  "value" : 10000000000,
+  "to" : "0xdc71b72db51e227e65a45004ab2798d31e8934c9",
+  "data" : "0x"
+}' | http POST 'http://localhost:8080/api/transactions' \
+    'Content-Type:application/json;charset=UTF-8'
+----

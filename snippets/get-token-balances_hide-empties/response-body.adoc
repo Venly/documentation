@@ -1,0 +1,18 @@
+[source,options="nowrap"]
+----
+[ {
+  "tokenAddress" : "0x4df47b4969b2911c966506e3592c41389493953b",
+  "rawBalance" : "10000000283000000000000",
+  "balance" : 10000.000283,
+  "decimals" : 18,
+  "symbol" : "FND",
+  "logo" : null
+}, {
+  "tokenAddress" : "0xE41d2489571d322189246DaFA5ebDe1F4699F498",
+  "rawBalance" : "655000000000000000000",
+  "balance" : 655.0,
+  "decimals" : 18,
+  "symbol" : "ZRX",
+  "logo" : null
+} ]
+----

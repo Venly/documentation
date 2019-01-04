@@ -1,0 +1,36 @@
+|===
+|Path|Type|Description
+
+|`+balance+`
+|`+Number+`
+|Normalized balance of the native coin
+
+|`+secretType+`
+|`+String+`
+|Type of the secret
+
+|`+symbol+`
+|`+Null+`
+|The symbol of the native coin
+
+|`+gasSymbol+`
+|`+Null+`
+|The symbol of the gas coin
+
+|`+gasBalance+`
+|`+Number+`
+|Normalized balance of the gas coin (same as `balance` when the coin for paying gas/fees is the same native coin)
+
+|`+rawBalance+`
+|`+String+`
+|Raw balance of the native coin
+
+|`+rawGasBalance+`
+|`+String+`
+|Raw balance of the gas coin (same as `balance` when the coin for paying gas/fees is the same native coin)
+
+|`+decimals+`
+|`+Number+`
+|Decimals of the native coin
+
+|===

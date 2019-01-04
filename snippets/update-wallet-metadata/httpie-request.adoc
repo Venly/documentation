@@ -1,0 +1,10 @@
+[source,bash]
+----
+$ echo '{
+  "alias" : "alias",
+  "description" : "description",
+  "archived" : "false",
+  "primary" : "false"
+}' | http PATCH 'http://localhost:8080/api/wallets/1' \
+    'Content-Type:application/json;charset=UTF-8'
+----

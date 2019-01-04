@@ -1,0 +1,10 @@
+[source,bash]
+----
+$ echo '{
+  "pincode" : "1234",
+  "newPincode" : "4321",
+  "hasCustomPin" : "true",
+  "recoverable" : "true"
+}' | http PATCH 'http://localhost:8080/api/wallets/1/security' \
+    'Content-Type:application/json;charset=UTF-8'
+----

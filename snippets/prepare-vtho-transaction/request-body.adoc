@@ -1,0 +1,18 @@
+[source,options="nowrap"]
+----
+{
+  "type" : "VTHO_TRANSACTION",
+  "walletId" : "1543",
+  "pincode" : null,
+  "blockRef" : null,
+  "chainTag" : null,
+  "expiration" : 0,
+  "gas" : 0,
+  "gasPriceCoef" : null,
+  "nonce" : null,
+  "clauses" : [ {
+    "to" : "0xdc71b72db51e227e65a45004ab2798d31e8934c9",
+    "amount" : 10000000000
+  } ]
+}
+----

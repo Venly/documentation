@@ -1,0 +1,4 @@
+[source,bash]
+----
+$ http GET 'http://localhost:8080/api/wallets?address=0xdc72b72db54e227e65a45004ab2798d31e8934c2'
+----

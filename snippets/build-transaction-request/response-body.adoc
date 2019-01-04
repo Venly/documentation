@@ -1,0 +1,22 @@
+[source,options="nowrap"]
+----
+{
+  "success" : true,
+  "result" : {
+    "walletId" : "1543",
+    "pincode" : null,
+    "blockRef" : null,
+    "chainTag" : null,
+    "expiration" : 0,
+    "gas" : 23000,
+    "gasPriceCoef" : 0,
+    "nonce" : null,
+    "clauses" : [ {
+      "to" : "0xdc71b72db51e227e65a45004ab2798d31e8934c9",
+      "amount" : 10000000000,
+      "tokenAddress" : "0x0000000000000000000000000000456E65726779"
+    } ],
+    "type" : "VECHAIN_VIP180_TRANSACTION"
+  }
+}
+----

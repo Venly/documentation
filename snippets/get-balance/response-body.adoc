@@ -1,0 +1,13 @@
+[source,options="nowrap"]
+----
+{
+  "secretType" : "ETHEREUM",
+  "balance" : 1.0,
+  "gasBalance" : 1.0,
+  "symbol" : null,
+  "gasSymbol" : null,
+  "rawBalance" : "1000000000000000000",
+  "rawGasBalance" : "1000000000000000000",
+  "decimals" : 18
+}
+----

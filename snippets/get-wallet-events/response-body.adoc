@@ -1,0 +1,12 @@
+[source,options="nowrap"]
+----
+[ {
+  "id" : 1,
+  "eventTimestamp" : 1546618747138,
+  "client" : "Arkane",
+  "apiToken" : "xxx-xxx-xxx",
+  "type" : "MASTER_PIN_UPDATED",
+  "metadata" : "{}",
+  "walletId" : "1"
+} ]
+----

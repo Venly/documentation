@@ -1,0 +1,36 @@
+|===
+|Path|Type|Description
+
+|`+success+`
+|`+Boolean+`
+|See if the response contains a result
+
+|`+result.id+`
+|`+String+`
+|id of the wallet
+
+|`+result.address+`
+|`+String+`
+|address of the wallet
+
+|`+result.secretType+`
+|`+String+`
+|type of the secret (ex: ETHEREUM)
+
+|`+result.archived+`
+|`+Boolean+`
+|is the wallet archived or not
+
+|`+result.alias+`
+|`+String+`
+|alias of the wallet
+
+|`+result.description+`
+|`+String+`
+|description of the wallet
+
+|`+result.status+`
+|`+String+`
+|status of the wallet
+
+|===

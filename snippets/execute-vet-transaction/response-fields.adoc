@@ -1,0 +1,12 @@
+|===
+|Path|Type|Description
+
+|`+success+`
+|`+Boolean+`
+|See if the response contains a result
+
+|`+result.transactionHash+`
+|`+String+`
+|The transaction hash
+
+|===

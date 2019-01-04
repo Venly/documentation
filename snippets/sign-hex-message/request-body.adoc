@@ -1,0 +1,9 @@
+[source,options="nowrap"]
+----
+{
+  "type" : "ETHEREUM_RAW",
+  "walletId" : "1",
+  "pincode" : "31345",
+  "data" : "0x0564b25c8fcd6766f672d43252c8ee2597ad6c7a35315cf13e3b4d00bafc2e9f"
+}
+----

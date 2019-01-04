@@ -1,0 +1,12 @@
+|===
+|Path|Type|Description
+
+|`+success+`
+|`+Boolean+`
+|See if the response contains a result
+
+|`+result+`
+|`+Object+`
+|A transactionRequest which can be posted to the `/transactions` endpoint (after adding the pincode)
+
+|===

@@ -1,0 +1,12 @@
+|===
+|Path|Type|Description
+
+|`+success+`
+|`+Boolean+`
+|True if success, false otherwise
+
+|`+result.hash+`
+|`+String+`
+|userId of the logged in user
+
+|===

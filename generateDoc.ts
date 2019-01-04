@@ -10,7 +10,7 @@ if(!fs.existsSync(imgDir)) {
     fs.mkdirSync(imgDir, { recursive: true });
 }
 // letsGenerateSomeDocs('../rest/src/main/asciidoc/', '../rest/target/generated-snippets');
-letsGenerateSomeDocs('./adoc/');
+letsGenerateSomeDocs('./adoc/', './snippets');
 
 
 function letsGenerateSomeDocs(fileLocation: string, snippetsLocation: string = '') {
@@ -34,7 +34,7 @@ function letsGenerateSomeDocs(fileLocation: string, snippetsLocation: string = '
                     });
                 }
             } else if (file.isDirectory()) {
-                letsGenerateSomeDocs(`${fileLocation}${file.name}/`)
+                letsGenerateSomeDocs(`${fileLocation}${file.name}/`, snippetsLocation);
             }
         });
 
@@ -124,6 +124,7 @@ function operate(line: string, titlePrefix: string) {
     const rePattern = new RegExp(/operation::([0-9a-zA-Z_-]+)\[(snippets=)?['"]([0-9a-zA-Z-,_]+)['"]\]/i);
     const arrMatches = line.match(rePattern);
     if (arrMatches) {
+        console.log("match");
         const name = arrMatches[1];
         const snippets = arrMatches[3].split(',');
         let result = '';
@@ -135,6 +136,8 @@ function operate(line: string, titlePrefix: string) {
             result += `\n\n[[example_${u}_${name}]]\n${titlePrefix} ${capitalize(title)}\n\ninclude::{snippets}/${name}/${t}.adoc[]`;
         });
         return result.trimLeft();
+    } else {
+        console.log("no match");
     }
 
     return line;

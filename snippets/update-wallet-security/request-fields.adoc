@@ -1,0 +1,24 @@
+|===
+|Path|Type|Description|Constraints
+
+|`+pincode+`
+|`+String+`
+|The pincode of the specified wallet
+|mandatory, must be between 4-6 digits
+
+|`+newPincode+`
+|`+String+`
+|The new pincode of the wallet
+|mandatory, must be between 4-6 digits
+
+|`+hasCustomPin+`
+|`+Boolean+`
+|Whether or not the wallet should have a custom pincode
+|optional, true or false
+
+|`+recoverable+`
+|`+Boolean+`
+|Whether or not the wallet should be recoverable or not
+|optional, true or false
+
+|===

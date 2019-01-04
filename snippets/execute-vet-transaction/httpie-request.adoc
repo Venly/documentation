@@ -1,0 +1,20 @@
+[source,bash]
+----
+$ echo '{
+  "type" : "VET_TRANSACTION",
+  "walletId" : "1543",
+  "pincode" : "54716",
+  "blockRef" : null,
+  "chainTag" : null,
+  "expiration" : 3,
+  "gas" : 23000,
+  "gasPriceCoef" : 46576,
+  "nonce" : "bd3d9743-20a7-43f9-b1d8-33a7c515f769",
+  "clauses" : [ {
+    "to" : "0xdc71b72db51e227e65a45004ab2798d31e8934c9",
+    "amount" : 10000000000,
+    "data" : "0x0000"
+  } ]
+}' | http POST 'http://localhost:8080/api/transactions' \
+    'Content-Type:application/json;charset=UTF-8'
+----

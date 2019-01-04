@@ -69,6 +69,12 @@ https://connect-staging.arkane.network/wallets/manage
 ----
 
 ==== List user wallets [.bb-api]#api#
+operation::get-wallets[snippets='curl-request,http-response,response-fields']
+
+It's also possible to filter based on secret type
+
+operation::get-wallets-filtered[snippets='request-parameters']
+
 
 ==== Get specific user wallet
 

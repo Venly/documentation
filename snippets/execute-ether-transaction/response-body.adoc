@@ -1,0 +1,9 @@
+[source,options="nowrap"]
+----
+{
+  "success" : true,
+  "result" : {
+    "transactionHash" : "0xHash"
+  }
+}
+----

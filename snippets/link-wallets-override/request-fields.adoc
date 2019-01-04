@@ -1,0 +1,14 @@
+|===
+|Path|Type|Description|Constraints
+
+|`+walletIds+`
+|`+Array+`
+|Ids of the wallet we'd like to link
+|mandatory, valid wallet ids
+
+|`+client+`
+|`+String+`
+|client we're trying to link for
+|mandatory, one valid client
+
+|===

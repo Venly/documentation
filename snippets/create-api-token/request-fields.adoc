@@ -1,0 +1,19 @@
+|===
+|Path|Type|Description|Constraints
+
+|`+walletId+`
+|`+String+`
+|The id of the wallet
+|Must not be null.
+
+|`+claim+`
+|`+String+`
+|The claims associated to this token
+|Can not be empty, must be one of: [VIEW_WALLETS, SIGN_WALLETS]
+
+|`+description+`
+|`+String+`
+|Description of the wallet
+|optional
+
+|===

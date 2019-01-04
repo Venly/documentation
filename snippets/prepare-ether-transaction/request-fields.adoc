@@ -1,0 +1,24 @@
+|===
+|Path|Type|Description|Constraints
+
+|`+type+`
+|`+String+`
+|The type of the transaction
+|mandatory, value for ether transaction: ETH_TRANSACTION
+
+|`+walletId+`
+|`+String+`
+|The id of the wallet one wants to sign with.
+|mandatory
+
+|`+value+`
+|`+Number+`
+|The value transferred for the transaction in Wei, also the endowment if it's a contract-creation transaction
+|mandatory, must be >= 0
+
+|`+to+`
+|`+String+`
+|The destination address of the transaction.
+|mandatory, a valid ethereum address
+
+|===

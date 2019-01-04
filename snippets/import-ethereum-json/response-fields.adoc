@@ -1,0 +1,84 @@
+|===
+|Path|Type|Description
+
+|`+success+`
+|`+Boolean+`
+|See if the response contains a result
+
+|`+result.id+`
+|`+String+`
+|id of the wallet
+
+|`+result.hasCustomPin+`
+|`+Boolean+`
+|Whether the wallet has a custom pincode or not
+
+|`+result.address+`
+|`+String+`
+|address of the wallet
+
+|`+result.walletType+`
+|`+String+`
+|type of the wallet
+
+|`+result.secretType+`
+|`+String+`
+|type of the secret (ex: ETHEREUM)
+
+|`+result.createdAt+`
+|`+Null+`
+|date and time the secret was created or imported
+
+|`+result.archived+`
+|`+Boolean+`
+|is the wallet archived or not
+
+|`+result.primary+`
+|`+Boolean+`
+|is the wallet the primary wallet for the secrettype?
+
+|`+result.alias+`
+|`+String+`
+|alias of the wallet
+
+|`+result.description+`
+|`+String+`
+|description of the wallet
+
+|`+result.balance+`
+|`+Object+`
+|The native token balance of the wallet
+
+|`+result.balance.balance+`
+|`+Number+`
+|Normalized balance of the native coin
+
+|`+result.balance.secretType+`
+|`+String+`
+|Type of the secret
+
+|`+result.balance.symbol+`
+|`+Null+`
+|The symbol of the native coin
+
+|`+result.balance.gasSymbol+`
+|`+Null+`
+|The symbol of the gas coin
+
+|`+result.balance.gasBalance+`
+|`+Number+`
+|Normalized balance of the gas coin (same as `balance` when the coin for paying gas/fees is the same native coin)
+
+|`+result.balance.rawBalance+`
+|`+String+`
+|Raw balance of the native coin
+
+|`+result.balance.rawGasBalance+`
+|`+String+`
+|Raw balance of the gas coin (same as `balance` when the coin for paying gas/fees is the same native coin)
+
+|`+result.balance.decimals+`
+|`+Number+`
+|Decimals of the native coin
+
+|===

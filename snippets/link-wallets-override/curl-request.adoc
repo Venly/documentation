@@ -1,0 +1,9 @@
+[source,bash]
+----
+$ curl 'http://localhost:8080/api/wallets/link?override=true' -i -X POST \
+    -H 'Content-Type: application/json' \
+    -d '{
+  "client" : "cindercloud",
+  "walletIds" : [ "1" ]
+}'
+----

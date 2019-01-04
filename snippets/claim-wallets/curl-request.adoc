@@ -1,0 +1,8 @@
+[source,bash]
+----
+$ curl 'http://localhost:8080/api/wallets/claim' -i -X POST \
+    -H 'Content-Type: application/json;charset=utf-8' \
+    -d '{
+  "masterPincode" : "123456"
+}'
+----

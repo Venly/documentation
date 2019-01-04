@@ -7,8 +7,8 @@ This specific guide will focus on Spring Boot integration.
 
 We'll build a small application which will:
 
-1. Allow us to authenticate using your Arkane Account (OAuth2)
-2. Fetch and display your wallets, server side
+. Allow us to authenticate using your Arkane Account (OAuth2)
+. Fetch and display your wallets, server side
 
 == What you'll need
 
@@ -17,40 +17,45 @@ We'll build a small application which will:
 
 === Creating a new project
 
-```bash
+[source,bash]
+----
 mkdir ui && cd ui
 $ curl https://start.spring.io/starter.tgz -d style=web -d name=simple | tar -xzvf -
-```
+----
 
 === Enabling Arkane Login
 
 To be able to log in using Arkane, we'll have to add OAuth2 support to our Spring Boot application.
 
-```xml
+[source,xml]
+----
 <dependency>
 	<groupId>org.springframework.cloud</groupId>
 	<artifactId>spring-cloud-starter-oauth2</artifactId>
 </dependency>
-```
+----
 
 === Adding Oauth2 Support
 
 First of all, we'll need to enable oauth2 support.
 Simply add `@EnableOAuth2Client` and autowire `OAuth2ClientContext` in a configuration class.
 
-Next up, we'll create a new instance of AuthorizationCodeResourceDetails and provide it as a bean.
+Next up, we'll create a new instance of `AuthorizationCodeResourceDetails` and provide it as a bean.
+We'll also populate our application with properties from a property file. In this example, we're using the Arkane Staging environment using a public client we use for every guide (Arketype)
 
-```java
+[source,java]
+----
 @Bean
 @ConfigurationProperties("arkane.client")
 public AuthorizationCodeResourceDetails arkane() {
     return new AuthorizationCodeResourceDetails();
 }
-```
+----
 
- We'll populate our application with properties from a property file.
+`/src/main/resources/application.properties`
 
-```
+[source,text]
+----
 arkaneBaseUrl=https://login-staging.arkane.network/auth/realms/Arkane
 arkane.client.user-authorization-uri=${arkaneBaseUrl}/protocol/openid-connect/auth
 arkane.client.client.scope=openid
@@ -58,37 +63,42 @@ arkane.client.access-token-uri=${arkaneBaseUrl}/protocol/openid-connect/token
 arkane.client.tokenName=bearerToken
 arkane.client.preEstablishedRedirectUri=http://localhost:4000/login/arkane
 arkane.client.clientId=Arketype
-```
+----
 
 On top of that we'll have to add the properties for the resource server.
 
-```java
+[source,java]
+----
 @Bean
 @ConfigurationProperties("arkane.resource")
 public ResourceServerProperties arkaneResource() {
     return new ResourceServerProperties();
 }
-```
+----
 
-```
+`/src/main/resources/application.properties`
+[source,text]
+----
 arkane.resource.userInfoUri=${keycloakBaseUrl}/protocol/openid-connect/userinfo
-```
+----
 
 Make one of your configuration classes extend from `WebSecurityConfigurerAdapter` and implement the configure method.
 
-```java
+[source,java]
+----
 @Override
 protected void configure(HttpSecurity http) throws Exception {
     http.antMatcher("/**")
     .csrf().disable()
     .addFilterBefore(ssoFilter(), BasicAuthenticationFilter.class);
 }
-```
+----
 
 The last thing we'll need to do is create a filter and a `FilterRegistrationBean`, which we'll add to our web security configuration. This will make sure that the
 endpoints require our SSO authentication. Our `FilterRegistrationBean` will make sure that the application will redirect us to Arkane to be able to login.
 
-```java
+[source,java]
+----
 private Filter ssoFilter() {
     OAuth2ClientAuthenticationProcessingFilter arkaneFilter = new OAuth2ClientAuthenticationProcessingFilter("/login/arkane");
     OAuth2RestTemplate facebookTemplate = arkaneTemplate();
@@ -106,7 +116,7 @@ public FilterRegistrationBean<OAuth2ClientContextFilter> oauth2ClientFilterRegis
     registration.setOrder(-100);
     return registration;
 }
-```
+----
 
 === Calling the Arkane API: Server Side
 
@@ -114,16 +124,18 @@ Now that a user is authenticated, we can leverage the power of Spring OAuth2. Ca
 
 Somewhere in the configuration file you created before, you can simply add the following.
 
-```java
+[source,java]
+----
 @Bean
 public OAuth2RestTemplate arkaneTemplate() {
     return new OAuth2RestTemplate(arkane(), oauth2ClientContext);
 }
-```
+----
 
 You can now safely autowire this instance anywhere to call the rest API using the credentials of the user that is logged in.
 
-```java
+[source,java]
+----
 @Autowired
 private OAuth2RestOperations oAuth2RestOperations;
 
@@ -131,11 +143,13 @@ private OAuth2RestOperations oAuth2RestOperations;
 public String wallets() {
     return oAuth2RestOperations.getForObject("https://api-staging.arkane.network/api/wallets", String.class);
 }
-```
+----
 
-The full
+=== Full Example
 
+The entire example can be found on https://github.com/ArkaneNetwork/spring-boot-java-example[github].
 
+You can run the application using
 
-
-
+[source,bash]
+mvn clean install spring-boot:run

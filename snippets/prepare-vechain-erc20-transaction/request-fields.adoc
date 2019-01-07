@@ -4,12 +4,12 @@
 |`+type+`
 |`+String+`
 |The type of the transaction
-|mandatory, value for vet transaction: VECHAIN_VIP180_TRANSACTION
+|Mandatory, value for vet transaction: VECHAIN_VIP180_TRANSACTION
 
 |`+walletId+`
 |`+String+`
 |The id of the wallet one wants to sign with.
-|mandatory
+|Mandatory
 
 |`+clauses+`
 |`+Array+`
@@ -19,16 +19,16 @@
 |`+clauses[].to+`
 |`+String+`
 |address of the to clause
-|mandatory, valid vechain address
+|Mandatory, valid vechain address
 
 |`+clauses[].tokenAddress+`
 |`+String+`
 |The address of the token to be used in this application
-|mandatory, valid vechain ERC20 token address
+|Mandatory, valid vechain ERC20 token address
 
 |`+clauses[].amount+`
 |`+Number+`
 |amount of the to clause
-|mandatory, must be >= 0
+|Mandatory, must be >= 0
 
 |===

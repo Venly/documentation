@@ -49,7 +49,8 @@ To manage wallets, use the connect building block with:
 .URL
 https://connect-staging.arkane.network/wallets/manage
 
-.Data parameters
+
+.Data parameters [.bb-api]#Data parameters#
 |===
 |Name |Description |Example
 
@@ -69,30 +70,35 @@ https://connect-staging.arkane.network/wallets/manage
 ----
 
 ==== List user wallets [.bb-api]#api#
+Returns all the wallets for the specified user (bearer token)
+
 operation::get-wallets[snippets='curl-request,http-response,response-fields']
 
 It's also possible to filter based on secret type
 
 operation::get-wallets-filtered[snippets='request-parameters']
 
+
+[[get-specific-user-wallet]]
 ==== Get specific user wallet [.bb-api]#api#
-operation::get-wallet[snippets='curl-request,path-parameters,http-response,response-fields,response-body']
+Returns the details for a specific wallet (native balance is also included)
 
-It's possible that a wallet is archived. In that case, the response will look slightly different
+operation::get-wallet[snippets='curl-request,path-parameters,http-response,response-fields']
 
-operation::get-archived-wallet[snippets='http-response,response-fields,response-body']
+==== Native balance [.bb-api]#api#
+Returns the "native" balance for a wallet. This is the balance of the native token used by the chain. Ex. ETH for Ethereum.
 
+operation::get-balance[snippets='curl-request,path-parameters,http-response,response-fields']
 
-NOTE: Trying to fetch the details of a wallet without the correct credentials will result in a 404 rather than a 403.
+==== Token balances [.bb-api]#api#
+Returns the balance of all tokens currently supported by Arkane. The list of supported tokens can be found on https://github.com/ArkaneNetwork/content-management/tree/master/tokens[Github].
 
+operation::get-token-balances[snippets='curl-request,path-parameters,http-response,response-fields']
 
-=== Balance
+==== Specific token balance [.bb-api]#api#
+Returns the token balance for a specified token (this can be any token).
 
-==== Native balance
-
-==== Token balances
-
-==== Specific token balance
+operation::get-token-balance[snippets='curl-request,path-parameters,http-response,response-fields']
 
 === Transactions
 

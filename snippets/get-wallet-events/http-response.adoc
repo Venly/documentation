@@ -6,7 +6,7 @@ Content-Length: 181
 
 [ {
   "id" : 1,
-  "eventTimestamp" : 1546618747138,
+  "eventTimestamp" : 1546865247850,
   "client" : "Arkane",
   "apiToken" : "xxx-xxx-xxx",
   "type" : "MASTER_PIN_UPDATED",

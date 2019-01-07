@@ -10,11 +10,11 @@
 |Type of the secret
 
 |`+symbol+`
-|`+Null+`
+|`+String+`
 |The symbol of the native coin
 
 |`+gasSymbol+`
-|`+Null+`
+|`+String+`
 |The symbol of the gas coin
 
 |`+gasBalance+`

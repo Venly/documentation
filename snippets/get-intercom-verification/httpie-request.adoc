@@ -1,4 +1,4 @@
 [source,bash]
 ----
-$ http GET 'http://localhost:8080/api/profile/intercom/verification'
+$ http GET 'https://api.arkane.network/api/profile/intercom/verification'
 ----

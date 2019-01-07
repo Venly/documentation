@@ -1,12 +1,8 @@
 |===
 |Path|Type|Description
 
-|`+success+`
-|`+Boolean+`
-|See if the response contains a result
-
-|`+result.[]+`
+|`+.[]+`
 |`+Array+`
-|the wallets of the user
+|An array of wallets of the user
 
 |===

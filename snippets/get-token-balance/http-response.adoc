@@ -2,7 +2,7 @@
 ----
 HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
-Content-Length: 195
+Content-Length: 343
 
 {
   "tokenAddress" : "0x4df47b4969b2911c966506e3592c41389493953b",
@@ -10,6 +10,6 @@ Content-Length: 195
   "balance" : 10000.000283,
   "decimals" : 18,
   "symbol" : "FND",
-  "logo" : null
+  "logo" : "https://raw.githubusercontent.com/ArkaneNetwork/content-management/master/tokens/ethereum/mainnet/logos/0x4df47b4969b2911c966506e3592c41389493953b.png"
 }
 ----

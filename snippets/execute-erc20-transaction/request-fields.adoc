@@ -4,12 +4,12 @@
 |`+type+`
 |`+String+`
 |The type of the transaction
-|mandatory
+|Mandatory
 
 |`+walletId+`
 |`+String+`
 |The id of the wallet one wants to sign with.
-|mandatory
+|Mandatory
 
 |`+gasPrice+`
 |`+Number+`
@@ -19,17 +19,17 @@
 |`+gas+`
 |`+Number+`
 |The amount of gas to use for the transaction (unused gas is refunded)
-|optional (by default calculated), must be >= 0
+|Optional (by default calculated), must be >= 0
 
 |`+value+`
 |`+Number+`
 |The value transferred for the transaction in Wei, also the endowment if it's a contract-creation transaction
-|mandatory, must be >= 0
+|Mandatory, must be >= 0
 
 |`+tokenAddress+`
 |`+String+`
 |The address of the ERC20 token to be used in this transaction
-|mandatory, valid ethereum contract address
+|Mandatory, valid ethereum contract address
 
 |`+nonce+`
 |`+Number+`
@@ -39,11 +39,11 @@
 |`+to+`
 |`+String+`
 |The destination address of the transaction.
-|mandatory, a valid ethereum address
+|Mandatory, a valid ethereum address
 
 |`+pincode+`
 |`+String+`
 |The pincode of the specified wallet
-|mandatory, must be between 4-6 digits
+|Mandatory, must be between 4-6 digits
 
 |===

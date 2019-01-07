@@ -1,0 +1,36 @@
+|===
+|Path|Type|Description
+
+|`+success+`
+|`+Boolean+`
+|See if the response contains a result
+
+|`+result+`
+|`+Array+`
+|The list of connected apps for this wallet
+
+|`+result.[].icon+`
+|`+String+`
+|The url to the icon for the ad
+
+|`+result.[].name+`
+|`+String+`
+|The name of the ad
+
+|`+result.[].description+`
+|`+String+`
+|The description of the ad
+
+|`+result.[].ctaText+`
+|`+String+`
+|The text for the call to action of the ad
+
+|`+result.[].ctaLink+`
+|`+String+`
+|The url for the call to action of the ad
+
+|`+result.[].viewIn+`
+|`+Null+`
+|The list of chains where to view the ads
+
+|===

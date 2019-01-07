@@ -4,42 +4,42 @@
 |`+type+`
 |`+String+`
 |The type of the transaction, e.g.: VTHO_TRANSACTION
-|mandatory, value for vtho transaction: VTHO_TRANSACTION
+|Mandatory, value for vtho transaction: VTHO_TRANSACTION
 
 |`+walletId+`
 |`+String+`
 |The id of the wallet one wants to sign with.
-|mandatory
+|Mandatory
 
 |`+blockRef+`
 |`+Null+`
 | BlockRef is the reference to a specific block. When the BlockRef is a block ID in the future, it enables users to configure the transactions to be executed as a specific block height;
-|optional
+|Optional
 
 |`+chainTag+`
 |`+Null+`
 |chaintag
-|optional
+|Optional
 
 |`+expiration+`
 |`+Number+`
 |The number of blocks that can be used to specify when the transaction expires
-|optional, must be >= 0
+|Optional, must be >= 0
 
 |`+gas+`
 |`+Number+`
 |the maximum amount of VeThor the sender is willing to pay to execute all the clauses in the transaction
-|optional, must be > 0
+|Optional, must be > 0
 
 |`+gasPriceCoef+`
 |`+Number+`
 |Users can modify the Gas Price Coefficient to increase the amount of VeThor they are willing to commit in the predefined range as to prioritize the transaction
-|optional, must be >= 0
+|Optional, must be >= 0
 
 |`+nonce+`
 |`+String+`
 |TxNonce is a random number in the transaction. Users are able to change the nonce to generate unique TxID as part of the “in-transaction proof of work” feature
-|optional
+|Optional
 
 |`+clauses+`
 |`+Array+`
@@ -49,16 +49,16 @@
 |`+clauses[].to+`
 |`+String+`
 |address of the to clause
-|mandatory, valid vechain address
+|Mandatory, valid vechain address
 
 |`+clauses[].amount+`
 |`+Number+`
 |amount of the to clause
-|mandatory, must be >= 0
+|Mandatory, must be >= 0
 
 |`+pincode+`
 |`+String+`
 |The pincode of the specified wallet
-|mandatory, must be between 4-6 digits
+|Mandatory, must be between 4-6 digits
 
 |===

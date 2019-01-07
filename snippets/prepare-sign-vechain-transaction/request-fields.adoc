@@ -4,12 +4,12 @@
 |`+type+`
 |`+String+`
 |type of the signature request
-|mandatory, possible values: [ETHEREUM_TRANSACTION,ETHEREUM_RAW,VECHAIN_TRANSACTION]
+|Mandatory, possible values: ETHEREUM_TRANSACTION, ETHEREUM_RAW, VECHAIN_TRANSACTION
 
 |`+walletId+`
 |`+String+`
 |The id of the wallet one wants to sign with.
-|mandatory
+|Mandatory
 
 |`+clauses+`
 |`+Array+`
@@ -19,16 +19,16 @@
 |`+clauses[].to+`
 |`+String+`
 |address of the to clause
-|mandatory, valid vechain address
+|Mandatory, valid vechain address
 
 |`+clauses[].amount+`
 |`+Number+`
 |amount of the to clause
-|mandatory, must be >= 0
+|Mandatory, must be >= 0
 
 |`+clauses[].data+`
 |`+String+`
 |data of the to clause
-|optional
+|Optional
 
 |===

@@ -4,7 +4,7 @@
 |`+description+`
 |`+String+`
 |Description of the API key
-|optional
+|Optional
 
 |`+claim+`
 |`+String+`
@@ -14,6 +14,6 @@
 |`+enabled+`
 |`+Boolean+`
 |Whether or not the apikey is enabled (active) or not
-|optional, true or false
+|Optional, true or false
 
 |===

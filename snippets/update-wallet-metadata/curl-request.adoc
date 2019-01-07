@@ -1,6 +1,6 @@
 [source,bash]
 ----
-$ curl 'http://localhost:8080/api/wallets/1' -i -X PATCH \
+$ curl 'https://api.arkane.network/api/wallets/1' -i -X PATCH \
     -H 'Content-Type: application/json;charset=UTF-8' \
     -d '{
   "alias" : "alias",

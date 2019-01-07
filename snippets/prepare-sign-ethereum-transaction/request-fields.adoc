@@ -4,26 +4,26 @@
 |`+type+`
 |`+String+`
 |The type of the transaction. ex: ETHEREUM.
-|mandatory, possible values: [ETHEREUM_TRANSACTION,ETHEREUM_RAW,VECHAIN_TRANSACTION]
+|Mandatory, possible values: ETHEREUM_TRANSACTION, ETHEREUM_RAW, VECHAIN_TRANSACTION
 
 |`+walletId+`
 |`+String+`
 |The id of the wallet one wants to sign with.
-|mandatory
+|Mandatory
 
 |`+value+`
 |`+Number+`
 |The value transferred for the transaction in Wei, also the endowment if it's a contract-creation transaction
-|mandatory, must be >= 0
+|Mandatory, must be >= 0
 
 |`+data+`
 |`+String+`
 |Either a byte string containing the associated data of the message, or in the case of a contract-creation transaction, the initialisation code
-|optional
+|Optional
 
 |`+to+`
 |`+String+`
 |The destination address of the transaction.
-|mandatory, a valid ethereum address
+|Mandatory, a valid ethereum address
 
 |===

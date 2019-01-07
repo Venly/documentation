@@ -1,4 +1,4 @@
 [source,bash]
 ----
-$ http GET 'http://localhost:8080/api/wallets/1'
+$ http GET 'https://api.arkane.network/api/wallets/1'
 ----

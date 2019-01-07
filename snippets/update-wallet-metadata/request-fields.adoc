@@ -4,21 +4,21 @@
 |`+alias+`
 |`+String+`
 |Alias of the wallet. Needs to be unique across your account
-|optional, max 50 chars, allowed charachters: A-Z, a-z, 0-9, - and _
+|Optional, max 50 chars, allowed charachters: A-Z, a-z, 0-9, - and _
 
 |`+description+`
 |`+String+`
 |General description of your wallet
-|optional, max 200 chars
+|Optional, max 200 chars
 
 |`+archived+`
 |`+Boolean+`
 |Archives/unarchives the wallet
-|optional, true or false
+|Optional, true or false
 
 |`+primary+`
 |`+Primary+`
 |Updates the primary status of the wallet
-|optional, true or false
+|Optional, true or false
 
 |===

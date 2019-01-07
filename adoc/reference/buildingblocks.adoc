@@ -50,6 +50,37 @@ All of the API's responses are wrapped in an envelope. This envelope indicates w
 
 ==== Authentication
 
+Calling the Rest API requires authentication. At the moment, the following methods for authentication are available:
+
+. Bearer Token
+. API Key
+
+===== Bearer Token
+
+NOTE: A security token with the property that any party in possession of the token (a "bearer") can use the token in any way that any other party in possession of it can. Using a bearer token does not require a bearer to prove possession of cryptographic key material (proof-of-possession).
+
+A Bearer Token is set in the Authorization header of every Inline Action HTTP Request. For example:
+
+----
+GET /api/wallets HTTP/1.1
+Authorization: Bearer AbCdEf123456
+Content-Type: application/json
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/1.0 (KHTML, like Gecko; Gmail Actions)
+----
+
+===== API Key
+
+API Keys are also supported, in a limited fashion. An API key is generated through the Arkane Webapp and is always linked to a single wallet.
+
+image::img/apikeys.png[Run]
+
+An API key is set in the `authToken` header of every HTTP Request. For example:
+----
+GET /api/wallets HTTP/1.1
+authToken: MW90eUtjTHwzMCVNbUVwcGU3LndLJCwwMDJKLTYtW2pzS0E4ck8yVDBCcSZZNjMjNjg=
+Content-Type: application/json
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/1.0 (KHTML, like Gecko; Gmail Actions)
+----
 
 
 
@@ -65,10 +96,19 @@ Arkane Connect is an endpoint specifically designed to perform common tasks with
 Basically, Arkane Connect is a small web application without a central entry point. Calls to Arkane Connect are made by navigating to a specific url. Although you can use it by itself - by manually crafting the urls - we also provide a javascript SDK.  
 
 ==== HOW    
+
+Arkane connect can be called by navigating to a specifically crafted URI. 
+An example of a call would be:
+
+`https://connect.arkane.network/wallets/manage/vechain?bearerToken=myToken&redirectUrl=https://fundrequest.io`
+
+The following parameters are *required* for every request:
  
-. data
-. url
-. bearerToken
-. redirectUrl
+. *url:* The actual url of the action we want to do. This consists of the base url (https://connect.arkane.network) and the endpoint (`wallets/manage/vechain`)
+. bearerToken: the security token which performs the authentication
+. redirectUrl: the url to redirect to after the action has been performed. If the redirectUrl was not passed, the referer will be used instead.
 
 NOTE: Make sure all query parameters are url encoded (ex. https://www.urlencoder.org/)
+
+
+

@@ -4,21 +4,21 @@
 |`+type+`
 |`+String+`
 |The type of the transaction
-|mandatory
+|Mandatory
 
 |`+walletId+`
 |`+String+`
 |The id of the wallet one wants to sign with.
-|mandatory
+|Mandatory
 
 |`+tokenAddress+`
 |`+String+`
 |The address of the ERC20 token to be used in this transaction
-|mandatory, valid ethereum contract address
+|Mandatory, valid ethereum contract address
 
 |`+to+`
 |`+String+`
 |The destination address of the transaction.
-|mandatory, a valid ethereum address
+|Mandatory, a valid ethereum address
 
 |===

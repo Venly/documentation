@@ -1,28 +1,25 @@
 [source,options="nowrap"]
 ----
 {
-  "success" : true,
-  "result" : {
-    "id" : "1",
-    "address" : "0xdc72b72db54e227e65a45004ab2798d31e8934c2",
+  "id" : "1",
+  "address" : "0xdc72b72db54e227e65a45004ab2798d31e8934c2",
+  "secretType" : "ETHEREUM",
+  "walletType" : "THREEWAY_SHARED",
+  "createdAt" : null,
+  "archived" : false,
+  "alias" : "aliasEth",
+  "description" : "descriptionEth",
+  "primary" : false,
+  "hasCustomPin" : false,
+  "balance" : {
     "secretType" : "ETHEREUM",
-    "walletType" : "THREEWAY_SHARED",
-    "createdAt" : null,
-    "archived" : false,
-    "alias" : "aliasEth",
-    "description" : "descriptionEth",
-    "primary" : false,
-    "hasCustomPin" : false,
-    "balance" : {
-      "secretType" : "ETHEREUM",
-      "balance" : 1.0,
-      "gasBalance" : 1.0,
-      "symbol" : null,
-      "gasSymbol" : null,
-      "rawBalance" : "1000000000000000000",
-      "rawGasBalance" : "1000000000000000000",
-      "decimals" : 18
-    }
+    "balance" : 1.0,
+    "gasBalance" : 1.0,
+    "symbol" : null,
+    "gasSymbol" : null,
+    "rawBalance" : "1000000000000000000",
+    "rawGasBalance" : "1000000000000000000",
+    "decimals" : 18
   }
 }
 ----

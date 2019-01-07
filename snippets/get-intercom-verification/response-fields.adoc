@@ -1,12 +1,8 @@
 |===
 |Path|Type|Description
 
-|`+success+`
-|`+Boolean+`
-|True if success, false otherwise
-
-|`+result.hash+`
-|`+String+`
+|`+hash+`
+|`+Null+`
 |userId of the logged in user
 
 |===

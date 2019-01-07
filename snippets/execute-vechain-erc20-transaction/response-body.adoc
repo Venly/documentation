@@ -1,9 +1,6 @@
 [source,options="nowrap"]
 ----
 {
-  "success" : true,
-  "result" : {
-    "transactionHash" : "0xHash"
-  }
+  "transactionHash" : "0xHash"
 }
 ----

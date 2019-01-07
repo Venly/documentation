@@ -2,17 +2,14 @@
 ----
 HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
-Content-Length: 185
+Content-Length: 134
 
 {
-  "success" : true,
-  "result" : {
-    "gasPriceCoefficients" : [ {
-      "gasPriceCoef" : 0,
-      "defaultPrice" : true
-    } ],
-    "gasLimit" : 21000,
-    "reverted" : false
-  }
+  "gasPriceCoefficients" : [ {
+    "gasPriceCoef" : 0,
+    "defaultPrice" : true
+  } ],
+  "gasLimit" : 21000,
+  "reverted" : false
 }
 ----

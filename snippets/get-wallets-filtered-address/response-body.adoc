@@ -1,4 +1,4 @@
 [source,options="nowrap"]
 ----
-{"success":true,"result":[{"id":"1","address":null,"walletType":null,"secretType":null,"createdAt":null,"archived":false,"alias":null,"description":null,"primary":false,"balance":null,"hasCustomPin":false,"status":"AVAILABLE"}]}
+[{"id":"1","address":null,"walletType":null,"secretType":null,"createdAt":null,"archived":false,"alias":null,"description":null,"primary":false,"balance":null,"hasCustomPin":false,"status":"AVAILABLE"}]
 ----

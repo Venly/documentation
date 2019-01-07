@@ -1,14 +1,11 @@
 [source,options="nowrap"]
 ----
 {
-  "success" : true,
-  "result" : {
-    "userId" : "davy",
-    "hasMasterPin" : true,
-    "username" : null,
-    "email" : null,
-    "firstName" : null,
-    "lastName" : null
-  }
+  "userId" : "davy",
+  "hasMasterPin" : true,
+  "username" : null,
+  "email" : null,
+  "firstName" : null,
+  "lastName" : null
 }
 ----

@@ -1,82 +1,97 @@
 <div id="toc" class="toc">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_quickstart">Quickstart</a></li>
-<li><a href="#_reference_documentation">Reference documentation</a>
-<ul class="sectlevel2">
 <li><a href="#_wallet">Wallet</a>
-<ul class="sectlevel3">
+<ul class="sectlevel2">
 <li><a href="#_link_connect">Link <span class="bb-connect">connect</span></a></li>
 <li><a href="#_manage_wallets_connect">Manage wallets <span class="bb-connect">connect</span></a></li>
-<li><a href="#_list_user_wallets_api">List user wallets <span class="bb-api">api</span></a></li>
-<li><a href="#_get_specific_user_wallet">Get specific user wallet</a></li>
+<li><a href="#_list_user_wallets_api">List user wallets <span class="bb-api">api</span></a>
+<ul class="sectlevel3">
+<li><a href="#example_curl_request_get-wallets">Example Curl Request</a></li>
+<li><a href="#example_http_response_get-wallets">Example Http Response</a></li>
+<li><a href="#example_response_fields_get-wallets">Response Fields</a></li>
+<li><a href="#example_request_parameters_get-wallets-filtered">Request Parameters</a></li>
 </ul>
 </li>
-<li><a href="#_balance">Balance</a>
+<li><a href="#get-specific-user-wallet">Get specific user wallet <span class="bb-api">api</span></a>
 <ul class="sectlevel3">
-<li><a href="#_native_balance">Native balance</a></li>
-<li><a href="#_token_balances">Token balances</a></li>
-<li><a href="#_specific_token_balance">Specific token balance</a></li>
+<li><a href="#example_curl_request_get-wallet">Example Curl Request</a></li>
+<li><a href="#example_path_parameters_get-wallet">Path Parameters</a></li>
+<li><a href="#example_http_response_get-wallet">Example Http Response</a></li>
+<li><a href="#example_response_fields_get-wallet">Response Fields</a></li>
+</ul>
+</li>
+<li><a href="#_native_balance_api">Native balance <span class="bb-api">api</span></a>
+<ul class="sectlevel3">
+<li><a href="#example_curl_request_get-balance">Example Curl Request</a></li>
+<li><a href="#example_path_parameters_get-balance">Path Parameters</a></li>
+<li><a href="#example_http_response_get-balance">Example Http Response</a></li>
+<li><a href="#example_response_fields_get-balance">Response Fields</a></li>
+</ul>
+</li>
+<li><a href="#_token_balances_api">Token balances <span class="bb-api">api</span></a>
+<ul class="sectlevel3">
+<li><a href="#example_curl_request_get-token-balances">Example Curl Request</a></li>
+<li><a href="#example_path_parameters_get-token-balances">Path Parameters</a></li>
+<li><a href="#example_http_response_get-token-balances">Example Http Response</a></li>
+<li><a href="#example_response_fields_get-token-balances">Response Fields</a></li>
+</ul>
+</li>
+<li><a href="#_specific_token_balance_api">Specific token balance <span class="bb-api">api</span></a>
+<ul class="sectlevel3">
+<li><a href="#example_curl_request_get-token-balance">Example Curl Request</a></li>
+<li><a href="#example_path_parameters_get-token-balance">Path Parameters</a></li>
+<li><a href="#example_http_response_get-token-balance">Example Http Response</a></li>
+<li><a href="#example_response_fields_get-token-balance">Response Fields</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#_transactions">Transactions</a>
+<ul class="sectlevel2">
+<li><a href="#transfer">Transfer <span class="bb-api">api</span></a>
 <ul class="sectlevel3">
-<li><a href="#_transfer">Transfer</a></li>
-<li><a href="#_native_transactions">Native Transactions</a>
-<ul class="sectlevel4">
-<li><a href="#_ethereum">Ethereum</a></li>
-<li><a href="#_vechain">Vechain</a></li>
+<li><a href="#example_curl_request_build-transaction-request">Example Curl Request</a></li>
+<li><a href="#example_request_fields_build-transaction-request">Request Fields</a></li>
+<li><a href="#example_response_body_build-transaction-request">Response Body</a></li>
 </ul>
 </li>
+<li><a href="#native-transactions">Native Transactions</a>
+<ul class="sectlevel3">
+<li><a href="#_ethereum">Ethereum</a>
+<ul class="sectlevel4">
+<li><a href="#_execute_an_ether_transaction">Execute an ether transaction</a></li>
+<li><a href="#_execute_an_erc20_transfer">Execute an ERC20 transfer</a></li>
+<li><a href="#_sign">Sign</a></li>
+</ul>
+</li>
+<li><a href="#_vechain">Vechain</a></li>
+<li><a href="#_prepare_vechain_transaction_api">Prepare VeChain transaction <span class="bb-api">api</span></a></li>
+<li><a href="#_execute_vechain_transaction_connect">Execute VeChain transaction <span class="bb-connect">connect</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_transactions_2">Transactions</a>
+<ul class="sectlevel2">
+<li><a href="#_sign_raw_data_ethereum_connect">Sign raw data (Ethereum) <span class="bb-connect">connect</span></a></li>
 </ul>
 </li>
 <li><a href="#_profile">Profile</a>
-<ul class="sectlevel3">
-<li><a href="#_user_profile">User profile</a></li>
+<ul class="sectlevel2">
+<li><a href="#_user_profile_api">User profile <span class="bb-api">api</span></a></li>
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-</div>
-<div id="preamble">
-<div class="sectionbody">
-<div class="paragraph">
-<p>This documentation applies to:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>A native mobile application (IOS / Android / &#8230;&#8203;)</p>
-</li>
-<li>
-<p>A native desktop app</p>
-</li>
-</ul>
-</div>
-</div>
 </div>
 <div class="sect1">
-<h2 id="_quickstart">Quickstart</h2>
+<h2 id="_wallet">Wallet</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>If you want an example on how to build a simple wallet using Arkane, you can follow the quickstart. There you will build a native Android app with wallet functionality based on Arkane.</p>
-</div>
-<div class="paragraph">
-<p>Unresolved directive in &lt;stdin&gt; - include::../reference/buildingblocks.adoc[]</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_reference_documentation">Reference documentation</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_wallet">Wallet</h3>
 <div class="paragraph">
 <p>This section describes all actions related to wallets.</p>
 </div>
-<div class="sect3">
-<h4 id="_link_connect">Link <span class="bb-connect">connect</span></h4>
+<div class="sect2">
+<h3 id="_link_connect">Link <span class="bb-connect">connect</span></h3>
 <div class="paragraph">
 <p>This allows users to link his existing wallets with your application. The difference with <a href="#Manage wallets">[Manage wallets]</a>:</p>
 </div>
@@ -105,14 +120,11 @@
 <p><em>No data needed</em></p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_manage_wallets_connect">Manage wallets <span class="bb-connect">connect</span></h4>
+<div class="sect2">
+<h3 id="_manage_wallets_connect">Manage wallets <span class="bb-connect">connect</span></h3>
 <div class="paragraph">
 <p>As an application, it is possible to have a user manage his wallets for a specific chain. During this action, the user can link existing wallets or import a wallet.
 When the user returns to the app, a wallet will be linked to your application for the given chain. When a user does not have any wallets yet, a user can indicate to create a new wallet.</p>
-</div>
-<div class="paragraph">
-<p>To manage wallets, a specific url needs to be opened in the browser (using custom tabs). It is not possible to do this directly in the background since the user needs to enter his PIN. For security reasons, we cannot allow it to be entered inside your own app.</p>
 </div>
 <div class="paragraph">
 <p>To manage wallets, use the connect building block with:</p>
@@ -122,7 +134,7 @@ When the user returns to the app, a wallet will be linked to your application fo
 <p><a href="https://connect-staging.arkane.network/wallets/manage" class="bare">https://connect-staging.arkane.network/wallets/manage</a></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 1. Data parameters</caption>
+<caption class="title">Table 1. Data parameters <span class="bb-api">Data parameters</span></caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -152,54 +164,958 @@ When the user returns to the app, a wallet will be linked to your application fo
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_list_user_wallets_api">List user wallets <span class="bb-api">api</span></h4>
-
+<div class="sect2">
+<h3 id="_list_user_wallets_api">List user wallets <span class="bb-api">api</span></h3>
+<div class="paragraph">
+<p>Returns all the wallets for the specified user (bearer token)</p>
 </div>
 <div class="sect3">
-<h4 id="_get_specific_user_wallet">Get specific user wallet</h4>
+<h4 id="example_curl_request_get-wallets">Example Curl Request</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://api.arkane.network/api/wallets' -i -X GET</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_http_response_get-wallets">Example Http Response</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+Content-Length: 1217
 
+[ {
+  "id" : "1",
+  "address" : "0xdc72b72db54e227e65a45004ab2798d31e8934c2",
+  "walletType" : "THREEWAY_SHARED",
+  "secretType" : "ETHEREUM",
+  "createdAt" : [ 2019, 1, 7, 12, 47, 26, 907066000 ],
+  "archived" : false,
+  "alias" : "aliasEth",
+  "description" : "descriptionEth",
+  "primary" : false,
+  "balance" : {
+    "secretType" : "ETHEREUM",
+    "balance" : 1.0,
+    "gasBalance" : 1.0,
+    "symbol" : "ETH",
+    "gasSymbol" : "ETH",
+    "rawBalance" : "1000000000000000000",
+    "rawGasBalance" : "1000000000000000000",
+    "decimals" : 18
+  },
+  "hasCustomPin" : false,
+  "status" : "AVAILABLE"
+}, {
+  "id" : "3",
+  "address" : "0xae52b72db54e137a65a42434ab2543d31f8454c3",
+  "walletType" : "THREEWAY_SHARED",
+  "secretType" : "VECHAIN",
+  "createdAt" : [ 2019, 1, 7, 12, 47, 26, 907093000 ],
+  "archived" : false,
+  "alias" : "aliasVechain",
+  "description" : "descriptionVechain",
+  "primary" : false,
+  "balance" : {
+    "secretType" : "VECHAIN",
+    "balance" : 1.0,
+    "gasBalance" : 1.0,
+    "symbol" : "VET",
+    "gasSymbol" : "VTHO",
+    "rawBalance" : "1000000000000000000",
+    "rawGasBalance" : "1000000000000000000",
+    "decimals" : 18
+  },
+  "hasCustomPin" : false,
+  "status" : "AVAILABLE"
+} ]</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_response_fields_get-wallets">Response Fields</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An array of wallets of the user</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>It&#8217;s also possible to filter based on secret type</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_request_parameters_get-wallets-filtered">Request Parameters</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>secretType</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of the secret (ETHEREUM, VECHAIN)</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_balance">Balance</h3>
-<div class="sect3">
-<h4 id="_native_balance">Native balance</h4>
-
+<h3 id="get-specific-user-wallet">Get specific user wallet <span class="bb-api">api</span></h3>
+<div class="paragraph">
+<p>Returns the details for a specific wallet (native balance is also included)</p>
 </div>
 <div class="sect3">
-<h4 id="_token_balances">Token balances</h4>
-
+<h4 id="example_curl_request_get-wallet">Example Curl Request</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://api.arkane.network/api/wallets/1' -i -X GET</code></pre>
+</div>
+</div>
 </div>
 <div class="sect3">
-<h4 id="_specific_token_balance">Specific token balance</h4>
+<h4 id="example_path_parameters_get-wallet">Path Parameters</h4>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 2. /api/wallets/{id}</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">the id of the wallet</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="example_http_response_get-wallet">Example Http Response</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+Content-Length: 600
 
+{
+  "id" : "1",
+  "address" : "0xdc72b72db54e227e65a45004ab2798d31e8934c2",
+  "walletType" : "THREEWAY_SHARED",
+  "secretType" : "ETHEREUM",
+  "createdAt" : [ 2019, 1, 7, 12, 47, 27, 482939000 ],
+  "archived" : false,
+  "alias" : "aliasEth",
+  "description" : "descriptionEth",
+  "primary" : false,
+  "balance" : {
+    "secretType" : "ETHEREUM",
+    "balance" : 1.0,
+    "gasBalance" : 1.0,
+    "symbol" : null,
+    "gasSymbol" : null,
+    "rawBalance" : "1000000000000000000",
+    "rawGasBalance" : "1000000000000000000",
+    "decimals" : 18
+  },
+  "hasCustomPin" : false,
+  "status" : "AVAILABLE"
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_response_fields_get-wallet">Response Fields</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">id of the wallet</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>hasCustomPin</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether the wallet has a custom pincode or not</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>address</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">address of the wallet</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>walletType</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">type of the wallet</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>secretType</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">type of the secret (ex: ETHEREUM)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>createdAt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">date and time the secret was created or imported</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>archived</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">is the wallet archived or not</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>primary</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">is the wallet the primary wallet for the secrettype?</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>alias</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">alias of the wallet</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>description</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">description of the wallet</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">status of the wallet</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>balance</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The native token balance of the wallet</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_transactions">Transactions</h3>
-<div class="sect3">
-<h4 id="_transfer">Transfer</h4>
-
+<h3 id="_native_balance_api">Native balance <span class="bb-api">api</span></h3>
+<div class="paragraph">
+<p>Returns the "native" balance for a wallet. This is the balance of the native token used by the chain. Ex. ETH for Ethereum.</p>
 </div>
 <div class="sect3">
-<h4 id="_native_transactions">Native Transactions</h4>
+<h4 id="example_curl_request_get-balance">Example Curl Request</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://api.arkane.network/api/wallets/1/balance' -i -X GET</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_path_parameters_get-balance">Path Parameters</h4>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 3. /api/wallets/{id}/balance</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">id of the wallet</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="example_http_response_get-balance">Example Http Response</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+Content-Length: 217
+
+{
+  "secretType" : "ETHEREUM",
+  "balance" : 1.0,
+  "gasBalance" : 1.0,
+  "symbol" : "ETH",
+  "gasSymbol" : "ETH",
+  "rawBalance" : "1000000000000000000",
+  "rawGasBalance" : "1000000000000000000",
+  "decimals" : 18
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_response_fields_get-balance">Response Fields</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>balance</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Normalized balance of the native coin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>secretType</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of the secret</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>symbol</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The symbol of the native coin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gasSymbol</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The symbol of the gas coin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gasBalance</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Normalized balance of the gas coin (same as <code>balance</code> when the coin for paying gas/fees is the same native coin)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>rawBalance</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Raw balance of the native coin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>rawGasBalance</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Raw balance of the gas coin (same as <code>balance</code> when the coin for paying gas/fees is the same native coin)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>decimals</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Decimals of the native coin</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_token_balances_api">Token balances <span class="bb-api">api</span></h3>
+<div class="paragraph">
+<p>Returns the balance of all tokens currently supported by Arkane. The list of supported tokens can be found on <a href="https://github.com/ArkaneNetwork/content-management/tree/master/tokens">Github</a>.</p>
+</div>
+<div class="sect3">
+<h4 id="example_curl_request_get-token-balances">Example Curl Request</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://api.arkane.network/api/wallets/1/balance/tokens' -i -X GET</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_path_parameters_get-token-balances">Path Parameters</h4>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 4. /api/wallets/{id}/balance/tokens</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">id of the wallet</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="example_http_response_get-token-balances">Example Http Response</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+Content-Length: 1028
+
+[ {
+  "tokenAddress" : "0x4df47b4969b2911c966506e3592c41389493953b",
+  "rawBalance" : "10000000283000000000000",
+  "balance" : 10000.000283,
+  "decimals" : 18,
+  "symbol" : "FND",
+  "logo" : "https://raw.githubusercontent.com/ArkaneNetwork/content-management/master/tokens/ethereum/mainnet/logos/0x4df47b4969b2911c966506e3592c41389493953b.png"
+}, {
+  "tokenAddress" : "0x89d24A6b4CcB1B6fAA2625fE562bDD9a23260359",
+  "rawBalance" : "10000000283000000000000",
+  "balance" : 10000.000283,
+  "decimals" : 18,
+  "symbol" : "DAI",
+  "logo" : "https://raw.githubusercontent.com/ArkaneNetwork/content-management/master/tokens/ethereum/mainnet/logos/0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359.png"
+}, {
+  "tokenAddress" : "0xE41d2489571d322189246DaFA5ebDe1F4699F498",
+  "rawBalance" : "655000000000000000000",
+  "balance" : 655.0,
+  "decimals" : 18,
+  "symbol" : "ZRX",
+  "logo" : "https://raw.githubusercontent.com/ArkaneNetwork/content-management/master/tokens/ethereum/mainnet/logos/0xe41d2489571d322189246dafa5ebde1f4699f498.png"
+} ]</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_response_fields_get-token-balances">Response Fields</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].tokenAddress</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Address of the token</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].rawBalance</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Raw token balance of the wallet</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].balance</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Normalized token balance of the wallet</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].symbol</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The symbol of the token</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].logo</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Logo of the token (url)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].decimals</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Decimals of the token</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_specific_token_balance_api">Specific token balance <span class="bb-api">api</span></h3>
+<div class="paragraph">
+<p>Returns the token balance for a specified token (this can be any token).</p>
+</div>
+<div class="sect3">
+<h4 id="example_curl_request_get-token-balance">Example Curl Request</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://api.arkane.network/api/wallets/1/balance/tokens/0x4df47b4969b2911c966506e3592c41389493953b' -i -X GET</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_path_parameters_get-token-balance">Path Parameters</h4>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 5. /api/wallets/{id}/balance/tokens/{token}</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">id of the wallet</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>token</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Token to get the balance for</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="example_http_response_get-token-balance">Example Http Response</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+Content-Length: 343
+
+{
+  "tokenAddress" : "0x4df47b4969b2911c966506e3592c41389493953b",
+  "rawBalance" : "10000000283000000000000",
+  "balance" : 10000.000283,
+  "decimals" : 18,
+  "symbol" : "FND",
+  "logo" : "https://raw.githubusercontent.com/ArkaneNetwork/content-management/master/tokens/ethereum/mainnet/logos/0x4df47b4969b2911c966506e3592c41389493953b.png"
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_response_fields_get-token-balance">Response Fields</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tokenAddress</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Address of the token</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>rawBalance</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Raw token balance of the wallet</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>balance</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Normalized token balance of the wallet</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>symbol</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The symbol of the token</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>logo</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Logo of the token (url)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>decimals</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Decimals of the token</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_transactions">Transactions</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="transfer">Transfer <span class="bb-api">api</span></h3>
+<div class="paragraph">
+<p>To execute a transfer you need to:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Build the transaction request</p>
+</li>
+<li>
+<p>Execute a <a href="#native-transactions">native transaction</a> with the transaction result from (1)</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>To build the transaction request:</p>
+</div>
+<div class="sect3">
+<h4 id="example_curl_request_build-transaction-request">Example Curl Request</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://api.arkane.network/api/transactions/build' -i -X POST \
+    -H 'Content-Type: application/json;charset=UTF-8' \
+    -d '{
+  "walletId" : "1543",
+  "to" : "0xdc71b72db51e227e65a45004ab2798d31e8934c9",
+  "alias" : null,
+  "value" : 1.15,
+  "secretType" : "VECHAIN",
+  "tokenAddress" : "0x0000000000000000000000000000456E65726779"
+}'</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_request_fields_build-transaction-request">Request Fields</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Constraints</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>walletId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The id of the wallet one wants to sign with.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mandatory</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>to</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The destination address of the transaction.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mandatory, a valid address for the specified chain or the email address of the person you want to send tokens to</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>alias</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Null</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">In case the 'to' field is an email address, the alias specifies which wallet of that user to use</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional, when not specified the default wallet of that user will be used</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>value</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The value transferred for the transaction in the token value</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mandatory, must be &gt;= 0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>secretType</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Which chain you want to do a transaction for</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mandatory. Must be one of ETHEREUM, VECHAIN</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tokenAddress</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The address of the token to be used in this transaction</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="example_response_body_build-transaction-request">Response Body</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code>{
+  "type" : "VECHAIN_VIP180_TRANSACTION",
+  "walletId" : "1543",
+  "pincode" : null,
+  "blockRef" : null,
+  "chainTag" : null,
+  "expiration" : 0,
+  "gas" : 23000,
+  "gasPriceCoef" : 0,
+  "nonce" : "0xd6c88ad6c6751c60",
+  "clauses" : [ {
+    "to" : "0xdc71b72db51e227e65a45004ab2798d31e8934c9",
+    "amount" : 10000000000,
+    "tokenAddress" : "0x0000000000000000000000000000456E65726779"
+  } ]
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If you want to perform a token transfer, add the field "tokenAddress". For "native" transfers, simply omit the field "tokenAddress".</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>For the <strong>value</strong>, we expect the <strong>"decimal value"</strong>. If a token has 18 decimals and you want to transfer 1 of the specific token, provide the value 1. Arkane will translate this to the correct non decimal value being: 1 * 10e18.
+Using this, you don&#8217;t have to take the different number of decimals for different tokens into account.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="native-transactions">Native Transactions</h3>
+<div class="sect3">
+<h4 id="_ethereum">Ethereum</h4>
 <div class="sect4">
-<h5 id="_ethereum">Ethereum</h5>
-
+<h5 id="_execute_an_ether_transaction">Execute an ether transaction</h5>
+<div class="paragraph">
+<p>To execute an ethereum transaction, use the connect building block with:</p>
+</div>
+<div class="paragraph">
+<div class="title">URL</div>
+<p><a href="https://connect-staging.arkane.network/wallets/manage" class="bare">https://connect-staging.arkane.network/wallets/manage</a></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 6. Data parameters</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Constraints</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The type of the transaction</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mandatory, value for ether transaction: ETH_TRANSACTION</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>walletId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The id of the wallet one wants to sign with.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mandatory</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gasPrice</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The gas price of the transaction</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional (default gas price is used otherwise), must be &gt; 0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gas</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The amount of gas to use for the transaction (unused gas is refunded)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional (by default calculated), must be &gt;= 0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>value</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The value transferred for the transaction in Wei, also the endowment if it&#8217;s a contract-creation transaction</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mandatory, must be &gt;= 0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Either a byte string containing the associated data of the message, or in the case of a contract-creation transaction, the initialisation code</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>nonce</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Integer of a nonce. This allows to overwrite your own pending transactions that use the same nonce.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional (next nonce will be used by defaut), must be &gt;= 0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>to</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The destination address of the transaction.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mandatory, a valid ethereum address</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect4">
-<h5 id="_vechain">Vechain</h5>
+<h5 id="_execute_an_erc20_transfer">Execute an ERC20 transfer</h5>
+<div class="paragraph">
+<p>To execute an ERC20 transaction transfer, use the connect building block with:</p>
+</div>
+<div class="paragraph">
+<div class="title">URL</div>
+<p><a href="https://connect-staging.arkane.network/transaction/execute" class="bare">https://connect-staging.arkane.network/transaction/execute</a></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 7. Data parameters</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Constraints</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The type of the transaction</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mandatory, value for ether transaction: ETH_TRANSACTION</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>walletId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The id of the wallet one wants to sign with.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mandatory</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gasPrice</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The gas price of the transaction</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional (default gas price is used otherwise), must be &gt; 0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gas</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The amount of gas to use for the transaction (unused gas is refunded)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional (by default calculated), must be &gt;= 0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>value</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The value transferred for the transaction in Wei, also the endowment if it&#8217;s a contract-creation transaction</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mandatory, must be &gt;= 0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Either a byte string containing the associated data of the message, or in the case of a contract-creation transaction, the initialisation code</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>nonce</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Integer of a nonce. This allows to overwrite your own pending transactions that use the same nonce.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional (next nonce will be used by defaut), must be &gt;= 0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>to</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The destination address of the transaction.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mandatory, a valid ethereum address</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_sign">Sign</h5>
 
 </div>
 </div>
-</div>
-<div class="sect2">
-<h3 id="_profile">Profile</h3>
 <div class="sect3">
-<h4 id="_user_profile">User profile</h4>
+<h4 id="_vechain">Vechain</h4>
 
 </div>
+<div class="sect3">
+<h4 id="_prepare_vechain_transaction_api">Prepare VeChain transaction <span class="bb-api">api</span></h4>
+
+</div>
+<div class="sect3">
+<h4 id="_execute_vechain_transaction_connect">Execute VeChain transaction <span class="bb-connect">connect</span></h4>
+
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_transactions_2">Transactions</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_sign_raw_data_ethereum_connect">Sign raw data (Ethereum) <span class="bb-connect">connect</span></h3>
+
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_profile">Profile</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_user_profile_api">User profile <span class="bb-api">api</span></h3>
+
 </div>
 </div>
 </div>

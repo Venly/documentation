@@ -2,26 +2,23 @@
 ----
 HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
-Content-Length: 388
+Content-Length: 319
 
 {
-  "success" : true,
-  "result" : {
-    "gasPrices" : [ {
-      "gasPrice" : 1000000000,
-      "defaultPrice" : false
-    }, {
-      "gasPrice" : 2000000000,
-      "defaultPrice" : true
-    }, {
-      "gasPrice" : 10000000000,
-      "defaultPrice" : false
-    }, {
-      "gasPrice" : 40000000000,
-      "defaultPrice" : false
-    } ],
-    "gasLimit" : 21000,
-    "reverted" : false
-  }
+  "gasPrices" : [ {
+    "gasPrice" : 1000000000,
+    "defaultPrice" : false
+  }, {
+    "gasPrice" : 2000000000,
+    "defaultPrice" : true
+  }, {
+    "gasPrice" : 10000000000,
+    "defaultPrice" : false
+  }, {
+    "gasPrice" : 40000000000,
+    "defaultPrice" : false
+  } ],
+  "gasLimit" : 21000,
+  "reverted" : false
 }
 ----

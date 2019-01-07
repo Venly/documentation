@@ -4,11 +4,11 @@
 |`+walletIds+`
 |`+Array+`
 |Ids of the wallet we'd like to unlink
-|mandatory, valid wallet ids
+|Mandatory, valid wallet ids
 
 |`+client+`
 |`+String+`
 |client we're trying to unlink
-|mandatory, one valid client
+|Mandatory, one valid client
 
 |===

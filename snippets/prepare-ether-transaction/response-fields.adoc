@@ -1,27 +1,23 @@
 |===
 |Path|Type|Description
 
-|`+success+`
-|`+Boolean+`
-|See if the response contains a result
-
-|`+result.gasLimit+`
+|`+gasLimit+`
 |`+Number+`
 |The estimated gas limit
 
-|`+result.reverted+`
+|`+reverted+`
 |`+Boolean+`
 |True if transaction will likely fail, false otherwise
 
-|`+result.gasPrices+`
+|`+gasPrices+`
 |`+Array+`
 |List containing possible gasPrices (from low to high)
 
-|`+result.gasPrices.[].gasPrice+`
+|`+gasPrices.[].gasPrice+`
 |`+Number+`
 |The proposed gasprice (in WEI)
 
-|`+result.gasPrices.[].defaultPrice+`
+|`+gasPrices.[].defaultPrice+`
 |`+Boolean+`
 |True if used as default gasprice, false otherwise
 

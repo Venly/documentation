@@ -1,4 +1,4 @@
 [source,bash]
 ----
-$ curl 'http://localhost:8080/api/profile' -i -X GET
+$ curl 'https://api.arkane.network/api/profile' -i -X GET
 ----

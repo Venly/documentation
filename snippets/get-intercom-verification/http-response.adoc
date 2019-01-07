@@ -2,12 +2,9 @@
 ----
 HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
-Content-Length: 122
+Content-Length: 19
 
 {
-  "success" : true,
-  "result" : {
-    "hash" : "e1b6d25b85d275bdac120108da22d2d8dca3b5e8671b7deb4ca8b43d38c7202f"
-  }
+  "hash" : null
 }
 ----

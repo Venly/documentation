@@ -1,6 +1,6 @@
 [source,bash]
 ----
-$ curl 'http://localhost:8080/api/transactions/prepare' -i -X POST \
+$ curl 'https://api.arkane.network/api/transactions/prepare' -i -X POST \
     -H 'Content-Type: application/json;charset=UTF-8' \
     -d '{
   "type" : "VET_TRANSACTION",

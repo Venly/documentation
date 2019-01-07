@@ -3,11 +3,10 @@
 $ echo '{
   "walletId" : "1543",
   "to" : "0xdc71b72db51e227e65a45004ab2798d31e8934c9",
-  "alias" : "",
-  "value" : 1.0E-8,
+  "alias" : null,
+  "value" : 1.15,
   "secretType" : "VECHAIN",
-  "tokenAddress" : "0x0000000000000000000000000000456E65726779",
-  "comments" : "Some optional comments about this transaction"
-}' | http POST 'http://localhost:8080/api/transactions/build' \
+  "tokenAddress" : "0x0000000000000000000000000000456E65726779"
+}' | http POST 'https://api.arkane.network/api/transactions/build' \
     'Content-Type:application/json;charset=UTF-8'
 ----

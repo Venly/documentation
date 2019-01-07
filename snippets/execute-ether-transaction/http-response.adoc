@@ -2,12 +2,9 @@
 ----
 HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
-Content-Length: 75
+Content-Length: 34
 
 {
-  "success" : true,
-  "result" : {
-    "transactionHash" : "0xHash"
-  }
+  "transactionHash" : "0xHash"
 }
 ----

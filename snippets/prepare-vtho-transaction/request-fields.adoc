@@ -4,12 +4,12 @@
 |`+type+`
 |`+String+`
 |The type of the transaction, e.g.: VTHO_TRANSACTION
-|mandatory, value for vtho transaction: VTHO_TRANSACTION
+|Mandatory, value for vtho transaction: VTHO_TRANSACTION
 
 |`+walletId+`
 |`+String+`
 |The id of the wallet one wants to sign with.
-|mandatory
+|Mandatory
 
 |`+clauses+`
 |`+Array+`
@@ -19,11 +19,11 @@
 |`+clauses[].to+`
 |`+String+`
 |address of the to clause
-|mandatory, valid vechain address
+|Mandatory, valid vechain address
 
 |`+clauses[].amount+`
 |`+Number+`
 |amount of the to clause
-|mandatory, must be >= 0
+|Mandatory, must be >= 0
 
 |===

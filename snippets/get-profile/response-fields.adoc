@@ -1,31 +1,27 @@
 |===
 |Path|Type|Description
 
-|`+success+`
-|`+Boolean+`
-|responsestatus
-
-|`+result.userId+`
+|`+userId+`
 |`+String+`
 |userId of the logged in user
 
-|`+result.hasMasterPin+`
+|`+hasMasterPin+`
 |`+Boolean+`
 |check if the user already set up his master pincode
 
-|`+result.username+`
+|`+username+`
 |`+Null+`
 |Username of the logged in user
 
-|`+result.email+`
+|`+email+`
 |`+Null+`
 |email of the logged in user
 
-|`+result.firstName+`
+|`+firstName+`
 |`+Null+`
 |first name of the logged in user
 
-|`+result.lastName+`
+|`+lastName+`
 |`+Null+`
 |last name of the logged in user
 

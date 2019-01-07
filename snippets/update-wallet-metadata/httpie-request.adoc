@@ -5,6 +5,6 @@ $ echo '{
   "description" : "description",
   "archived" : "false",
   "primary" : "false"
-}' | http PATCH 'http://localhost:8080/api/wallets/1' \
+}' | http PATCH 'https://api.arkane.network/api/wallets/1' \
     'Content-Type:application/json;charset=UTF-8'
 ----

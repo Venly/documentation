@@ -2,7 +2,7 @@
 ----
 HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
-Content-Length: 381
+Content-Length: 397
 
 {
   "type" : "VECHAIN_VIP180_TRANSACTION",
@@ -13,7 +13,7 @@ Content-Length: 381
   "expiration" : 0,
   "gas" : 23000,
   "gasPriceCoef" : 0,
-  "nonce" : null,
+  "nonce" : "0xd6c88ad6c6751c60",
   "clauses" : [ {
     "to" : "0xdc71b72db51e227e65a45004ab2798d31e8934c9",
     "amount" : 10000000000,

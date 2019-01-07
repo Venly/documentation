@@ -12,7 +12,7 @@
 |Mandatory, a valid address for the specified chain or the email address of the person you want to send tokens to
 
 |`+alias+`
-|`+String+`
+|`+Null+`
 |In case the 'to' field is an email address, the alias specifies which wallet of that user to use
 |Optional, when not specified the default wallet of that user will be used
 
@@ -29,11 +29,6 @@
 |`+tokenAddress+`
 |`+String+`
 |The address of the token to be used in this transaction
-|Optional
-
-|`+comments+`
-|`+String+`
-|A comment that will be send with the transaction
 |Optional
 
 |===

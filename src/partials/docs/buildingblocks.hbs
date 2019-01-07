@@ -7,6 +7,8 @@
 <ul class="sectlevel3">
 <li><a href="#_what">WHAT</a></li>
 <li><a href="#_calling_the_arkane_api">Calling the Arkane API</a></li>
+<li><a href="#_result_wrapping">Result Wrapping</a></li>
+<li><a href="#_authentication">Authentication</a></li>
 </ul>
 </li>
 <li><a href="#_arkane_connect">ARKANE CONNECT</a>
@@ -25,7 +27,23 @@
 <div class="sect2">
 <h3 id="_arkane_api">ARKANE API</h3>
 <div class="paragraph">
-<p>The Arkane API is the core</p>
+<p>The Arkane API is the core application of Arkane Network. It&#8217;s a restful API, which consists of various endpoints to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>View a user&#8217;s wallets</p>
+</li>
+<li>
+<p>Request the balance or token balance of any Arkane Wallet</p>
+</li>
+<li>
+<p>Get the profile of a user</p>
+</li>
+<li>
+<p>Create signatures using an Arkane Wallet.</p>
+</li>
+</ul>
 </div>
 <div class="sect3">
 <h4 id="_what">WHAT</h4>
@@ -34,7 +52,7 @@
 <div class="sect3">
 <h4 id="_calling_the_arkane_api">Calling the Arkane API</h4>
 <div class="paragraph">
-<p>To call an Arkane API endpoint, you need the URL and the bearer token of a user.</p>
+<p>To call an Arkane API, all you need is an endpoint and a valid authentication.</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -48,6 +66,46 @@ The Arkane API can also be used with API keys instead of Bearer Tokens. Using th
 </tr>
 </table>
 </div>
+</div>
+<div class="sect3">
+<h4 id="_result_wrapping">Result Wrapping</h4>
+<div class="paragraph">
+<p>All of the API&#8217;s responses are wrapped in an envelope. This envelope indicates whether the request succeeded. If the request failed, an additional <code>errors</code> object is added to the response.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example of a successful response</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+  "success" : true,
+  "result" : {
+    "userId" : "davy",
+    "hasMasterPin" : true
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example of a failed response</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "success": false,
+    "errors": [
+        {
+            "code": "pincode.no-tries-left",
+            "message": "Max pincode tries exceeded"
+        }
+    ]
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_authentication">Authentication</h4>
+
 </div>
 </div>
 <div class="sect2">

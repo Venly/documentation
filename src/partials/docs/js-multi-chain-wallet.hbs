@@ -539,10 +539,10 @@ document.getElementById('wallets-select').addEventListener('change', function(ev
       (tokenBalance) =&gt; `${tokenBalance.balance} ${tokenBalance.symbol}`).join('&lt;br/&gt;') <i class="conum" data-value="3"></i><b>(3)</b>
     );
 
-    $('#wallet-details').removeClass('hidden');
+    $('#selected-wallet').removeClass('hidden'); <i class="conum" data-value="4"></i><b>(4)</b>
   }
   else {
-    $('#wallet-details').addClass('hidden');
+    $('#selected-wallet').addClass('hidden');
   }
 });</code></pre>
 </div>
@@ -561,6 +561,10 @@ document.getElementById('wallets-select').addEventListener('change', function(ev
 <td><i class="conum" data-value="3"></i><b>3</b></td>
 <td>Displaying the tokens balance</td>
 </tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Show the selected wallet</td>
+</tr>
 </table>
 </div>
 </div>
@@ -575,27 +579,26 @@ document.getElementById('wallets-select').addEventListener('change', function(ev
 <div class="title">/public/assets/js/main.js</div>
 <div class="content">
 <pre class="highlight"><code class="language-javascript" data-lang="javascript">...
-  $('#wallet-details').removeClass('hidden');
+  $('#wallet-tokens').html(tokenBalances.map(
+    (tokenBalance) =&gt; `${tokenBalance.balance} ${tokenBalance.symbol}`).join('&lt;br/&gt;')
+  );
 
-  $('#transaction-from').val(wallet.id); <i class="conum" data-value="1"></i><b>(1)</b>
-  $('#secret-type').val(wallet.secretType); <i class="conum" data-value="2"></i><b>(2)</b>
-  app.preFillTransactionTokens(wallet, tokenBalances); <i class="conum" data-value="3"></i><b>(3)</b>
-  $('#transaction').removeClass('hidden');
-}</code></pre>
+  $('#secret-type').val(wallet.secretType); <i class="conum" data-value="1"></i><b>(1)</b>
+  app.preFillTransactionTokens(wallet, tokenBalances); <i class="conum" data-value="2"></i><b>(2)</b>
+
+  $('#selected-wallet').removeClass('hidden');
+}
+...</code></pre>
 </div>
 </div>
 <div class="colist arabic">
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Pre-filling the wallet id</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="2"></i><b>2</b></td>
 <td>Pre-filling the secretType (AKA the type of blockchain)</td>
 </tr>
 <tr>
-<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
 <td>Pre-filling the tokens</td>
 </tr>
 </table>
@@ -656,7 +659,7 @@ document.getElementById('transaction-form').addEventListener('submit', async (e)
   try {
     const transactionResult = await signer.executeTransaction( <i class="conum" data-value="2"></i><b>(2)</b>
       {
-        walletId: $("#transaction-form input[name='from']").val(), <i class="conum" data-value="3"></i><b>(3)</b>
+        walletId: $("#transaction-form select[name='from']").val(), <i class="conum" data-value="3"></i><b>(3)</b>
         to: $("#transaction-form input[name='to']").val(), <i class="conum" data-value="3"></i><b>(3)</b>
         value: ($("#transaction-form input[name='amount']").val()), <i class="conum" data-value="3"></i><b>(3)</b>
         secretType: $("#transaction-form input[name='secretType']").val(), <i class="conum" data-value="3"></i><b>(3)</b>

@@ -1,23 +1,10 @@
-= Arkane for native apps
+= Reference documentation
 
-This documentation applies to:
-
-- A native mobile application (IOS / Android / ...)
-- A native desktop app
-
-== Quickstart
-
-If you want an example on how to build a simple wallet using Arkane, you can follow the quickstart. There you will build a native Android app with wallet functionality based on Arkane.
-
-include::../reference/buildingblocks.adoc[]
-
-== Reference documentation
-
-=== Wallet
+== Wallet
 
 This section describes all actions related to wallets.
 
-==== Link [.bb-connect]#connect#
+=== Link [.bb-connect]#connect#
 
 This allows users to link his existing wallets with your application. The difference with <<Manage wallets>>:
 
@@ -36,13 +23,10 @@ https://connect-staging.arkane.network/wallets/link
 _No data needed_
 
 
-==== Manage wallets [.bb-connect]#connect#
-
+=== Manage wallets [.bb-connect]#connect#
 
 As an application, it is possible to have a user manage his wallets for a specific chain. During this action, the user can link existing wallets or import a wallet.
 When the user returns to the app, a wallet will be linked to your application for the given chain. When a user does not have any wallets yet, a user can indicate to create a new wallet.
-
-To manage wallets, a specific url needs to be opened in the browser (using custom tabs). It is not possible to do this directly in the background since the user needs to enter his PIN. For security reasons, we cannot allow it to be entered inside your own app.
 
 To manage wallets, use the connect building block with:
 
@@ -69,7 +53,7 @@ https://connect-staging.arkane.network/wallets/manage
 }
 ----
 
-==== List user wallets [.bb-api]#api#
+=== List user wallets [.bb-api]#api#
 Returns all the wallets for the specified user (bearer token)
 
 operation::get-wallets[snippets='curl-request,http-response,response-fields']
@@ -80,34 +64,184 @@ operation::get-wallets-filtered[snippets='request-parameters']
 
 
 [[get-specific-user-wallet]]
-==== Get specific user wallet [.bb-api]#api#
+=== Get specific user wallet [.bb-api]#api#
 Returns the details for a specific wallet (native balance is also included)
 
 operation::get-wallet[snippets='curl-request,path-parameters,http-response,response-fields']
 
-==== Native balance [.bb-api]#api#
+=== Native balance [.bb-api]#api#
 Returns the "native" balance for a wallet. This is the balance of the native token used by the chain. Ex. ETH for Ethereum.
 
 operation::get-balance[snippets='curl-request,path-parameters,http-response,response-fields']
 
-==== Token balances [.bb-api]#api#
+=== Token balances [.bb-api]#api#
 Returns the balance of all tokens currently supported by Arkane. The list of supported tokens can be found on https://github.com/ArkaneNetwork/content-management/tree/master/tokens[Github].
 
 operation::get-token-balances[snippets='curl-request,path-parameters,http-response,response-fields']
 
-==== Specific token balance [.bb-api]#api#
+=== Specific token balance [.bb-api]#api#
 Returns the token balance for a specified token (this can be any token).
 
 operation::get-token-balance[snippets='curl-request,path-parameters,http-response,response-fields']
 
-=== Transactions
+== Transactions
 
-==== Transfer
+[[transfer]]
+=== Transfer [.bb-api]#api#
+To execute a transfer you need to:
 
-==== Native Transactions
+. Build the transaction request
+. Execute a <<native-transactions,native transaction>> with the transaction result from (1)
 
-===== Ethereum
-===== Vechain
+To build the transaction request:
 
-=== Profile
-==== User profile
+operation::build-transaction-request[snippets='curl-request,request-fields,response-body']
+
+[NOTE]
+====
+If you want to perform a token transfer, add the field "tokenAddress". For "native" transfers, simply omit the field "tokenAddress".
+====
+
+[IMPORTANT]
+====
+For the *value*, we expect the *"decimal value"*. If a token has 18 decimals and you want to transfer 1 of the specific token, provide the value 1. Arkane will translate this to the correct non decimal value being: 1 * 10e18.
+Using this, you don't have to take the different number of decimals for different tokens into account.
+====
+
+[[native-transactions]]
+=== Native Transactions
+==== Ethereum
+===== Execute an ether transaction
+To execute an ethereum transaction, use the connect building block with:
+
+.URL
+https://connect-staging.arkane.network/wallets/manage
+
+
+.Data parameters
+|===
+|Path|Type|Description|Constraints
+
+|`+type+`
+|`+String+`
+|The type of the transaction
+|Mandatory, value for ether transaction: ETH_TRANSACTION
+
+|`+walletId+`
+|`+String+`
+|The id of the wallet one wants to sign with.
+|Mandatory
+
+|`+gasPrice+`
+|`+Number+`
+|The gas price of the transaction
+|Optional (default gas price is used otherwise), must be > 0
+
+|`+gas+`
+|`+Number+`
+|The amount of gas to use for the transaction (unused gas is refunded)
+|Optional (by default calculated), must be >= 0
+
+|`+value+`
+|`+Number+`
+|The value transferred for the transaction in Wei, also the endowment if it's a contract-creation transaction
+|Mandatory, must be >= 0
+
+|`+data+`
+|`+String+`
+|Either a byte string containing the associated data of the message, or in the case of a contract-creation transaction, the initialisation code
+|Optional
+
+|`+nonce+`
+|`+Number+`
+|Integer of a nonce. This allows to overwrite your own pending transactions that use the same nonce.
+|Optional (next nonce will be used by defaut), must be >= 0
+
+|`+to+`
+|`+String+`
+|The destination address of the transaction.
+|Mandatory, a valid ethereum address
+
+|===
+
+===== Execute an ERC20 transfer
+
+To execute an ERC20 transaction transfer, use the connect building block with:
+
+.URL
+https://connect-staging.arkane.network/transaction/execute
+
+
+.Data parameters
+|===
+|Path|Type|Description|Constraints
+
+|`+type+`
+|`+String+`
+|The type of the transaction
+|Mandatory, value for erc20 transfer: ETHEREUM_ERC20_TRANSACTION
+
+|`+walletId+`
+|`+String+`
+|The id of the wallet one wants to sign with.
+|Mandatory
+
+|`+gasPrice+`
+|`+Number+`
+|The gas price of the transaction
+|Optional (default gas price is used otherwise), must be > 0
+
+|`+gas+`
+|`+Number+`
+|The amount of gas to use for the transaction (unused gas is refunded)
+|Optional (by default calculated), must be >= 0
+
+|`+value+`
+|`+Number+`
+|The value transferred for the transaction in Wei, also the endowment if it's a contract-creation transaction
+|Mandatory, must be >= 0
+
+|`+tokenAddress+`
+|`+String+`
+|The address of the ERC20 token to be used in this transaction
+|Mandatory, valid ethereum contract address
+
+|`+nonce+`
+|`+Number+`
+|Integer of a nonce. This allows to overwrite your own pending transactions that use the same nonce.
+|Optional (next nonce will be used by defaut), must be >= 0
+
+|`+to+`
+|`+String+`
+|The destination address of the transaction.
+|Mandatory, a valid ethereum address
+
+|===
+
+.Data example
+[source,json]
+----
+{
+  "type" : "ETHEREUM_ERC20_TRANSACTION",
+  "walletId" : "1543",
+  "gasPrice" : 10000000000,
+  "gas" : 23000,
+  "nonce" : 0,
+  "value" : 10000000000,
+  "to" : "0xdc71b72db51e227e65a45004ab2798d31e8934c9",
+  "tokenAddress" : "0x4df47b4969b2911c966506e3592c41389493953b"
+}
+----
+
+===== Sign
+==== Vechain
+
+
+==== Prepare VeChain transaction [.bb-api]#api#
+==== Execute VeChain transaction [.bb-connect]#connect#
+
+== Transactions
+=== Sign raw data (Ethereum) [.bb-connect]#connect#
+
+== Profile
+=== User profile [.bb-api]#api#

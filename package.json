@@ -21,7 +21,7 @@
     "gulp": "gulp build",
     "assemble": "gulp gulp-assemble",
     "watch": "gulp watch",
-    "asciidoc": "ts-node generateDoc.ts",
+    "asciidoc": "npx ts-node generateDoc.ts",
     "serve": "serve ./dist",
     "build": "npm run gulp && npm run asciidoc && npm run assemble",
     "build-serve": "npm run build && npm run serve"

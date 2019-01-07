@@ -1,0 +1,214 @@
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel2">
+<li><a href="#_what_youll_build">What you&#8217;ll build</a></li>
+<li><a href="#_what_youll_need">What you&#8217;ll need</a>
+<ul class="sectlevel2">
+<li><a href="#_creating_a_new_project">Creating a new project</a></li>
+<li><a href="#_enabling_arkane_login">Enabling Arkane Login</a></li>
+<li><a href="#_adding_oauth2_support">Adding Oauth2 Support</a></li>
+<li><a href="#_calling_the_arkane_api_server_side">Calling the Arkane API: Server Side</a></li>
+<li><a href="#_full_example">Full Example</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This guide will walk you through the process of logging in with Arkane using Single Sign On and displaying your Arkane wallets.
+This specific guide will focus on Spring Boot integration.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_what_youll_build">What you&#8217;ll build</h3>
+<div class="paragraph">
+<p>We&#8217;ll build a small application which will:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Allow us to authenticate using your Arkane Account (OAuth2)</p>
+</li>
+<li>
+<p>Fetch and display your wallets, server side</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_what_youll_need">What you&#8217;ll need</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>A text editor or IDE</p>
+</li>
+<li>
+<p>Java 8+ and Maven must be installed</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_creating_a_new_project">Creating a new project</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">mkdir ui &amp;&amp; cd ui
+$ curl https://start.spring.io/starter.tgz -d style=web -d name=simple | tar -xzvf -</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_enabling_arkane_login">Enabling Arkane Login</h3>
+<div class="paragraph">
+<p>To be able to log in using Arkane, we&#8217;ll have to add OAuth2 support to our Spring Boot application.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml">&lt;dependency&gt;
+	&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+	&lt;artifactId&gt;spring-cloud-starter-oauth2&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_adding_oauth2_support">Adding Oauth2 Support</h3>
+<div class="paragraph">
+<p>First of all, we&#8217;ll need to enable oauth2 support.
+Simply add <code>@EnableOAuth2Client</code> and autowire <code>OAuth2ClientContext</code> in a configuration class.</p>
+</div>
+<div class="paragraph">
+<p>Next up, we&#8217;ll create a new instance of <code>AuthorizationCodeResourceDetails</code> and provide it as a bean.
+We&#8217;ll also populate our application with properties from a property file. In this example, we&#8217;re using the Arkane Staging environment using a public client we use for every guide (Arketype)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">@Bean
+@ConfigurationProperties("arkane.client")
+public AuthorizationCodeResourceDetails arkane() {
+    return new AuthorizationCodeResourceDetails();
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>/src/main/resources/application.properties</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-text" data-lang="text">arkaneBaseUrl=https://login-staging.arkane.network/auth/realms/Arkane
+arkane.client.user-authorization-uri=${arkaneBaseUrl}/protocol/openid-connect/auth
+arkane.client.client.scope=openid
+arkane.client.access-token-uri=${arkaneBaseUrl}/protocol/openid-connect/token
+arkane.client.tokenName=bearerToken
+arkane.client.preEstablishedRedirectUri=http://localhost:4000/login/arkane
+arkane.client.clientId=Arketype</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>On top of that we&#8217;ll have to add the properties for the resource server.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">@Bean
+@ConfigurationProperties("arkane.resource")
+public ResourceServerProperties arkaneResource() {
+    return new ResourceServerProperties();
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>/src/main/resources/application.properties</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-text" data-lang="text">arkane.resource.userInfoUri=${keycloakBaseUrl}/protocol/openid-connect/userinfo</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Make one of your configuration classes extend from <code>WebSecurityConfigurerAdapter</code> and implement the configure method.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">@Override
+protected void configure(HttpSecurity http) throws Exception {
+    http.antMatcher("/**")
+    .csrf().disable()
+    .addFilterBefore(ssoFilter(), BasicAuthenticationFilter.class);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The last thing we&#8217;ll need to do is create a filter and a <code>FilterRegistrationBean</code>, which we&#8217;ll add to our web security configuration. This will make sure that the
+endpoints require our SSO authentication. Our <code>FilterRegistrationBean</code> will make sure that the application will redirect us to Arkane to be able to login.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">private Filter ssoFilter() {
+    OAuth2ClientAuthenticationProcessingFilter arkaneFilter = new OAuth2ClientAuthenticationProcessingFilter("/login/arkane");
+    OAuth2RestTemplate facebookTemplate = arkaneTemplate();
+    arkaneFilter.setRestTemplate(facebookTemplate);
+    UserInfoTokenServices tokenServices = new UserInfoTokenServices(arkaneResource().getUserInfoUri(), arkane().getClientId());
+    tokenServices.setRestTemplate(facebookTemplate);
+    arkaneFilter.setTokenServices(tokenServices);
+    return arkaneFilter;
+}
+
+@Bean
+public FilterRegistrationBean&lt;OAuth2ClientContextFilter&gt; oauth2ClientFilterRegistration(OAuth2ClientContextFilter filter) {
+    FilterRegistrationBean&lt;OAuth2ClientContextFilter&gt; registration = new FilterRegistrationBean&lt;&gt;();
+    registration.setFilter(filter);
+    registration.setOrder(-100);
+    return registration;
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_calling_the_arkane_api_server_side">Calling the Arkane API: Server Side</h3>
+<div class="paragraph">
+<p>Now that a user is authenticated, we can leverage the power of Spring OAuth2. Calling the Arkane Rest APIs only requires you to provide and autowire an instance of <code>OAuth2RestOperations</code>.</p>
+</div>
+<div class="paragraph">
+<p>Somewhere in the configuration file you created before, you can simply add the following.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">@Bean
+public OAuth2RestTemplate arkaneTemplate() {
+    return new OAuth2RestTemplate(arkane(), oauth2ClientContext);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can now safely autowire this instance anywhere to call the rest API using the credentials of the user that is logged in.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">@Autowired
+private OAuth2RestOperations oAuth2RestOperations;
+
+@GetMapping("/wallets")
+public String wallets() {
+    return oAuth2RestOperations.getForObject("https://api-staging.arkane.network/api/wallets", String.class);
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_full_example">Full Example</h3>
+<div class="paragraph">
+<p>The entire example can be found on <a href="https://github.com/ArkaneNetwork/spring-boot-java-example">github</a>.</p>
+</div>
+<div class="paragraph">
+<p>You can run the application using</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">mvn clean install spring-boot:run</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>

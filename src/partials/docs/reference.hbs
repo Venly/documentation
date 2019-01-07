@@ -1,0 +1,205 @@
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_quickstart">Quickstart</a></li>
+<li><a href="#_reference_documentation">Reference documentation</a>
+<ul class="sectlevel2">
+<li><a href="#_wallet">Wallet</a>
+<ul class="sectlevel3">
+<li><a href="#_link_connect">Link <span class="bb-connect">connect</span></a></li>
+<li><a href="#_manage_wallets_connect">Manage wallets <span class="bb-connect">connect</span></a></li>
+<li><a href="#_list_user_wallets_api">List user wallets <span class="bb-api">api</span></a></li>
+<li><a href="#_get_specific_user_wallet">Get specific user wallet</a></li>
+</ul>
+</li>
+<li><a href="#_balance">Balance</a>
+<ul class="sectlevel3">
+<li><a href="#_native_balance">Native balance</a></li>
+<li><a href="#_token_balances">Token balances</a></li>
+<li><a href="#_specific_token_balance">Specific token balance</a></li>
+</ul>
+</li>
+<li><a href="#_transactions">Transactions</a>
+<ul class="sectlevel3">
+<li><a href="#_transfer">Transfer</a></li>
+<li><a href="#_native_transactions">Native Transactions</a>
+<ul class="sectlevel4">
+<li><a href="#_ethereum">Ethereum</a></li>
+<li><a href="#_vechain">Vechain</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_profile">Profile</a>
+<ul class="sectlevel3">
+<li><a href="#_user_profile">User profile</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This documentation applies to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A native mobile application (IOS / Android / &#8230;&#8203;)</p>
+</li>
+<li>
+<p>A native desktop app</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_quickstart">Quickstart</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you want an example on how to build a simple wallet using Arkane, you can follow the quickstart. There you will build a native Android app with wallet functionality based on Arkane.</p>
+</div>
+<div class="paragraph">
+<p>Unresolved directive in &lt;stdin&gt; - include::../reference/buildingblocks.adoc[]</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_reference_documentation">Reference documentation</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_wallet">Wallet</h3>
+<div class="paragraph">
+<p>This section describes all actions related to wallets.</p>
+</div>
+<div class="sect3">
+<h4 id="_link_connect">Link <span class="bb-connect">connect</span></h4>
+<div class="paragraph">
+<p>This allows users to link his existing wallets with your application. The difference with <a href="#Manage wallets">[Manage wallets]</a>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A user can only link wallets, it is not possible to create or import a wallet</p>
+</li>
+<li>
+<p>A list of all wallets is returned for any chain (it is possible to filter this).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>An example use case could be a portfolio app where a user wants to quickly link all his wallets to get an overview of his complete portfolio.</p>
+</div>
+<div class="paragraph">
+<p>To link wallets, use the connect building block with:</p>
+</div>
+<div class="paragraph">
+<div class="title">URL</div>
+<p><a href="https://connect-staging.arkane.network/wallets/link" class="bare">https://connect-staging.arkane.network/wallets/link</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Data</div>
+<p><em>No data needed</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_manage_wallets_connect">Manage wallets <span class="bb-connect">connect</span></h4>
+<div class="paragraph">
+<p>As an application, it is possible to have a user manage his wallets for a specific chain. During this action, the user can link existing wallets or import a wallet.
+When the user returns to the app, a wallet will be linked to your application for the given chain. When a user does not have any wallets yet, a user can indicate to create a new wallet.</p>
+</div>
+<div class="paragraph">
+<p>To manage wallets, a specific url needs to be opened in the browser (using custom tabs). It is not possible to do this directly in the background since the user needs to enter his PIN. For security reasons, we cannot allow it to be entered inside your own app.</p>
+</div>
+<div class="paragraph">
+<p>To manage wallets, use the connect building block with:</p>
+</div>
+<div class="paragraph">
+<div class="title">URL</div>
+<p><a href="https://connect-staging.arkane.network/wallets/manage" class="bare">https://connect-staging.arkane.network/wallets/manage</a></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Data parameters</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">chain</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The chain for which you want to manage wallets.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ethereum</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">Data example</div>
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+  "chain": "ethereum"
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_list_user_wallets_api">List user wallets <span class="bb-api">api</span></h4>
+
+</div>
+<div class="sect3">
+<h4 id="_get_specific_user_wallet">Get specific user wallet</h4>
+
+</div>
+</div>
+<div class="sect2">
+<h3 id="_balance">Balance</h3>
+<div class="sect3">
+<h4 id="_native_balance">Native balance</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_token_balances">Token balances</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_specific_token_balance">Specific token balance</h4>
+
+</div>
+</div>
+<div class="sect2">
+<h3 id="_transactions">Transactions</h3>
+<div class="sect3">
+<h4 id="_transfer">Transfer</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_native_transactions">Native Transactions</h4>
+<div class="sect4">
+<h5 id="_ethereum">Ethereum</h5>
+
+</div>
+<div class="sect4">
+<h5 id="_vechain">Vechain</h5>
+
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_profile">Profile</h3>
+<div class="sect3">
+<h4 id="_user_profile">User profile</h4>
+
+</div>
+</div>
+</div>
+</div>

@@ -1,0 +1,107 @@
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_building_blocks">Building blocks</a>
+<ul class="sectlevel2">
+<li><a href="#_arkane_api">ARKANE API</a>
+<ul class="sectlevel3">
+<li><a href="#_what">WHAT</a></li>
+<li><a href="#_calling_the_arkane_api">Calling the Arkane API</a></li>
+</ul>
+</li>
+<li><a href="#_arkane_connect">ARKANE CONNECT</a>
+<ul class="sectlevel3">
+<li><a href="#_what_2">WHAT</a></li>
+<li><a href="#_how">HOW</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="_building_blocks">Building blocks</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_arkane_api">ARKANE API</h3>
+<div class="paragraph">
+<p>The Arkane API is the core</p>
+</div>
+<div class="sect3">
+<h4 id="_what">WHAT</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_calling_the_arkane_api">Calling the Arkane API</h4>
+<div class="paragraph">
+<p>To call an Arkane API endpoint, you need the URL and the bearer token of a user.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+The Arkane API can also be used with API keys instead of Bearer Tokens. Using this authentication method is only encouraged in small scripts.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_arkane_connect">ARKANE CONNECT</h3>
+<div class="sect3">
+<h4 id="_what_2">WHAT</h4>
+<div class="paragraph">
+<p>Arkane Connect is an endpoint specifically designed to perform common tasks with Arkane wallets. Connect was created as a way to perform tasks which are</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>otherwise not possible due to security reasons, like creating signatures</p>
+</li>
+<li>
+<p>necessary by all applications, like linking wallets your client</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Basically, Arkane Connect is a small web application without a central entry point. Calls to Arkane Connect are made by navigating to a specific url. Although you can use it by itself - by manually crafting the urls - we also provide a javascript SDK.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_how">HOW</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>data</p>
+</li>
+<li>
+<p>url</p>
+</li>
+<li>
+<p>bearerToken</p>
+</li>
+<li>
+<p>redirectUrl</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Make sure all query parameters are url encoded (ex. <a href="https://www.urlencoder.org/" class="bare">https://www.urlencoder.org/</a>)
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>

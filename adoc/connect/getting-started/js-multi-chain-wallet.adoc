@@ -333,16 +333,17 @@ document.getElementById('wallets-select')
       (tokenBalance) => `${tokenBalance.balance} ${tokenBalance.symbol}`).join('<br/>') // <3>
     );
 
-    $('#wallet-details').removeClass('hidden');
+    $('#selected-wallet').removeClass('hidden'); // <4>
   }
   else {
-    $('#wallet-details').addClass('hidden');
+    $('#selected-wallet').addClass('hidden');
   }
 });
 ----
 <1> Making the callback function `async` so that we can use `await`
 <2> Fetching the tokens balance for our wallet
 <3> Displaying the tokens balance
+<4> Show the selected wallet
 
 == Show transaction form
 The main feature of our multi-chain wallet is the transaction functionality. In `/public/index.html` there is already a form present. We're going to extend `wallets-select` 'change' event listener so that it pre-fills the walletId and populates a `<select>` to select the token the user wants to transfer.
@@ -351,17 +352,19 @@ The main feature of our multi-chain wallet is the transaction functionality. In 
 [source,javascript]
 ----
 ...
-  $('#wallet-details').removeClass('hidden');
+  $('#wallet-tokens').html(tokenBalances.map(
+    (tokenBalance) => `${tokenBalance.balance} ${tokenBalance.symbol}`).join('<br/>')
+  );
 
-  $('#transaction-from').val(wallet.id); // <1>
-  $('#secret-type').val(wallet.secretType); // <2>
-  app.preFillTransactionTokens(wallet, tokenBalances); <3>
-  $('#transaction').removeClass('hidden');
+  $('#secret-type').val(wallet.secretType); // <1>
+  app.preFillTransactionTokens(wallet, tokenBalances); <2>
+
+  $('#selected-wallet').removeClass('hidden');
 }
+...
 ----
-<1> Pre-filling the wallet id
-<2> Pre-filling the secretType (AKA the type of blockchain)
-<3> Pre-filling the tokens
+<1> Pre-filling the secretType (AKA the type of blockchain)
+<2> Pre-filling the tokens
 
 To make it work, we'll also need to add the code of the `app.preFillTransactionTokens(...)` function.
 
@@ -403,7 +406,7 @@ document.getElementById('transaction-form').addEventListener('submit', async (e)
   try {
     const transactionResult = await signer.executeTransaction( // <2>
       {
-        walletId: $("#transaction-form input[name='from']").val(), // <3>
+        walletId: $("#transaction-form select[name='from']").val(), // <3>
         to: $("#transaction-form input[name='to']").val(), // <3>
         value: ($("#transaction-form input[name='amount']").val()), // <3>
         secretType: $("#transaction-form input[name='secretType']").val(), // <3>

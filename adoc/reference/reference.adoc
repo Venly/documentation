@@ -88,7 +88,7 @@ operation::get-token-balance[snippets='curl-request,path-parameters,http-respons
 
 [[transfer]]
 === Transfer [.bb-api]#api#
-To execute a transfer you need to:
+This can be used to transfer (native) tokens from a wallet to another wallet. To start a transfer you need to:
 
 . Build the transaction request
 . Execute a <<native-transactions,native transaction>> with the transaction result from (1)
@@ -112,7 +112,7 @@ Using this, you don't have to take the different number of decimals for differen
 === Native Transactions
 ==== Ethereum
 ===== Execute an ether transaction [.bb-connect]#connect#
-To execute an ethereum transaction, use the connect building block with:
+To execute an Ethereum transaction, use the connect building block with:
 
 .URL
 https://connect-staging.arkane.network/transaction/execute/eth_transaction

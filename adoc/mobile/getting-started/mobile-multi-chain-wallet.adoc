@@ -10,18 +10,16 @@ We will build an Android app that will:
 . authenticate the user with Arkane
 . manage Arkane wallets for our app
 . fetch a list of the user's wallets
-. fetch the balance of the selected wallet
-. execute a transaction, from the selected wallet, to a specified address
 
 
-== What you'll need
+== Prerequisites
 
 * Development tools for android (https://developer.android.com/studio/intro/)
 * a minimal understanding of Java / Android apps
 
 == Let's get started
 
-First of all, let's setup a our development environment. Open a terminal window, checkout the Arketype project from GitHub, go to the `js-multi-chain-wallet-initial`-branch and run `npm install`.
+First of all, let's setup a our development environment. Open a terminal window, checkout the Arketype project from GitHub and build the project.
 ```
 git clone https://github.com/ArkaneNetwork/ArketypeMobile.git
 cd ArketypeMobile

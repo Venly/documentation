@@ -8,8 +8,8 @@ This section describes all actions related to wallets.
 
 This allows users to link his existing wallets with your application. The difference with <<Manage wallets>>:
 
-* A user can only link wallets, it is not possible to create or import a wallet
-* A list of all wallets is returned for any chain (it is possible to filter this).
+- A user can only link wallets, it is not possible to create or import a wallet
+- A list of all wallets is returned for any chain (it is possible to filter this).
 
 An example use case could be a portfolio app where a user wants to quickly link all his wallets to get an overview of his complete portfolio.
 

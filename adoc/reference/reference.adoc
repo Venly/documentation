@@ -321,12 +321,298 @@ https://connect-staging.arkane.network/transaction/sign/ethereum_raw
 
 ==== Vechain
 
+===== Execute an vet transaction [.bb-connect]#connect#
+To execute an ethereum transaction, use the connect building block with:
 
-==== Prepare VeChain transaction [.bb-api]#api#
-==== Execute VeChain transaction [.bb-connect]#connect#
+.URL
+https://connect-staging.arkane.network/transaction/execute/vet_transaction
 
-== Transactions
-=== Sign raw data (Ethereum) [.bb-connect]#connect#
+
+.Data parameters
+|===
+|Path|Type|Description|Constraints
+
+|`+type+`
+|`+String+`
+|The type of the transaction
+|Mandatory, value for vet transaction: VET_TRANSACTION
+
+|`+walletId+`
+|`+String+`
+|The id of the wallet one wants to sign with.
+|Mandatory
+
+|`+blockRef+`
+|`+Null+`
+| BlockRef is the reference to a specific block. When the BlockRef is a block ID in the future, it enables users to configure the transactions to be executed as a specific block height;
+|Optional
+
+|`+chainTag+`
+|`+Null+`
+|chaintag
+|Optional
+
+|`+expiration+`
+|`+Number+`
+|The number of blocks that can be used to specify when the transaction expires
+|Optional, must be >= 0
+
+|`+gas+`
+|`+Number+`
+|the maximum amount of VeThor the sender is willing to pay to execute all the clauses in the transaction
+|Optional, must be > 0
+
+|`+gasPriceCoef+`
+|`+Number+`
+|Users can modify the Gas Price Coefficient to increase the amount of VeThor they are willing to commit in the predefined range as to prioritize the transaction
+|Optional, must be >= 0
+
+|`+nonce+`
+|`+String+`
+|TxNonce is a random number in the transaction. Users are able to change the nonce to generate unique TxID as part of the “in-transaction proof of work” feature
+|Optional
+
+|`+clauses+`
+|`+Array+`
+|Each transaction may contain multiple clauses, and each clause contains the “To”, “Value”, and “Data” fields that can be used to commence different tasks such as payment or smart contracts
+|At least 1 must be present
+
+|`+clauses[].to+`
+|`+String+`
+|address of the to clause
+|Mandatory, valid vechain address
+
+|`+clauses[].amount+`
+|`+Number+`
+|amount of the to clause
+|Mandatory, must be >= 0
+
+|`+clauses[].data+`
+|`+String+`
+|data of the to clause
+|Optional
+
+|===
+
+.Data example
+[source,json]
+----
+{
+  "type" : "VET_TRANSACTION",
+  "walletId" : "1543",
+  "pincode" : "54716",
+  "blockRef" : null,
+  "chainTag" : null,
+  "expiration" : 3,
+  "gas" : 23000,
+  "gasPriceCoef" : 46576,
+  "nonce" : "0fb54087-02a2-4016-8446-367bc4a79d00",
+  "clauses" : [ {
+    "to" : "0xdc71b72db51e227e65a45004ab2798d31e8934c9",
+    "amount" : 10000000000,
+    "data" : "0x0000"
+  } ]
+}
+----
+
+.Result parameters
+operation::execute-vet-transaction[snippets='response-fields']
+
+.Result example
+operation::execute-vet-transaction[snippets='response-body']
+
+===== Execute a VTHO transfer [.bb-connect]#connect#
+To execute a VTHO transfer, use the connect building block with:
+
+.URL
+https://connect-staging.arkane.network/transaction/execute/vtho_transaction
+
+.Data parameters
+|===
+|Path|Type|Description|Constraints
+
+|`+type+`
+|`+String+`
+|The type of the transaction, e.g.: VTHO_TRANSACTION
+|Mandatory, value for vtho transaction: VTHO_TRANSACTION
+
+|`+walletId+`
+|`+String+`
+|The id of the wallet one wants to sign with.
+|Mandatory
+
+|`+blockRef+`
+|`+Null+`
+| BlockRef is the reference to a specific block. When the BlockRef is a block ID in the future, it enables users to configure the transactions to be executed as a specific block height;
+|Optional
+
+|`+chainTag+`
+|`+Null+`
+|chaintag
+|Optional
+
+|`+expiration+`
+|`+Number+`
+|The number of blocks that can be used to specify when the transaction expires
+|Optional, must be >= 0
+
+|`+gas+`
+|`+Number+`
+|the maximum amount of VeThor the sender is willing to pay to execute all the clauses in the transaction
+|Optional, must be > 0
+
+|`+gasPriceCoef+`
+|`+Number+`
+|Users can modify the Gas Price Coefficient to increase the amount of VeThor they are willing to commit in the predefined range as to prioritize the transaction
+|Optional, must be >= 0
+
+|`+nonce+`
+|`+String+`
+|TxNonce is a random number in the transaction. Users are able to change the nonce to generate unique TxID as part of the “in-transaction proof of work” feature
+|Optional
+
+|`+clauses+`
+|`+Array+`
+|Each transaction may contain multiple clauses, and each clause contains the “To”, “Value”, and “Data” fields that can be used to commence different tasks such as payment or smart contracts
+|At least 1 must be present
+
+|`+clauses[].to+`
+|`+String+`
+|address of the to clause
+|Mandatory, valid vechain address
+
+|`+clauses[].amount+`
+|`+Number+`
+|amount of the to clause
+|Mandatory, must be >= 0
+
+|===
+
+.Data example
+[source,json]
+----
+{
+  "type" : "VTHO_TRANSACTION",
+  "walletId" : "1543",
+  "pincode" : "597314",
+  "blockRef" : null,
+  "chainTag" : null,
+  "expiration" : 3,
+  "gas" : 23000,
+  "gasPriceCoef" : 46576,
+  "nonce" : "18ca7a3e-7498-4121-9d4f-f89ec2db739a",
+  "clauses" : [ {
+    "to" : "0xdc71b72db51e227e65a45004ab2798d31e8934c9",
+    "amount" : 10000000000
+  } ]
+}
+----
+
+.Result parameters
+operation::execute-vtho-transaction[snippets='response-fields']
+
+.Result example
+operation::execute-vtho-transaction[snippets='response-body']
+
+===== Execute a VIP180 transfer [.bb-connect]#connect#
+
+To execute an ERC20 transaction transfer, use the connect building block with:
+
+.URL
+https://connect-staging.arkane.network/transaction/execute/ethereum_erc20_transaction
+
+
+.Data parameters
+|===
+|Path|Type|Description|Constraints
+
+|`+type+`
+|`+String+`
+|The type of the transaction
+|Mandatory, value for vet transaction: VECHAIN_VIP180_TRANSACTION
+
+|`+walletId+`
+|`+String+`
+|The id of the wallet one wants to sign with.
+|Mandatory
+
+|`+blockRef+`
+|`+Null+`
+| BlockRef is the reference to a specific block. When the BlockRef is a block ID in the future, it enables users to configure the transactions to be executed as a specific block height;
+|Optional
+
+|`+chainTag+`
+|`+Null+`
+|chaintag
+|Optional
+
+|`+expiration+`
+|`+Number+`
+|The number of blocks that can be used to specify when the transaction expires
+|Optional, must be >= 0
+
+|`+gas+`
+|`+Number+`
+|the maximum amount of VeThor the sender is willing to pay to execute all the clauses in the transaction
+|Optional, must be > 0
+
+|`+gasPriceCoef+`
+|`+Number+`
+|Users can modify the Gas Price Coefficient to increase the amount of VeThor they are willing to commit in the predefined range as to prioritize the transaction
+|Optional, must be >= 0
+
+|`+nonce+`
+|`+String+`
+|TxNonce is a random number in the transaction. Users are able to change the nonce to generate unique TxID as part of the “in-transaction proof of work” feature
+|Optional
+
+|`+clauses+`
+|`+Array+`
+|Each transaction may contain multiple clauses, and each clause contains the “To”, “Value”, and “Data” fields that can be used to commence different tasks such as payment or smart contracts
+|At least 1 must be present
+
+|`+clauses[].to+`
+|`+String+`
+|address of the to clause
+|Mandatory, valid vechain address
+
+|`+clauses[].tokenAddress+`
+|`+String+`
+|The address of the token to be used in this application
+|Mandatory, valid vechain ERC20 token address
+
+|`+clauses[].amount+`
+|`+Number+`
+|amount of the to clause
+|Mandatory, must be >= 0
+
+|===
+.Data example
+[source,json]
+----
+{
+  "type" : "VECHAIN_VIP180_TRANSACTION",
+  "walletId" : "1543",
+  "blockRef" : null,
+  "chainTag" : null,
+  "expiration" : 3,
+  "gas" : 23000,
+  "gasPriceCoef" : 46576,
+  "nonce" : "ce027387-0bb4-45e1-a9ba-b1d4b99cb82e",
+  "clauses" : [ {
+    "to" : "0xdc71b72db51e227e65a45004ab2798d31e8934c9",
+    "amount" : 10000000000,
+    "tokenAddress" : "0x0000000000000000000000000000456E65726779"
+  } ]
+}
+----
+
+.Result parameters
+operation::execute-vechain-erc20-transaction[snippets='response-fields']
+
+.Result example
+operation::execute-vechain-erc20-transaction[snippets='response-body']
+----
 
 == Profile
 === User profile [.bb-api]#api#

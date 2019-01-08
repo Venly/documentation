@@ -289,6 +289,36 @@ https://connect-staging.arkane.network/transaction/sign/ethereum_raw
 }
 ----
 
+.Result paramaters
+|===
+|Path|Type|Description
+
+|`+r+`
+|`+String+`
+|The R value of the signature
+
+|`+s+`
+|`+String+`
+|The S value of the signature
+
+|`+v+`
+|`+Number+`
+|The V value of the signature
+
+|===
+
+.Result example
+[source,json]
+----
+{
+  "r" : "9955af11969a2d2a7f860cb00e6a00cfa7c581f5df2dbe8ea16700b33f4b4b9b",
+  "s" : "69f945012f7ea7d3febf11eb1b78e1adc2d1c14c2cf48b25000938cc1860c83e",
+  "v" : 1
+}
+----
+
+
+
 ==== Vechain
 
 

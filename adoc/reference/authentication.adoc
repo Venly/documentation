@@ -1,7 +1,7 @@
 = Authentication
 
 == Overview
-Arkane Network uses https://openid.net/connect/[OpenID Connect]'s Authorization Code Flow footnote:[https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth] for it's authentication and authorization.
+Arkane Network uses https://openid.net/connect/[OpenID Connect]'s Authorization Code Flow footnote:[https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth] for it's authentication and authorization. Below is a guide to obtain a access token manually, but for added security we recommended using a library for handling authentication/authorization. Only use the manual flow if you are very well known with OpenID Connect.
 
 == Obtaining an access token
 === Step 1 - Request an Authorization Code
@@ -119,3 +119,60 @@ Content-Length: 600
     "scope": "openid view:wallets sign:wallets view:profile email profile"
 }
 ----
+
+== Useful endpoints
+
+=== 'well-known'
+.URL
+```
+GET https://login.arkane.network/auth/realms/Arkane/.well-known/openid-configuration
+```
+
+Lists endpoints and other configuration options relevant to the OpenID Connect implementation
+
+=== Authorization
+.URL
+```
+GET https://login.arkane.network/auth/realms/Arkane/protocol/openid-connect/auth
+```
+
+This endpoint performs authentication of the user. This is done by redirecting the user to this endpoint (see _step 1_ above).
+
+=== Token
+.URL
+```
+GET https://login.arkane.network/auth/realms/Arkane/protocol/openid-connect/token
+```
+
+This endpoint is used to obtain tokens. Tokens can either be obtained by exchanging an authorization code or by supplying a refresh token (see _step 2_ and _step 3_ above)
+
+=== Userinfo
+.URL
+```
+GET https://login.arkane.network/auth/realms/Arkane/protocol/openid-connect/userinfo
+```
+
+This endpoint returns standard information about the authenticated user
+
+=== Logout
+.URL
+```
+GET https://login.arkane.network/auth/realms/Arkane/protocol/openid-connect/logout
+```
+.Request parameters
+|===
+| Name | Description | Constraints | Example
+| redirect_uri | The URI of the page you want to be redirected to after login out (do not forget to URL-encode) | Mandatory | redirect_uri=http%3A%2F%2Flocalhost%3A4000%2F
+|===
+
+This endpoint logs out the authenticated user. +
+The user can be redirected to the endpoint, in which case the active user session is logged out. Afterward the user is redirected back to the application. +
+The endpoint can also be invoked directly by the application. To invoke this endpoint directly the refresh token needs to be included as well as the credentials required to authenticate the client.
+
+=== Certificates
+.URL
+```
+GET https://login.arkane.network/auth/realms/Arkane/protocol/openid-connect/certs
+```
+
+This endpoint returns the public keys enabled by the realm, encoded as a JSON Web Key (JWK).

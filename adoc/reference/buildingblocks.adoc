@@ -105,21 +105,40 @@ Arkane connect can be called by navigating to a specifically crafted URI.
 
 There are 2 ways of calling Arkane Connect, the *GET* or *POST* method. For security reasons, we advise to use the *POST* method, as this doesn't leak the short-lived bearer tokens as GET-parameters.
 
+NOTE: Although Arkane Connect can be called natively, we advise you to use the Arkane Connect JS Library.
+
 ===== GET Method
 
-An example of a call would be:
+Example call:
+
+`GET`
 
 `https://connect.arkane.network/wallets/manage/vechain?bearerToken=myToken&redirectUrl=https://fundrequest.io`
 
 The following parameters are necessary for every request:
  
-. *url:* The actual url of the action we want to do. This consists of the base url (https://connect.arkane.network) and the endpoint (`wallets/manage/vechain`)
-. *bearerToken*: the security token which performs the authentication
-. *redirectUrl*: the url to redirect to after the action has been performed. If the redirectUrl was not passed, the referer will be used instead.
-. *data*: 
+|=== 
+| *url* | The actual url of the action we want to do. This consists of the base url (https://connect.arkane.network) and the endpoint (`wallets/manage/vechain`)
+
+| *bearerToken* | the security token which performs the authentication.
+| *redirectUrl* | the url to redirect to after the action has been performed. If the redirectUrl was not passed, the referer will be used instead.
+| *data* | an optional data parameters, which will be used by the specific call. (Example: data to be signed)
+|===
 
 NOTE: Make sure all query parameters are url encoded (ex. https://www.urlencoder.org/)
 
 
+===== POST Method
+
+Example call: 
+
+`POST`
+
+When using the post method, we can 
+
+
 
 === Arkane Identity
+
+Our third and final building block is Arkane Identity.
+Arkane Identity's sole purpose is to provide a way to authenticate to the Arkane Network using OAuth2.

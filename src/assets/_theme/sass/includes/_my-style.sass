@@ -23,7 +23,7 @@ p.lead,
 .dlist, .olist, .ulist, .qlist, .hdlist
   > .title
     line-height: 1.4
-    color: #980050
+    color: $color-link-default
     font-weight: 300
     margin-top: 0.2em
     margin-bottom: 0.5em
@@ -32,15 +32,15 @@ p.lead,
 [id="content"] [id="toctitle"],
 .tableblock > caption
   line-height: 1.4
-  color: #980050
+  color: $color-bluish
   font-weight: 300
   margin-top: 0.2em
   margin-bottom: 0.5em
 
 /* Default Link Styles
 a
-  color: #b1005d
-  text-decoration: none
+  color: $color-brand-light
+  text-decoration: underline
   line-height: inherit
 
 a:hover, a:focus
@@ -55,7 +55,7 @@ p
   font-weight: normal
   font-size: 1em
   line-height: 1.6
-  margin-bottom: 1.25em
+  margin-bottom: $margin-bottom
   text-rendering: optimizeLegibility
 
 p aside
@@ -65,10 +65,9 @@ p aside
 
 /* Default header styles
 h1, h2, h3, [id="toctitle"], .sidebarblock > .content > .title, h4, h5, h6
-  font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif
+  font-family: $font
   font-weight: normal
   font-style: normal
-  color: #333333
   text-rendering: optimizeLegibility
   margin-top: 1em
   margin-bottom: 0.5em
@@ -79,22 +78,22 @@ h1, h2, h3, [id="toctitle"], .sidebarblock > .content > .title, h4, h5, h6
     line-height: 0
 
 h1
-  font-size: 2.125em
+  font-size: $font-size-heading-h1
 
 h2
-  font-size: 1.6875em
+  font-size: $font-size-heading-h2
 
 h3, [id="toctitle"], .sidebarblock > .content > .title
-  font-size: 1.375em
+  font-size: $font-size-heading-h3
 
 h4
-  font-size: 1.125em
+  font-size: $font-size-heading-h4
 
 h5
-  font-size: 1.125em
+  font-size: $font-size-heading-h5
 
 h6
-  font-size: 1em
+  font-size: $font-size-heading-h6
 
 hr
   border: dotted #f5f5f5
@@ -119,13 +118,13 @@ small
 code
   font-family: Consolas, "Liberation Mono", Courier, monospace
   font-weight: bold
-  color: #320348
+  color: $color-bluish
 
 /* Lists
 ul, ol, dl
   font-size: 1em
   line-height: 1.6
-  margin-bottom: 1.25em
+  margin-bottom: $margin-bottom
   list-style-position: outside
   font-family: inherit
 
@@ -138,6 +137,12 @@ ul li ul, ul li ol
   margin-bottom: 0
   font-size: 1em
 
+.ulist ul
+  list-style: disc
+.ulist ul,
+.olist ol,
+  li > p
+    margin: 0
 /* Override nested font-size change
 
 ul.square li ul, ul.circle li ul, ul.disc li ul
@@ -166,7 +171,7 @@ dl dt
   font-weight: bold
 
 dl dd
-  margin-bottom: 1.25em
+  margin-bottom: $margin-bottom
 
 /* Abbreviations
 abbr, acronym
@@ -224,22 +229,6 @@ blockquote, blockquote p
   font-weight: bold
   border: none
   padding: 0 0.0625em
-
-@media only screen and (min-width: 768px)
-  h1, h2, h3, [id="toctitle"], .sidebarblock > .content > .title, h4, h5, h6
-    line-height: 1.4
-
-  h1
-    font-size: 2.75em
-
-  h2
-    font-size: 2.3125em
-
-  h3, [id="toctitle"], .sidebarblock > .content > .title
-    font-size: 1.6875em
-
-  h4
-    font-size: 1.4375em
 
 /* Print styles.  Inlined to avoid required HTTP connection: www.phpied.com/delay-loading-your-print-css/ Credit to Paul Irish and HTML5 Boilerplate (html5boilerplate.com)
 .print-only
@@ -306,7 +295,7 @@ blockquote, blockquote p
 /* Tables
 table
   background: white
-  margin-bottom: 1.25em
+  margin-bottom: $margin-bottom
   border: solid 1px #dddddd
 
 table thead, table tfoot
@@ -420,7 +409,7 @@ h6
       color: #262626
 
 .imageblock, .literalblock, .listingblock, .verseblock, .videoblock
-  margin-bottom: 1.25em
+  margin-bottom: $margin-bottom
 
 .admonitionblock td.content > .title, .exampleblock > .title, .imageblock > .title, .videoblock > .title, .listingblock > .title, .literalblock > .title, .openblock > .title, .paragraph > .title, .quoteblock > .title, .sidebarblock > .title, .tableblock > .title, .verseblock > .title, .dlist > .title, .olist > .title, .ulist > .title, .qlist > .title, .hdlist > .title
   text-align: left
@@ -459,7 +448,7 @@ table.tableblock [id="preamble"] > .sectionbody > .paragraph:first-of-type p
 
 .exampleblock > .content,
 .sidebarblock
-  margin-bottom: 1.25em
+  margin-bottom: $margin-bottom
   padding: 1.25em
 
   > :first-child
@@ -497,7 +486,7 @@ table.tableblock [id="preamble"] > .sectionbody > .paragraph:first-of-type p
   border: 1px solid #d9d9d9
   background: #f2f2f2
   > .content > .title
-    color: #980050
+    color: $color-bluish
     margin-top: 0
     line-height: 1.6
 
@@ -696,7 +685,7 @@ td.hdlist1, td.hdlist2
   padding: 0.25em 0
 
 .qanda > ol > li > p > em:only-child
-  color: #980050
+  color: $color-bluish
 
 .thumb, .th
   line-height: 0
@@ -906,7 +895,6 @@ span.icon > [class^="icon-"], span.icon > [class*=" icon-"]
 
 .admonitionblock td.icon .icon-note:before
   content: "\f05a"
-  color: #b1005d
   color: #850046
 
 .admonitionblock td.icon .icon-tip:before

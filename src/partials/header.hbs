@@ -1,14 +1,20 @@
 <header id="header" class="header">
   <div class="header__container">
-    <div class="logo">
-      <a href="/"><img src="{{assets}}/img/logo-arkane-animated-light.svg" alt="logo arkane"></a>
+    <div class="header__logo">
+      <a href="/"><img src="{{assets}}/img/logo-arkane-black.svg" alt="logo arkane"></a>
     </div>
-    <nav class="nav">
-      <ul class="nav__list">
-        <!-- <li class="nav__list-item"><a class="link " href="#">link 1</a></li> -->
-        <!--<li class="nav__list-item"><a class="link link--active" href="#">link 2</a></li>-->
-        <!--<li class="nav__list-item"><a class="link" href="#">link 3</a></li>-->
+    <div class="header__crumbs">
+      <ul>
+        <li>
+          <a href="/">Docs</a>
+        </li>
+        <li>
+          {{ category }}
+        </li>
+        <li class="active">
+          {{ title }}
+        </li>
       </ul>
-    </nav>
+    </div>
   </div>
 </header>

@@ -22,7 +22,7 @@
     "assemble": "npx gulp gulp-assemble",
     "watch": "npx gulp watch",
     "asciidoc": "npx ts-node generateDoc.ts",
-    "serve": "npx serve ./dist",
+    "serve": "npx serve -p 4422 ./dist",
     "build": "npm run gulp && npm run asciidoc && npm run assemble",
     "build-serve": "npm run build && npm run serve"
   },

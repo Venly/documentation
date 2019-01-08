@@ -357,7 +357,7 @@ https://connect-staging.arkane.network/transaction/sign/ethereum_raw
 
 ==== Vechain
 
-===== Execute an vet transaction [.bb-connect]#connect#
+===== Execute a VET transaction [.bb-connect]#connect#
 To execute an ethereum transaction, use the connect building block with:
 
 .URL

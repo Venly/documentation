@@ -111,7 +111,7 @@ Using this, you don't have to take the different number of decimals for differen
 [[native-transactions]]
 === Native Transactions
 ==== Ethereum
-===== Execute an ether transaction
+===== Execute an ether transaction [.bb-connect]#connect#
 To execute an ethereum transaction, use the connect building block with:
 
 .URL
@@ -179,7 +179,7 @@ https://connect-staging.arkane.network/transaction/execute/eth_transaction
 }
 ----
 
-===== Execute an ERC20 transfer
+===== Execute an ERC20 transfer [.bb-connect]#connect#
 
 To execute an ERC20 transaction transfer, use the connect building block with:
 
@@ -248,7 +248,7 @@ https://connect-staging.arkane.network/transaction/execute/ethereum_erc20_transa
 }
 ----
 
-===== Sign
+===== Sign [.bb-connect]#connect#
 Signs arbitrary data. This data is before UTF-8 HEX decoded and enveloped as followed:
 
 `"\x19Ethereum Signed Message:\n" + message.length + message.`

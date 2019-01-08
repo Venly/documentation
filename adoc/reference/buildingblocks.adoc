@@ -82,7 +82,11 @@ Content-Type: application/json
 User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/1.0 (KHTML, like Gecko; Gmail Actions)
 ----
 
+==== Limitations
 
+Although the Arkane API supports creating signatures (it's even used as underlying building block of Arkane Connect), creating signatures is only possible when using *API Keys*. The main reason we block signature requests from being performed on other domains is because we don't want the user to enter his *private pin* on an untrusted domain. 
+
+TIP: If you want to create signatures on your own domain, use *Arkane Connect*.
 
 === ARKANE CONNECT
 
@@ -90,7 +94,7 @@ User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/1.0 (KHTML, like Gecko; 
 
 Arkane Connect is an endpoint specifically designed to perform common tasks with Arkane wallets. Connect was created as a way to perform tasks which are
 
-. otherwise not possible due to security reasons, like creating signatures
+. otherwise not possible due to security reasons, *like creating signatures*
 . necessary by all applications, like linking wallets your client
 
 Basically, Arkane Connect is a small web application without a central entry point. Calls to Arkane Connect are made by navigating to a specific url. Although you can use it by itself - by manually crafting the urls - we also provide a javascript SDK.  

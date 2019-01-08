@@ -18,11 +18,11 @@
   "license": "",
   "name": "arkane-network-documentation",
   "scripts": {
-    "gulp": "gulp build",
-    "assemble": "gulp gulp-assemble",
-    "watch": "gulp watch",
+    "gulp": "npx gulp build",
+    "assemble": "npx gulp gulp-assemble",
+    "watch": "npx gulp watch",
     "asciidoc": "npx ts-node generateDoc.ts",
-    "serve": "serve ./dist",
+    "serve": "npx serve ./dist",
     "build": "npm run gulp && npm run asciidoc && npm run assemble",
     "build-serve": "npm run build && npm run serve"
   },

@@ -1,8 +1,10 @@
-= Wallet
+= Reference documentation
+
+== Wallet
 
 This section describes all actions related to wallets.
 
-== Link [.bb-connect]#connect#
+=== Link [.bb-connect]#connect#
 
 This allows users to link his existing wallets with your application. The difference with <<Manage wallets>>:
 
@@ -21,7 +23,7 @@ https://connect-staging.arkane.network/wallets/link
 _No data needed_
 
 
-== Manage wallets [.bb-connect]#connect#
+=== Manage wallets [.bb-connect]#connect#
 
 As an application, it is possible to have a user manage his wallets for a specific chain. During this action, the user can link existing wallets or import a wallet.
 When the user returns to the app, a wallet will be linked to your application for the given chain. When a user does not have any wallets yet, a user can indicate to create a new wallet.
@@ -32,7 +34,7 @@ To manage wallets, use the connect building block with:
 https://connect-staging.arkane.network/wallets/manage
 
 
-.Data parameters [.bb-api]#Data parameters#
+.Data parameters
 |===
 |Name |Description |Example
 
@@ -51,7 +53,7 @@ https://connect-staging.arkane.network/wallets/manage
 }
 ----
 
-== List user wallets [.bb-api]#api#
+=== List user wallets [.bb-api]#api#
 Returns all the wallets for the specified user (bearer token)
 
 operation::get-wallets[snippets='curl-request,http-response,response-fields']
@@ -62,30 +64,30 @@ operation::get-wallets-filtered[snippets='request-parameters']
 
 
 [[get-specific-user-wallet]]
-== Get specific user wallet [.bb-api]#api#
+=== Get specific user wallet [.bb-api]#api#
 Returns the details for a specific wallet (native balance is also included)
 
 operation::get-wallet[snippets='curl-request,path-parameters,http-response,response-fields']
 
-== Native balance [.bb-api]#api#
+=== Native balance [.bb-api]#api#
 Returns the "native" balance for a wallet. This is the balance of the native token used by the chain. Ex. ETH for Ethereum.
 
 operation::get-balance[snippets='curl-request,path-parameters,http-response,response-fields']
 
-== Token balances [.bb-api]#api#
+=== Token balances [.bb-api]#api#
 Returns the balance of all tokens currently supported by Arkane. The list of supported tokens can be found on https://github.com/ArkaneNetwork/content-management/tree/master/tokens[Github].
 
 operation::get-token-balances[snippets='curl-request,path-parameters,http-response,response-fields']
 
-== Specific token balance [.bb-api]#api#
+=== Specific token balance [.bb-api]#api#
 Returns the token balance for a specified token (this can be any token).
 
 operation::get-token-balance[snippets='curl-request,path-parameters,http-response,response-fields']
 
-= Transactions
+== Transactions
 
 [[transfer]]
-== Transfer [.bb-api]#api#
+=== Transfer [.bb-api]#api#
 To execute a transfer you need to:
 
 . Build the transaction request
@@ -107,9 +109,9 @@ Using this, you don't have to take the different number of decimals for differen
 ====
 
 [[native-transactions]]
-== Native Transactions
-=== Ethereum
-==== Execute an ether transaction [.bb-connect]#connect#
+=== Native Transactions
+==== Ethereum
+===== Execute an ether transaction [.bb-connect]#connect#
 To execute an ethereum transaction, use the connect building block with:
 
 .URL
@@ -177,7 +179,25 @@ https://connect-staging.arkane.network/transaction/execute/eth_transaction
 }
 ----
 
-==== Execute an ERC20 transfer [.bb-connect]#connect#
+.Result parameters
+|===
+|Path|Type|Description
+
+|`+transactionHash+`
+|`+String+`
+|The transaction hash
+
+|===
+
+.Result example
+[source,json]
+----
+{
+  "transactionHash" : "0xHash"
+}
+----
+
+===== Execute an ERC20 transfer [.bb-connect]#connect#
 
 To execute an ERC20 transaction transfer, use the connect building block with:
 
@@ -246,7 +266,25 @@ https://connect-staging.arkane.network/transaction/execute/ethereum_erc20_transa
 }
 ----
 
-==== Sign [.bb-connect]#connect#
+.Result parameters
+|===
+|Path|Type|Description
+
+|`+transactionHash+`
+|`+String+`
+|The transaction hash
+
+|===
+
+.Result example
+[source,json]
+----
+{
+  "transactionHash" : "0xHash"
+}
+----
+
+===== Sign [.bb-connect]#connect#
 Signs arbitrary data. This data is before UTF-8 HEX decoded and enveloped as followed:
 
 `"\x19Ethereum Signed Message:\n" + message.length + message.`
@@ -317,9 +355,9 @@ https://connect-staging.arkane.network/transaction/sign/ethereum_raw
 
 
 
-=== Vechain
+==== Vechain
 
-==== Execute an vet transaction [.bb-connect]#connect#
+===== Execute an vet transaction [.bb-connect]#connect#
 To execute an ethereum transaction, use the connect building block with:
 
 .URL
@@ -414,12 +452,24 @@ https://connect-staging.arkane.network/transaction/execute/vet_transaction
 ----
 
 .Result parameters
-operation::execute-vet-transaction[snippets='response-fields']
+|===
+|Path|Type|Description
+
+|`+transactionHash+`
+|`+String+`
+|The transaction hash
+
+|===
 
 .Result example
-operation::execute-vet-transaction[snippets='response-body']
+[source,json]
+----
+{
+  "transactionHash" : "0xHash"
+}
+----
 
-==== Execute a VTHO transfer [.bb-connect]#connect#
+===== Execute a VTHO transfer [.bb-connect]#connect#
 To execute a VTHO transfer, use the connect building block with:
 
 .URL
@@ -507,12 +557,25 @@ https://connect-staging.arkane.network/transaction/execute/vtho_transaction
 ----
 
 .Result parameters
-operation::execute-vtho-transaction[snippets='response-fields']
+|===
+|Path|Type|Description
+
+|`+transactionHash+`
+|`+String+`
+|The transaction hash
+
+|===
 
 .Result example
-operation::execute-vtho-transaction[snippets='response-body']
 
-==== Execute a VIP180 transfer [.bb-connect]#connect#
+[source,json]
+----
+{
+  "transactionHash" : "0xHash"
+}
+----
+
+===== Execute a VIP180 transfer [.bb-connect]#connect#
 
 To execute an ERC20 transaction transfer, use the connect building block with:
 
@@ -606,11 +669,27 @@ https://connect-staging.arkane.network/transaction/execute/ethereum_erc20_transa
 ----
 
 .Result parameters
-operation::execute-vechain-erc20-transaction[snippets='response-fields']
+
+|===
+|Path|Type|Description
+
+|`+transactionHash+`
+|`+String+`
+|The transaction hash
+
+|===
 
 .Result example
-operation::execute-vechain-erc20-transaction[snippets='response-body']
 
-= Profile
-== User profile [.bb-api]#api#
-the user profile
+[source,json]
+----
+{
+  "transactionHash" : "0xHash"
+}
+----
+
+== Profile
+=== User profile [.bb-api]#api#
+Returns more info about the connected user.
+
+operation::get-profile[snippets='http-request,http-response,response-fields']

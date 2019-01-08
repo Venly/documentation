@@ -4,10 +4,10 @@ This section describes all actions related to wallets.
 
 === Link [.bb-connect]#connect#
 
-This allows users to link his existing wallets with your application. The difference with <<Manage wallets>>:
+This allows users to link his existing wallets with your application. The difference with <<manage-wallets, Manage wallets>>:
 
-* A user can only link wallets, it is not possible to create or import a wallet
-* A list of all wallets is returned for any chain (it is possible to filter this).
+- A user can only link wallets, it is not possible to create or import a wallet
+- A list of all wallets is returned for any chain (it is possible to filter this).
 
 An example use case could be a portfolio app where a user wants to quickly link all his wallets to get an overview of his complete portfolio.
 
@@ -20,8 +20,7 @@ https://connect-staging.arkane.network/wallets/link
 .Data
 _No data needed_
 
-
-=== Manage wallets [.bb-connect]#connect#
+=== [[manage-wallets]] Manage wallets [.bb-connect]#connect#
 
 As an application, it is possible to have a user manage his wallets for a specific chain. During this action, the user can link existing wallets or import a wallet.
 When the user returns to the app, a wallet will be linked to your application for the given chain. When a user does not have any wallets yet, a user can indicate to create a new wallet.
@@ -32,7 +31,7 @@ To manage wallets, use the connect building block with:
 https://connect-staging.arkane.network/wallets/manage
 
 
-.Data parameters [.bb-api]#Data parameters#
+.Data parameters
 |===
 |Name |Description |Example
 
@@ -86,7 +85,7 @@ operation::get-token-balance[snippets='curl-request,path-parameters,http-respons
 
 [[transfer]]
 === Transfer [.bb-api]#api#
-To execute a transfer you need to:
+This can be used to transfer (native) tokens from a wallet to another wallet. To start a transfer you need to:
 
 . Build the transaction request
 . Execute a <<native-transactions,native transaction>> with the transaction result from (1)
@@ -110,7 +109,7 @@ Using this, you don't have to take the different number of decimals for differen
 === Native Transactions
 ==== Ethereum
 ===== Execute an ether transaction [.bb-connect]#connect#
-To execute an ethereum transaction, use the connect building block with:
+To execute an Ethereum transaction, use the connect building block with:
 
 .URL
 https://connect-staging.arkane.network/transaction/execute/eth_transaction
@@ -174,6 +173,24 @@ https://connect-staging.arkane.network/transaction/execute/eth_transaction
   "value" : 10000000000,
   "to" : "0xdc71b72db51e227e65a45004ab2798d31e8934c9",
   "data" : "0x"
+}
+----
+
+.Result parameters
+|===
+|Path|Type|Description
+
+|`+transactionHash+`
+|`+String+`
+|The transaction hash
+
+|===
+
+.Result example
+[source,json]
+----
+{
+  "transactionHash" : "0xHash"
 }
 ----
 
@@ -243,6 +260,24 @@ https://connect-staging.arkane.network/transaction/execute/ethereum_erc20_transa
   "value" : 10000000000,
   "to" : "0xdc71b72db51e227e65a45004ab2798d31e8934c9",
   "tokenAddress" : "0x4df47b4969b2911c966506e3592c41389493953b"
+}
+----
+
+.Result parameters
+|===
+|Path|Type|Description
+
+|`+transactionHash+`
+|`+String+`
+|The transaction hash
+
+|===
+
+.Result example
+[source,json]
+----
+{
+  "transactionHash" : "0xHash"
 }
 ----
 
@@ -319,7 +354,7 @@ https://connect-staging.arkane.network/transaction/sign/ethereum_raw
 
 ==== Vechain
 
-===== Execute an vet transaction [.bb-connect]#connect#
+===== Execute a VET transaction [.bb-connect]#connect#
 To execute an ethereum transaction, use the connect building block with:
 
 .URL
@@ -414,10 +449,22 @@ https://connect-staging.arkane.network/transaction/execute/vet_transaction
 ----
 
 .Result parameters
-operation::execute-vet-transaction[snippets='response-fields']
+|===
+|Path|Type|Description
+
+|`+transactionHash+`
+|`+String+`
+|The transaction hash
+
+|===
 
 .Result example
-operation::execute-vet-transaction[snippets='response-body']
+[source,json]
+----
+{
+  "transactionHash" : "0xHash"
+}
+----
 
 ===== Execute a VTHO transfer [.bb-connect]#connect#
 To execute a VTHO transfer, use the connect building block with:
@@ -507,10 +554,23 @@ https://connect-staging.arkane.network/transaction/execute/vtho_transaction
 ----
 
 .Result parameters
-operation::execute-vtho-transaction[snippets='response-fields']
+|===
+|Path|Type|Description
+
+|`+transactionHash+`
+|`+String+`
+|The transaction hash
+
+|===
 
 .Result example
-operation::execute-vtho-transaction[snippets='response-body']
+
+[source,json]
+----
+{
+  "transactionHash" : "0xHash"
+}
+----
 
 ===== Execute a VIP180 transfer [.bb-connect]#connect#
 
@@ -606,11 +666,27 @@ https://connect-staging.arkane.network/transaction/execute/ethereum_erc20_transa
 ----
 
 .Result parameters
-operation::execute-vechain-erc20-transaction[snippets='response-fields']
+
+|===
+|Path|Type|Description
+
+|`+transactionHash+`
+|`+String+`
+|The transaction hash
+
+|===
 
 .Result example
-operation::execute-vechain-erc20-transaction[snippets='response-body']
+
+[source,json]
+----
+{
+  "transactionHash" : "0xHash"
+}
 ----
 
 == Profile
 === User profile [.bb-api]#api#
+Returns more info about the connected user.
+
+operation::get-profile[snippets='http-request,http-response,response-fields']

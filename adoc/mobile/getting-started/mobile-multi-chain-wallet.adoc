@@ -1,27 +1,25 @@
-= Building a multi-chain wallet
+== Introduction
 
-This guide will walk you trough the process of creating a multi blockchain wallet, able to transfer native coins and tokens.
+This guide will get you started on how to build a multi chain blockchain wallet.
 
 
-== What you'll build
+=== What you'll build
 
 We will build an Android app that will:
 
 . authenticate the user with Arkane
 . manage Arkane wallets for our app
 . fetch a list of the user's wallets
-. fetch the balance of the selected wallet
-. execute a transaction, from the selected wallet, to a specified address
 
 
-== What you'll need
+=== Prerequisities
 
 * Development tools for android (https://developer.android.com/studio/intro/)
 * a minimal understanding of Java / Android apps
 
 == Let's get started
 
-First of all, let's setup a our development environment. Open a terminal window, checkout the Arketype project from GitHub, go to the `js-multi-chain-wallet-initial`-branch and run `npm install`.
+First of all, let's setup a our development environment. Open a terminal window, checkout the Arketype project from GitHub and build the project.
 ```
 git clone https://github.com/ArkaneNetwork/ArketypeMobile.git
 cd ArketypeMobile
@@ -455,15 +453,15 @@ If you want to retrieve the wallets for a user, you can call the <<rest-api-publ
 ./app/src/main/java/network/arkane/arketype/TokenActivity.java
 [source,java]
 ----
-    // <1>
+    // <.>
     Button getWalletsButton = (Button) findViewById(R.id.get_wallets);
     getWalletsButton.setOnClickListener((View view) -> getWallets());
 
     private void getWallets() {
         mExecutor.submit(() -> {
-            AuthState state = mStateManager.getCurrent(); // <2>
-            state.performActionWithFreshTokens(mAuthService, (accessToken, idToken, ex) -> { // <3>
-                List<Wallet> wallets = arkaneClient.getWallets(accessToken); // <4>
+            AuthState state = mStateManager.getCurrent(); // <.>
+            state.performActionWithFreshTokens(mAuthService, (accessToken, idToken, ex) -> { // <.>
+                List<Wallet> wallets = arkaneClient.getWallets(accessToken); // <.>
                 runOnUiThread(() -> {
                     openWallets(wallets);
                 });
@@ -475,7 +473,7 @@ If you want to retrieve the wallets for a user, you can call the <<rest-api-publ
     private void openWallets(List<Wallet> wallets) {
         Intent intent = new Intent(this, WalletListActivity.class);
         intent.putExtra("wallets", new WalletListIntentData(wallets));
-        startActivity(intent); // <4>
+        startActivity(intent); // <.>
     }
 ----
 ./app/src/main/java/network/arkane/arketype/client/ArkaneClient.java
@@ -497,11 +495,11 @@ If you want to retrieve the wallets for a user, you can call the <<rest-api-publ
     }
 ----
 
-. Add a click listener to get wallets
-. Get current authentication state
-. Get a valid access token
-. Use the arkane client to retrieve the wallets
-. Open new intent with wallets
+<.> Add a click listener to get wallets
+<.> Get current authentication state
+<.> Get a valid access token
+<.> Use the arkane client to retrieve the wallets
+<.> Open new intent with wallets
 
 
 

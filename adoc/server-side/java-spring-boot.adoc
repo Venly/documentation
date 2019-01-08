@@ -1,4 +1,4 @@
-= Single Sign On with Arkane using Spring Boot
+== Introduction
 
 This guide will walk you through the process of logging in with Arkane using Single Sign On and displaying your Arkane wallets.
 This specific guide will focus on Spring Boot integration.
@@ -10,7 +10,7 @@ We'll build a small application which will:
 . Allow us to authenticate using your Arkane Account (OAuth2)
 . Fetch and display your wallets, server side
 
-== What you'll need
+=== What you'll need
 
 * A text editor or IDE
 * Java 8+ and Maven must be installed

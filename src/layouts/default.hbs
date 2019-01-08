@@ -4,18 +4,22 @@
 {{>head}}
 
 <body>
-  {{> symbols}}
-  {{> header}}
-
-  <div class="page-content">
+<div class="page-bg"></div>
+<div class="page-top">
+  <div class="page-top__content">
+    {{> symbols}}
+    {{> header}}
+  </div>
+</div>
+<div class="page-main">
+  <div class="page-main__content">
     <h1>{{title}}</h1>
 
     {{> body}}
 
     {{> footer}}
   </div>
-
-  {{> scripts-general}}
+</div>
+{{> scripts-general}}
 </body>
-
 </html>

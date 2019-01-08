@@ -4,15 +4,22 @@
 {{>head}}
 
 <body class="book toc-left" data-spy="scroll" data-target=".toc" data-offset="100">
-{{> symbols}}
-{{> header}}
+<div class="page-bg"></div>
+<div class="page-top">
+  <div class="page-top__content">
+    {{> symbols}}
+    {{> header}}
+  </div>
+</div>
+<div class="page-main">
+  <div class="page-main__content">
+    <h1>{{title}}</h1>
 
-<div class="page-content">
-  <h1>{{title}}</h1>
+    {{> body}}
 
-  {{> body}}
-
-  {{> footer}}
+    <a class="toTop" href="#">^</a>
+    {{> footer}}
+  </div>
 </div>
 
 {{> scripts-general}}

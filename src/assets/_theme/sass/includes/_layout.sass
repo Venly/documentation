@@ -1,17 +1,12 @@
 body, html
-  background-color: $color-greyish-brown
+  background-color: $color-white-gray
+  color: $color-text
+  font-size: $font-size-base
 
 .stuck
-  position: fixed !important
-  top: 0
-
-.page-content
-  background-color: $color-white
-  width: 100%
-  margin: 0 auto
-  padding: 0 1.25rem
-  position: relative
-  *zoom: 1
+  @include media(tablet-ls)
+    position: fixed !important
+    top: 0
 
 .sect1, .sect2, .sect3
   margin-left: -1.25rem
@@ -24,44 +19,41 @@ body, html
   > h2, > h3, > h4
     margin-top: 0
 
-.sect1 + .sect1,
-.sect2 + .sect2,
-.sect3 + .sect3
-  border-top: solid #f5f5f5
-
-.sect1 + .sect1
-  border-top-width: 10px
-
-.sect2 + .sect2
-  border-top-width: 4px
-
-.sect3 + .sect3
-  border-top-width: 1px
+//.sect1 + .sect1,
+//.sect2 + .sect2,
+//.sect3 + .sect3
+//  border-top: solid $color-white-gray
+//
+//.sect1 + .sect1
+//  border-top-width: 10px
+//
+//.sect2 + .sect2
+//  border-top-width: 4px
+//
+//.sect3 + .sect3
+//  border-top-width: 1px
 
 @include media(tablet-ls)
-  $toc-width: 320px
-  $content-width: $breakpoint-tablet-ls - $toc-width
-
   .toc
-    width: 320px
+    width: $toc-width
 
-  .page-content,
-  .header__container
+  .page-main__content,
+  .page-top__content
     min-width: $content-width
     max-width: $container-width
     margin: 0 auto
 
   .toc-left
-    .page-content
-      padding-left: $toc-width + 20px
+    .page-main__content
+      padding-left: $toc-width + rem(28px)
     .toc
-      transform: translateX(calc(-100% - 20px))
+      transform: translateX(calc(-100% - #{rem(29px)}))
 
   .toc-right
-    .page-content
-      padding-right: $toc-width + 20px
+    .page-main__content
+      padding-right: $toc-width + rem(28px)
     .toc
-      transform: translateX(calc(100% + 20px))
+      transform: translateX(calc(100% + #{rem(29px)}))
 
   [id="toc"]
     position: absolute
@@ -80,12 +72,14 @@ body, html
   width: rem(50px)
   height: rem(50px)
   text-align: center
-  right: rem(30px)
+  transform: translateX(-100px)
+  z-index: 1001
   bottom: rem(30px)
   font-family: monospace
   font-size: rem(64px)
-  line-height: rem(72px)
+  line-height: rem(80px)
   box-shadow: $box-shadow-floating
+  text-decoration: none
   &:active,
   &:hover,
   &:focus

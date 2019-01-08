@@ -1,9 +1,8 @@
-= Building a multi-chain wallet called Arketype
+== Introduction
 
 This guide will walk you trough the process of creating a multi blockchain wallet, able to transfer native coins and tokens to any address specified.
 
-
-== What you'll build
+=== What you'll build
 
 We'll build a page which will:
 
@@ -13,7 +12,7 @@ We'll build a page which will:
 * Fetch the token balances of the selected wallet
 * Execute a transaction, from the selected wallet to a specified address
 
-== What you'll need
+=== What you'll need
 
 * A text editor or IDE
 * Git (https://git-scm.com/downloads[Download])
@@ -182,7 +181,8 @@ That's it, we've now integrated the authentication client of Arkane Connect. It 
 npm run start
 ----
 
-== Fetch the user's wallets
+== Wallets
+=== Fetch the user's wallets
 
 We can fetch the user's wallets using the Arkane Connect API which can be accessed by calling `arkaneConnect.api`. This API is a JavaScript proxy to the HTTP endpoints exposed on https://api.arkane.network[]. Documentation on the endoints can be found https://api.arkane.network/docs/index.html[here]. By using the Arkane Connect API, you don't have to construct and execute the HTTP calls yourself.
 
@@ -239,7 +239,7 @@ app.populateWalletsSelect = (wallets) => {
 <4> Store the map of wallets in local storage
 <5> Populate the wallets `<select>`
 
-== Manage Wallets
+=== Manage Wallets
 The first time a user enters our sample application, he will need to give our our application access to at least one of his wallets. To do this we will launch Arkane Connect’s `Manage wallets` page. +
 This page displays all the user’s wallets for a specified blockchain and allows him to give our application access to one or more. Additionally he has the ability to create a new, or import an existing wallet.
 
@@ -284,7 +284,7 @@ document.getElementById('manage-vechain-wallets').addEventListener('click', func
 <1> Manage Ethereum wallets
 <2> Manage VeChain wallets
 
-== Show wallet details
+=== Show wallet details
 When the user selects a wallet we would like to show some details.
 
 First, we're going to populate and show `wallet-balance` and `wallet-gas-balance` when the `<select>` value changes, by adding a 'change' event listener on `wallets-select`
@@ -345,7 +345,8 @@ document.getElementById('wallets-select')
 <3> Displaying the tokens balance
 <4> Show the selected wallet
 
-== Show transaction form
+== Transactions
+=== Show form
 The main feature of our multi-chain wallet is the transaction functionality. In `/public/index.html` there is already a form present. We're going to extend `wallets-select` 'change' event listener so that it pre-fills the walletId and populates a `<select>` to select the token the user wants to transfer.
 
 ./public/assets/js/main.js
@@ -385,8 +386,7 @@ app.preFillTransactionTokens = (wallet, tokenBalances) => {
 ...
 ----
 
-
-== Executing the transaction
+=== Executing the transaction
 To wrap things up, we'll want to execute a transaction. Using Arkane Connect, this is done by creating a new `Signer` via `arkaneConnect.createSigner()` and then calling its `signer.executeTransaction(genericTransactionRequest)` function.
 
 We'll implement this by adding a `submit` event listener on the form to process the transaction.

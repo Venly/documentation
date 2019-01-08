@@ -109,13 +109,13 @@ NOTE: Although Arkane Connect can be called natively, we advise you to use the A
 
 ===== GET Method
 
-Example call:
+. Example call
 
 `GET`
 
 `https://connect.arkane.network/wallets/manage/vechain?bearerToken=myToken&redirectUrl=https://fundrequest.io`
 
-The following parameters are necessary for every request:
+. Request Parameters
  
 |=== 
 | *url* | The actual url of the action we want to do. This consists of the base url (https://connect.arkane.network) and the endpoint (`wallets/manage/vechain`)
@@ -130,12 +130,15 @@ NOTE: Make sure all query parameters are url encoded (ex. https://www.urlencoder
 
 ===== POST Method
 
-Example call: 
+. Example call
 
 `POST`
 
-When using the post method, we can 
+`https://connect.arkane.network/wallets/manage/vechain`
 
+. Post Parameters
+
+//TODO:
 
 
 === Arkane Identity

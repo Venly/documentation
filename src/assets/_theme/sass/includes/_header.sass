@@ -1,35 +1,81 @@
 .header
   margin: 0
-  padding:  1rem 2.5rem
-  border-bottom: 1px solid #f5f5f5
+  padding: 0
   background-color: $color-white
 
   &__container
     margin: 0 auto
-    height: 80px
+    height: rem(90px)
     display: flex
     justify-content: space-between
-    align-items: center
+    align-items: flex-end
     > *
       flex-grow: 1
 
-  .logo
-    height: 2.625rem
+
+  &__logo
+    display: flex
+    width: $toc-width
+    height: rem(90px)
+    padding: 1rem 2.5rem
     flex-grow: 0
+    align-items: center
     img
       height: 2.625rem
       max-height: 100%
       max-width: 100%
 
+  .toc-left &__logo
+      background-color: $color-white-gray
 
-  .nav__list
-    flex-direction: row
-    justify-content: flex-end
-    margin: 0
-    list-style: none
-    display: flex
+  &__crumbs
+    display: none
 
-  .nav__list-item
-    display: flex
-    margin: 0 0 0 1rem
-    font-weight: 400
+  .toc-left &__crumbs
+    display: block
+    font-size: $font-size-big
+    padding: rem(8px 28px)
+    color: $color-light-grey
+    ul
+      list-style: none
+      display: flex
+      margin: 0
+      li
+        display: flex
+        position: relative
+        padding-right: rem(16px)
+        margin-right: rem(8px)
+        &::after
+          display: block
+          content: '>'
+          position: absolute
+          right: 0
+        &:last-child::after
+          display: none
+
+        a
+          color: $color-light-grey
+          text-decoration: none
+          border-bottom: 1px solid $color-light-grey
+
+        &.active
+          color: $color-brand-light
+
+//      /*
+//@include media(tablet-ls)
+//
+//  .toc
+//    width: $toc-width
+//
+//  .page-main__content,
+//  .page-top
+//    min-width: $content-width
+//    max-width: $container-width
+//    margin: 0 auto
+//
+//  .toc-left
+//    .page-main__content
+//      padding-left: $toc-width + 20px
+//    .toc
+//      transform: translateX(calc(-100% - 20px))
+//*/

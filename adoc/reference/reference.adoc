@@ -1,5 +1,3 @@
-= Reference documentation
-
 == Wallet
 
 This section describes all actions related to wallets.

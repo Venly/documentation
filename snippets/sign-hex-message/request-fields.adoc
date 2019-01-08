@@ -18,22 +18,7 @@
 
 |`+data+`
 |`+String+`
-|Either a byte string containing the associated data of the message, or in the case of a contract-creation transaction, the initialisation code
-|Optional
-
-|`+walletId+`
-|`+String+`
-|The id of the wallet one wants to sign with.
-|Mandatory
-
-|`+pincode+`
-|`+String+`
-|The pincode of the specified wallet
-|Mandatory, must be between 4-6 digits
-
-|`+data+`
-|`+String+`
-|The data that needs to be signed
+|The arbitrary to sign
 |Mandatory, hex-encoded
 
 |===

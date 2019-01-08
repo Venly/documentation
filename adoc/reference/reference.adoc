@@ -115,7 +115,7 @@ Using this, you don't have to take the different number of decimals for differen
 To execute an ethereum transaction, use the connect building block with:
 
 .URL
-https://connect-staging.arkane.network/wallets/manage
+https://connect-staging.arkane.network/transaction/execute/eth_transaction
 
 
 .Data parameters
@@ -184,7 +184,7 @@ https://connect-staging.arkane.network/wallets/manage
 To execute an ERC20 transaction transfer, use the connect building block with:
 
 .URL
-https://connect-staging.arkane.network/transaction/execute
+https://connect-staging.arkane.network/transaction/execute/ethereum_erc20_transaction
 
 
 .Data parameters
@@ -249,6 +249,46 @@ https://connect-staging.arkane.network/transaction/execute
 ----
 
 ===== Sign
+Signs arbitrary data. This data is before UTF-8 HEX decoded and enveloped as followed:
+
+`"\x19Ethereum Signed Message:\n" + message.length + message.`
+
+To sign data, use the connect building block with:
+
+.URL
+https://connect-staging.arkane.network/transaction/sign/ethereum_raw
+
+.Data parameters
+|===
+|Path|Type|Description|Constraints
+
+|`+type+`
+|`+String+`
+|The type of the transaction
+|Mandatory, value for signing data: ETHEREUM_RAW
+
+|`+walletId+`
+|`+String+`
+|The id of the wallet one wants to sign with.
+|Mandatory
+
+|`+data+`
+|`+Hex-encoded String+`
+|The arbirtary data to sign
+|Mandatory
+
+|===
+
+.Data example
+[source,json]
+----
+{
+  "type" : "ETHEREUM_RAW",
+  "walletId" : "1",
+  "data" : "0x0564b25c8fcd6766f672d43252c8ee2597ad6c7a35315cf13e3b4d00bafc2e9f"
+}
+----
+
 ==== Vechain
 
 

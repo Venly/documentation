@@ -182,6 +182,8 @@ For your app, you will need a specific "client ID". You can request one at the A
 
 ===== Environments
 
+include::authentication[Authentication]
+
 .Production
 url: https://login.arkane.network
 
@@ -203,7 +205,3 @@ Allowed redirect urls:
 - http://localhost:8081/*
 - http://localhost:9090/*
 - network.arkane.arketype://oauth2redirect
-
-
-
-include::authentication[Authentication]

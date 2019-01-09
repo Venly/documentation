@@ -1,6 +1,6 @@
 == Building blocks
 
-=== ARKANE API
+=== Arkane API
 
 The Arkane API is the core application of Arkane Network. It's a restful API, which consists of various endpoints to:
 

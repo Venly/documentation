@@ -107,6 +107,9 @@ There are 2 ways of calling Arkane Connect, the *GET* or *POST* method. For secu
 
 NOTE: Although Arkane Connect can be called natively, we advise you to use the Arkane Connect JS Library.
 
+
+
+
 ===== GET Method
 
 . Example call
@@ -115,20 +118,22 @@ NOTE: Although Arkane Connect can be called natively, we advise you to use the A
 
 `https://connect.arkane.network/wallets/manage/vechain?bearerToken=myToken&redirectUrl=https://fundrequest.io`
 
-. Request Parameters
- 
 |=== 
 | *url* | The actual url of the action we want to do. This consists of the base url (https://connect.arkane.network) and the endpoint (`wallets/manage/vechain`)
+|=== 
 
+
+*Query Parameters*
+|=== 
 | *bearerToken* | the security token which performs the authentication.
 | *redirectUrl* | the url to redirect to after the action has been performed. If the redirectUrl was not passed, the referer will be used instead.
-| *data* | an optional data parameters, which will be used by the specific call. (Example: data to be signed)
+| *data* | an optional data parameter, which will be used by the specific call. (Example: data to be signed). This should always be *encoded as base64*.
 |===
 
 NOTE: Make sure all query parameters are url encoded (ex. https://www.urlencoder.org/)
 
 
-===== POST Method
+===== POST Method (recommended)
 
 . Example call
 
@@ -136,9 +141,17 @@ NOTE: Make sure all query parameters are url encoded (ex. https://www.urlencoder
 
 `https://connect.arkane.network/wallets/manage/vechain`
 
-. Post Parameters
+*Query Parameters*
 
-//TODO:
+|=== 
+| *redirectUrl* | the url to redirect to after the action has been performed. If the redirectUrl was not passed, the referer will be used instead.
+|=== 
+
+. Post Parameters
+|=== 
+| *bearerToken* | the security token which performs the authentication. Note: it is also possible to provide this parameter inside the HTTP header “Authorization”
+| *data* | an optional data parameter, which will be used by the specific call. (Example: data to be signed). When using the *Post Method*, don't encode as base64.
+|===
 
 
 === Arkane Identity

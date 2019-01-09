@@ -1,6 +1,8 @@
-== Building blocks
+== Introduction
 
-=== Arkane API
+TODO
+
+== Arkane API
 
 The Arkane API is the core application of Arkane Network. It's a restful API, which consists of various endpoints to:
 
@@ -10,7 +12,7 @@ The Arkane API is the core application of Arkane Network. It's a restful API, wh
 - Create signatures using an Arkane Wallet.
 
 
-==== WHAT
+=== What
 
 ==== Calling the Arkane API
 To call an Arkane API, all you need is an endpoint and a valid authentication. 
@@ -98,9 +100,9 @@ Although the Arkane API supports creating signatures (it's even used as underlyi
 
 TIP: If you want to create signatures on your own domain, use <<arkane-connect,Arkane Connect>>.
 
-=== [[arkane-connect]] ARKANE CONNECT
+== [[arkane-connect]] ARKANE CONNECT
 
-==== WHAT
+=== What
 
 Arkane Connect is an endpoint specifically designed to perform common tasks with Arkane wallets. Connect was created as a way to perform tasks which are
 
@@ -109,7 +111,7 @@ Arkane Connect is an endpoint specifically designed to perform common tasks with
 
 Basically, Arkane Connect is a small web application without a central entry point. Calls to Arkane Connect are made by navigating to a specific url. Although you can use it by itself - by manually crafting the urls - we also provide a javascript SDK.  
 
-==== HOW    
+=== How    
 
 Arkane connect can be called by navigating to a specifically crafted URI. 
 
@@ -117,7 +119,7 @@ There are 2 ways of calling Arkane Connect, the *GET* or *POST* method. For secu
 
 NOTE: Although Arkane Connect can be called natively, we advise you to use the Arkane Connect JS Library when possible.
 
-===== GET Method
+==== GET Method
 
 . Example call
 
@@ -130,7 +132,8 @@ NOTE: Although Arkane Connect can be called natively, we advise you to use the A
 |=== 
 
 
-*Query Parameters*
+===== Query Parameters
+
 |=== 
 | *bearerToken* | the security token which performs the authentication.
 | *redirectUrl* | the url to redirect to after the action has been performed. If the redirectUrl was not passed, the referer will be used instead.
@@ -140,7 +143,7 @@ NOTE: Although Arkane Connect can be called natively, we advise you to use the A
 NOTE: Make sure all query parameters are url encoded (ex. https://www.urlencoder.org/)
 
 
-===== POST Method (recommended)
+==== POST Method (recommended)
 
 . Example call
 
@@ -148,7 +151,7 @@ NOTE: Make sure all query parameters are url encoded (ex. https://www.urlencoder
 
 `https://connect.arkane.network/wallets/manage/vechain`
 
-*Query Parameters*
+===== Query Parameters
 
 |=== 
 | *redirectUrl* | the url to redirect to after the action has been performed. If the redirectUrl was not passed, the referer will be used instead.
@@ -203,4 +206,4 @@ Allowed redirect urls:
 
 
 
-link:authentication[Authentication]
+include::authentication[Authentication]

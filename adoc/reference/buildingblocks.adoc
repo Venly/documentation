@@ -142,6 +142,7 @@ NOTE: Make sure all query parameters are url encoded (ex. https://www.urlencoder
 
 |=== 
 | *redirectUrl* | the url to redirect to after the action has been performed. If the redirectUrl was not passed, the referer will be used instead.
+| *correlationID* | an optional identifier which can be added. Upon navigating back to your *redirectUrl*, after an action was performed, this *correlationID* will be appended to your URL, so the origin can be tracked.  
 |=== 
 
 . Post Parameters

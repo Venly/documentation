@@ -68,6 +68,8 @@ Content-Type: application/json
 User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/1.0 (KHTML, like Gecko; Gmail Actions)
 ----
 
+Bearer tokens can be acquired by using our <<arkane-identity,Arkane Identity Component>>
+
 ===== API Key
 
 API Keys are also supported, in a limited fashion. An API key is generated through the Arkane Webapp and is always linked to a single wallet.
@@ -94,9 +96,9 @@ https://api-staging.arkane.network
 
 Although the Arkane API supports creating signatures (it's even used as underlying building block of Arkane Connect), creating signatures is only possible when using *API Keys*. The main reason we block signature requests from being performed on other domains is because we don't want the user to enter his *private pin* on an untrusted domain. 
 
-TIP: If you want to create signatures on your own domain, use *Arkane Connect*.
+TIP: If you want to create signatures on your own domain, use <<arkane-connect,Arkane Connect>>.
 
-=== ARKANE CONNECT
+=== [[arkane-connect]] ARKANE CONNECT
 
 ==== WHAT
 
@@ -168,7 +170,7 @@ https://connect.arkane.network
 .Staging
 https://connect-staging.arkane.network
 
-=== ARKANE IDENTITY
+=== [[arkane-identity]] ARKANE IDENTITY
 
 Our third and final building block is Arkane Identity.
 Arkane Identity's sole purpose is to provide a way to authenticate to the Arkane Network using OAuth2.

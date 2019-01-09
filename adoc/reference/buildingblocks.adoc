@@ -105,7 +105,7 @@ Arkane connect can be called by navigating to a specifically crafted URI.
 
 There are 2 ways of calling Arkane Connect, the *GET* or *POST* method. For security reasons, we advise to use the *POST* method, as this doesn't leak the short-lived bearer tokens as GET-parameters.
 
-NOTE: Although Arkane Connect can be called natively, we advise you to use the Arkane Connect JS Library.
+NOTE: Although Arkane Connect can be called natively, we advise you to use the Arkane Connect JS Library when possible.
 
 ===== GET Method
 

@@ -151,7 +151,7 @@ NOTE: Make sure all query parameters are url encoded (ex. https://www.urlencoder
 |===
 
 
-=== Arkane Identity
+=== ARKANE IDENTITY
 
 Our third and final building block is Arkane Identity.
 Arkane Identity's sole purpose is to provide a way to authenticate to the Arkane Network using OAuth2.

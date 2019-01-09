@@ -107,9 +107,6 @@ There are 2 ways of calling Arkane Connect, the *GET* or *POST* method. For secu
 
 NOTE: Although Arkane Connect can be called natively, we advise you to use the Arkane Connect JS Library.
 
-
-
-
 ===== GET Method
 
 . Example call

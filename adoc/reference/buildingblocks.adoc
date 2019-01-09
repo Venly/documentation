@@ -82,6 +82,14 @@ Content-Type: application/json
 User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/1.0 (KHTML, like Gecko; Gmail Actions)
 ----
 
+===== Environments
+
+.Production
+https://api.arkane.network
+
+.Staging
+https://api-staging.arkane.network
+
 ==== Limitations
 
 Although the Arkane API supports creating signatures (it's even used as underlying building block of Arkane Connect), creating signatures is only possible when using *API Keys*. The main reason we block signature requests from being performed on other domains is because we don't want the user to enter his *private pin* on an untrusted domain. 
@@ -151,9 +159,45 @@ NOTE: Make sure all query parameters are url encoded (ex. https://www.urlencoder
 |===
 
 
+===== Environments
+
+.Production
+https://connect.arkane.network
+
+.Staging
+https://connect-staging.arkane.network
+
 === ARKANE IDENTITY
 
 Our third and final building block is Arkane Identity.
 Arkane Identity's sole purpose is to provide a way to authenticate to the Arkane Network using OAuth2.
+
+For your app, you will need a specific "client ID". You can request one at the Arkane website.
+
+===== Environments
+
+.Production
+url: https://login.arkane.network
+
+client id: _Request a specific application client id_
+
+Allowed redirect urls:
+
+_These can be specified when requesting a new client id_
+
+.Staging
+url: https://login-staging.arkane.network
+
+client id: `Arketype`
+
+Allowed redirect urls:
+
+- http://localhost:4000/*
+- http://localhost:8080/*
+- http://localhost:8081/*
+- http://localhost:9090/*
+- network.arkane.arketype://oauth2redirect
+
+
 
 link:authentication[Authentication]

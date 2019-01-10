@@ -1,4 +1,4 @@
-    [source,http,options="nowrap"]
+[source,http,options="nowrap"]
 ----
 POST /api/transactions/build HTTP/1.1
 Content-Type: application/json;charset=UTF-8

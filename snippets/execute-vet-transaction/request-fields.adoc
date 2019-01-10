@@ -61,9 +61,4 @@
 |data of the to clause
 |Optional
 
-|`+pincode+`
-|`+String+`
-|The pincode of the specified wallet
-|Mandatory, must be between 4-6 digits
-
 |===

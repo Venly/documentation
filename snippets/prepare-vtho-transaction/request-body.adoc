@@ -3,7 +3,6 @@
 {
   "type" : "VTHO_TRANSACTION",
   "walletId" : "1543",
-  "pincode" : null,
   "blockRef" : null,
   "chainTag" : null,
   "expiration" : 0,

@@ -4,7 +4,6 @@ $ curl 'https://api.arkane.network/api/wallets/import' -i -X POST \
     -H 'Content-Type: application/json;charset=UTF-8' \
     -d '{
   "importWalletType" : "VECHAIN_PRIVATE_KEY",
-  "pincode" : "1234",
   "clients" : null,
   "privateKey" : "90765a22db47a27042be069adb38635da9fc55768a958119d6063286a1d7ed28"
 }'

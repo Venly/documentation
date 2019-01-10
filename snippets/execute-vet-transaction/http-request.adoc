@@ -8,13 +8,12 @@ Content-Length: 367
 {
   "type" : "VET_TRANSACTION",
   "walletId" : "1543",
-  "pincode" : "54716",
   "blockRef" : null,
   "chainTag" : null,
   "expiration" : 3,
   "gas" : 23000,
   "gasPriceCoef" : 46576,
-  "nonce" : "0fb54087-02a2-4016-8446-367bc4a79d00",
+  "nonce" : "4f54ba81-67b4-4ba7-939f-9069655eb949",
   "clauses" : [ {
     "to" : "0xdc71b72db51e227e65a45004ab2798d31e8934c9",
     "amount" : 10000000000,

@@ -1,4 +1,4 @@
 [source,options="nowrap"]
 ----
-{"success":true,"result":{"token":"a263d795-add3-48b2-a53e-cf693ece8f48","userId":"davy","walletId":"1","claim":"SIGN_WALLETS","enabled":true,"description":"description"}}
+{"success":true,"result":{"token":"c13f0322-536b-41ae-bc96-c1938485eb00","userId":"davy","walletId":"1","claim":"SIGN_WALLETS","enabled":true,"description":"description"}}
 ----

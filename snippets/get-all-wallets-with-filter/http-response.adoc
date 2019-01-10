@@ -9,7 +9,7 @@ Content-Length: 613
   "address" : "0xae52b72db54e137a65a42434ab2543d31f8454c3",
   "walletType" : "THREEWAY_SHARED",
   "secretType" : "VECHAIN",
-  "createdAt" : [ 2019, 1, 7, 12, 47, 26, 996893000 ],
+  "createdAt" : [ 2019, 1, 9, 16, 10, 47, 523270000 ],
   "archived" : false,
   "alias" : "aliasVechain",
   "description" : "descriptionVechain",

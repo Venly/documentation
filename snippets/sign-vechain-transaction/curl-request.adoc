@@ -5,7 +5,6 @@ $ curl 'http://localhost:8080/api/signatures' -i -X POST \
     -d '{
   "type" : "VECHAIN_TRANSACTION",
   "walletId" : "1",
-  "pincode" : "54973",
   "submit" : false,
   "blockRef" : "0x1",
   "chainTag" : "0x2",

@@ -3,7 +3,6 @@
 $ echo '{
   "type" : "ETH_TRANSACTION",
   "walletId" : "1543",
-  "pincode" : "549644",
   "gasPrice" : 10000000000,
   "gas" : 23000,
   "nonce" : 0,

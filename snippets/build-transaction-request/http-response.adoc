@@ -7,7 +7,6 @@ Content-Length: 397
 {
   "type" : "VECHAIN_VIP180_TRANSACTION",
   "walletId" : "1543",
-  "pincode" : null,
   "blockRef" : null,
   "chainTag" : null,
   "expiration" : 0,

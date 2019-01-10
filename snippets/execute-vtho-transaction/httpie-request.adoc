@@ -3,13 +3,12 @@
 $ echo '{
   "type" : "VTHO_TRANSACTION",
   "walletId" : "1543",
-  "pincode" : "597314",
   "blockRef" : null,
   "chainTag" : null,
   "expiration" : 3,
   "gas" : 23000,
   "gasPriceCoef" : 46576,
-  "nonce" : "18ca7a3e-7498-4121-9d4f-f89ec2db739a",
+  "nonce" : "27b0fb99-c779-4bce-9518-029b2423f67e",
   "clauses" : [ {
     "to" : "0xdc71b72db51e227e65a45004ab2798d31e8934c9",
     "amount" : 10000000000

@@ -1,7 +1,6 @@
 [source,bash]
 ----
 $ echo '{
-  "pincode" : "1234",
   "newPincode" : "4321",
   "hasCustomPin" : "true",
   "recoverable" : "true"

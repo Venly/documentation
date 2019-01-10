@@ -6,7 +6,6 @@ Host: api.arkane.network
 Content-Length: 172
 
 {
-  "pincode" : "1234",
   "alias" : null,
   "hasCustomPin" : true,
   "description" : null,

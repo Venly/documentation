@@ -41,11 +41,6 @@
 |The destination address of the transaction.
 |Mandatory, a valid ethereum address
 
-|`+pincode+`
-|`+String+`
-|The pincode of the specified wallet
-|Mandatory, must be between 4-6 digits
-
 |`+submit+`
 |`+Boolean+`
 |Whether to immediately submit the transaction to the blockchain or not.

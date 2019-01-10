@@ -11,11 +11,6 @@
 |The id of the wallet one wants to sign with.
 |Mandatory
 
-|`+pincode+`
-|`+String+`
-|The pincode of the specified wallet
-|Mandatory, must be between 4-6 digits
-
 |`+data+`
 |`+String+`
 |The arbitrary to sign

@@ -1,6 +1,7 @@
 == Introduction
 
-This guide will get you started on how to build a multi chain blockchain wallet.
+This quickstart will guide you on building your own native mobile application (Android) that uses Arkane. After this intro you should understand how Arkane works and be able to
+integrate all features from the link:reference[Reference documentation].
 
 
 === What you'll build
@@ -134,7 +135,7 @@ In the onCreate section we will setup everything that is necessary for the authe
                 return;
             }
 
-            // <5.a>
+            // <6>
             // if we are not using discovery, build the authorization service configuration directly
             // from the static configuration values.
             if (mConfiguration.getDiscoveryUri() == null) {
@@ -149,7 +150,7 @@ In the onCreate section we will setup everything that is necessary for the authe
                 return;
             }
 
-            // <5.b>
+            // <7>
             // WrongThread inference is incorrect for lambdas
             // noinspection WrongThread
             runOnUiThread(() -> displayLoading("Retrieving discovery document"));
@@ -160,7 +161,7 @@ In the onCreate section we will setup everything that is necessary for the authe
                     mConfiguration.getConnectionBuilder());
         }
 
-        // <5.c>
+        // <8>
         private void recreateAuthorizationService() {
             if (mAuthService != null) {
                 Log.i(TAG, "Discarding existing AuthService instance");
@@ -180,7 +181,7 @@ In the onCreate section we will setup everything that is necessary for the authe
             return new AuthorizationService(this, builder.build());
         }
 
-        // <5.d>
+        // <9>
         @WorkerThread
         private void initializeClient() {
             if (mConfiguration.getClientId() != null) {
@@ -218,31 +219,14 @@ In the onCreate section we will setup everything that is necessary for the authe
                     this::handleRegistrationResponse);
         }
 
-        // <5.e>
-        @MainThread
-        private void handleRegistrationResponse(
-                RegistrationResponse response,
-                AuthorizationException ex) {
-            mAuthStateManager.updateAfterRegistration(response, ex);
-            if (response == null) {
-                Log.i(TAG, "Failed to dynamically register client", ex);
-                displayErrorLater("Failed to register client: " + ex.getMessage(), true);
-                return;
-            }
-
-            Log.i(TAG, "Dynamically registered client: " + response.clientId);
-            mClientId.set(response.clientId);
-            initializeAuthRequest();
-        }
-
-        // <5.d.i>
+        // <11>
         @MainThread
         private void initializeAuthRequest() {
             createAuthRequest("");
             warmUpBrowser();
         }
 
-        // <5.d.ii>
+        // <12>
         private void createAuthRequest(@Nullable String loginHint) {
             Log.i(TAG, "Creating auth request for login hint: " + loginHint);
             AuthorizationRequest.Builder authRequestBuilder = new AuthorizationRequest.Builder(
@@ -262,7 +246,7 @@ In the onCreate section we will setup everything that is necessary for the authe
             mAuthRequest.set(authRequestBuilder.build());
         }
 
-        // <5.d.iii>
+        // <13>
         private void warmUpBrowser() {
             mAuthIntentLatch = new CountDownLatch(1);
             mExecutor.execute(() -> {
@@ -274,22 +258,39 @@ In the onCreate section we will setup everything that is necessary for the authe
                 mAuthIntentLatch.countDown();
             });
         }
+
+        // <10>
+        @MainThread
+        private void handleRegistrationResponse(
+                RegistrationResponse response,
+                AuthorizationException ex) {
+            mAuthStateManager.updateAfterRegistration(response, ex);
+            if (response == null) {
+                Log.i(TAG, "Failed to dynamically register client", ex);
+                displayErrorLater("Failed to register client: " + ex.getMessage(), true);
+                return;
+            }
+
+            Log.i(TAG, "Dynamically registered client: " + response.clientId);
+            mClientId.set(response.clientId);
+            initializeAuthRequest();
+        }
 ----
 
-. Create the state manager for the authentication and parse the configuration (the json file)
-. If the user is already authenticated, start the next intent
-. If configuration is invalid, show an error
-. When auth failed, call a function to handle this
-. Setup of the AppAuth library
-.. You can specify each endpoint seperatly if preferred
-.. Use discovery endpoint for getting all the correct endpoints
-.. Create the authorization service
-... Select which browser to use for authentication, use ANY for auto selection
-.. Initialize the client with client id etc.
-... Initialize the authentication request
-... Create the authentication request
-... Warmup browser (performance optimization)
-.. Handle the registration response
+* Create the state manager for the authentication and parse the configuration (the json file) [.conum]#1#
+* If the user is already authenticated, start the next intent [.conum]#2#
+* If configuration is invalid, show an error [.conum]#3#
+* When auth failed, call a function to handle this [.conum]#4#
+* Setup of the AppAuth library [.conum]#5#
+** You can specify each endpoint seperatly if preferred [.conum]#6#
+** Use discovery endpoint for getting all the correct endpoints [.conum]#7#
+** Create the authorization service [.conum]#8#
+*** Select which browser to use for authentication, use ANY for auto selection [.conum]#9#
+** Initialize the client with client id etc.
+*** Initialize the authentication request [.conum]#11#
+*** Create the authentication request [.conum]#12#
+*** Warmup browser (performance optimization) [.conum]#13#
+** Handle the registration response [.conum]#10#
 
 [NOTE]
 ====
@@ -332,9 +333,9 @@ When a user clicks a button, a custom tab should open where the user can log int
 
 ----
 
-. Add an on click listener when a user wants to authenticate
-. Submit the authentication to the executor (separate thread)
-. Create an authentication intent and start it
+<.> Add an on click listener when a user wants to authenticate
+<.> Submit the authentication to the executor (separate thread)
+<.> Create an authentication intent and start it
 
 
 == Wallets
@@ -391,10 +392,10 @@ Make sure all query parameters are url encoded (ex. https://www.urlencoder.org/)
     }
 ----
 
-. Add a click listener to manage wallets
-. Get current authentication state
-. Get a valid access token
-. Open a custom tabs intent with the correct URL
+<.> Add a click listener to manage wallets
+<.> Get current authentication state
+<.> Get a valid access token
+<.> Open a custom tabs intent with the correct URL
 
 === Link wallets
 This allows users to link his existing wallets with your application. The difference with <<Manage wallets>>:
@@ -441,10 +442,10 @@ The endpoint to link wallets:
     }
 ----
 
-. Add a click listener to link wallets
-. Get current authentication state
-. Get a valid access token
-. Open a custom tabs intent with the correct URL
+<.> Add a click listener to link wallets
+<.> Get current authentication state
+<.> Get a valid access token
+<.> Open a custom tabs intent with the correct URL
 
 === View wallets
 If you want to retrieve the wallets for a user, you can call the <<rest-api-public.html#_get_all_user_wallets,API endpoint for listing user wallets>>.

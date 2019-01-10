@@ -6,6 +6,8 @@ You can leverage the power of these building blocks to easily enable blockchain 
 
 == Arkane API
 
+=== What
+
 The Arkane API is the core application of Arkane Network. It's a restful API, which consists of various endpoints to:
 
 - View a user's wallets
@@ -14,9 +16,7 @@ The Arkane API is the core application of Arkane Network. It's a restful API, wh
 - Create signatures using an Arkane Wallet.
 
 
-=== What
-
-==== Calling the Arkane API
+=== How
 To call an Arkane API, all you need is an endpoint and a valid authentication. 
 
 WARNING: The Arkane API can also be used with API keys instead of Bearer Tokens. Using this authentication method is only encouraged in small scripts.

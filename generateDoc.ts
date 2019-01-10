@@ -133,7 +133,7 @@ function operate(line: string, titlePrefix: string) {
             const u = t.replace(/-/g, '_');
             const title = titlePrependExample(t.replace(/-/g, ' ').replace('http', 'HTTP'), t);
 
-            result += `\n\n[[example_${u}_${name}]]\n${titlePrefix} ${capitalize(title)}\n\ninclude::{snippets}/${name}/${t}.adoc[]`;
+            result += `\n\n[.sect-${type}]\n[[example_${u}_${name}]]\n${titlePrefix} ${capitalize(title)}\n\ninclude::{snippets}/${name}/${t}.adoc[]`;
         });
         return result.trimLeft();
     }

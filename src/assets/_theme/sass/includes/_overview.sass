@@ -1,39 +1,155 @@
-.overview__container
-  display: flex
-  justify-content: center
-  padding: 2rem 5rem
-  margin-bottom: 2rem
+.page--overview
+  background: $color-white-gray
+  .page-top__content,
+  .page-main__content
+    background: $color-white-gray
+  .page-top
+    padding-bottom: rem(78px)
+    &::after
+      background-color: $color-greyish-brown
+      height: rem(80px)
+      width: 100%
+  .page-bg
+    display: none
+
+.overview
+  color: $color-text
+
+  &__title,
+  &__subtitle
+    text-align: center
+
+  &__title
+    font-size: $font-size-heading-h2
+    margin-top: rem(72px)
+  &__subtitle
+    font-size: $font-size-big
+
+  &__container
+    display: flex
+    justify-content: center
+    padding: 2rem 0
+    margin: 0
+    @include media(desktop)
+      margin: 0 rem(-70px)
+    @include media(wide)
+      margin: 0 rem(-120px)
+    > *
+      flex-grow: 1
+      flex-basis: 0
+
+.overview__footer
+  text-align: center
+  font-size: $font-size-bigger
+  padding: rem(0 0 32px 0)
+
+.overview-note
+  font-size: $font-size-heading-h2
+  height: rem(100px)
+
+  &__content
+    text-align: center
+    position: absolute
+    left: 0
+    right: 0
+    border-top: 2px solid #E8E8E8
+    border-bottom: 2px solid #E8E8E8
+    &::after
+      display: block
+      position: absolute
+      content: ''
+      bottom: 0
+      top: 0
+      width: 100vw
+      background: #c0dde6
+
+  &__text
+    font-size: $font-size-regular
+    line-height: $line-height-regular
+    @include media(tablet)
+      font-size: $font-size-default
+    @include media(tablet-ls)
+      font-size: $font-size-big
+    @include media(desktop)
+      font-size: $font-size-bigger
+  &__bg-wrapper
+    position: relative
+    z-index: 1
+    display: inline-flex
+    padding: rem(0 140px)
+    height: rem(100px)
+    align-items: center
+    background-color: $color-white
+    &::after,
+    &::before
+      content: ''
+      display: block
+      position: absolute
+      width: rem(100px)
+      height: 100%
+      top: 0
+    &::before
+      left: 0
+      transform: translateX(-99%)
+      background-image: url(../img/overview/bg-triangle-left.svg)
+    &::after
+      right: 0
+      transform: translateX(99%)
+      background-image: url(../img/overview/bg-triangle-right.svg)
 
 .quickstart
-  background: $color-white
   text-align: center
   display: flex
   flex-wrap: wrap
   justify-content: center
   align-items: flex-start
-  padding: rem(20px)
-  margin: 0 rem(28px) rem(28px) rem(28px)
+  padding: rem(24px)
+  margin: rem(0 28px 28px 28px)
   border-radius: $border-radius-small
-  font-size: $font-size-small
+  font-size: $font-size-big
   transition: background-color $transition-default
   text-decoration: none
-  color: $color-text
+  border: 2px solid $color-transparent
   > *
     width: 100%
 
-  .title
-    font-size: $font-size-regular
+  &__image
+    height: rem(90px)
+    min-width: rem(120px)
+    margin: rem(20px 30px 40px 30px)
+
+  &__svg
+    max-height: 100%
+    max-width: 100%
+    .svg-group
+      transition-duration: 500ms
+      transition-timing-function: ease-out
+      transition-property: transform, scale, opacity
+
+  &__title
     margin-bottom: rem(20px)
+
+  &__title,
+  &__description
+    font-size: $font-size-big
+    color: $color-text
+
+  &__sample
+    font-size: $font-size-big
+    color: #8e8e8e
 
   .btn
     opacity: 0
     align-self: flex-end
+    text-transform: uppercase
+    font-size: $font-size-big
     transition: opacity $transition-default
+    margin: 0
 
   &:hover
     text-decoration: none
-    color: $color-text
-    background-color: $color-white-smoke
+    background-color: $color-white
+    border-color: #f0f0f0
     .btn
       opacity: 1
 

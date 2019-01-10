@@ -1,63 +1,263 @@
 ---
-title: Documentation
+title: Arkane Documentation
+bodyClass: page--overview
 ---
 
-<div id="content">
-  <!--[if lte IE 9]>
-  <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and
-    security.</p>
-  <![endif]-->
+<div class="overview overview--getting-started">
+  <h2 class="overview__title">Getting Started</h2>
+  <h3 class="overview__subtitle">
+    <div>Want to get started immediately?</div>
+    <div>Select on of our Quick Start guides:</div>
+  </h3>
+  <div class="overview__container">
+    <a href="/pages/mobile-multi-chain-wallet.html" class="quickstart">
+      <div class="quickstart__image quickstart__image--square">
+        <svg class="quickstart__svg" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 100 100" xml:space="preserve">
+          <style type="text/css">
+            .st0{fill:#EF4B89;}
+            .square-big-full {
+              opacity: 1;
+              transition-delay: 0ms;
+            }
+            .square-small-full {
+              opacity: 0;
+              transition-delay: 400ms;
+            }
+            .square-big-full,
+            .square-small-full {
+              transition-duration: 100ms !important;
+            }
+            .quickstart:hover .square-big { transform: translate(20%, -20%); }
+            .quickstart:hover .square-small { transform: translate(-39%, 39%); }
+            .quickstart:hover .square-big-full { opacity: 0; transition-delay: 350ms; }
+            .quickstart:hover .square-small-full { opacity: 1; transition-delay: 0ms; }
+          </style>
+          <g class="svg-group square-small">
+            <g>
+              <polygon class="st0" points="40.5,0.5 40.5,18.2 43.5,18.2 43.5,3.5 96.5,3.5 96.5,56.5 82,56.5 82,59.5 99.5,59.5 99.5,0.5 		"/>
+              <polygon class="st0" points="74,56.5 43.5,56.5 43.5,26.2 40.5,26.2 40.5,59.5 74,59.5 		"/>
+            </g>
+            <g class="svg-group square-small-full">
+              <path class="st0" d="M99.5,59.5h-59v-59h59V59.5z M43.5,56.5h53v-53h-53V56.5z"/>
+            </g>
+          </g>
+          <g class="svg-group square-big">
+            <g class="svg-group square-big-full">
+              <path d="M80,100H0V20h80V100z M4,96h72V24H4V96z"/>
+            </g>
+            <g>
+              <polygon points="0,20 0,57.5 4,57.5 4,24 76,24 76,96 42.5,96 42.5,100 80,100 80,20 		"/>
+              <polygon points="35.5,96 4,96 4,64.5 0,64.5 0,100 35.5,100 		"/>
+            </g>
+          </g>
+        </svg>
+      </div>
+      <strong class="quickstart__title">Native/Mobile App</strong>
+      <p class="quickstart__description">Mobile or Desktop app that runs natively on a device</p>
+      <p class="quickstart__sample">e.g., iOS, Android</p>
+      <button class="btn btn-success btn-sm">Launch Quickstart</button>
+    </a>
 
-  <!-- Add your site or application content here -->
-  <ul>
-    <li><a href="pages/rest-api-public.html">REST API</a></li>
-    <li><a href="pages/js-multi-chain-wallet.html">Building a multi-chain wallet</a></li>
-    <li><a href="pages/reference.html">Reference</a></li>
-  </ul>
+    <a href="/pages/js-multi-chain-wallet.html" class="quickstart">
+      <div class="quickstart__image quickstart__image--triangle">
+        <svg class="quickstart__svg" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 100 100" xml:space="preserve">
+          <style type="text/css">
+            .st0{fill:#EF4B89;}
+            .quickstart .triangle-small-full {
+              opacity: 0;
+              transition-duration: 100ms;
+              transition-delay: 400ms;
+            }
+            .quickstart .triangle-small {
+              transform-origin: 68% 68%;
+            }
+            .quickstart:hover .triangle-small {
+              transform: translate(-17%, 6%) rotate(-120deg);
+              transform-origin: 68% 68%;
+            }
+            .quickstart:hover .triangle-small-full {
+              opacity: 1;
+              transition-delay: 0ms;
+            }
+            .quickstart:hover .triangle-big {
+              transform: translateX(5%);
+            }
+          </style>
+          <g class="svg-group triangle-small">
+            <g class="svg-group triangle-small-full">
+	            <path class="st0" d="M100,86H37l31.5-54.5L100,86z M42.2,83h52.5L68.5,37.5L42.2,83z"/>
+            </g>
+            <g>
+              <polygon class="st0" points="62.6,47.7 68.5,37.5 94.8,83 83,83 84.7,86 100,86 68.5,31.5 60.9,44.7 		"/>
+              <polygon class="st0" points="73.9,83 42.2,83 58,55.6 56.3,52.6 37,86 75.6,86 		"/>
+            </g>
+          </g>
+          <g class="svg-group triangle-big">
+            <path d="M45.5,30l19.1,33l19.1,33H45.5H7.4l19.1-33L45.5,30 M45.5,22L23,61L0.5,100h45h45L68,61L45.5,22L45.5,22z"/>
+          </g>
+        </svg>
+      </div>
+      <strong class="quickstart__title">Javascript / Single Page App</strong>
+      <p class="quickstart__description">JavaScript snippet that runs in the browser</p>
+      <p class="quickstart__sample">e.g. Vanilla Javascript, jQuery, Angular, React</p>
+      <button class="btn btn-success btn-sm">Launch Quickstart</button>
+    </a>
 
-  <div class="overview">
-    <p class="navigator-title">Choose your application type</p><br>
-    <div class="overview__container">
-      <a href="/pages/mobile-multi-chain-wallet.html" class="quickstart">
-        <div class="symbol"></div>
-        <strong class="title">Native/Mobile App</strong>
-        <p class="description">Mobile or Desktop app that runs natively on a device</p>
-        <p class="sample">e.g., iOS, Android</p>
-        <button class="btn btn-success btn-sm">Launch Quickstart</button>
-      </a>
+    <a href="/pages/serverside-multi-chain-wallet.html" class="quickstart" data-type="webapp">
+      <div class="quickstart__image quickstart__image--circle">
+        <svg class="quickstart__svg" x="0px" y="0px" viewBox="0 0 100 100" xml:space="preserve">
+          <style type="text/css">
+            .st0 {
+              fill: #EF4B89;
+            }
 
-      <a href="/pages/js-multi-chain-wallet.html" class="quickstart">
-        <div class="symbol"></div>
-        <strong class="title">Plain Javascript</strong>
-        <p class="description">JavaScript snippet that runs in the browser</p>
-        <p class="sample">e.g. Vanilla Javascript, jQuery</p>
-        <button class="btn btn-success btn-sm">Launch Quickstart</button>
-      </a>
+            .quickstart #svg-circle-small {
+              transform-origin: 71% 33%;
+            }
 
-      <!--<a href="/pages/spa" class="quickstart">-->
-        <!--<div class="symbol"></div>-->
-        <!--<strong class="title">Single-Page App</strong>-->
-        <!--<p class="description">JavaScript web app that runs in the browser</p>-->
-        <!--<p class="sample">e.g. Angular.JS + NodeJS, React</p>-->
-        <!--<button class="btn btn-success btn-sm">Launch Quickstart</button>-->
-      <!--</a>-->
+            .quickstart:hover #svg-circle-small {
+              transform: rotate(360deg);
+            }
+          </style>
+          <g id="svg-circle-small" class="svg-group">
+            <path class="st0" d="M73.7,60.9c0.2-1.1,0.3-2.1,0.4-3.1c-1,0.1-2,0.2-3.1,0.2c-13.8,0-25-11.2-25-25c0-3.7,0.8-7.2,2.3-10.4
+              c-1-0.2-2-0.4-3.1-0.6l-1-0.1C42.8,25.3,42,29.1,42,33c0,16,13,29,29,29c0.9,0,1.7,0,2.5-0.1L73.7,60.9z"/>
+            <path class="st0" d="M71,4c-8.2,0-15.5,3.4-20.8,8.8c1,0.2,2,0.5,2.9,0.8l1.6,0.5C59.1,10.3,64.8,8,71,8c13.8,0,25,11.2,25,25
+              c0,9-4.7,16.8-11.8,21.2l0,1.6c0,1-0.1,2-0.2,3c9.5-4.8,16-14.6,16-25.9C100,17,87,4,71,4z"/>
+          </g>
+          <g id="svg-circle-big" class="svg-group">
+            <path d="M40.6,95.9C18.2,95.9,0,77.7,0,55.3s18.2-40.6,40.6-40.6s40.6,18.2,40.6,40.6S63,95.9,40.6,95.9z M40.6,18.7
+              C20.4,18.7,4,35.1,4,55.3c0,20.2,16.4,36.6,36.6,36.6c20.2,0,36.6-16.4,36.6-36.6C77.2,35.1,60.8,18.7,40.6,18.7z"/>
+          </g>
+        </svg>
+      </div>
+      <strong class="quickstart__title">Regular Web App</strong>
+      <p class="quickstart__description">Traditional web app that runs on the server</p>
+      <p class="quickstart__sample">e.g. Express.js, ASP.NET</p>
+      <button class="btn btn-success btn-sm">Launch Quickstart</button>
+    </a>
 
-      <a href="/serverside-multi-chain-wallet.html" class="quickstart" data-type="webapp">
-        <div class="symbol"></div>
-        <strong class="title">Regular Web App</strong>
-        <p class="description">Traditional web app that runs on the server</p>
-        <p class="sample">e.g. Express.js, ASP.NET</p>
-        <button class="btn btn-success btn-sm">Launch Quickstart</button>
-      </a>
+    <a href="/pages/reference.html" class="quickstart" data-type="backend">
+      <div class="quickstart__image quickstart__image--star">
+        <svg class="quickstart__svg" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 100 100" xml:space="preserve">
+          <style type="text/css">
+              .st0 {
+                fill: #EF4B89;
+              }
 
-      <a href="/pages/rest-api-public.html" class="quickstart" data-type="backend">
-        <div class="symbol"></div>
-        <strong class="title">Backend/API</strong>
-        <p class="description">An API or service</p>
-        <p class="sample">e.g. xxx, xxx</p>
-        <button class="btn btn-success btn-sm">Launch Quickstart</button>
-      </a>
-    </div>
+              .svg-group.star-inner {
+                transform: scale(0, 0);
+                transform-origin: 42% 55%;
+                transition-timing-function: ease-in;
+              }
+
+              .svg-group.star-outer {
+                transition-delay: 250ms;
+              }
+
+              .svg-group.star-outer {
+                transform-origin: 68% 61%
+              }
+
+              .quickstart:hover .svg-group.inner-group {
+                transform: translateX(8%);
+                transition-duration: 300ms;
+              }
+
+              .quickstart:hover .star-inner {
+                transform: scale(1, 1);
+                transition-delay: 250ms;
+              }
+
+              .quickstart:hover .star-outer {
+                transform: scale(0, 0);
+                transition-delay: 0ms;
+              }
+          </style>
+          <g class="svg-group star-outer">
+            <polygon class="st0" points="57.7,72.5 57.2,69.6 55.8,70.3 58.2,55.9 58.5,54.5 57.4,53.4 47,43.3 48.5,43 47.2,40.4 41,41.3
+              55.5,55.4 52.1,75.4"/>
+            <polygon class="st0" points="99,41.3 79,38.4 70,20.2 61,38.4 55.5,39.2 56.8,41.8 61.4,41.2 62.9,41 63.5,39.6 70,26.6 76.5,39.6
+              77.1,41 78.6,41.2 93,43.3 82.6,53.5 81.5,54.5 81.7,55.9 84.2,70.3 71.3,63.5 70,62.8 69.3,63.2 64.9,67.5 65.1,68.5 70,66
+              87.9,75.4 84.5,55.5"/>
+          </g>
+          <g class="svg-group inner-group">
+            <g class="svg-group star-inner">
+              <path class="st0" d="M42,35.6l6.5,13.1l0.6,1.3l1.5,0.2L65,52.3L54.6,62.5l-1.1,1l0.2,1.4l2.5,14.4l-12.9-6.8L42,71.8l-1.3,0.7
+                l-12.9,6.8l2.5-14.4l0.2-1.4l-1-1L19,52.3l14.4-2.1l1.5-0.2l0.6-1.3L42,35.6 M42,29.2l-9,18.2l-20,2.9l14.5,14.1l-3.4,20L42,75
+                l17.9,9.4l-3.4-20L71,50.3l-20-2.9L42,29.2L42,29.2z"/>
+            </g>
+            <path d="M42,25.3l9.3,18.8l0.9,1.9l2.1,0.3l20.7,3L60,63.9l-1.5,1.5l0.4,2.1l3.5,20.6l-18.5-9.7l-1.9-1l-1.9,1L21.6,88l3.5-20.6
+              l0.4-2.1L24,63.9L9,49.3l20.7-3l2.1-0.3l0.9-1.9L42,25.3 M42,16.3l-12.9,26L0.4,46.5l20.8,20.3l-4.9,28.6L42,81.9l25.7,13.5
+              l-4.9-28.6l20.8-20.3l-28.7-4.2L42,16.3L42,16.3z"/>
+          </g>
+        </svg>
+      </div>
+      <strong class="quickstart__title">Backend/API</strong>
+      <p class="quickstart__description">An API or service with blockchain integration</p>
+      <p class="quickstart__sample">e.g. Express js API, ASP.NET API</p>
+      <button class="btn btn--primary">Launch Quickstart</button>
+    </a>
   </div>
 
+  <div class="overview__footer">Don't forget to check out our <a href="">JavaScript SDK</a>, recommended for most applications!</div>
+</div>
+
+<div class="overview-note overview-note">
+  <div class="overview-note__content">
+    <span class="overview-note__bg-wrapper">
+      <span class="overview-note__text">
+        <i class="far fa-graduation-cap"></i> Mastered our Quick Start guides? Go directly to our <a href="" class="link link--blue">Reference documentation</a>.
+      </span>
+    </span>
+  </div>
+</div>
+
+<div class="overview overview--building-blocks">
+  <h2 class="overview__title">Building Blocks</h2>
+  <h3 class="overview__subtitle">
+    <div>The different components</div>
+    <div>developers can use to create their apps</div>
+  </h3>
+  <div class="overview__container">
+    <a href="/pages/mobile-multi-chain-wallet.html" class="quickstart">
+      <div class="symbol"></div>
+      <strong class="title">Native/Mobile App</strong>
+      <p class="description">Mobile or Desktop app that runs natively on a device</p>
+      <p class="sample">e.g., iOS, Android</p>
+      <button class="btn btn-success btn-sm">Launch Quickstart</button>
+    </a>
+
+    <a href="/pages/js-multi-chain-wallet.html" class="quickstart">
+      <div class="symbol"></div>
+      <strong class="title">Plain Javascript</strong>
+      <p class="description">JavaScript snippet that runs in the browser</p>
+      <p class="sample">e.g. Vanilla Javascript, jQuery</p>
+      <button class="btn btn-success btn-sm">Launch Quickstart</button>
+    </a>
+
+    <!--<a href="/pages/spa" class="quickstart">-->
+    <!--<div class="symbol"></div>-->
+    <!--<strong class="title">Single-Page App</strong>-->
+    <!--<p class="description">JavaScript web app that runs in the browser</p>-->
+    <!--<p class="sample">e.g. Angular.JS + NodeJS, React</p>-->
+    <!--<button class="btn btn-success btn-sm">Launch Quickstart</button>-->
+    <!--</a>-->
+
+    <a href="/pages/serverside-multi-chain-wallet.html" class="quickstart" data-type="webapp">
+      <div class="symbol"></div>
+      <strong class="title">Regular Web App</strong>
+      <p class="description">Traditional web app that runs on the server</p>
+      <p class="sample">e.g. Express.js, ASP.NET</p>
+      <button class="btn btn-success btn-sm">Launch Quickstart</button>
+    </a>
+
+    <a href="/pages/reference.html" class="quickstart" data-type="backend">
+      <div class="symbol"></div>
+      <strong class="title">Backend/API</strong>
+      <p class="description">An API or service</p>
+      <p class="sample">e.g. xxx, xxx</p>
+      <button class="btn btn-success btn-sm">Launch Quickstart</button>
+    </a>
+  </div>
 </div>

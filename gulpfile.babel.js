@@ -92,7 +92,7 @@ gulp.task('copy', [
 gulp.task('copy:pageImg', () => {
     gulp.src([
         // Copy all files
-        `${dirs.src}/**/img/*`
+        `${dirs.src}/**/img/**/*`
     ], {
         // Include hidden files by default
         dot: true,

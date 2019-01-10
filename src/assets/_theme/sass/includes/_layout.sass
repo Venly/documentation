@@ -1,7 +1,9 @@
 body, html
   background-color: $color-white-gray
-  color: $color-text
   font-size: $font-size-base
+
+a
+  transition: color 200ms ease-out
 
 .stuck
   @include media(tablet-ls)
@@ -93,7 +95,7 @@ body, html
   line-height: 1
   text-align: center
   white-space: nowrap
-  vertical-align: baseline
+  vertical-align: middle
   border-radius: .25rem
   font-size: $font-size-small
 

@@ -3,7 +3,13 @@
 
 {{>head}}
 
-<body>
+<body class="{{bodyClass}}">
+
+<!--[if lte IE 9]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and
+  security.</p>
+<![endif]-->
+
 <div class="page-bg"></div>
 <div class="page-top">
   <div class="page-top__content">
@@ -13,7 +19,7 @@
 </div>
 <div class="page-main">
   <div class="page-main__content">
-    <h1>{{title}}</h1>
+    <h1 class="sr-only">{{title}}</h1>
 
     {{> body}}
 

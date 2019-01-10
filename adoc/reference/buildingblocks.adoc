@@ -175,18 +175,18 @@ https://connect.arkane.network
 .Staging
 https://connect-staging.arkane.network
 
-=== [[arkane-identity]] ARKANE IDENTITY
+== [[arkane-identity]] ARKANE IDENTITY
 
 Our third and final building block is Arkane Identity.
 Arkane Identity's sole purpose is to provide a way to authenticate to the Arkane Network using OAuth2.
 
 For your app, you will need a specific "client ID". You can request one at the Arkane website.
 
-==== Overview
+=== Overview
 Arkane Network uses https://openid.net/connect/[OpenID Connect]'s Authorization Code Flow footnote:[https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth] for it's authentication and authorization. Below is a guide to obtain a access token manually, but for added security we recommended using a library for handling authentication/authorization. Only use the manual flow if you are very well known with OpenID Connect.
 
-==== Obtaining an access token
-===== Step 1 - Request an Authorization Code
+=== Obtaining an access token
+==== Step 1 - Request an Authorization Code
 
 Navigate your user to our OpenId Provider. He will be prompted with a form asking him to enter his username and password (when not already authenticated). Once he is authenticated, he will be redirected back to the provided `redirect_uri`, but with a `code` request parameter added to the URI. This must be used in the next step. footnote:[https://openid.net/specs/openid-connect-core-1_0.html#rfc.section.3.1.2]
 
@@ -212,7 +212,7 @@ Look for the `code` request parameter added by our OpenId Provider.
 http://localhost:4000/?session_state=3f365215-13b0-48c1-b6ca-fd73daaa24df&code=eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..j2EibasE4A-vK1OKdb4N7Q.akQJKp04OGQOZ6amGQIiwbAr70nv0BYAEMx3jKXKI7RG2R76cnW9OknOfnKjPxZr6dy-7LB1-lFN1W5uhNeMZ5moHNs9B9IPBjMZSafXypSBHj9ANSrGmV71volVRT2r9TU2SHFVS3aF9PLZk556HnxTxZkEXjd5HzL14B6vNdwEv_59OF70yp3HO_TJPBtL65AO6pJ7gtVwjhMuZ6W86p54EWOw5Orvr5E-6Z8fFGBlpXSFpJxvG-duHv8CYL62.yVMr51DCGK3O2kjEvEHvMw
 ```
 
-===== Step 2 - Request an access and refresh token
+==== Step 2 - Request an access and refresh token
 
 To request an access and refresh token, you need to make a `POST` call to the token endpoint of our OpenId Provider, passing it the authorization code that was returned in step 1. footnote:[https://openid.net/specs/openid-connect-core-1_0.html#rfc.section.3.1.3]
 
@@ -257,7 +257,7 @@ Content-Length: 600
 }
 ----
 
-===== Step 3 - Refresh the access token
+==== Step 3 - Refresh the access token
 
 To refresh a token, we can use the same endpoint as in step 2, only this time we supply a different `grant_type` and the refresh token instead of the authorization code. footnote:[https://openid.net/specs/openid-connect-core-1_0.html#rfc.section.12]
 
@@ -302,9 +302,9 @@ Content-Length: 600
 }
 ----
 
-==== Useful endpoints
+=== Useful endpoints
 
-===== 'well-known'
+==== 'well-known'
 .URL
 ```
 GET https://login.arkane.network/auth/realms/Arkane/.well-known/openid-configuration
@@ -312,7 +312,7 @@ GET https://login.arkane.network/auth/realms/Arkane/.well-known/openid-configura
 
 Lists endpoints and other configuration options relevant to the OpenID Connect implementation
 
-===== Authorization
+==== Authorization
 .URL
 ```
 GET https://login.arkane.network/auth/realms/Arkane/protocol/openid-connect/auth
@@ -320,7 +320,7 @@ GET https://login.arkane.network/auth/realms/Arkane/protocol/openid-connect/auth
 
 This endpoint performs authentication of the user. This is done by redirecting the user to this endpoint (see _step 1_ above).
 
-===== Token
+==== Token
 .URL
 ```
 GET https://login.arkane.network/auth/realms/Arkane/protocol/openid-connect/token
@@ -328,7 +328,7 @@ GET https://login.arkane.network/auth/realms/Arkane/protocol/openid-connect/toke
 
 This endpoint is used to obtain tokens. Tokens can either be obtained by exchanging an authorization code or by supplying a refresh token (see _step 2_ and _step 3_ above)
 
-===== Userinfo
+==== Userinfo
 .URL
 ```
 GET https://login.arkane.network/auth/realms/Arkane/protocol/openid-connect/userinfo
@@ -336,7 +336,7 @@ GET https://login.arkane.network/auth/realms/Arkane/protocol/openid-connect/user
 
 This endpoint returns standard information about the authenticated user
 
-===== Logout
+==== Logout
 .URL
 ```
 GET https://login.arkane.network/auth/realms/Arkane/protocol/openid-connect/logout
@@ -351,7 +351,7 @@ This endpoint logs out the authenticated user. +
 The user can be redirected to the endpoint, in which case the active user session is logged out. Afterward the user is redirected back to the application. +
 The endpoint can also be invoked directly by the application. To invoke this endpoint directly the refresh token needs to be included as well as the credentials required to authenticate the client.
 
-===== Certificates
+==== Certificates
 .URL
 ```
 GET https://login.arkane.network/auth/realms/Arkane/protocol/openid-connect/certs
@@ -360,7 +360,7 @@ GET https://login.arkane.network/auth/realms/Arkane/protocol/openid-connect/cert
 This endpoint returns the public keys enabled by the realm, encoded as a JSON Web Key (JWK).
 
 
-==== Environments
+=== Environments
 
 .Production
 url: https://login.arkane.network

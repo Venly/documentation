@@ -87,8 +87,6 @@ operation::get-token-balance[snippets='curl-request,path-parameters,http-respons
 === Transfer [.bb-api]#api#
 This can be used to transfer (native) tokens from a wallet to another wallet. To start a transfer you need to:
 
-operation::build-transaction-request[snippets='curl-request,request-fields,response-body']
-
 .URL
 https://connect-staging.arkane.network/transaction/execute
 

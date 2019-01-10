@@ -123,7 +123,7 @@ NOTE: Although Arkane Connect can be called natively, we advise you to use the A
 
 ==== GET Method
 
-. Example call
+.Example call
 
 `GET`
 
@@ -147,7 +147,7 @@ NOTE: Make sure all query parameters are url encoded (ex. https://www.urlencoder
 
 ==== POST Method (recommended)
 
-. Example call
+.Example call
 
 `POST`
 

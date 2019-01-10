@@ -1,5 +1,4 @@
 .+/api/wallets/1/events+
 |===
 |Parameter|Description
-
 |===

@@ -4,10 +4,10 @@ POST /api/transactions/prepare HTTP/1.1
 Content-Type: application/json;charset=UTF-8
 Host: api.arkane.network
 Content-Length: 226
-
 {
   "type" : "ETH_TRANSACTION",
   "walletId" : "283",
+  "pincode" : null,
   "gasPrice" : null,
   "gas" : null,
   "nonce" : null,

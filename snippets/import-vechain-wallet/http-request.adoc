@@ -4,7 +4,6 @@ POST /api/wallets/import HTTP/1.1
 Content-Type: application/json;charset=UTF-8
 Host: api.arkane.network
 Content-Length: 863
-
 {
   "importWalletType" : "VECHAIN_KEYSTORE",
   "clients" : null,

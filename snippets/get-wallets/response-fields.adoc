@@ -1,8 +1,6 @@
 |===
 |Path|Type|Description
-
 |`+.[]+`
 |`+Array+`
 |An array of wallets of the user
-
 |===

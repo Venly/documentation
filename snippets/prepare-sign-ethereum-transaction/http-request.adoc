@@ -7,7 +7,6 @@ Content-Length: 249
 {
   "type" : "ETHEREUM_TRANSACTION",
   "walletId" : "1",
-  "pincode" : null,
   "submit" : false,
   "gasPrice" : null,
   "gas" : null,

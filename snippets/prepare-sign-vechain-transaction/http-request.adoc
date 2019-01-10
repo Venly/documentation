@@ -7,7 +7,6 @@ Content-Length: 337
 {
   "type" : "VECHAIN_TRANSACTION",
   "walletId" : "1",
-  "pincode" : null,
   "submit" : false,
   "blockRef" : null,
   "chainTag" : null,

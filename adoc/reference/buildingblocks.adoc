@@ -307,41 +307,51 @@ Content-Length: 600
 
 ==== 'well-known'
 .URL
-```
+.Example response
+[source,http,options="nowrap"]
+----
 GET https://login.arkane.network/auth/realms/Arkane/.well-known/openid-configuration
-```
+----
 
 Lists endpoints and other configuration options relevant to the OpenID Connect implementation
 
 ==== Authorization
 .URL
-```
+.Example response
+[source,http,options="nowrap"]
+----
 GET https://login.arkane.network/auth/realms/Arkane/protocol/openid-connect/auth
-```
+----
 
 This endpoint performs authentication of the user. This is done by redirecting the user to this endpoint (see _step 1_ above).
 
 ==== Token
 .URL
-```
+.Example response
+[source,http,options="nowrap"]
+----
 GET https://login.arkane.network/auth/realms/Arkane/protocol/openid-connect/token
-```
+----
 
 This endpoint is used to obtain tokens. Tokens can either be obtained by exchanging an authorization code or by supplying a refresh token (see _step 2_ and _step 3_ above)
 
 ==== Userinfo
 .URL
-```
+.Example response
+[source,http,options="nowrap"]
+----
 GET https://login.arkane.network/auth/realms/Arkane/protocol/openid-connect/userinfo
-```
+----
 
 This endpoint returns standard information about the authenticated user
 
 ==== Logout
 .URL
-```
+.Example response
+[source,http,options="nowrap"]
+----
 GET https://login.arkane.network/auth/realms/Arkane/protocol/openid-connect/logout
-```
+----
 .Request parameters
 |===
 | Name | Description | Constraints | Example
@@ -354,9 +364,11 @@ The endpoint can also be invoked directly by the application. To invoke this end
 
 ==== Certificates
 .URL
-```
+.Example response
+[source,http,options="nowrap"]
+----
 GET https://login.arkane.network/auth/realms/Arkane/protocol/openid-connect/certs
-```
+----
 
 This endpoint returns the public keys enabled by the realm, encoded as a JSON Web Key (JWK).
 

@@ -2,8 +2,7 @@
 ----
 {
   "type" : "ETHEREUM_ERC20_TRANSACTION",
-  "walletId" : "1543",
-  "pincode" : "531644",
+  "walletId" : "bdc4c08a-b8fa-4e4c-z5a2-92c87b80f174",
   "gasPrice" : 10000000000,
   "gas" : 23000,
   "nonce" : 0,

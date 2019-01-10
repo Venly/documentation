@@ -3,18 +3,16 @@
 POST /api/transactions HTTP/1.1
 Content-Type: application/json;charset=UTF-8
 Host: api.arkane.network
-Content-Length: 423
-
+Content-Length: 455
 {
   "type" : "VECHAIN_VIP180_TRANSACTION",
-  "walletId" : "1543",
-  "pincode" : "973644",
+  "walletId" : "edc4c08a-b8fa-4e4c-z5a2-92c87b80f174",
   "blockRef" : null,
   "chainTag" : null,
   "expiration" : 3,
   "gas" : 23000,
   "gasPriceCoef" : 46576,
-  "nonce" : "ce027387-0bb4-45e1-a9ba-b1d4b99cb82e",
+  "nonce" : "2833b11e-4bf1-46ea-b613-d1f785f7a78a",
   "clauses" : [ {
     "to" : "0xdc71b72db51e227e65a45004ab2798d31e8934c9",
     "amount" : 10000000000,

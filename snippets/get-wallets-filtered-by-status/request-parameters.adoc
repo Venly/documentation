@@ -1,7 +1,5 @@
 |===
 |Parameter|Description
-
 |`+status+`
 |Filter by status of the wallet, if multiple are needed, simple add request parameter multiple times
-
 |===

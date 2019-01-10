@@ -1,7 +1,6 @@
 [source,bash]
 ----
 $ echo '{
-  "pincode" : "1234",
   "alias" : null,
   "hasCustomPin" : true,
   "description" : null,

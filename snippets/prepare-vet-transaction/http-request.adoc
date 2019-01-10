@@ -4,11 +4,9 @@ POST /api/transactions/prepare HTTP/1.1
 Content-Type: application/json;charset=UTF-8
 Host: api.arkane.network
 Content-Length: 325
-
 {
   "type" : "VET_TRANSACTION",
   "walletId" : "1543",
-  "pincode" : null,
   "blockRef" : null,
   "chainTag" : null,
   "expiration" : 0,

@@ -40,17 +40,17 @@ To be able to log in using Arkane, we'll have to add OAuth2 support to our Sprin
 First of all, we'll need to enable oauth2 support.
 Simply add `@EnableOAuth2Client` and autowire `OAuth2ClientContext` in a configuration class.
 
-Next up, we'll create a new instance of `AuthorizationCodeResourceDetails` and provide it as a bean.
-We'll also populate our application with properties from a property file. In this example, we're using the Arkane Staging environment using a public client we use for every guide (Arketype)
-
 [source,java]
 ----
 @Bean
 @ConfigurationProperties("arkane.client")
-public AuthorizationCodeResourceDetails arkane() {
+public AuthorizationCodeResourceDetails  arkane() { <1>
     return new AuthorizationCodeResourceDetails();
 }
 ----
+<1> Next up, we'll create a new instance of `AuthorizationCodeResourceDetails` and provide it as a bean.
+We'll also populate our application with properties from a property file. In this example, we're using the Arkane Staging environment using a public client we use for every guide (Arketype)
+
 
 `/src/main/resources/application.properties`
 

@@ -1,7 +1,5 @@
 |===
 |Parameter|Description
-
 |`+secretType+`
 |Type of the secret (ETHEREUM, VECHAIN)
-
 |===

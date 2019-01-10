@@ -5,7 +5,6 @@ $ curl 'https://api.arkane.network/api/transactions/prepare' -i -X POST \
     -d '{
   "type" : "VTHO_TRANSACTION",
   "walletId" : "1543",
-  "pincode" : null,
   "blockRef" : null,
   "chainTag" : null,
   "expiration" : 0,

@@ -5,7 +5,6 @@ $ curl 'http://localhost:8080/api/signatures/prepare' -i -X POST \
     -d '{
   "type" : "ETHEREUM_TRANSACTION",
   "walletId" : "1",
-  "pincode" : null,
   "submit" : false,
   "gasPrice" : null,
   "gas" : null,

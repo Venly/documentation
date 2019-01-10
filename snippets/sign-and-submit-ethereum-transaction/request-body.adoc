@@ -3,7 +3,6 @@
 {
   "type" : "ETHEREUM_TRANSACTION",
   "walletId" : "1",
-  "pincode" : "31644",
   "submit" : true,
   "gasPrice" : 10000000000,
   "gas" : 23000,

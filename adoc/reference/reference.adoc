@@ -113,7 +113,7 @@ operation::build-transaction-request[snippets='request-body']
 [source,json]
 ----
 {
-  "transactionHash" : "0xHash"
+  "transactionHash" : "0x621f692e386a8bc0c53d36aa793864893106e10f54f63fa9c063e24ad975d907"
 }
 ----
 
@@ -248,7 +248,7 @@ operation::execute-vtho-transaction[snippets='response-body']
 [source,json]
 ----
 {
-  "transactionHash" : "0xHash"
+  "transactionHash" : "0x621f692e386a8bc0c53d36aa793864893106e10f54f63fa9c063e24ad975d907"
 }
 ----
 

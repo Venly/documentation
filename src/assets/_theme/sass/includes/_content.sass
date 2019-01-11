@@ -6,6 +6,21 @@
   bottom: 0
   background-color: $color-greyish-brown
 
+.page-banner
+  background-color: $color-greyish-brown
+  width: 100%
+  color: $color-white
+  display: flex
+  justify-content: center
+  align-items: center
+  font-size: $font-size-bigger
+  padding: rem(28px)
+  .btn
+    text-transform: uppercase
+    vertical-align: top
+    margin-left: rem(12px)
+    font-size: $font-size-bigger
+
 .page-top
   position: relative
   &::after
@@ -16,6 +31,12 @@
     height: 1px
     content: ''
     bottom: 0
+  &--has-banner
+    &::after
+      display: none
+    .page-top__content
+      border-bottom: 0 none
+
   &__content
     background-color: $color-white
     border-bottom: 1px solid $color-medium-grey

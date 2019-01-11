@@ -3,12 +3,6 @@
   .page-top__content,
   .page-main__content
     background: $color-white-gray
-  .page-top
-    padding-bottom: rem(78px)
-    &::after
-      background-color: $color-greyish-brown
-      height: rem(80px)
-      width: 100%
   .page-bg
     display: none
 
@@ -30,6 +24,7 @@
     justify-content: center
     padding: 2rem 0
     margin: 0
+    flex-wrap: wrap
     > *
       flex-grow: 1
       flex-basis: 0
@@ -96,9 +91,9 @@
 .quickstart
   text-align: center
   display: flex
-  flex-wrap: wrap
-  justify-content: center
-  align-items: flex-start
+  flex-direction: column
+  align-items: center
+  justify-content: flex-start
   padding: rem(24px)
   margin: rem(0 28px 28px 28px)
   border-radius: $border-radius-small
@@ -108,6 +103,7 @@
   border: 2px solid $color-transparent
   > *
     width: 100%
+    flex-grow: 0
 
   &__image
     height: rem(90px)
@@ -128,7 +124,6 @@
 
   .btn
     opacity: 0
-    align-self: flex-end
     text-transform: uppercase
     font-size: $font-size-big
     transition: opacity $transition-default
@@ -141,16 +136,14 @@
     .btn
       opacity: 1
 
+  &__cta
+    flex-grow: 1
+    display: flex
+    align-items: flex-end
 
 .overview--getting-started
   svg .st0
     fill: $color-brand-light
-
-  .overview__container
-    @include media(desktop)
-      margin: 0 rem(-70px)
-    @include media(wide)
-      margin: 0 rem(-120px)
 
 .overview--building-blocks
   svg .st0

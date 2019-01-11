@@ -2,7 +2,7 @@
 
 Arkane Network consists of various building blocks, which are used by our applications - like our wallet - and by various clients. You can leverage the power of these building blocks to easily enable blockchain capabilities in your application. 
 
-== Arkane API [.small]#[.bb-api]#Arkane API##]
+== Arkane API [.bb-api]#Arkane API#
 
 === What
 

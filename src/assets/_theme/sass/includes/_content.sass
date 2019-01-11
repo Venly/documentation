@@ -1,10 +1,25 @@
 .page-bg
-  position: absolute
+  position: fixed
   right: 0
-  width: 50%
+  left: 0
+  width: 100%
   top: 0
   bottom: 0
-  background-color: $color-greyish-brown
+  &::after,
+  &::before
+    content: ''
+    display: block
+    position: absolute
+    top: 0
+    bottom: 0
+    width: calc((100% - 1050px) / 2)
+  &::before
+    left: 0
+    background: url(../img/bg-blue.svg) no-repeat right top
+    background-size: cover
+  &::after
+    right: 0
+    background-color: #4a4a4a
 
 .page-banner
   background-color: $color-greyish-brown
@@ -23,14 +38,6 @@
 
 .page-top
   position: relative
-  &::after
-    position: absolute
-    left: 0
-    width: 50%
-    background-color: $color-medium-grey
-    height: 1px
-    content: ''
-    bottom: 0
   &--has-banner
     &::after
       display: none

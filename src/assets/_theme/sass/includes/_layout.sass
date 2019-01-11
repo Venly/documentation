@@ -35,13 +35,13 @@ a
     .page-main__content
       padding-left: $toc-width + rem(28px)
     .toc
-      transform: translateX(calc(-100% - #{rem(29px)}))
+      transform: translateX((-1 * $toc-width) - rem(28px))
 
   .toc-right
     .page-main__content
       padding-right: $toc-width + rem(28px)
     .toc
-      transform: translateX(calc(100% + #{rem(29px)}))
+      transform: translateX($toc-width + rem(28px))
 
   .toc-left,
   .toc-right
@@ -50,7 +50,6 @@ a
       top: 0
       z-index: 2
     .toc
-      transform: translateX(calc(-100% - #{rem(29px)}))
       position: fixed
       top: rem(91px)
       z-index: 1

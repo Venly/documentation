@@ -1,277 +1,452 @@
-== Wallet
+== Introduction
 
-This section describes all actions related to wallets.
+This guide will walk you trough the process of creating a multi blockchain wallet, able to transfer native coins and tokens to any address specified.  After this intro you will understand the different Arkane components and be able to integrate all features from link:reference[Reference documentation].
 
-=== [[link-wallets]] Link wallets link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
+=== What you'll build
 
-This allows users to link his existing wallets with your application. The difference with <<manage-wallets, Manage wallets>>:
+We'll build a page which will:
 
-- A user can only link wallets, it is not possible to create or import a wallet
-- A list of all wallets is returned for any chain (it is possible to filter this).
+* Authenticate the user using the Arkane Connect authentication provider
+* Fetch a list of the user's wallets
+* Enable the user to manage his wallets connected to our application
+* Fetch the token balances of the selected wallet
+* Execute a transaction, from the selected wallet to a specified address
 
-An example use case could be a portfolio app where a user wants to quickly link all his wallets to get an overview of his complete portfolio.
+In this example, the following components will be used link:buildingblocks.html#_arkane_identity[[.bb-identity]#Arkane Identity#] link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#] link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#].
 
+=== Prerequisities
 
-To link wallets, use the connect building block with:
+* A text editor or IDE
+* Git (https://git-scm.com/downloads[Download])
+* Node & npm (https://www.npmjs.com/get-npm[Download])
+* A minimal understanding of jQuery (we will be using jQuery to perform DOM manipulations)
+* An understanding of async functions (ECMAScript 2017)
 
-.URL
-https://connect-staging.arkane.network/wallets/link
+== Let’s get started
 
-.Data
-_No data needed_
+We'll start by setting up our development environment. Open a terminal window, checkout the https://github.com/ArkaneNetwork/Arketype[sample project], called Arketype, from GitHub, go to the `js-multi-chain-wallet-initial` branch and run `npm install`.
+[source, bash]
+----
+git clone https://github.com/ArkaneNetwork/Arketype.git
+cd Arketype
+git checkout js-multi-chain-wallet-initial
+npm install
+----
 
-=== [[manage-wallets]] Manage wallets link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
+This will set us up with a small project that contains the necessary HTML, CSS and configuration files. +
+It will also setup an http server which you can start by executing `npm run start`. The server will be running on port 4000 (http://localhost:4000).
 
-As an application, it is possible to have a user manage his wallets for a specific chain. During this action, the user can link existing wallets or import a wallet.
-When the user returns to the app, a wallet will be linked to your application for the given chain. When a user does not have any wallets yet, a user can indicate to create a new wallet.
+At the moment the application isn't doing much, so let's go ahead and implement the JavaScript.
 
-To manage wallets, use the connect building block with:
+== Arkane Connect
 
-.URL
-https://connect-staging.arkane.network/wallets/manage
+Before we can actually start writing the JavaScript, we need to add https://www.npmjs.com/package/@arkane-network/arkane-connect[Arkane Connect] as a dependency to our project. To do this, open up `package.json` and add `"@arkane-network/arkane-connect": "latest"` to the `dependencies` section.
 
-
-.Data parameters
-|===
-|Name |Description |Example
-
-|chain
-|The chain for which you want to manage wallets.
-|ethereum
-
-|===
-
-
-.Data example
+./package.json
 [source,json]
 ----
-{
-  "chain": "ethereum"
-}
+"dependencies": {
+  "@arkane-network/arkane-connect": "latest", // <1>
+  "jquery": "^3.3.1"
+},
+----
+<1> The Arkane Connect dependency
+
+After this is done, rerun `npm install`.
+[source, bash]
+----
+npm install
 ----
 
-=== [[list-wallets]] List wallets link:buildingblocks.html#_arkane_api[[.bb-api]#api#]
-Returns all the wallets for the specified user (bearer token)
+Now we can add `connect.js` to our application by adding it in the `<head>` section of `/public/index.html`.
 
-operation::get-wallets[snippets='curl-request,http-response,response-fields']
+./public/index.html
+[source,html]
+----
+<head>
+  ...
+  <link rel="stylesheet" href="/assets/css/arketype.css"/>
 
-It's also possible to filter based on secret type
+  <script src="/node_modules/@arkane-network/arkane-connect/dist/connect.js"></script> <!--1-->
+</head>
+...
+----
+<1> Adding Arkane Connect to the HTML page
 
-operation::get-wallets-filtered[snippets='request-parameters']
+After adding it in our HTML, we can create an `ArkaneConnect` instance. In `./public/assets/js/main.js` add the following snippet:
+
+./public/assets/js/main.js
+[source,javascript]
+----
+var app = app || {};
+
+app.initApp = function() {
+  window.arkaneConnect = new ArkaneConnect('Arketype', { environment: 'staging'});
+};
+
+app.initApp();
+----
+
+By adding this snippet, we will create an ArkaneConnect instance that will connect to the Arkane staging environment (for production, you can just omit the `environment` property).
+
+== Authenticating
+
+In this guide, we're going to use the authentication client baked into Arkane Connect. This client will authenticate against the Arkane Connect authentication provider and then store (and refresh when needed) the bearer token necessary for any call to Arkane.
+
+=== Check if authenticated
+The first thing we'll want to do is check if the user is already authenticated.
+
+In the snippet below, you can see that the `checkAuthenticated()` function is called. This will redirect the user to our authentication provider, were it will check if the user is authenticated and redirect back to our original page passing an authentication result.
+
+The outcome of calling this function is a Promise containing an authentication result, which contains two callback methods `+authenticated((auth) => { ... });+` and `+notAuthenticated((auth) => { ... });+`.
+
+./public/assets/js/main.js
+[source,javascript]
+----
+...
+app.initApp = async function() {
+  window.arkaneConnect = new ArkaneConnect('Arketype', { environment: 'staging'}); // <1>
+  try {
+    const authenticationResult = await window.arkaneConnect.checkAuthenticated(); // <2>
+    authenticationResult.authenticated((auth) => {
+      console.log("This user is authenticated", auth); // <3>
+    })
+    .notAuthenticated((auth) => {
+      console.log("This user is not authenticated", auth); // <4>
+    });
+  }
+  catch (reason) {
+      console.error(reason);
+  }
+};
+
+app.initApp();
+----
+<1> Added `async` to the function to be able to use `await`
+<2> Checking if the user is authenticated
+<3> Handeling the user is authenticated
+<4> Handeling the user is not authenticated
+
+=== Handling authentication outcome
+Let's make the authentication outcome determine if the user sees a 'Login'-link or the wallet application.
 
 
-[[get-specific-user-wallet]]
-=== [[get-wallet]] Get wallet link:buildingblocks.html#_arkane_api[[.bb-api]#api#]
-Returns the details for a specific wallet (native balance is also included)
+We'll extend the authenticated handler so that it adds the `logged-in` class to the `<body>` element of our page. This will let the CSS in `/public/assets/css/auth.css` handle the displaying and hiding of the correct section.
 
-operation::get-wallet[snippets='curl-request,path-parameters,http-response,response-fields']
+./public/assets/js/main.js
+[source,javascript]
+----
+...
+try {
+  const authenticationResult = await window.arkaneConnect.checkAuthenticated();
+  authenticationResult.authenticated((auth) => {
+    console.log("This user is authenticated", auth);
+    document.body.classList.add('logged-in'); // <1>
+    $('#auth-username').text(auth.idTokenParsed.name); // <2>
+  })
+  .notAuthenticated((auth) => {
+    console.log("This user is not authenticated", auth);
+  });
+}
+...
+----
+<1> Adding the `logged-in` class
+<2> Displaying the logged in user's name
 
-=== [[get-balance]] Native balance link:buildingblocks.html#_arkane_api[[.bb-api]#api#]
-Returns the "native" balance for a wallet. This is the balance of the native token used by the chain. Ex. ETH for Ethereum.
+=== Login / Logout
 
-operation::get-balance[snippets='curl-request,path-parameters,http-response,response-fields']
+Next we'll want to allow the user to authenticate when he clicks the login-link and log out when he calls the logout-link.
 
-=== [[get-token-balances]] Token balances link:buildingblocks.html#_arkane_api[[.bb-api]#api#]
-Returns the balance of all tokens currently supported by Arkane. The list of supported tokens can be found on https://github.com/ArkaneNetwork/content-management/tree/master/tokens[Github].
+We'll do this by adding 'click' event listeners to the bottom of our script. These will handle a click by calling the `arkaneConnect.authenticate()` or `arkaneConnect.logout()` respectively.
 
-operation::get-token-balances[snippets='curl-request,path-parameters,http-response,response-fields']
+./public/assets/js/main.js
+[source,javascript]
+----
+...
+app.initApp();
 
-=== [[get-token-balance]] Specific token balance link:buildingblocks.html#_arkane_api[[.bb-api]#api#]
-Returns the token balance for a specified token (this can be any token).
+$('#auth-loginlink').click((event) => {
+  event.preventDefault();
+  window.arkaneConnect.authenticate(); // <1>
+});
 
-operation::get-token-balance[snippets='curl-request,path-parameters,http-response,response-fields']
+$('#auth-logout').click((event) => {
+  event.preventDefault();
+  window.arkaneConnect.logout(); // <2>
+});
+----
+<1> Authenticate the user
+<2> Log the user out
+
+That's it, we've now integrated the authentication client of Arkane Connect. It checks if we're authenticated and displays a login- / logout-link when appropriate. If you want to see it in action go ahead and run `npm run start` and surf to http://localhost:4000.
+
+[source, bash]
+----
+npm run start
+----
+
+== Wallets
+=== Fetch wallets
+
+We can fetch the user's wallets using the Arkane Connect API which can be accessed by calling `arkaneConnect.api`. This API is a JavaScript proxy to the HTTP endpoints exposed on https://api.arkane.network[]. Documentation on the endoints can be found https://api.arkane.network/docs/index.html[here]. By using the Arkane Connect API, you don't have to construct and execute the HTTP calls yourself.
+
+For this example we'll extend the `authenticated(...)` handler so that it fetches the user's wallets right after he logs in, convert the array to a map (where the key is `id`), store the map in local storage and populate the wallets `<select>` with them.
+
+./public/assets/js/main.js
+[source,javascript]
+----
+...
+try {
+  const authenticationResult = await window.arkaneConnect.checkAuthenticated();
+
+  authenticationResult.authenticated(async (auth) => { // <1>
+    console.log("This user is authenticated", auth);
+    document.body.classList.add('logged-in');
+    $('#auth-username').text(auth.idTokenParsed.name);
+
+    try {
+        const wallets = await window.arkaneConnect.api.getWallets(); // <2>
+        const walletsMap = app.convertArrayToMap(wallets, 'id'); // <3>
+        localStorage.setItem('wallets', JSON.stringify(walletsMap)); // <4>
+        app.populateWalletsSelect(wallets); <5>
+    }
+    catch (err) {
+        console.error('Something went wrong while fetching the user\'s wallets');
+    }
+  })
+  .notAuthenticated((auth) => {
+    console.log("This user is not authenticated", auth);
+  });
+}
+...
+
+// Below the app.initApp(...) function //
+...
+app.convertArrayToMap = (array, key) => {
+  return array.reduce((obj, item) => {
+    obj[item[key]] = item;
+    return obj;
+  }, {});
+};
+
+app.populateWalletsSelect = (wallets) => {
+  const walletsSelect = $('#wallets-select');
+  wallets.forEach((wallet) => {
+    walletsSelect.append($('<option>', { value : wallet.id }).text(wallet.address));
+  });
+};
+...
+----
+<1> Added `async` to the function to be able to use `await`
+<2> Fetch the wallets using the Arkane Connect API
+<3> Convert the array of wallets to a map with 'id' as key
+<4> Store the map of wallets in local storage
+<5> Populate the wallets `<select>`
+
+=== Manage Wallets
+The first time a user enters our sample application, he will need to give our our application access to at least one of his wallets. To do this we will launch Arkane Connect’s `Manage wallets` page. +
+This page displays all the user’s wallets for a specified blockchain and allows him to give our application access to one or more. Additionally he has the ability to create a new, or import an existing wallet.
+
+To redirect the user to the `Manage wallets` page, we need to call `arkaneConnect.manageWallets(<blockchain>)`. Let’s do this right after we’ve gotten the user’s wallets. If no wallets are returned, we’ll redirect the user to the manage wallets page (for Ethereum wallets).
+
+./public/assets/js/main.js
+[source,javascript]
+----
+...
+try {
+  const wallets = await window.arkaneConnect.api.getWallets();
+  if (wallets.length > 0) { <1>
+    const walletsMap = app.convertArrayToMap(wallets, 'id');
+    localStorage.setItem('wallets', JSON.stringify(walletsMap));
+    app.populateWalletsSelect(wallets);
+  } else {
+    window.arkaneConnect.manageWallets('ETHEREUM'); <2>
+  }
+}
+...
+----
+<1> Check if the user already has wallets linked to our application
+<2> If no wallets are linked, redirect the user to the `Manage wallets` page (for Ethereum)
+
+We'll also want `Manage wallets` links so that the user can go to the page without being automatically redirected somehow. To do this, we'll add 'click' event listeners to the links already on the page, which will redirect the user to the `Manage wallets` page for the correct blockchain.
+
+./public/assets/js/main.js
+[source,javascript]
+----
+// At the bottom of the file //
+...
+$('#manage-eth-wallets').click((event) => {
+  event.preventDefault();
+  window.arkaneConnect.manageWallets('ETHEREUM'); <1>
+});
+
+$('#manage-vechain-wallets').click((event) => {
+  event.preventDefault();
+  window.arkaneConnect.manageWallets('VECHAIN'); <2>
+});
+----
+<1> Manage Ethereum wallets
+<2> Manage VeChain wallets
+
+=== Show wallet details
+When the user selects a wallet we would like to show some details.
+
+First, we're going to populate and show `wallet-balance` and `wallet-gas-balance` when the `<select>` value changes, by adding a 'change' event listener on `wallets-select`
+
+./public/assets/js/main.js
+[source,javascript]
+----
+// At the bottom of the file //
+...
+
+$('#wallets-select').change((event) => {
+  event.preventDefault();
+  if(event.target.value) {
+    const wallets = JSON.parse(localStorage.getItem('wallets')); // <1>
+    const wallet = wallets[event.target.value]; // <1>
+    const balance = wallet.balance; // <1>
+    $('#wallet-balance').html(`${balance.balance} ${balance.symbol}`); // <2>
+    $('#wallet-gas-balance').html(`${balance.gasBalance} ${balance.gasSymbol}`); // <3>
+    $('#wallet-details').removeClass('hidden');
+  }
+  else {
+    $('#wallet-details').addClass('hidden');
+  }
+});
+----
+<1> Fetching the wallet (+ balance) from localStorage
+<2> Displaying the tokens balance
+<3> Displaying the gas balance
+
+Next we would like to show the tokens that are available for this wallet, we  can do this by extending the 'change' event listener with  `arkaneConnect.api.getTokenBalances(walletId)`, which will fetch the token balances.
+
+./public/assets/js/main.js
+[source,javascript]
+----
+$('#wallets-select').change(async (event) => { // <1>
+  event.preventDefault();
+  if (event.target.value) {
+    const wallets = JSON.parse(localStorage.getItem('wallets'));
+    const wallet = wallets[event.target.value];
+    $('#wallet-balance').html(`${wallet.balance.balance} ${wallet.balance.symbol}`);
+    $('#wallet-gas-balance').html(`${wallet.balance.gasBalance} ${wallet.balance.gasSymbol}`);
+
+    const tokenBalances = await window.arkaneConnect.api.getTokenBalances(wallet.id); // <2>
+    $('#wallet-tokens').html(tokenBalances.map(
+      (tokenBalance) => `${tokenBalance.balance} ${tokenBalance.symbol}`).join('<br/>') // <3>
+    );
+
+    $('#selected-wallet').removeClass('hidden'); // <4>
+  }
+  else {
+    $('#selected-wallet').addClass('hidden');
+  }
+});
+----
+<1> Making the callback function `async` so that we can use `await`
+<2> Fetching the tokens balance for our wallet
+<3> Displaying the tokens balance
+<4> Show the selected wallet
 
 == Transactions
+=== Show form
+The main feature of our multi-chain wallet is the transaction functionality. In `/public/index.html` there is already a form present. We're going to extend `wallets-select` 'change' event listener so that it pre-fills the walletId and populates a `<select>` to select the token the user wants to transfer.
 
-[[transfer]]
-=== Transfer link:buildingblocks.html#_arkane_api[[.bb-api]#api#]
-This can be used to transfer (native) tokens from a wallet to another wallet. To start a transfer you need to:
-
-.URL
-https://connect-staging.arkane.network/transaction/execute
-
-
-.[[generic-transaction-request]] Data parameters
-operation::build-transaction-request[snippets='request-fields']
-
-.Data example
-operation::build-transaction-request[snippets='request-body']
-
-.Result parameters
-|===
-|Path|Type|Description
-
-|`+transactionHash+`
-|`+String+`
-|The transaction hash
-
-|===
-
-.Result example
-[source,json]
+./public/assets/js/main.js
+[source,javascript]
 ----
-{
-  "transactionHash" : "0x621f692e386a8bc0c53d36aa793864893106e10f54f63fa9c063e24ad975d907"
+...
+  $('#wallet-tokens').html(tokenBalances.map(
+    (tokenBalance) => `${tokenBalance.balance} ${tokenBalance.symbol}`).join('<br/>')
+  );
+
+  $('#secret-type').val(wallet.secretType); // <1>
+  app.preFillTransactionTokens(wallet, tokenBalances); <2>
+
+  $('#selected-wallet').removeClass('hidden');
 }
+...
 ----
+<1> Pre-filling the secretType (AKA the type of blockchain)
+<2> Pre-filling the tokens
+
+To make it work, we'll also need to add the code of the `app.preFillTransactionTokens(...)` function.
+
+./public/assets/js/main.js
+[source,javascript]
+----
+...
+app.preFillTransactionTokens = (wallet, tokenBalances) => {
+    const transactionTokens = $('#transaction-token');
+    transactionTokens.empty();
+    transactionTokens.append($('<option>', {value: ''}).text(wallet.balance.symbol));
+    tokenBalances.forEach((tokenBalance) => {
+        transactionTokens.append(
+            $('<option>', {value: tokenBalance.tokenAddress}).text(tokenBalance.symbol)
+        );
+    });
+};
+...
+----
+
+=== Execute transaction
+To wrap things up, we'll want to execute a transaction. Using Arkane Connect, this is done by creating a new `Signer` via `arkaneConnect.createSigner()` and then calling its `signer.executeTransaction(genericTransactionRequest)` function.
+
+We'll implement this by adding a `submit` event listener on the form to process the transaction.
+
+IMPORTANT: If you're executing a transaction in an event handler (as in the example below), create the signer at the very beginning of your listener function. Otherwise the popup blocker of the browser might block the signer popup.
+
+./public/assets/js/main.js
+[source,javascript]
+----
+// At the bottom of the file //
+...
+
+$('#transaction-form').submit(async (event) => {
+  event.preventDefault();
+  const signer = window.arkaneConnect.createSigner(); // <1>
+
+  try {
+    const transactionResult = await signer.executeTransaction( // <2>
+      {
+        walletId: $("#transaction-form select[name='from']").val(), // <3>
+        to: $("#transaction-form input[name='to']").val(), // <3>
+        value: ($("#transaction-form input[name='amount']").val()), // <3>
+        secretType: $("#transaction-form input[name='secretType']").val(), // <3>
+        tokenAddress: $("#transaction-form select[name='tokenAddress']").val(), // <3>
+      }
+    );
+    console.log(transactionResult.result.transactionHash);  // <4>
+  }
+  catch (reason) {
+    console.error(reason);
+  }
+});
+----
+<1> Creating the signer instance (+ opening the popup)
+<2> Execute the transaction
+<3> Passing the form data
+<4> Logging the transactionHash to the console
+
+== Summary
+Congratulations! You've just built a fully functional multi-chain wallet.
+
+Here's an overview of what we've covered:
+
+* We integrated the Arkane Connect authentication client
+* We fetched a user's Arkane wallets
+* We enabled the user to manage the wallets connected to our application
+* We fetched a wallet's tokens balance
+* We enabled the user to execute a transaction from one of his wallets
+
+In this example, the following components were used link:buildingblocks.html#_arkane_identity[[.bb-identity]#Arkane Identity#] link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#] link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#].
+
+The sample code used during this guide can either be https://github.com/ArkaneNetwork/Arketype/archive/master.zip[download] or https://github.com/ArkaneNetwork/Arketype[explored] on GitHub.
+
+== What's next
+Now that you've mastered the basics you can dive deeper in the different building blocks or link:reference.html[explore] all our functionalities to enhance the sample app into your own personal wallet.
 
 [NOTE]
 ====
-If you want to perform a token transfer, add the field "tokenAddress". For "native" transfers, simply omit the field "tokenAddress".
+If at any time you get stuck and need some help or advise, don't hesitate to join our https://t.me/ArkaneNetworkOfficial[Telegram] channel, we are glad to help!
 ====
-
-[IMPORTANT]
-====
-For the *value*, we expect the *"decimal value"*. If a token has 18 decimals and you want to transfer 1 of the specific token, provide the value 1. Arkane will translate this to the correct non decimal value being: 1 * 10e18.
-Using this, you don't have to take the different number of decimals for different tokens into account.
-====
-
-[[native-transactions]]
-
-=== Ethereum
-==== Execute ETH transaction link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
-To execute an Ethereum transaction, use the connect building block with:
-
-.URL
-https://connect-staging.arkane.network/transaction/execute/eth_transaction
-
-
-.Data parameters
-operation::execute-ether-transaction[snippets='request-fields']
-
-.Data example
-operation::execute-ether-transaction[snippets='request-body']
-
-.Result parameters
-operation::execute-ether-transaction[snippets='response-fields']
-
-.Result example
-operation::execute-ether-transaction[snippets='response-body']
-
-==== Execute ERC20 transfer link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
-
-To execute an ERC20 transaction transfer, use the connect building block with:
-
-.URL
-https://connect-staging.arkane.network/transaction/execute/ethereum_erc20_transaction
-
-
-.Data parameters
-operation::execute-erc20-transaction[snippets='request-fields']
-
-.Data example
-operation::execute-erc20-transaction[snippets='request-body']
-
-.Result parameters
-operation::execute-erc20-transaction[snippets='response-fields']
-
-.Result example
-operation::execute-erc20-transaction[snippets='response-body']
-
-==== Sign link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
-Signs arbitrary data. This data is before UTF-8 HEX decoded and enveloped as followed:
-
-`"\x19Ethereum Signed Message:\n" + message.length + message.`
-
-To sign data, use the connect building block with:
-
-.URL
-https://connect-staging.arkane.network/transaction/sign/ethereum_raw
-
-.Data parameters
-operation::sign-hex-message[snippets='request-fields']
-
-.Data example
-operation::sign-hex-message[snippets='request-body']
-
-.Result parameters
-operation::sign-hex-message[snippets='response-fields']
-
-.Result example
-operation::sign-hex-message[snippets='response-body']
-
-
-
-=== Vechain
-
-==== Execute VET transaction link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
-To execute an VeChain transaction, use the connect building block with:
-
-.URL
-https://connect-staging.arkane.network/transaction/execute/vet_transaction
-
-
-.Data parameters
-operation::execute-vet-transaction[snippets='request-fields']
-
-.Data example
-operation::execute-vet-transaction[snippets='request-body']
-
-.Result parameters
-operation::execute-vet-transaction[snippets='response-fields']
-
-.Result example
-operation::execute-vet-transaction[snippets='response-body']
-
-==== Execute VTHO transfer link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
-To execute a VTHO transfer, use the connect building block with:
-
-.URL
-https://connect-staging.arkane.network/transaction/execute/vtho_transaction
-
-.Data parameters
-operation::execute-vtho-transaction[snippets='request-fields']
-
-.Data example
-operation::execute-vtho-transaction[snippets='request-body']
-
-.Result parameters
-operation::execute-vtho-transaction[snippets='response-fields']
-
-.Result example
-operation::execute-vtho-transaction[snippets='response-body']
-
-.Result parameters
-|===
-|Path|Type|Description
-
-|`+transactionHash+`
-|`+String+`
-|The transaction hash
-
-|===
-
-.Result example
-
-[source,json]
-----
-{
-  "transactionHash" : "0x621f692e386a8bc0c53d36aa793864893106e10f54f63fa9c063e24ad975d907"
-}
-----
-
-==== Execute VIP180 transfer link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
-
-To execute an ERC20 transaction transfer, use the connect building block with:
-
-.URL
-https://connect-staging.arkane.network/transaction/execute/ethereum_erc20_transaction
-
-
-.Data parameters
-operation::execute-vechain-erc20-transaction[snippets='request-fields']
-
-.Data example
-operation::execute-vechain-erc20-transaction[snippets='request-body']
-
-.Result parameters
-operation::execute-vechain-erc20-transaction[snippets='response-fields']
-
-.Result example
-operation::execute-vechain-erc20-transaction[snippets='response-body']
-
-== Profile
-=== [[user-profile]] User profile link:buildingblocks.html#_arkane_api[[.bb-api]#api#]
-Returns more info about the connected user.
-
-operation::get-profile[snippets='http-request,http-response,response-fields']

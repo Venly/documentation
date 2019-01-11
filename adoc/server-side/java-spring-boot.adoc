@@ -19,7 +19,9 @@ In this example, the following components will be used link:buildingblocks.html#
 
 
 == Let’s get started
-=== Creating a new project
+
+We’ll start by creating a new Java project
+
 [source,bash]
 ----
 mkdir ui && cd ui

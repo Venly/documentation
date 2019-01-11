@@ -128,7 +128,7 @@ Using this, you don't have to take the different number of decimals for differen
 
 [[native-transactions]]
 
-=== Ethereum Transactions
+=== Ethereum
 ==== Execute ETH transaction [.bb-connect]#connect#
 To execute an Ethereum transaction, use the connect building block with:
 

@@ -19,7 +19,9 @@ In this example, the following components will be used link:buildingblocks.html#
 
 
 == Let’s get started
-=== Creating a new project
+
+We’ll start by creating a new Java project
+
 [source,bash]
 ----
 mkdir ui && cd ui
@@ -55,8 +57,7 @@ public AuthorizationCodeResourceDetails  arkane() { <1>
 We'll also populate our application with properties from a property file. In this example, we're using the Arkane Staging environment using a public client we use for every guide (Arketype)
 
 
-`/src/main/resources/application.properties`
-
+./src/main/resources/application.properties
 [source,text]
 ----
 arkaneBaseUrl=https://login-staging.arkane.network/auth/realms/Arkane
@@ -79,7 +80,7 @@ public ResourceServerProperties arkaneResource() {
 }
 ----
 
-`/src/main/resources/application.properties`
+./src/main/resources/application.properties
 [source,text]
 ----
 arkane.resource.userInfoUri=${keycloakBaseUrl}/protocol/openid-connect/userinfo
@@ -156,10 +157,10 @@ Congratulations! You’ve just built an small service-side application app that 
 
 In this example, the following components were used link:buildingblocks.html#_arkane_identity[[.bb-identity]#Arkane Identity#] link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#].
 
-The sample code used during this guide can either be https://github.com/ArkaneNetwork/spring-boot-java-example/archive/master.zip[download] or our https://github.com/ArkaneNetwork/spring-boot-java-example[explored] on GitHub.
+The sample code used during this guide can either be https://github.com/ArkaneNetwork/spring-boot-java-example/archive/master.zip[download] or https://github.com/ArkaneNetwork/spring-boot-java-example[explored] on GitHub.
 
 == What's next
-Now that you've mastered the basics you can dive deeper in the different building blocks or link:reference[explore] all our functionalities.
+Now that you've mastered the basics you can dive deeper in the different building blocks or link:reference.html[explore] all our functionalities.
 
 [NOTE]
 ====

@@ -522,7 +522,7 @@ In this example, the following components were used link:buildingblocks.html#_ar
 The sample code used during this guide can either be https://github.com/ArkaneNetwork/mobile-android-example/archive/master.zip[download] or https://github.com/ArkaneNetwork/mobile-android-example[explored] on GitHub.
 
 == What's next
-Now that you've mastered the basics you can dive deeper in the different building blocks or link:reference[explore] all our functionalities to transform the sample app into your own personal wallet.
+Now that you've mastered the basics you can dive deeper in the different building blocks or link:reference.html[explore] all our functionalities to transform the sample app into your own personal wallet.
 
 [NOTE]
 ====

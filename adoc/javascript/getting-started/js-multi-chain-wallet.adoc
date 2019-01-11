@@ -14,7 +14,7 @@ We'll build a page which will:
 
 In this example, the following components will be used link:buildingblocks#_arkane_identity[[.bb-identity]#Arkane Identity#] link:buildingblocks#_arkane_api[[.bb-api]#Arkane API#] link:buildingblocks#_arkane_connect[[.bb-connect]#Arkane Connect#].
 
-=== What you'll need
+=== Prerequisities
 
 * A text editor or IDE
 * Git (https://git-scm.com/downloads[Download])
@@ -22,7 +22,7 @@ In this example, the following components will be used link:buildingblocks#_arka
 * A minimal understanding of jQuery (we will be using jQuery to perform DOM manipulations)
 * An understanding of async functions (ECMAScript 2017)
 
-== Prerequisities
+== Let’s get started
 
 We'll start by setting up our development environment. Open a terminal window, checkout the https://github.com/ArkaneNetwork/Arketype[sample project], called Arketype, from GitHub, go to the `js-multi-chain-wallet-initial` branch and run `npm install`.
 [source, bash]

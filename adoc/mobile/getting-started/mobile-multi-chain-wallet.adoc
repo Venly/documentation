@@ -401,8 +401,9 @@ Make sure all query parameters are url encoded (ex. https://www.urlencoder.org/)
 <.> Open a custom tabs intent with the correct URL
 
 === Link wallets
-This allows users to link their existing wallets with your application. The difference with <<Manage wallets>>:
+This allows users to link their existing wallets with your application. 
 
+The difference with <<Manage wallets>>:
 * A user can only link wallets, it is not possible to create or import a wallet
 * A list of all blockchain wallets is returned. (It is possible to filter based on blockchain).
 

@@ -10,7 +10,7 @@ We'll build a small application which will:
 * Allow us to authenticate using your Arkane Account (OAuth2)
 * Fetch and display your wallets, server side
 
-In this example, the following components will be used link:buildingblocks#_arkane_identity[[.bb-identity]#Arkane Identity#] link:buildingblocks#_arkane_api[[.bb-api]#Arkane API#].
+In this example, the following components will be used link:buildingblocks.html#_arkane_identity[[.bb-identity]#Arkane Identity#] link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#].
 
 === Prerequisities
 
@@ -154,7 +154,7 @@ Congratulations! You’ve just built an small service-side application app that 
 * We authenticated using your Arkane Account (OAuth2)
 * We fetched and displayed your wallets, server side
 
-In this example, the following components were used link:buildingblocks#_arkane_identity[[.bb-identity]#Arkane Identity#] link:buildingblocks#_arkane_api[[.bb-api]#Arkane API#].
+In this example, the following components were used link:buildingblocks.html#_arkane_identity[[.bb-identity]#Arkane Identity#] link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#].
 
 The sample code used during this guide can either be https://github.com/ArkaneNetwork/spring-boot-java-example/archive/master.zip[download] or our https://github.com/ArkaneNetwork/spring-boot-java-example[explored] on GitHub.
 

@@ -50,7 +50,7 @@ https://connect-staging.arkane.network/wallets/manage
 }
 ----
 
-=== [[list-wallets]] List wallets link:buildingblocks.html#_arkane_api[[.bb-api]#api#]
+=== [[list-wallets]] List wallets link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
 Returns all the wallets for the specified user (bearer token)
 
 operation::get-wallets[snippets='curl-request,http-response,response-fields']
@@ -61,22 +61,22 @@ operation::get-wallets-filtered[snippets='request-parameters']
 
 
 [[get-specific-user-wallet]]
-=== [[get-wallet]] Get wallet link:buildingblocks.html#_arkane_api[[.bb-api]#api#]
+=== [[get-wallet]] Get wallet link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
 Returns the details for a specific wallet (native balance is also included)
 
 operation::get-wallet[snippets='curl-request,path-parameters,http-response,response-fields']
 
-=== [[get-balance]] Native balance link:buildingblocks.html#_arkane_api[[.bb-api]#api#]
+=== [[get-balance]] Native balance link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
 Returns the "native" balance for a wallet. This is the balance of the native token used by the chain. Ex. ETH for Ethereum.
 
 operation::get-balance[snippets='curl-request,path-parameters,http-response,response-fields']
 
-=== [[get-token-balances]] Token balances link:buildingblocks.html#_arkane_api[[.bb-api]#api#]
+=== [[get-token-balances]] Token balances link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
 Returns the balance of all tokens currently supported by Arkane. The list of supported tokens can be found on https://github.com/ArkaneNetwork/content-management/tree/master/tokens[Github].
 
 operation::get-token-balances[snippets='curl-request,path-parameters,http-response,response-fields']
 
-=== [[get-token-balance]] Specific token balance link:buildingblocks.html#_arkane_api[[.bb-api]#api#]
+=== [[get-token-balance]] Specific token balance link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
 Returns the token balance for a specified token (this can be any token).
 
 operation::get-token-balance[snippets='curl-request,path-parameters,http-response,response-fields']
@@ -84,7 +84,7 @@ operation::get-token-balance[snippets='curl-request,path-parameters,http-respons
 == Transactions
 
 [[transfer]]
-=== Transfer link:buildingblocks.html#_arkane_api[[.bb-api]#api#]
+=== Transfer link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
 This can be used to transfer (native) tokens from a wallet to another wallet. To start a transfer you need to:
 
 .URL
@@ -271,7 +271,7 @@ operation::execute-vechain-erc20-transaction[snippets='response-fields']
 operation::execute-vechain-erc20-transaction[snippets='response-body']
 
 == Profile
-=== [[user-profile]] User profile link:buildingblocks.html#_arkane_api[[.bb-api]#api#]
+=== [[user-profile]] User profile link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
 Returns more info about the connected user.
 
 operation::get-profile[snippets='http-request,http-response,response-fields']

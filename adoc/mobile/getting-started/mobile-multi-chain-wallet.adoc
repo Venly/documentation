@@ -516,6 +516,8 @@ Congratulations! You’ve just built an Android app that is able to:
 * Enable a user to manage his wallets connected to our application
 * Fetch a list of a user’s wallets
 
+In this example, the following components where used [.bb-identity]#Arkane Identity# [.bb-api]#Arkane API# [.bb-connect]#Arkane Connect#.
+
 == What's next
 Now that you've mastered the basics you can dive deeper in the different building blocks or link:reference[explore] all our functionalities to transform the sample app into your own personal wallet.
 
@@ -523,10 +525,3 @@ Now that you've mastered the basics you can dive deeper in the different buildin
 ====
 If at any time you get stuck and need some help or advise, don't hesitate to join our https://t.me/ArkaneNetworkOfficial[Telegram] channel, we are glad to help!
 ====
-
-
-
-== Components Used
-
-In this example, the following components where used [.bb-identity]#Arkane Identity# [.bb-api]#Arkane API# [.bb-connect]#Arkane Connect#.
-

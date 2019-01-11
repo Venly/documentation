@@ -95,9 +95,9 @@ https://api-staging.arkane.network
 
 ==== Limitations
 
-Although the Arkane API supports creating signatures (it's even used as underlying building block of Arkane Connect), creating signatures is only possible when using *API Keys*. The main reason we block signature requests from being performed on other domains is because we don't want the user to enter his *private pin* on an untrusted domain. 
+Although the Arkane API supports creating signatures (it's even used as underlying building block of link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]), creating signatures is only possible when using *API Keys*. The main reason we block signature requests from being performed on other domains is because we don't want the user to enter his *private pin* on an untrusted domain. 
 
-TIP: If you want to create signatures on your own domain, use <<arkane-connect,Arkane Connect>>.
+TIP: If you want to create signatures on your own domain, use link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#].
 
 == [[arkane-connect]] ARKANE CONNECT
 
@@ -105,10 +105,10 @@ TIP: If you want to create signatures on your own domain, use <<arkane-connect,A
 
 Arkane Connect is an endpoint specifically designed to perform common tasks with Arkane wallets. Connect was created as a way to perform tasks which are
 
-. otherwise not possible due to security reasons, *like creating signatures*
-. necessary by all applications, like linking wallets your client
+* otherwise not possible due to security reasons, *like creating signatures*
+* necessary by all applications, like linking wallets your client
 
-Basically, Arkane Connect is a small web application without a central entry point. Calls to Arkane Connect are made by navigating to a specific url. Although you can use it by itself - by manually crafting the urls - we also provide a javascript SDK.  
+Basically, Arkane Connect is a small web application without a central entry point. Calls to Arkane Connect are made by navigating to a specific url. Although you can use it by itself - by manually crafting the urls - we also provide a link:connect-js.html[javascript SDK].  
 
 === How    
 
@@ -116,7 +116,7 @@ Arkane connect can be called by navigating to a specifically crafted URI.
 
 There are 2 ways of calling Arkane Connect, the *GET* or *POST* method. For security reasons, we advise to use the *POST* method, as this doesn't leak the short-lived bearer tokens as GET-parameters.
 
-NOTE: Although Arkane Connect can be called natively, we advise you to use the Arkane Connect JS Library when possible.
+NOTE: Although Arkane Connect can be called natively, we advise you to use the link:connect-js.html[Arkane Connect JS Library] when possible.
 
 ==== GET Method
 

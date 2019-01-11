@@ -1,6 +1,6 @@
 == Introduction
 
-This guide will walk you trough the process of creating a multi blockchain wallet, able to transfer native coins and tokens to any address specified.
+This guide will walk you trough the process of creating a multi blockchain wallet, able to transfer native coins and tokens to any address specified.  After this intro you will understand the different Arkane components and be able to integrate all features from link:reference[Reference documentation].
 
 === What you'll build
 
@@ -19,7 +19,7 @@ We'll build a page which will:
 * Node & npm (https://www.npmjs.com/get-npm[Download])
 * A minimal understanding of jQuery (We will be using jQuery to perform DOM manipulations).
 
-== Let's get started
+== Prerequisities
 
 We'll start by setting up our development environment. Open a terminal window, checkout the https://github.com/ArkaneNetwork/Arketype[sample project], called Arketype, from GitHub, go to the `js-multi-chain-wallet-initial` branch and run `npm install`.
 [source, bash]
@@ -34,7 +34,7 @@ This will set us up with a small project that contains the necessary HTML, CSS a
 
 At the moment the application isn't doing much, so let's go ahead and implement the JavaScript.
 
-== Arkane-connect dependency
+== Arkane-connect
 
 Before we can actually start writing the JavaScript, we need to add https://www.npmjs.com/package/@arkane-network/arkane-connect[Arkane Connect] as a dependency to our project. To do this, open up `package.json` and add `"@arkane-network/arkane-connect": "latest"` to the `dependencies` section.
 
@@ -123,7 +123,7 @@ app.initApp();
 <3> Handeling the user is authenticated
 <4> Handeling the user is not authenticated
 
-=== Handling the authentication outcome
+=== Handling authentication outcome
 Let's make the authentication outcome determine if the user sees a 'Login'-link or the wallet application.
 
 
@@ -182,7 +182,7 @@ npm run start
 ----
 
 == Wallets
-=== Fetch the user's wallets
+=== Fetch wallets
 
 We can fetch the user's wallets using the Arkane Connect API which can be accessed by calling `arkaneConnect.api`. This API is a JavaScript proxy to the HTTP endpoints exposed on https://api.arkane.network[]. Documentation on the endoints can be found https://api.arkane.network/docs/index.html[here]. By using the Arkane Connect API, you don't have to construct and execute the HTTP calls yourself.
 
@@ -386,7 +386,7 @@ app.preFillTransactionTokens = (wallet, tokenBalances) => {
 ...
 ----
 
-=== Executing the transaction
+=== Execute transaction
 To wrap things up, we'll want to execute a transaction. Using Arkane Connect, this is done by creating a new `Signer` via `arkaneConnect.createSigner()` and then calling its `signer.executeTransaction(genericTransactionRequest)` function.
 
 We'll implement this by adding a `submit` event listener on the form to process the transaction.
@@ -435,3 +435,11 @@ Here's an overview of what we've covered:
 * We enabled the user to manage the wallets connected to our application
 * We fetched a wallet's tokens balance
 * We enabled the user to execute a transaction from one of his wallets
+
+== What's next
+Now that you've mastered the basics you can dive deeper in the different building blocks or link:reference[explore] all our functionalities to enhance the sample app into your own personal wallet.
+
+[NOTE]
+====
+If at any time you get stuck and need some help or advise, don't hesitate to join our https://t.me/ArkaneNetworkOfficial[Telegram] channel, we are glad to help!
+====

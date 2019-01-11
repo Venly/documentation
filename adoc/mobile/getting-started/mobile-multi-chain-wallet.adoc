@@ -41,7 +41,7 @@ After clicking run, you have to setup a virtual device (or connect your android 
 image::img/initial_device.png[Device,225,388]
 
 == Authentication
-Arkane uses link:https://openid.net/connect/[OpenID connect] for user authentication. For more information on the authorization flow, please check the link:reference[Reference documentation].
+Arkane uses link:https://openid.net/connect/[OpenID connect] for user authentication. For more information on the authorization flow, please check our link:reference[Reference documentation].
 
 You can choose to implement the OpenId connect flow yourself or use an existing library:
 

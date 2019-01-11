@@ -2,7 +2,7 @@
 
 Arkane Network consists of various building blocks, which are used by our applications - like our wallet - and by various clients. You can leverage the power of these building blocks to easily enable blockchain capabilities in your application. 
 
-== Arkane API
+== Arkane API [.bb-api]#Arkane API#
 
 === What
 
@@ -99,7 +99,7 @@ Although the Arkane API supports creating signatures (it's even used as underlyi
 
 TIP: If you want to create signatures on your own domain, use link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#].
 
-== [[arkane-connect]] ARKANE CONNECT
+== [[arkane-connect]] ARKANE CONNECT [.bb-connect]#Arkane Connect#
 
 === What
 
@@ -172,7 +172,7 @@ https://connect.arkane.network
 .Staging
 https://connect-staging.arkane.network
 
-== [[arkane-identity]] ARKANE IDENTITY
+== [[arkane-identity]] ARKANE IDENTITY [.bb-identity]#Arkane Identity#
 
 Our third and final building block is Arkane Identity.
 Arkane Identity's sole purpose is to provide a way to authenticate to the Arkane network using OpenID Connect, which combines the OAuth 2.0 protocol together with a simple identity layer.

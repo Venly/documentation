@@ -110,13 +110,15 @@ IMPORTANT: If you set the redirectUri option, make sure that the SDK and the `Au
 | options | false | A <<AuthenticationOptions>> object | { redirectUri?: string }
 |===
 
-.Examples
+=== Examples
+.Example 1
 [source,javascript,options="nowrap"]
 ----
 // Redirect to the current page
 arkaneConnect.checkAuthenticated();
 ----
 
+.Example 2
 [source,javascript,options="nowrap"]
 ----
 // Redirect to https://arkane.network
@@ -142,13 +144,15 @@ IMPORTANT: If you set the redirectUri option, make sure that the SDK and the `Au
 | options | false | A <<AuthenticationOptions>> object | { redirectUri?: string }
 |===
 
-.Examples
+=== Examples
+.Example 1
 [source,javascript,options="nowrap"]
 ----
 // Redirect to the current page
 arkaneConnect.authenticate();
 ----
 
+.Example 2
 [source,javascript,options="nowrap"]
 ----
 // Redirect to https://arkane.network
@@ -306,7 +310,7 @@ arkaneConnect.authenticate()
 |===
 
 == Profile
-=== User Profile link:reference#user-profile[[.small]#+[Reference]+#]
+=== User Profile link:reference.html#user-profile[[.small]#+[Reference]+#]
 .Signature
 [source,javascript,options="nowrap"]
 ----
@@ -314,7 +318,7 @@ arkaneConnect.api.getProfile(): Promise<Profile>
 ----
 
 == Wallet
-=== Link wallets link:reference#link-wallets[[.small]#+[Reference]+#]
+=== Link wallets link:reference.html#link-wallets[[.small]#+[Reference]+#]
 .Signature
 [source,javascript,options="nowrap"]
 ----
@@ -341,7 +345,7 @@ arkaneConnect.linkWallets({ redirectUri: 'https://arkane.network',
                             correlationID: 'f173a18d-7a75-4429-9df4-25153d64a921' }});
 ----
 
-=== Manage wallets link:reference#manage-wallets[[.small]#+[Reference]+#]
+=== Manage wallets link:reference.html#manage-wallets[[.small]#+[Reference]+#]
 .Signature
 [source,javascript,options="nowrap"]
 ----
@@ -370,7 +374,7 @@ arkaneConnect.manageWallets('ETHEREUM',
                               correlationID: 'f173a18d-7a75-4429-9df4-25153d64a921' }});
 ----
 
-=== List user wallets link:reference#list-wallets[[.small]#+[Reference]+#]
+=== List user wallets link:reference.html#list-wallets[[.small]#+[Reference]+#]
 .Signature
 [source,javascript,options="nowrap"]
 ----
@@ -385,7 +389,7 @@ arkaneConnect.api.getWallets(filter?: { secretType?: SecretType }): Promise<Wall
 | filter.secretType | false | The secretType ({secret-types}) you want to filter on
 |===
 
-=== Get user wallet link:reference#get-wallet[[.small]#+[Reference]+#]
+=== Get user wallet link:reference.html#get-wallet[[.small]#+[Reference]+#]
 .Signature
 [source,javascript,options="nowrap"]
 ----
@@ -399,7 +403,7 @@ arkaneConnect.api.getWallet(walletId: string): Promise<Wallet>
 | walletId | true | The Arkane ID of the wallet you want to fetch
 |===
 
-=== Get native balance link:reference#get-balance[[.small]#+[Reference]+#]
+=== Get native balance link:reference.html#get-balance[[.small]#+[Reference]+#]
 .Signature
 [source,javascript,options="nowrap"]
 ----
@@ -413,7 +417,7 @@ arkaneConnect.api.getBalance(walletId: string): Promise<WalletBalance>
 | walletId | true | The Arkane ID of the wallet you want to fetch the balance for
 |===
 
-=== Get token balances link:reference#get-token-balances[[.small]#+[Reference]+#]
+=== Get token balances link:reference.html#get-token-balances[[.small]#+[Reference]+#]
 .Signature
 [source,javascript,options="nowrap"]
 ----
@@ -427,7 +431,7 @@ arkaneConnect.api.getTokenBalances(walletId: string): Promise<TokenBalance[]>
 | walletId | true | The Arkane ID of the wallet you want to fetch the balance for
 |===
 
-=== Get specific token balance link:reference#get-token-balance[[.small]#+[Reference]+#]
+=== Get specific token balance link:reference.html#get-token-balance[[.small]#+[Reference]+#]
 .Signature
 [source,javascript,options="nowrap"]
 ----
@@ -476,7 +480,7 @@ if (arkaneConnect.isPopupSigner(signer)) {
 ----
 If you want to close the signer popup manually (e.g. if something goes wrong between opening it and submitting the transactionRequest), you can use above code snippet to close it. The type guard, isn't mandatory, but it makes the code more robust.
 
-=== Generic transaction link:reference#transfer[[.small]#+[Reference]+#]
+=== Generic transaction link:reference.html#transfer[[.small]#+[Reference]+#]
 .Signature
 [source,javascript,options="nowrap"]
 ----
@@ -488,7 +492,7 @@ Returns Promise++<++<<signer-result,SignerResult>>++>++
 [cols="1,1,3"]
 |===
 | Parameter | Required | Description
-| transactionRequest | true | The transaction request you want to execute. For more info on how this request should look like, see link:reference#generic-transaction-request[reference]
+| transactionRequest | true | The transaction request you want to execute. For more info on how this request should look like, see link:reference.html#generic-transaction-request[reference]
 | options | false | The <<signer-options,options>> you want to pass
 |===
 
@@ -513,7 +517,7 @@ signer.executeTransaction({
 });
 ----
 
-=== Native transactions link:reference#native-transactions[[.small]#+[Reference]+#]
+=== Native transactions link:reference.html#native-transactions[[.small]#+[Reference]+#]
 You can also choose to use a native transaction instead of the generic one. This opens up some chain specific functionalities (e.g. multiple clauses for VeChain). For this you need to submit a native transaction request.
 
 .Signature
@@ -527,7 +531,7 @@ Returns Promise++<++<<signer-result,SignerResult>>++>++
 [cols="1,1,3"]
 |===
 | Parameter | Required | Description
-| transactionRequest | true | The transaction request you want to execute. More info on the structure of the native transaction requests can be found in the link:reference#native-transactions[Reference]. Exactly the same request bodies are accepted by this function
+| transactionRequest | true | The transaction request you want to execute. More info on the structure of the native transaction requests can be found in the link:reference.html#native-transactions[Reference]. Exactly the same request bodies are accepted by this function
 | options | false | The <<signer-options,options>> you want to pass
 |===
 
@@ -560,7 +564,7 @@ Returns Promise++<++<<signer-result,SignerResult>>++>++
 [cols="1,1,3"]
 |===
 | Parameter | Required | Description
-| signatureRequest | true | The transaction request you want to execute. More info on the structure of the native transaction requests can be found in the link:reference#native-transactions[Reference]. Exactly the same request bodies are accepted by this function
+| signatureRequest | true | The transaction request you want to execute. More info on the structure of the native transaction requests can be found in the link:reference.html#native-transactions[Reference]. Exactly the same request bodies are accepted by this function
 | options | false | The <<signer-options,options>> you want to pass
 |===
 

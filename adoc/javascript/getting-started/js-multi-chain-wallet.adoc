@@ -38,7 +38,7 @@ It will also setup an http server which you can start by executing `npm run star
 
 At the moment the application isn't doing much, so let's go ahead and implement the JavaScript.
 
-== Arkane-connect
+== Arkane Connect
 
 Before we can actually start writing the JavaScript, we need to add https://www.npmjs.com/package/@arkane-network/arkane-connect[Arkane Connect] as a dependency to our project. To do this, open up `package.json` and add `"@arkane-network/arkane-connect": "latest"` to the `dependencies` section.
 

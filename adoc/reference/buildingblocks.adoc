@@ -175,9 +175,9 @@ https://connect-staging.arkane.network
 == [[arkane-identity]] ARKANE IDENTITY
 
 Our third and final building block is Arkane Identity.
-Arkane Identity's sole purpose is to provide a way to authenticate to the Arkane Network using OpenID Connect, which combines the OAuth 2.0 protocol together with a simple identity layer.
+Arkane Identity's sole purpose is to provide a way to authenticate to the Arkane network using OpenID Connect, which combines the OAuth 2.0 protocol together with a simple identity layer.
 
-For your app, you will need a specific "client ID". You can request one at the Arkane website.
+For your app, you will need a specific "client ID". If you want to connect to our staging environment, which is linked to different testnets then you can us "`Arketype`" as client ID. For connection to the mainnets you will have to connect to our production environment and request your personal client id. (https://arkane-network.typeform.com/to/hzbcGJ[Request your personal client id])
 
 === Overview
 Arkane Network uses https://openid.net/connect/[OpenID Connect]'s Authorization Code Flow footnote:[https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth] for it's authentication and authorization. Below is a guide to obtain a access token manually, but for added security we recommend using a library for handling authentication/authorization. Only use the manual flow if you are very well known with OpenID Connect.

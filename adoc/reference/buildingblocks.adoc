@@ -1,8 +1,6 @@
 == Introduction
 
-Arkane Network consists of various building blocks, which are used by our applications - like our wallet - and by various clients. 
-
-You can leverage the power of these building blocks to easily enable blockchain capabilities in your application. 
+Arkane Network consists of various building blocks, which are used by our applications - like our wallet - and by various clients. You can leverage the power of these building blocks to easily enable blockchain capabilities in your application. 
 
 == Arkane API
 
@@ -25,7 +23,7 @@ WARNING: The Arkane API can also be used with API keys instead of Bearer Tokens.
 
 All of the API's responses are wrapped in an envelope. This envelope indicates whether the request succeeded. If the request failed, an additional `errors` object is added to the response.
 
-*Example of a successful response*
+.Example of a successful response
 [source,json]
 ----
 {
@@ -37,8 +35,7 @@ All of the API's responses are wrapped in an envelope. This envelope indicates w
 }
 ----
 
-*Example of a failed response*
-
+.Example of a failed response
 [source,json]
 ----
 {
@@ -56,8 +53,8 @@ All of the API's responses are wrapped in an envelope. This envelope indicates w
 
 Calling the Rest API requires authentication. At the moment, the following methods for authentication are available:
 
-. Bearer Token
-. API Key
+* Bearer Token
+* API Key
 
 ===== Bearer Token
 

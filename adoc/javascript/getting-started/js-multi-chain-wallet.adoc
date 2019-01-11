@@ -50,7 +50,7 @@ Before we can actually start writing the JavaScript, we need to add https://www.
   "jquery": "^3.3.1"
 },
 ----
-<1> The Arkane Connect dependency
+<.> The Arkane Connect dependency
 
 After this is done, rerun `npm install`.
 [source, bash]
@@ -71,7 +71,7 @@ Now we can add `connect.js` to our application by adding it in the `<head>` sect
 </head>
 ...
 ----
-<1> Adding Arkane Connect to the HTML page
+<.> Adding Arkane Connect to the HTML page
 
 After adding it in our HTML, we can create an `ArkaneConnect` instance. In `./public/assets/js/main.js` add the following snippet:
 
@@ -80,7 +80,7 @@ After adding it in our HTML, we can create an `ArkaneConnect` instance. In `./pu
 ----
 var app = app || {};
 
-app.initApp = function() {
+app.initApp = () => {
   window.arkaneConnect = new ArkaneConnect('Arketype', { environment: 'staging'});
 };
 
@@ -104,8 +104,8 @@ The outcome of calling this function is a Promise containing an authentication r
 [source,javascript]
 ----
 ...
-app.initApp = async function() {
-  window.arkaneConnect = new ArkaneConnect('Arketype', { environment: 'staging'}); // <1>
+app.initApp = async () => { // <1>
+  window.arkaneConnect = new ArkaneConnect('Arketype', { environment: 'staging'});
   try {
     const authenticationResult = await window.arkaneConnect.checkAuthenticated(); // <2>
     authenticationResult.authenticated((auth) => {
@@ -122,10 +122,10 @@ app.initApp = async function() {
 
 app.initApp();
 ----
-<1> Added `async` to the function to be able to use `await`
-<2> Checking if the user is authenticated
-<3> Handeling the user is authenticated
-<4> Handeling the user is not authenticated
+<.> Added `async` to the function to be able to use `await`
+<.> Checking if the user is authenticated
+<.> Handeling the user is authenticated
+<.> Handeling the user is not authenticated
 
 === Handling authentication outcome
 Let's make the authentication outcome determine if the user sees a 'Login'-link or the wallet application.
@@ -150,8 +150,8 @@ try {
 }
 ...
 ----
-<1> Adding the `logged-in` class
-<2> Displaying the logged in user's name
+<.> Adding the `logged-in` class
+<.> Displaying the logged in user's name
 
 === Login / Logout
 
@@ -175,8 +175,8 @@ $('#auth-logout').click((event) => {
   window.arkaneConnect.logout(); // <2>
 });
 ----
-<1> Authenticate the user
-<2> Log the user out
+<.> Authenticate the user
+<.> Log the user out
 
 That's it, we've now integrated the authentication client of Arkane Connect. It checks if we're authenticated and displays a login- / logout-link when appropriate. If you want to see it in action go ahead and run `npm run start` and surf to http://localhost:4000.
 
@@ -232,16 +232,16 @@ app.convertArrayToMap = (array, key) => {
 app.populateWalletsSelect = (wallets) => {
   const walletsSelect = $('#wallets-select');
   wallets.forEach((wallet) => {
-    walletsSelect.append($('<option>', { value : wallet.id }).text(wallet.address));
+    walletsSelect.append($('<option>', { value : wallet.id }).text(`${wallet.secretType} - ${wallet.address}`));
   });
 };
 ...
 ----
-<1> Added `async` to the function to be able to use `await`
-<2> Fetch the wallets using the Arkane Connect API
-<3> Convert the array of wallets to a map with 'id' as key
-<4> Store the map of wallets in local storage
-<5> Populate the wallets `<select>`
+<.> Added `async` to the function to be able to use `await`
+<.> Fetch the wallets using the Arkane Connect API
+<.> Convert the array of wallets to a map with 'id' as key
+<.> Store the map of wallets in local storage
+<.> Populate the wallets `<select>`
 
 === Manage Wallets
 The first time a user enters our sample application, he will need to give our our application access to at least one of his wallets. To do this we will launch Arkane Connect’s `Manage wallets` page. +
@@ -265,8 +265,8 @@ try {
 }
 ...
 ----
-<1> Check if the user already has wallets linked to our application
-<2> If no wallets are linked, redirect the user to the `Manage wallets` page (for Ethereum)
+<.> Check if the user already has wallets linked to our application
+<.> If no wallets are linked, redirect the user to the `Manage wallets` page (for Ethereum)
 
 We'll also want `Manage wallets` links so that the user can go to the page without being automatically redirected somehow. To do this, we'll add 'click' event listeners to the links already on the page, which will redirect the user to the `Manage wallets` page for the correct blockchain.
 
@@ -285,8 +285,8 @@ $('#manage-vechain-wallets').click((event) => {
   window.arkaneConnect.manageWallets('VECHAIN'); <2>
 });
 ----
-<1> Manage Ethereum wallets
-<2> Manage VeChain wallets
+<.> Manage Ethereum wallets
+<.> Manage VeChain wallets
 
 === Show wallet details
 When the user selects a wallet we would like to show some details.
@@ -305,29 +305,34 @@ $('#wallets-select').change((event) => {
     const wallets = JSON.parse(localStorage.getItem('wallets')); // <1>
     const wallet = wallets[event.target.value]; // <1>
     const balance = wallet.balance; // <1>
-    $('#wallet-balance').html(`${balance.balance} ${balance.symbol}`); // <2>
-    $('#wallet-gas-balance').html(`${balance.gasBalance} ${balance.gasSymbol}`); // <3>
-    $('#wallet-details').removeClass('hidden');
+    $('#wallet-address').html(wallet.address); // <2>
+    $('#wallet-balance').html(`${balance.balance} ${balance.symbol}`); // <3>
+    $('#wallet-gas-balance').html(`${balance.gasBalance} ${balance.gasSymbol}`); // <4>
+    $('#selected-wallet').removeClass('hidden'); // <5>
   }
   else {
-    $('#wallet-details').addClass('hidden');
+    $('#selected-wallet').addClass('hidden'); // <6>
   }
 });
 ----
-<1> Fetching the wallet (+ balance) from localStorage
-<2> Displaying the tokens balance
-<3> Displaying the gas balance
+<.> Fetching the wallet (+ balance) from localStorage
+<.> Displaying the wallet address
+<.> Displaying the tokens balance
+<.> Displaying the gas balance
+<.> Show the selected wallet
+<.> Hide the selected wallet when none selected
 
 Next we would like to show the tokens that are available for this wallet, we  can do this by extending the 'change' event listener with  `arkaneConnect.api.getTokenBalances(walletId)`, which will fetch the token balances.
 
 ./public/assets/js/main.js
-[source,javascript]
+[source,javascript,options="nowrap"]
 ----
 $('#wallets-select').change(async (event) => { // <1>
   event.preventDefault();
   if (event.target.value) {
     const wallets = JSON.parse(localStorage.getItem('wallets'));
     const wallet = wallets[event.target.value];
+    $('#wallet-address').html(wallet.address);
     $('#wallet-balance').html(`${wallet.balance.balance} ${wallet.balance.symbol}`);
     $('#wallet-gas-balance').html(`${wallet.balance.gasBalance} ${wallet.balance.gasSymbol}`);
 
@@ -336,17 +341,16 @@ $('#wallets-select').change(async (event) => { // <1>
       (tokenBalance) => `${tokenBalance.balance} ${tokenBalance.symbol}`).join('<br/>') // <3>
     );
 
-    $('#selected-wallet').removeClass('hidden'); // <4>
+    $('#selected-wallet').removeClass('hidden');
   }
   else {
     $('#selected-wallet').addClass('hidden');
   }
 });
 ----
-<1> Making the callback function `async` so that we can use `await`
-<2> Fetching the tokens balance for our wallet
-<3> Displaying the tokens balance
-<4> Show the selected wallet
+<.> Making the callback function `async` so that we can use `await`
+<.> Fetching the tokens balance for our wallet
+<.> Displaying the tokens balance
 
 == Transactions
 === Show form
@@ -356,8 +360,8 @@ The main feature of our multi-chain wallet is the transaction functionality. In 
 [source,javascript]
 ----
 ...
-  $('#wallet-tokens').html(tokenBalances.map(
-    (tokenBalance) => `${tokenBalance.balance} ${tokenBalance.symbol}`).join('<br/>')
+  $('#wallet-tokens').html(
+    tokenBalances.map((tokenBalance) => `${tokenBalance.balance} ${tokenBalance.symbol}`).join('<br/>')
   );
 
   $('#secret-type').val(wallet.secretType); // <1>
@@ -367,14 +371,15 @@ The main feature of our multi-chain wallet is the transaction functionality. In 
 }
 ...
 ----
-<1> Pre-filling the secretType (AKA the type of blockchain)
-<2> Pre-filling the tokens
+<.> Pre-filling the secretType (AKA the type of blockchain)
+<.> Pre-filling the tokens
 
 To make it work, we'll also need to add the code of the `app.preFillTransactionTokens(...)` function.
 
 ./public/assets/js/main.js
 [source,javascript]
 ----
+// At the bottom of the file //
 ...
 app.preFillTransactionTokens = (wallet, tokenBalances) => {
     const transactionTokens = $('#transaction-token');
@@ -386,7 +391,6 @@ app.preFillTransactionTokens = (wallet, tokenBalances) => {
         );
     });
 };
-...
 ----
 
 === Execute transaction
@@ -423,10 +427,10 @@ $('#transaction-form').submit(async (event) => {
   }
 });
 ----
-<1> Creating the signer instance (+ opening the popup)
-<2> Execute the transaction
-<3> Passing the form data
-<4> Logging the transactionHash to the console
+<.> Creating the signer instance (+ opening the popup)
+<.> Execute the transaction
+<.> Passing the form data
+<.> Logging the transactionHash to the console
 
 == Summary
 Congratulations! You've just built a fully functional multi-chain wallet.

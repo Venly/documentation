@@ -1,28 +1,21 @@
 |===
 |Path|Type|Description
-
 |`+tokenAddress+`
 |`+String+`
 |Address of the token
-
 |`+rawBalance+`
 |`+String+`
 |Raw token balance of the wallet
-
 |`+balance+`
 |`+Number+`
 |Normalized token balance of the wallet
-
 |`+symbol+`
 |`+String+`
 |The symbol of the token
-
 |`+logo+`
 |`+String+`
 |Logo of the token (url)
-
 |`+decimals+`
 |`+Number+`
 |Decimals of the token
-
 |===

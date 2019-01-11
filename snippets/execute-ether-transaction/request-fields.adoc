@@ -1,44 +1,35 @@
 |===
 |Path|Type|Description|Constraints
-
 |`+type+`
 |`+String+`
 |The type of the transaction
 |Mandatory, value for ether transaction: ETH_TRANSACTION
-
 |`+walletId+`
 |`+String+`
 |The id of the wallet one wants to sign with.
 |Mandatory
-
 |`+gasPrice+`
 |`+Number+`
 |The gas price of the transaction
 |Optional (default gas price is used otherwise), must be > 0
-
 |`+gas+`
 |`+Number+`
 |The amount of gas to use for the transaction (unused gas is refunded)
 |Optional (by default calculated), must be >= 0
-
 |`+value+`
 |`+Number+`
 |The value transferred for the transaction in Wei, also the endowment if it's a contract-creation transaction
 |Mandatory, must be >= 0
-
 |`+data+`
 |`+String+`
 |Either a byte string containing the associated data of the message, or in the case of a contract-creation transaction, the initialisation code
 |Optional
-
 |`+nonce+`
 |`+Number+`
 |Integer of a nonce. This allows to overwrite your own pending transactions that use the same nonce.
 |Optional (next nonce will be used by defaut), must be >= 0
-
 |`+to+`
 |`+String+`
 |The destination address of the transaction.
 |Mandatory, a valid ethereum address
-
 |===

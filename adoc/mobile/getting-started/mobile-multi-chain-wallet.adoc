@@ -1,28 +1,32 @@
 == Introduction
 
-This guide will get you started on how to build a multi chain blockchain wallet.
+This guide will walk you trough the process of building your own native mobile application (Android) which will interact with a blockchain via Arkane. After this intro you will understand the different Arkane components and be able to
+integrate all features from the link:reference[Reference documentation].
 
 
 === What you'll build
 
-We will build an Android app that will:
+We'll build an Android app that will:
 
-. authenticate the user with Arkane
-. manage Arkane wallets for our app
-. fetch a list of the user's wallets
+* Authenticate the user with Arkane (OAuth2)
+* Enable the user to manage his wallets connected to our application
+* Fetch a list of the user’s wallets
 
 
 === Prerequisities
 
-* Development tools for android (https://developer.android.com/studio/intro/)
-* a minimal understanding of Java / Android apps
+In order to follow this quick start guide we expect you have the Android Development tools installed and have a 
+minimal understanding of Java / Android apps.
+
+https://developer.android.com/studio/intro/[Android Studio]
+
 
 == Let's get started
 
-First of all, let's setup a our development environment. Open a terminal window, checkout the Arketype project from GitHub and build the project.
+We’ll start by setting up our development environment. Open a terminal window, checkout the https://github.com/ArkaneNetwork/mobile-android-example[sample project], called mobile-android-example, from GitHub and build the project.
 ```
-git clone https://github.com/ArkaneNetwork/ArketypeMobile.git
-cd ArketypeMobile
+git clone https://github.com/ArkaneNetwork/mobile-android-example.git
+cd mobile-android-example
 ```
 Building your project:
 
@@ -37,14 +41,14 @@ After clicking run, you have to setup a virtual device (or connect your android 
 image::img/initial_device.png[Device,225,388]
 
 == Authentication
-Arkane uses link:https://openid.net/connect/[OpenID connect] for user authentication. For more information on the authorization flow, please check the reference documentation.
+Arkane uses link:https://openid.net/connect/[OpenID connect] for user authentication. For more information on the authorization flow, please check our link:reference[Reference documentation].
 
-You can implement the OpenId connect flow yourself or use an existing library that supports this:
+You can choose to implement the OpenId connect flow yourself or use an existing library:
 
 - link:https://appauth.io/[AppAuth]
 - link:https://aerogear.org/[Aerogear]
 
-In this example we will be using *AppAuth*. First we need to add it as a dependency inside the `build.gradle` of the app:
+In our example we will be using *AppAuth*. First we need to add it as a dependency inside the `build.gradle` of the app:
 
 === Configure AppAuth library
 
@@ -76,7 +80,7 @@ We also need a config file that will configure the library:
 |Field |Explanation
 
 |client_id
-|The id of the client, on staging you can use Arkane. For production please contact Arkane.
+|The id of the client, on staging you can use Arkane. For production please https://arkane-network.typeform.com/to/hzbcGJ[request a personal client id].
 
 |redirect_uri
 |To where does it need to redirect when authentication is done. Important note, *this must be equal to the value inside the defaultConfig of the app.gradle*: manifestPlaceholders = ["appAuthRedirectScheme": "network.arkane.arketype"]
@@ -134,7 +138,7 @@ In the onCreate section we will setup everything that is necessary for the authe
                 return;
             }
 
-            // <5.a>
+            // <6>
             // if we are not using discovery, build the authorization service configuration directly
             // from the static configuration values.
             if (mConfiguration.getDiscoveryUri() == null) {
@@ -149,7 +153,7 @@ In the onCreate section we will setup everything that is necessary for the authe
                 return;
             }
 
-            // <5.b>
+            // <7>
             // WrongThread inference is incorrect for lambdas
             // noinspection WrongThread
             runOnUiThread(() -> displayLoading("Retrieving discovery document"));
@@ -160,7 +164,7 @@ In the onCreate section we will setup everything that is necessary for the authe
                     mConfiguration.getConnectionBuilder());
         }
 
-        // <5.c>
+        // <8>
         private void recreateAuthorizationService() {
             if (mAuthService != null) {
                 Log.i(TAG, "Discarding existing AuthService instance");
@@ -180,7 +184,7 @@ In the onCreate section we will setup everything that is necessary for the authe
             return new AuthorizationService(this, builder.build());
         }
 
-        // <5.d>
+        // <9>
         @WorkerThread
         private void initializeClient() {
             if (mConfiguration.getClientId() != null) {
@@ -218,31 +222,14 @@ In the onCreate section we will setup everything that is necessary for the authe
                     this::handleRegistrationResponse);
         }
 
-        // <5.e>
-        @MainThread
-        private void handleRegistrationResponse(
-                RegistrationResponse response,
-                AuthorizationException ex) {
-            mAuthStateManager.updateAfterRegistration(response, ex);
-            if (response == null) {
-                Log.i(TAG, "Failed to dynamically register client", ex);
-                displayErrorLater("Failed to register client: " + ex.getMessage(), true);
-                return;
-            }
-
-            Log.i(TAG, "Dynamically registered client: " + response.clientId);
-            mClientId.set(response.clientId);
-            initializeAuthRequest();
-        }
-
-        // <5.d.i>
+        // <11>
         @MainThread
         private void initializeAuthRequest() {
             createAuthRequest("");
             warmUpBrowser();
         }
 
-        // <5.d.ii>
+        // <12>
         private void createAuthRequest(@Nullable String loginHint) {
             Log.i(TAG, "Creating auth request for login hint: " + loginHint);
             AuthorizationRequest.Builder authRequestBuilder = new AuthorizationRequest.Builder(
@@ -262,7 +249,7 @@ In the onCreate section we will setup everything that is necessary for the authe
             mAuthRequest.set(authRequestBuilder.build());
         }
 
-        // <5.d.iii>
+        // <13>
         private void warmUpBrowser() {
             mAuthIntentLatch = new CountDownLatch(1);
             mExecutor.execute(() -> {
@@ -274,22 +261,39 @@ In the onCreate section we will setup everything that is necessary for the authe
                 mAuthIntentLatch.countDown();
             });
         }
+
+        // <10>
+        @MainThread
+        private void handleRegistrationResponse(
+                RegistrationResponse response,
+                AuthorizationException ex) {
+            mAuthStateManager.updateAfterRegistration(response, ex);
+            if (response == null) {
+                Log.i(TAG, "Failed to dynamically register client", ex);
+                displayErrorLater("Failed to register client: " + ex.getMessage(), true);
+                return;
+            }
+
+            Log.i(TAG, "Dynamically registered client: " + response.clientId);
+            mClientId.set(response.clientId);
+            initializeAuthRequest();
+        }
 ----
 
-. Create the state manager for the authentication and parse the configuration (the json file)
-. If the user is already authenticated, start the next intent
-. If configuration is invalid, show an error
-. When auth failed, call a function to handle this
-. Setup of the AppAuth library
-.. You can specify each endpoint seperatly if preferred
-.. Use discovery endpoint for getting all the correct endpoints
-.. Create the authorization service
-... Select which browser to use for authentication, use ANY for auto selection
-.. Initialize the client with client id etc.
-... Initialize the authentication request
-... Create the authentication request
-... Warmup browser (performance optimization)
-.. Handle the registration response
+* Create the state manager for the authentication and parse the configuration (the json file) [.conum]#1#
+* If the user is already authenticated, start the next intent [.conum]#2#
+* If configuration is invalid, show an error [.conum]#3#
+* When auth failed, call a function to handle this [.conum]#4#
+* Setup of the AppAuth library [.conum]#5#
+** You can specify each endpoint seperatly if preferred [.conum]#6#
+** Use discovery endpoint for getting all the correct endpoints [.conum]#7#
+** Create the authorization service [.conum]#8#
+*** Select which browser to use for authentication, use ANY for auto selection [.conum]#9#
+** Initialize the client with client id etc.
+*** Initialize the authentication request [.conum]#11#
+*** Create the authentication request [.conum]#12#
+*** Warmup browser (performance optimization) [.conum]#13#
+** Handle the registration response [.conum]#10#
 
 [NOTE]
 ====
@@ -298,7 +302,7 @@ This code block only contains snippets, please checkout the full source on GitHu
 
 ==== Authenticating a user
 
-When a user clicks a button, a custom tab should open where the user can log into Arkane. When this is done correctly, he should return to the app.
+When a user clicks a button, a custom tab should open where the user can log into Arkane. When this is done correctly, he will return to the app.
 
 ./app/src/main/java/LoginActivity.java
 [source,java]
@@ -332,18 +336,18 @@ When a user clicks a button, a custom tab should open where the user can log int
 
 ----
 
-. Add an on click listener when a user wants to authenticate
-. Submit the authentication to the executor (separate thread)
-. Create an authentication intent and start it
+<.> Add an on click listener when a user wants to authenticate
+<.> Submit the authentication to the executor (separate thread)
+<.> Create an authentication intent and start it
 
 
 == Wallets
 
 === Manage wallets
-As an application, it is possible to have a user manage his wallets for a specific chain. During this action, the user can link existing wallets or import a wallet.
-When the user returns to the app, a wallet will be linked to your application for the given chain. When a user does not have any wallets yet, a user can indicate to create a new wallet.
+As an application, it is possible to have a user manage his wallets for a specific blockchain. During this action, the user can link existing wallets or import a wallet.
+When the user returns to the app, a wallet will be linked to your application for the given blockchain. When a user does not have any wallets, he can indicate to create a new wallet.
 
-To manage wallets, a specific url needs to be opened in the browser (using custom tabs). It is not possible to do this directly in the background since the user needs to enter his PIN. For security reasons, we cannot allow it to be entered inside your own app.
+To manage wallets, a specific url needs to be opened in the browser (using custom tabs). It is not possible to do this directly in the background since the user needs to verify each change using his PIN. For security reasons, we cannot allow the confirmation to happen through a 3rd party application.
 
 The endpoint to manage wallets:
 
@@ -391,18 +395,20 @@ Make sure all query parameters are url encoded (ex. https://www.urlencoder.org/)
     }
 ----
 
-. Add a click listener to manage wallets
-. Get current authentication state
-. Get a valid access token
-. Open a custom tabs intent with the correct URL
+<.> Add a click listener to manage wallets
+<.> Get current authentication state
+<.> Get a valid access token
+<.> Open a custom tabs intent with the correct URL
 
 === Link wallets
-This allows users to link his existing wallets with your application. The difference with <<Manage wallets>>:
+This allows users to link their existing wallets with your application. 
+
+The difference with <<Manage wallets>>:
 
 * A user can only link wallets, it is not possible to create or import a wallet
-* A list of all wallets is returned for any chain (it is possible to filter this).
+* A list of all blockchain wallets is returned. (It is possible to filter based on blockchain).
 
-An example use case could be a portfolio app where a user wants to quickly link all his wallets to get an overview of his complete portfolio.
+An example would be a portfolio app where a user wants to quickly link all his wallets to get an overview of his complete portfolio.
 
 The endpoint to link wallets:
 
@@ -441,13 +447,13 @@ The endpoint to link wallets:
     }
 ----
 
-. Add a click listener to link wallets
-. Get current authentication state
-. Get a valid access token
-. Open a custom tabs intent with the correct URL
+<.> Add a click listener to link wallets
+<.> Get current authentication state
+<.> Get a valid access token
+<.> Open a custom tabs intent with the correct URL
 
 === View wallets
-If you want to retrieve the wallets for a user, you can call the <<rest-api-public.html#_get_all_user_wallets,API endpoint for listing user wallets>>.
+If you want to retrieve the wallets for a user, you can call the API endpoint for link:reference#_list_user_wallets_api[listing user wallets].
 
 ==== Example
 ./app/src/main/java/network/arkane/arketype/TokenActivity.java
@@ -504,4 +510,16 @@ If you want to retrieve the wallets for a user, you can call the <<rest-api-publ
 
 
 == Summary
-Congratulations! You can now start implementing your own wallet using the Arkane building blocks!
+Congratulations! You’ve just built an Android app that is able to:
+
+* Authenticate a user with Arkane (OAuth2)
+* Enable a user to manage his wallets connected to our application
+* Fetch a list of a user’s wallets
+
+== What's next
+Now that you've mastered the basics you can dive deeper in the different building blocks or link:reference[explore] all our functionalities to transform the sample app into your own personal wallet.
+
+[NOTE]
+====
+If at any time you get stuck and need some help or advise, don't hesitate to join our https://t.me/ArkaneNetworkOfficial[Telegram] channel, we are glad to help!
+====

@@ -113,7 +113,7 @@ $transition-default: 200ms ease-out;
 
 
 $toc-width: rem(300px);
-$content-width: $breakpoint-tablet-ls - (300px * 0,875);
+$content-width: ($breakpoint-tablet-ls - (300px * 0.875));
 
 $font: Roboto, Arial, sans-serif;
 $margin-bottom: rem(16px);

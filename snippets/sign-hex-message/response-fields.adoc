@@ -1,20 +1,15 @@
 |===
 |Path|Type|Description
-
 |`+success+`
 |`+Boolean+`
 |See if the response contains a result
-
 |`+result.r+`
 |`+String+`
 |The R value of the signature
-
 |`+result.s+`
 |`+String+`
 |The S value of the signature
-
 |`+result.v+`
 |`+Number+`
 |The V value of the signature
-
 |===

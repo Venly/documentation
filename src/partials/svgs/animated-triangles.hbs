@@ -1,0 +1,39 @@
+<svg class="svg--animated-triangles" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 100 100" xml:space="preserve">
+  <style type="text/css">
+    a .triangle-small-full {
+      opacity: 0;
+      transition-duration: 100ms;
+      transition-delay: 400ms;
+    }
+
+    a .triangle-small {
+      transform-origin: 68% 68%;
+    }
+
+    a:hover .triangle-small {
+      transform: translate(-17%, 6%) rotate(-120deg);
+      transform-origin: 68% 68%;
+    }
+
+    a:hover .triangle-small-full {
+      opacity: 1;
+      transition-delay: 0ms;
+    }
+
+    a:hover .triangle-big {
+      transform: translateX(5%);
+    }
+  </style>
+  <g class="svg-group triangle-small">
+    <g class="svg-group triangle-small-full">
+      <path class="st0" d="M100,86H37l31.5-54.5L100,86z M42.2,83h52.5L68.5,37.5L42.2,83z"/>
+    </g>
+    <g>
+      <polygon class="st0" points="62.6,47.7 68.5,37.5 94.8,83 83,83 84.7,86 100,86 68.5,31.5 60.9,44.7 		"/>
+      <polygon class="st0" points="73.9,83 42.2,83 58,55.6 56.3,52.6 37,86 75.6,86 		"/>
+    </g>
+  </g>
+  <g class="svg-group triangle-big">
+    <path d="M45.5,30l19.1,33l19.1,33H45.5H7.4l19.1-33L45.5,30 M45.5,22L23,61L0.5,100h45h45L68,61L45.5,22L45.5,22z"/>
+  </g>
+</svg>

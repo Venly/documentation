@@ -1,9 +1,7 @@
 |===
 |Path|Type|Description|Constraints
-
 |`+masterPincode+`
 |`+String+`
 |The master pincode of the account
 |Mandatory, must be between 4-6 digits
-
 |===

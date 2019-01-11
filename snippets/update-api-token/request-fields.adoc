@@ -1,19 +1,15 @@
 |===
 |Path|Type|Description|Constraints
-
 |`+description+`
 |`+String+`
 |Description of the API key
 |Optional
-
 |`+claim+`
 |`+String+`
 |The claim associated to this token
 |Can not be empty, must be one of: [VIEW_WALLETS, SIGN_WALLETS]
-
 |`+enabled+`
 |`+Boolean+`
 |Whether or not the apikey is enabled (active) or not
 |Optional, true or false
-
 |===

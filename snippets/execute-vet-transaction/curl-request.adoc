@@ -4,13 +4,13 @@ $ curl 'https://api.arkane.network/api/transactions' -i -X POST \
     -H 'Content-Type: application/json;charset=UTF-8' \
     -d '{
   "type" : "VET_TRANSACTION",
-  "walletId" : "1543",
+  "walletId" : "cdc4c08a-b8fa-4e4c-z5a2-92c87b80f174",
   "blockRef" : null,
   "chainTag" : null,
   "expiration" : 3,
   "gas" : 23000,
   "gasPriceCoef" : 46576,
-  "nonce" : "4f54ba81-67b4-4ba7-939f-9069655eb949",
+  "nonce" : "d71939ac-a9db-4d4c-94b4-f388843599e1",
   "clauses" : [ {
     "to" : "0xdc71b72db51e227e65a45004ab2798d31e8934c9",
     "amount" : 10000000000,

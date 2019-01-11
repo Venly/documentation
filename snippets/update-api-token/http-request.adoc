@@ -4,7 +4,6 @@ PATCH /api/apitokens/2189ba84-d088-11e8-a8d5-f2801f1b9fd1 HTTP/1.1
 Content-Type: application/json;charset=UTF-8
 Host: localhost:8080
 Content-Length: 87
-
 {
   "description": "My Awesome APIKey",
   "enabled": true, 

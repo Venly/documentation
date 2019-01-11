@@ -1,8 +1,6 @@
 .+/api/apitokens/{token}+
 |===
 |Parameter|Description
-
 |`+token+`
 |the token to be deleted
-
 |===

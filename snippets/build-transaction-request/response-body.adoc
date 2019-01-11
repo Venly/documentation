@@ -2,7 +2,7 @@
 ----
 {
   "type" : "VECHAIN_VIP180_TRANSACTION",
-  "walletId" : "1543",
+  "walletId" : "edc4c08a-b8fa-4e4c-z5a2-92c87b80f174",
   "blockRef" : null,
   "chainTag" : null,
   "expiration" : 0,

@@ -1,8 +1,6 @@
 |===
 |Path|Type|Description
-
 |`+success+`
 |`+Boolean+`
 |True if operation was successful
-
 |===

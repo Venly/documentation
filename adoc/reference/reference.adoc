@@ -127,9 +127,9 @@ Using this, you don't have to take the different number of decimals for differen
 ====
 
 [[native-transactions]]
-=== Native Transactions
-==== Ethereum
-===== Execute an ETH transaction [.bb-connect]#connect#
+
+=== Ethereum Transactions
+==== Execute an ETH transaction [.bb-connect]#connect#
 To execute an Ethereum transaction, use the connect building block with:
 
 .URL
@@ -148,7 +148,7 @@ operation::execute-ether-transaction[snippets='response-fields']
 .Result example
 operation::execute-ether-transaction[snippets='response-body']
 
-===== Execute an ERC20 transfer [.bb-connect]#connect#
+==== Execute an ERC20 transfer [.bb-connect]#connect#
 
 To execute an ERC20 transaction transfer, use the connect building block with:
 
@@ -168,7 +168,7 @@ operation::execute-erc20-transaction[snippets='response-fields']
 .Result example
 operation::execute-erc20-transaction[snippets='response-body']
 
-===== Sign [.bb-connect]#connect#
+==== Sign [.bb-connect]#connect#
 Signs arbitrary data. This data is before UTF-8 HEX decoded and enveloped as followed:
 
 `"\x19Ethereum Signed Message:\n" + message.length + message.`
@@ -192,9 +192,9 @@ operation::sign-hex-message[snippets='response-body']
 
 
 
-==== Vechain
+=== Vechain
 
-===== Execute a VET transaction [.bb-connect]#connect#
+==== Execute a VET transaction [.bb-connect]#connect#
 To execute an VeChain transaction, use the connect building block with:
 
 .URL
@@ -213,7 +213,7 @@ operation::execute-vet-transaction[snippets='response-fields']
 .Result example
 operation::execute-vet-transaction[snippets='response-body']
 
-===== Execute a VTHO transfer [.bb-connect]#connect#
+==== Execute a VTHO transfer [.bb-connect]#connect#
 To execute a VTHO transfer, use the connect building block with:
 
 .URL
@@ -250,7 +250,7 @@ operation::execute-vtho-transaction[snippets='response-body']
 }
 ----
 
-===== Execute a VIP180 transfer [.bb-connect]#connect#
+==== Execute a VIP180 transfer [.bb-connect]#connect#
 
 To execute an ERC20 transaction transfer, use the connect building block with:
 

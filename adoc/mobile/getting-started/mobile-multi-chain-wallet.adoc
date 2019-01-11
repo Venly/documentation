@@ -1,22 +1,25 @@
 == Introduction
 
-This quickstart will guide you on building your own native mobile application (Android) that uses Arkane. After this intro you should understand how Arkane works and be able to
+This guide will walk you trough the process of building your own native mobile application (Android) which will interact with a blockchain via Arkane. After this intro you will understand the different Arkane components and be able to
 integrate all features from the link:reference[Reference documentation].
 
 
 === What you'll build
 
-We will build an Android app that will:
+We'll build an Android app that will:
 
-* authenticate the user with Arkane
-* manage Arkane wallets for our app
-* fetch a list of the user's wallets
+* Authenticate the user with Arkane (OAuth2)
+* Enable the user to manage his wallets connected to our application
+* Fetch a list of the user’s wallets
 
 
 === Prerequisities
 
-* Development tools for android (https://developer.android.com/studio/intro/)
-* a minimal understanding of Java / Android apps
+In order to follow this quick start guide we expect you have the Android Development tools installed and have a 
+minimal understanding of Java / Android apps.
+
+https://developer.android.com/studio/intro/[Android Studio]
+
 
 == Let's get started
 

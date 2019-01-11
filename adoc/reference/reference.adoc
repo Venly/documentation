@@ -129,7 +129,7 @@ Using this, you don't have to take the different number of decimals for differen
 [[native-transactions]]
 
 === Ethereum Transactions
-==== Execute an ETH transaction [.bb-connect]#connect#
+==== Execute ETH transaction [.bb-connect]#connect#
 To execute an Ethereum transaction, use the connect building block with:
 
 .URL
@@ -148,7 +148,7 @@ operation::execute-ether-transaction[snippets='response-fields']
 .Result example
 operation::execute-ether-transaction[snippets='response-body']
 
-==== Execute an ERC20 transfer [.bb-connect]#connect#
+==== Execute ERC20 transfer [.bb-connect]#connect#
 
 To execute an ERC20 transaction transfer, use the connect building block with:
 
@@ -194,7 +194,7 @@ operation::sign-hex-message[snippets='response-body']
 
 === Vechain
 
-==== Execute a VET transaction [.bb-connect]#connect#
+==== Execute VET transaction [.bb-connect]#connect#
 To execute an VeChain transaction, use the connect building block with:
 
 .URL
@@ -213,7 +213,7 @@ operation::execute-vet-transaction[snippets='response-fields']
 .Result example
 operation::execute-vet-transaction[snippets='response-body']
 
-==== Execute a VTHO transfer [.bb-connect]#connect#
+==== Execute VTHO transfer [.bb-connect]#connect#
 To execute a VTHO transfer, use the connect building block with:
 
 .URL
@@ -250,7 +250,7 @@ operation::execute-vtho-transaction[snippets='response-body']
 }
 ----
 
-==== Execute a VIP180 transfer [.bb-connect]#connect#
+==== Execute VIP180 transfer [.bb-connect]#connect#
 
 To execute an ERC20 transaction transfer, use the connect building block with:
 

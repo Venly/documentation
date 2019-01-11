@@ -519,7 +519,7 @@ Congratulations! You’ve just built an Android app that is able to:
 
 In this example, the following components were used link:buildingblocks.html#_arkane_identity[[.bb-identity]#Arkane Identity#] link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#] link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#].
 
-The sample code used during this guide can either be https://github.com/ArkaneNetwork/mobile-android-example/archive/master.zip[download] or our https://github.com/ArkaneNetwork/mobile-android-example[explored] on GitHub.
+The sample code used during this guide can either be https://github.com/ArkaneNetwork/mobile-android-example/archive/master.zip[download] or https://github.com/ArkaneNetwork/mobile-android-example[explored] on GitHub.
 
 == What's next
 Now that you've mastered the basics you can dive deeper in the different building blocks or link:reference[explore] all our functionalities to transform the sample app into your own personal wallet.

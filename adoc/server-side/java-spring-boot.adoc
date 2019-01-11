@@ -161,9 +161,3 @@ The sample code used during this guide can either be https://github.com/ArkaneNe
 
 == What's next
 Now that you've mastered the basics you can dive deeper in the different building blocks or link:reference.html[explore] all our functionalities.
-
-[NOTE]
-====
-If at any time you get stuck and need some help or advise, don't hesitate to join our https://t.me/ArkaneNetworkOfficial[Telegram] channel, we are glad to help!
-====
-

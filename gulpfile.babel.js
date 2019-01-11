@@ -27,9 +27,11 @@ gulp.task('gulp-assemble', function(done) {
                 partials: [`${dirs.src}/partials/**/*.hbs`],
                 flatten: true,
                 assets: `dist/assets`,
-                data: {
+                vars: {
                     postfix: timestamp,
                 },
+                data: [`${dirs.src}/data.json`],
+                helpers: ['./node_modules/logging-helpers/index.js' ]
             },
             pages: {
                 options: {

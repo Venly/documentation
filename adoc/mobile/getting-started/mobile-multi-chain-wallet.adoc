@@ -452,7 +452,7 @@ The endpoint to link wallets:
 <.> Open a custom tabs intent with the correct URL
 
 === View wallets
-If you want to retrieve the wallets for a user, you can call the <<rest-api-public.html#_get_all_user_wallets,API endpoint for listing user wallets>>.
+If you want to retrieve the wallets for a user, you can call the API endpoint for <<rest-api-public.html#_get_all_user_wallets,listing user wallets>>.
 
 ==== Example
 ./app/src/main/java/network/arkane/arketype/TokenActivity.java

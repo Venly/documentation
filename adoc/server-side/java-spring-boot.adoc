@@ -153,3 +153,13 @@ You can run the application using
 
 [source,bash]
 mvn clean install spring-boot:run
+
+
+=== Components Used
+
+In this example, we used the following components
+
+[.bb-identity]#Arkane Identity#
+
+[.bb-api]#Arkane API#
+

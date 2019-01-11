@@ -1,7 +1,7 @@
 == Introduction
 
 This guide will walk you trough the process of building your own native mobile application (Android) which will interact with a blockchain via Arkane. After this intro you will understand the different Arkane components and be able to
-integrate all features from the link:reference[Reference documentation].
+integrate all features from the link:reference.html[Reference documentation].
 
 
 === What you'll build

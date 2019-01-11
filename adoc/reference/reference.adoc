@@ -50,7 +50,7 @@ https://connect-staging.arkane.network/wallets/manage
 }
 ----
 
-=== [[list-wallets]] List user wallets [.bb-api]#api#
+=== [[list-wallets]] List wallets [.bb-api]#api#
 Returns all the wallets for the specified user (bearer token)
 
 operation::get-wallets[snippets='curl-request,http-response,response-fields']
@@ -61,7 +61,7 @@ operation::get-wallets-filtered[snippets='request-parameters']
 
 
 [[get-specific-user-wallet]]
-=== [[get-wallet]] Get specific user wallet [.bb-api]#api#
+=== [[get-wallet]] Get wallet [.bb-api]#api#
 Returns the details for a specific wallet (native balance is also included)
 
 operation::get-wallet[snippets='curl-request,path-parameters,http-response,response-fields']
@@ -129,7 +129,7 @@ Using this, you don't have to take the different number of decimals for differen
 [[native-transactions]]
 === Native Transactions
 ==== Ethereum
-===== Execute an ether transaction [.bb-connect]#connect#
+===== Execute an ETH transaction [.bb-connect]#connect#
 To execute an Ethereum transaction, use the connect building block with:
 
 .URL

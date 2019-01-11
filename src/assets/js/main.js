@@ -1,8 +1,12 @@
 $(function() {
   hljs.initHighlighting();
 
-  var sticky = new Waypoint.Sticky({
-    element: $('#toc')[0],
-    wrapper: false
-  });
+  if(window.innerWidth >= 1024) {
+    if(typeof Waypoint !== "undefined") {
+      var sticky = new Waypoint.Sticky({
+        element: $('#toc')[0],
+        wrapper: false
+      });
+    }
+  }
 });

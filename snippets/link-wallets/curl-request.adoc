@@ -1,0 +1,10 @@
+[source,bash]
+----
+$ curl 'https://api.arkane.network/api/wallets/link' -i -X POST \
+    -H 'Content-Type: application/json' \
+    -d '{
+  "client" : "cindercloud",
+  "walletIds" : [ "1" ],
+  "secretType" : "ETHEREUM"
+}'
+----

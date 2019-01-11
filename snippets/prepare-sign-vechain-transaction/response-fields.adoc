@@ -1,0 +1,21 @@
+|===
+|Path|Type|Description
+|`+success+`
+|`+Boolean+`
+|See if the response contains a result
+|`+result.gasPriceCoefficients+`
+|`+Array+`
+|List containing the gas price coefficients
+|`+result.gasPriceCoefficients.[].gasPriceCoef+`
+|`+Number+`
+|A possible gas price coefficient
+|`+result.gasPriceCoefficients.[].defaultPrice+`
+|`+Boolean+`
+|True if it should be proposed as the default price, false otherwise
+|`+result.gasLimit+`
+|`+Number+`
+|The estimated gas limit
+|`+result.reverted+`
+|`+Boolean+`
+|True if transaction will likely fail, false otherwise
+|===

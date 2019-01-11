@@ -1,6 +1,6 @@
-$grid-gap: rem(20px);
+$grid-gap: rem(24px);
 $container-width: rem(1200px);
-$container-padding: rem(0 20px);
+$container-padding: rem(0 24px);
 $container-padding-desktop: rem(0 60px);
 
 // colors
@@ -17,9 +17,9 @@ $color-transparent: rgba(255, 255, 255, 0);
 
 $color-black: #000000;
 $color-white: #ffffff;
-$color-white: #ffffff;
+$color-white-gray: #f2f2f2;
 $color-bg-grey: #f8f8f8;
-$color-bluish: #278dae;
+$color-bluish: #2e8ead;
 $color-blue-light: #4a90e2;
 $color-blue-cerulean: #007cbb;
 $color-grey: #777777;
@@ -38,7 +38,7 @@ $color-success: $color-grass;
 $color-error: $color-red;
 $color-warning: $color-orange;
 
-$color-text: $color-greyish-brown;
+$color-text: #616161;
 $color-text-light: $color-warm-grey;
 $color-border: $color-medium-grey;
 $color-border-light: $color-light-grey;
@@ -73,15 +73,18 @@ $types: (
 $font-size-xsmall: rem(9px);
 $font-size-small: rem(12px);
 $font-size-regular: rem(14px);
-$font-size-base: 16px;
+$font-size-base: 14px;
 $font-size-default: rem(16px);
 $font-size-big: rem(18px);
 $font-size-bigger: rem(20px);
 
 $font-weight-normal: 300;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
 $font-weight-400: 400;
 $font-weight-500: 500;
 $font-weight-bold: 700;
+
 $font-weight-btn: $font-weight-400;
 
 $line-height-xsmall: rem(11px);
@@ -90,7 +93,12 @@ $line-height-regular: rem(16px);
 $line-height-base: rem(18px);
 $line-height-big: rem(20px);
 $line-height-bigger: rem(22px);
-$font-size-heading-h1: rem(26px);
+$font-size-heading-h1: rem(24px);
+$font-size-heading-h2: rem(24px);
+$font-size-heading-h3: rem(21px);
+$font-size-heading-h4: rem(19px);
+$font-size-heading-h5: rem(19px);
+$font-size-heading-h6: rem(16px);
 
 $border-radius-circle: 9999px;
 $border-radius-small: rem(4px);
@@ -98,7 +106,15 @@ $border-radius: rem(6px);
 $box-shadow: rem(0 2px 9px 0) rgba(0, 0, 0, 0.03);
 $box-shadow-light: rem(0 2px 9px 0) rgba(0, 0, 0, 0.20);
 $box-shadow-dark: rem(0 2px 9px 0) rgba(0, 0, 0, 0.99);
-$box-shadow-floating: rem(0 2px 4px 0) rgba(125, 125, 125, 0.5);
+$box-shadow-floating: rem(0 2px 4px 0) rgba(0,0,0, 0.5);
 $drop-shadow: rem(0 2px 9px) rgba(0, 0, 0, 0.03);
 
-$transition-default: 200ms ease-out
+$transition-default: 200ms ease-out;
+
+
+$toc-width: rem(300px);
+$content-width: ($breakpoint-tablet-ls - (300px * 0.875));
+
+$font: Roboto, Arial, sans-serif;
+$margin-bottom: rem(16px);
+

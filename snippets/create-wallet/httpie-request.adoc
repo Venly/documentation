@@ -1,0 +1,12 @@
+[source,bash]
+----
+$ echo '{
+  "alias" : null,
+  "hasCustomPin" : true,
+  "description" : null,
+  "primary" : false,
+  "secretType" : "ETHEREUM",
+  "clients" : [ "ThorBlock" ]
+}' | http POST 'https://api.arkane.network/api/wallets' \
+    'Content-Type:application/json'
+----

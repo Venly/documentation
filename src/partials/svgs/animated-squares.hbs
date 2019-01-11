@@ -1,0 +1,54 @@
+<svg class="svg--animated-squares" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 100 100" xml:space="preserve">
+  <style type="text/css">
+    .square-big-full {
+      opacity: 1;
+      transition-delay: 0ms;
+    }
+
+    .square-small-full {
+      opacity: 0;
+      transition-delay: 400ms;
+    }
+
+    .square-big-full,
+    .square-small-full {
+      transition-duration: 100ms !important;
+    }
+
+    a:hover .square-big {
+      transform: translate(20%, -20%);
+    }
+
+    a:hover .square-small {
+      transform: translate(-39%, 39%);
+    }
+
+    a:hover .square-big-full {
+      opacity: 0;
+      transition-delay: 350ms;
+    }
+
+    a:hover .square-small-full {
+      opacity: 1;
+      transition-delay: 0ms;
+    }
+  </style>
+  <g class="svg-group square-small">
+    <g>
+      <polygon class="st0" points="40.5,0.5 40.5,18.2 43.5,18.2 43.5,3.5 96.5,3.5 96.5,56.5 82,56.5 82,59.5 99.5,59.5 99.5,0.5 		"/>
+      <polygon class="st0" points="74,56.5 43.5,56.5 43.5,26.2 40.5,26.2 40.5,59.5 74,59.5 		"/>
+    </g>
+    <g class="svg-group square-small-full">
+      <path class="st0" d="M99.5,59.5h-59v-59h59V59.5z M43.5,56.5h53v-53h-53V56.5z"/>
+    </g>
+  </g>
+  <g class="svg-group square-big">
+    <g class="svg-group square-big-full">
+      <path d="M80,100H0V20h80V100z M4,96h72V24H4V96z"/>
+    </g>
+    <g>
+      <polygon points="0,20 0,57.5 4,57.5 4,24 76,24 76,96 42.5,96 42.5,100 80,100 80,20 		"/>
+      <polygon points="35.5,96 4,96 4,64.5 0,64.5 0,100 35.5,100 		"/>
+    </g>
+  </g>
+</svg>

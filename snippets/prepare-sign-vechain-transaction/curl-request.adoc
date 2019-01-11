@@ -1,0 +1,21 @@
+[source,bash]
+----
+$ curl 'http://localhost:8080/api/signatures/prepare' -i -X POST \
+    -H 'Content-Type: application/json;charset=UTF-8' \
+    -d '{
+  "type" : "VECHAIN_TRANSACTION",
+  "walletId" : "1",
+  "submit" : false,
+  "blockRef" : null,
+  "chainTag" : null,
+  "expiration" : 0,
+  "gas" : 0,
+  "gasPriceCoef" : null,
+  "nonce" : null,
+  "clauses" : [ {
+    "to" : "0xdc71b72db51e227e65a45004ab2798d31e8934c9",
+    "amount" : 10000,
+    "data" : "0x0"
+  } ]
+}'
+----

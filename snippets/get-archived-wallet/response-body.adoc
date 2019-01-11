@@ -1,0 +1,12 @@
+[source,options="nowrap"]
+----
+{
+  "id" : "1",
+  "address" : "0xdc72b72db54e227e65a45004ab2798d31e8934c2",
+  "secretType" : "ETHEREUM",
+  "archived" : true,
+  "alias" : "aliasEth",
+  "description" : "descriptionEth",
+  "status" : "ARCHIVED"
+}
+----

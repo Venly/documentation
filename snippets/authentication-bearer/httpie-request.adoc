@@ -1,0 +1,5 @@
+[source,bash]
+----
+$ http GET 'http://localhost:8080/api/profile' \
+    'Authorization:Bearer BEARER-TOKEN'
+----

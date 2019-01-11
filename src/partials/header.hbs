@@ -1,14 +1,38 @@
-<header id="header" class="header">
-  <div class="header__container">
-    <div class="logo">
-      <a href="/"><img src="{{assets}}/img/logo-arkane-animated-light.svg" alt="logo arkane"></a>
-    </div>
-    <nav class="nav">
-      <ul class="nav__list">
-        <li class="nav__list-item"><a class="link " href="#">link 1</a></li>
-        <li class="nav__list-item"><a class="link link--active" href="#">link 2</a></li>
-        <li class="nav__list-item"><a class="link" href="#">link 3</a></li>
-      </ul>
-    </nav>
+<!--[if lte IE 9]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and
+  security.</p>
+<![endif]-->
+
+<div class="page-bg"></div>
+<div class="page-top {{#if banner}}page-top--has-banner{{/if}}">
+  <div class="page-top__content">
+    <header id="header" class="header">
+      <div class="header__container">
+        <div class="header__logo">
+          <a href="/"><img src="{{assets}}/img/logo-arkane-black.svg" alt="logo arkane"></a>
+        </div>
+        <div class="header__crumbs">
+          <ul>
+            <li>
+              <a href="/">Docs</a>
+            </li>
+            <li>
+              {{ category }}
+            </li>
+            <li class="active">
+              {{ title }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
   </div>
-</header>
+  {{#if banner}}
+    <div class="page-banner">
+      <div class="page-banner__content">
+        <span>{{bannerText}}</span>
+        {{#if bannerCtaLink}}<a class="btn" href="{{bannerCtaLink}}">{{bannerCtaText}}</a>{{/if}}
+      </div>
+    </div>
+  {{/if}}
+</div>

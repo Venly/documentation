@@ -1,0 +1,23 @@
+|===
+|Path|Type|Description|Constraints
+|`+pincode+`
+|`+String+`
+|The pincode of the specified wallet
+|Mandatory, must be between 4-6 digits
+|`+importWalletType+`
+|`+String+`
+|The type of the wallet import
+|Mandatory, must be one of: [ETHEREUM_KEYSTORE, ETHEREUM_PRIVATE_KEY, VECHAIN_PRIVATE_KEY, VECHAIN_KEYSTORE]
+|`+keystore+`
+|`+String+`
+|The JSON keystore of your ethereum wallet
+|Mandatory, cannot be empty
+|`+password+`
+|`+String+`
+|The password of the wallet
+|Mandatory, cannot be empty
+|`+clients+`
+|`+Null+`
+|New wallet will be automatically linked to given clients
+|Optional, only valid clients
+|===

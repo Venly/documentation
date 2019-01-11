@@ -1,0 +1,27 @@
+|===
+|Path|Type|Description|Constraints
+|`+walletId+`
+|`+String+`
+|The id of the wallet one wants to sign with.
+|Mandatory
+|`+to+`
+|`+String+`
+|The destination address of the transaction.
+|Mandatory, a valid address for the specified chain or the email address of the person you want to send tokens to
+|`+alias+`
+|`+Null+`
+|In case the 'to' field is an email address, the alias specifies which wallet of that user to use
+|Optional, when not specified the default wallet of that user will be used
+|`+value+`
+|`+Number+`
+|The value transferred for the transaction in the token value
+|Mandatory, must be >= 0
+|`+secretType+`
+|`+String+`
+|Which chain you want to do a transaction for
+|Mandatory. Must be one of ETHEREUM, VECHAIN
+|`+tokenAddress+`
+|`+String+`
+|The address of the token to be used in this transaction
+|Optional
+|===

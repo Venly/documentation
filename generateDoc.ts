@@ -5,13 +5,17 @@ import * as readline    from 'readline';
 import { Interface }    from 'readline';
 import * as fs          from 'fs';
 
+let imgDir = './dist/pages/img/';
+if(!fs.existsSync(imgDir)) {
+    fs.mkdirSync(imgDir, { recursive: true });
+}
 // letsGenerateSomeDocs('../rest/src/main/asciidoc/', '../rest/target/generated-snippets');
-letsGenerateSomeDocs('./adoc/');
+letsGenerateSomeDocs('./adoc/', './snippets');
 
 
 function letsGenerateSomeDocs(fileLocation: string, snippetsLocation: string = '') {
     //passsing directoryPath and callback function
-    fs.readdir(fileLocation, (err, fileList) => {
+    fs.readdir(fileLocation, {withFileTypes: true}, (err, fileList) => {
         const files = [];
         //handling error
         if (err) {
@@ -19,10 +23,18 @@ function letsGenerateSomeDocs(fileLocation: string, snippetsLocation: string = '
         }
         const regex = new RegExp(/(.*)\.adoc/i);
         //listing all files using forEach
-        fileList.forEach(function (file) {
-            const result = file.match(regex);
-            if (result) {
-                files.push(result[1]);
+        fileList.forEach(function (file: fs.Dirent) {
+            if (file.isFile()) {
+                const result = file.name.match(regex);
+                if (result) {
+                    files.push(result[1]);
+                } else if (fileLocation.indexOf('/img/') >= 0) {
+                    fs.copyFile(`${fileLocation}${file.name}`, `${imgDir}${file.name}`, (e) => {
+                        console.log(file.name, e);
+                    });
+                }
+            } else if (file.isDirectory()) {
+                letsGenerateSomeDocs(`${fileLocation}${file.name}/`, snippetsLocation);
             }
         });
 
@@ -58,6 +70,7 @@ function compile(fileList: string[], fileLocation, snippetsLocation) {
 
 function runAsciidoc(content: string, fileName: string, snippetsLocation: string) {
     const asciidoctor = Asciidoctor();
+    console.log('Start AsciiDoc: ', fileName);
     let html = asciidoctor.convert(content, {
         'header_footer': false,
         'verbose': true,
@@ -68,6 +81,7 @@ function runAsciidoc(content: string, fileName: string, snippetsLocation: string
         'to_dir': './src/partials/docs',
         'to_file': `${fileName}.hbs`,
         'attributes': {
+            'icons': 'font',
             'snippets': snippetsLocation,
             'toc': 'left',
             'toclevels': 4,
@@ -119,7 +133,7 @@ function operate(line: string, titlePrefix: string) {
             const u = t.replace(/-/g, '_');
             const title = titlePrependExample(t.replace(/-/g, ' ').replace('http', 'HTTP'), t);
 
-            result += `\n\n[[example_${u}_${name}]]\n${titlePrefix} ${capitalize(title)}\n\ninclude::{snippets}/${name}/${t}.adoc[]`;
+            result += `\n\n[.sect-${type}]\n[[example_${u}_${name}]]\n${titlePrefix} ${capitalize(title)}\n\ninclude::{snippets}/${name}/${t}.adoc[]`;
         });
         return result.trimLeft();
     }

@@ -1,4 +1,4 @@
-= Single Sign On with Arkane using Spring Boot
+== Introduction
 
 This guide will walk you through the process of logging in with Arkane using Single Sign On and displaying your Arkane wallets.
 This specific guide will focus on Spring Boot integration.
@@ -7,16 +7,19 @@ This specific guide will focus on Spring Boot integration.
 
 We'll build a small application which will:
 
-. Allow us to authenticate using your Arkane Account (OAuth2)
-. Fetch and display your wallets, server side
+* Allow us to authenticate using your Arkane Account (OAuth2)
+* Fetch and display your wallets, server side
 
-== What you'll need
+In this example, the following components will be used link:buildingblocks.html#_arkane_identity[[.bb-identity]#Arkane Identity#] link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#].
+
+=== Prerequisities
 
 * A text editor or IDE
 * Java 8+ and Maven must be installed
 
-=== Creating a new project
 
+== Let’s get started
+=== Creating a new project
 [source,bash]
 ----
 mkdir ui && cd ui
@@ -40,17 +43,17 @@ To be able to log in using Arkane, we'll have to add OAuth2 support to our Sprin
 First of all, we'll need to enable oauth2 support.
 Simply add `@EnableOAuth2Client` and autowire `OAuth2ClientContext` in a configuration class.
 
-Next up, we'll create a new instance of `AuthorizationCodeResourceDetails` and provide it as a bean.
-We'll also populate our application with properties from a property file. In this example, we're using the Arkane Staging environment using a public client we use for every guide (Arketype)
-
 [source,java]
 ----
 @Bean
 @ConfigurationProperties("arkane.client")
-public AuthorizationCodeResourceDetails arkane() {
+public AuthorizationCodeResourceDetails  arkane() { <1>
     return new AuthorizationCodeResourceDetails();
 }
 ----
+<1> Next up, we'll create a new instance of `AuthorizationCodeResourceDetails` and provide it as a bean.
+We'll also populate our application with properties from a property file. In this example, we're using the Arkane Staging environment using a public client we use for every guide (Arketype)
+
 
 `/src/main/resources/application.properties`
 
@@ -145,11 +148,21 @@ public String wallets() {
 }
 ----
 
-=== Full Example
+== Summary
+Congratulations! You’ve just built an small service-side application app that is able to:
 
-The entire example can be found on https://github.com/ArkaneNetwork/spring-boot-java-example[github].
+* We authenticated using your Arkane Account (OAuth2)
+* We fetched and displayed your wallets, server side
 
-You can run the application using
+In this example, the following components were used link:buildingblocks.html#_arkane_identity[[.bb-identity]#Arkane Identity#] link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#].
 
-[source,bash]
-mvn clean install spring-boot:run
+The sample code used during this guide can either be https://github.com/ArkaneNetwork/spring-boot-java-example/archive/master.zip[download] or our https://github.com/ArkaneNetwork/spring-boot-java-example[explored] on GitHub.
+
+== What's next
+Now that you've mastered the basics you can dive deeper in the different building blocks or link:reference[explore] all our functionalities.
+
+[NOTE]
+====
+If at any time you get stuck and need some help or advise, don't hesitate to join our https://t.me/ArkaneNetworkOfficial[Telegram] channel, we are glad to help!
+====
+

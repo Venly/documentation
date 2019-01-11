@@ -1,0 +1,8 @@
+[source,bash]
+----
+$ curl 'https://api.arkane.network/api/profile' -i -X PATCH \
+    -H 'Content-Type: application/json;charset=UTF-8' \
+    -d '{
+  "newPincode" : "5678"
+}'
+----

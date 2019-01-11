@@ -1,0 +1,10 @@
+[source,bash]
+----
+$ curl 'https://api.arkane.network/api/wallets/1/security' -i -X PATCH \
+    -H 'Content-Type: application/json;charset=UTF-8' \
+    -d '{
+  "newPincode" : "4321",
+  "hasCustomPin" : "true",
+  "recoverable" : "true"
+}'
+----

@@ -1,0 +1,7 @@
+[source,bash]
+----
+$ echo '{
+  "masterPincode" : "123456"
+}' | http POST 'https://api.arkane.network/api/wallets/claim' \
+    'Content-Type:application/json;charset=utf-8'
+----

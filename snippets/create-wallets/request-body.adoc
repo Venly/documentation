@@ -1,0 +1,11 @@
+[source,options="nowrap"]
+----
+{
+  "alias" : null,
+  "hasCustomPin" : true,
+  "description" : null,
+  "primary" : false,
+  "secretType" : "ETHEREUM",
+  "clients" : [ "ThorBlock" ]
+}
+----

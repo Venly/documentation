@@ -1,0 +1,5 @@
+|===
+|Parameter|Description
+|`+address+`
+|address of the wallet
+|===

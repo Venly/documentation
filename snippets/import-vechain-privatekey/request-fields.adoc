@@ -1,0 +1,19 @@
+|===
+|Path|Type|Description|Constraints
+|`+pincode+`
+|`+String+`
+|The master pincode of the account
+|Mandatory, must be between 4-6 digits
+|`+importWalletType+`
+|`+String+`
+|The type of the wallet import
+|Mandatory, must be one of: [ETHEREUM_KEYSTORE, ETHEREUM_PRIVATE_KEY, VECHAIN_PRIVATE_KEY, VECHAIN_KEYSTORE]
+|`+privateKey+`
+|`+String+`
+|The private key to be imported
+|Mandatory, cannot be empty
+|`+clients+`
+|`+Null+`
+|New wallet will be automatically linked to given clients
+|Optional, only valid clients
+|===

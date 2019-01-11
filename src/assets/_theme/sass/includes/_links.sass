@@ -1,0 +1,44 @@
+.link
+  cursor: pointer
+  color: $color-link-default
+  transition: color $transition-default, border-bottom-color $transition-default
+  &:hover,
+  &:active
+    text-decoration: underline
+    color: darken($color-link-default, 10%)
+
+.link--blue
+  color: $color-bluish
+  text-decoration: none
+  &:hover,
+  &:active
+    color: darken($color-bluish, 10%)
+
+.btn
+  cursor: pointer
+  text-align: center
+  width: 100%
+  border: 1px solid $color-link-default
+  font-size: $font-size-small
+  font-weight: $font-weight-btn
+  border-radius: $border-radius-small
+  margin-bottom: rem(20px)
+  color: $color-white
+  background-color: $color-link-default
+  line-height: rem(20px)
+  padding: rem(7px 30px)
+  white-space: nowrap
+  text-decoration: none
+  transition: background-color $transition-default
+  &:hover,
+  &:active
+    color: $color-white
+    background-color: darken($color-link-default, 10%)
+
+.btn--blue
+    border-color: $color-bluish
+    background-color: $color-bluish
+    &:hover,
+    &:active
+      border-color: darken($color-bluish, 10%)
+      background-color: darken($color-bluish, 10%)

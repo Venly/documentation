@@ -1,0 +1,9 @@
+[source,bash]
+----
+$ echo '{
+  "client" : "cindercloud",
+  "walletIds" : [ "1" ],
+  "secretType" : null
+}' | http POST 'https://api.arkane.network/api/wallets/link?override=false' \
+    'Content-Type:application/json'
+----

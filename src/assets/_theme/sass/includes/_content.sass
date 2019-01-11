@@ -1,6 +1,57 @@
-.page-content
-  box-shadow: 0 0 5px 0 rgba($color-greyish-brown, 0.5)
-  margin-top: -25px
-  border-radius: 5px 5px 0 0
+.page-bg
+  position: absolute
+  right: 0
+  width: 50%
+  top: 0
+  bottom: 0
+  background-color: $color-greyish-brown
+
+.page-banner
+  background-color: $color-greyish-brown
+  width: 100%
+  color: $color-white
+  display: flex
+  justify-content: center
+  align-items: center
+  font-size: $font-size-bigger
+  padding: rem(28px)
+  .btn
+    text-transform: uppercase
+    vertical-align: top
+    margin-left: rem(12px)
+    font-size: $font-size-bigger
+
+.page-top
+  position: relative
+  &::after
+    position: absolute
+    left: 0
+    width: 50%
+    background-color: $color-medium-grey
+    height: 1px
+    content: ''
+    bottom: 0
+  &--has-banner
+    &::after
+      display: none
+    .page-top__content
+      border-bottom: 0 none
+
+  &__content
+    background-color: $color-white
+    border-bottom: 1px solid $color-medium-grey
+
+.page-main
+  position: relative
   overflow: hidden
-  height: auto !important
+  &__content
+    background-color: $color-white
+    width: 100%
+    margin: 0 auto
+    padding: rem(0 28px 52px 28px)
+    height: auto !important
+    min-height: calc(100vh - 90px)
+
+    > h1:first-child
+      margin-top: 0
+      padding-top: rem(28px)

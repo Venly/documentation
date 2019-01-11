@@ -1,0 +1,5 @@
+[source,http,options="nowrap"]
+----
+GET /api/wallets?address=0xdc72b72db54e227e65a45004ab2798d31e8934c2 HTTP/1.1
+Host: api.arkane.network
+----

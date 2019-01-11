@@ -3,19 +3,18 @@
 
 {{>head}}
 
-<body>
-  {{> symbols}}
-  {{> header}}
+<body class="{{bodyClass}}">
 
-  <div class="page-content">
-    <h1>{{title}}</h1>
+{{> header}}
+<div class="page-main">
+  <div class="page-main__content">
+    <h1 class="sr-only">{{title}}</h1>
 
     {{> body}}
 
     {{> footer}}
   </div>
-
-  {{> scripts-general}}
+</div>
+{{> scripts-general}}
 </body>
-
 </html>

@@ -1,0 +1,6 @@
+.+/api/wallets/{id}/apps+
+|===
+|Parameter|Description
+|`+id+`
+|Id of the wallet to retrieve the connected apps for
+|===

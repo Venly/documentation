@@ -1,0 +1,18 @@
+[source,http,options="nowrap"]
+----
+HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+Content-Length: 327
+{
+  "success" : true,
+  "result" : {
+    "token" : "53f831cf-642e-434d-95ca-bbc4ec1589d3",
+    "userId" : "davy",
+    "walletId" : "1",
+    "claim" : "SIGN_WALLETS",
+    "enabled" : true,
+    "description" : "Development API Key",
+    "tokenSecret" : "QUQ9NndyPj8xb3wvcjNkbVE+W29vUDxAdjw0eiVyLG15RzE3amoobmkwKjduSGozNTM="
+  }
+}
+----

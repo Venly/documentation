@@ -1,0 +1,16 @@
+[source,http,options="nowrap"]
+----
+HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+Content-Length: 328
+{
+  "success" : true,
+  "result" : [ {
+    "id" : "FundRequest",
+    "name" : "FundRequest",
+    "description" : "Harness the power of Open Source developers",
+    "url" : "https://fundrequest.io",
+    "logo" : "https://raw.githubusercontent.com/ArkaneNetwork/content-management/master/third-party-logos/FundRequest.png"
+  } ]
+}
+----

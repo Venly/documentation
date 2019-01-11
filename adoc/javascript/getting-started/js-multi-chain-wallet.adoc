@@ -1,6 +1,6 @@
 == Introduction
 
-This guide will walk you trough the process of creating a multi blockchain wallet, able to transfer native coins and tokens to any address specified.  After this intro you will understand the different Arkane components and be able to integrate all features from link:reference[Reference documentation].
+This guide will walk you trough the process of creating a multi blockchain wallet, able to transfer native coins and tokens to any address specified.  After this intro you will understand the different Arkane components and be able to integrate all features from link:reference.html[Reference documentation].
 
 === What you'll build
 

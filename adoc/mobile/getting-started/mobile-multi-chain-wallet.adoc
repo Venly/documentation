@@ -517,7 +517,7 @@ Congratulations! You’ve just built an Android app that is able to:
 * Fetch a list of a user’s wallets
 
 == What's next
-Now that you've mastered the basics you can dive deeper in the different building blocks or link:reference[explore] all our functionalities to transfer the sample app into your own personal wallet.
+Now that you've mastered the basics you can dive deeper in the different building blocks or link:reference[explore] all our functionalities to transform the sample app into your own personal wallet.
 
-If at any time you get stuck and need to some help or advise don't hesitate to join our https://t.me/ArkaneNetworkOfficial[Telegram] channel, we are glad to help!
+If at any time you get stuck and need some help or advise, don't hesitate to join our https://t.me/ArkaneNetworkOfficial[Telegram] channel, we are glad to help!
 

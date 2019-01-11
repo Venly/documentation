@@ -347,7 +347,7 @@ When a user clicks a button, a custom tab should open where the user can log int
 As an application, it is possible to have a user manage his wallets for a specific blockchain. During this action, the user can link existing wallets or import a wallet.
 When the user returns to the app, a wallet will be linked to your application for the given blockchain. When a user does not have any wallets, he can indicate to create a new wallet.
 
-To manage wallets, a specific url needs to be opened in the browser (using custom tabs). It is not possible to do this directly in the background since the user needs to verify each change using his PIN. For security reasons, we cannot allow the confirmation to happen through a 3th party application.
+To manage wallets, a specific url needs to be opened in the browser (using custom tabs). It is not possible to do this directly in the background since the user needs to verify each change using his PIN. For security reasons, we cannot allow the confirmation to happen through a 3rd party application.
 
 The endpoint to manage wallets:
 

@@ -17,7 +17,8 @@ We'll build a page which will:
 * A text editor or IDE
 * Git (https://git-scm.com/downloads[Download])
 * Node & npm (https://www.npmjs.com/get-npm[Download])
-* A minimal understanding of jQuery (We will be using jQuery to perform DOM manipulations).
+* A minimal understanding of jQuery (we will be using jQuery to perform DOM manipulations)
+* An understanding of async functions (ECMAScript 2017)
 
 == Prerequisities
 
@@ -30,7 +31,8 @@ git checkout js-multi-chain-wallet-initial
 npm install
 ----
 
-This will set us up with a small project that contains the necessary HTML, CSS and configuration files. You can already run the application by executing `npm run start`.
+This will set us up with a small project that contains the necessary HTML, CSS and configuration files. +
+It will also setup an http server which you can start by executing `npm run start`. The server will be running on port 4000 (http://localhost:4000).
 
 At the moment the application isn't doing much, so let's go ahead and implement the JavaScript.
 
@@ -63,7 +65,7 @@ Now we can add `connect.js` to our application by adding it in the `<head>` sect
   ...
   <link rel="stylesheet" href="/assets/css/arketype.css"/>
 
-  <script src="/node_modules/@arkane-network/arkane-connect/connect.js"></script> <!--1-->
+  <script src="/node_modules/@arkane-network/arkane-connect/dist/connect.js"></script> <!--1-->
 </head>
 ...
 ----
@@ -161,13 +163,13 @@ We'll do this by adding 'click' event listeners to the bottom of our script. The
 ...
 app.initApp();
 
-document.getElementById('auth-loginlink').addEventListener('click', function(e) {
-  e.preventDefault();
+$('#auth-loginlink').click((event) => {
+  event.preventDefault();
   window.arkaneConnect.authenticate(); // <1>
 });
 
-document.getElementById('auth-logout').addEventListener('click', function(e) {
-  e.preventDefault();
+$('#auth-logout').click((event) => {
+  event.preventDefault();
   window.arkaneConnect.logout(); // <2>
 });
 ----
@@ -271,12 +273,12 @@ We'll also want `Manage wallets` links so that the user can go to the page witho
 ----
 // At the bottom of the file //
 ...
-document.getElementById('manage-eth-wallets').addEventListener('click', function(event) {
+$('#manage-eth-wallets').click((event) => {
   event.preventDefault();
   window.arkaneConnect.manageWallets('ETHEREUM'); <1>
 });
 
-document.getElementById('manage-vechain-wallets').addEventListener('click', function(event) {
+$('#manage-vechain-wallets').click((event) => {
   event.preventDefault();
   window.arkaneConnect.manageWallets('VECHAIN'); <2>
 });
@@ -295,7 +297,7 @@ First, we're going to populate and show `wallet-balance` and `wallet-gas-balance
 // At the bottom of the file //
 ...
 
-document.getElementById('wallets-select').addEventListener('change', function(event) {
+$('#wallets-select').change((event) => {
   event.preventDefault();
   if(event.target.value) {
     const wallets = JSON.parse(localStorage.getItem('wallets')); // <1>
@@ -319,8 +321,7 @@ Next we would like to show the tokens that are available for this wallet, we  ca
 ./public/assets/js/main.js
 [source,javascript]
 ----
-document.getElementById('wallets-select')
-        .addEventListener('change', async function(event) { // <1>
+$('#wallets-select').change(async (event) => { // <1>
   event.preventDefault();
   if (event.target.value) {
     const wallets = JSON.parse(localStorage.getItem('wallets'));
@@ -399,8 +400,8 @@ IMPORTANT: If you're executing a transaction in an event handler (as in the exam
 // At the bottom of the file //
 ...
 
-document.getElementById('transaction-form').addEventListener('submit', async (e) => {
-  e.preventDefault();
+$('#transaction-form').submit(async (event) => {
+  event.preventDefault();
   const signer = window.arkaneConnect.createSigner(); // <1>
 
   try {

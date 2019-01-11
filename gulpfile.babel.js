@@ -20,12 +20,16 @@ const dirs = pkg['configs'].directories;
 
 gulp.task('gulp-assemble', function(done) {
     // GRUNT TASKS
+    const timestamp = `${+new Date()}`;
     grunt.initConfig({
         assemble: {
             options: {
                 partials: [`${dirs.src}/partials/**/*.hbs`],
                 flatten: true,
                 assets: `dist/assets`,
+                data: {
+                    postfix: timestamp,
+                },
             },
             pages: {
                 options: {
@@ -43,7 +47,7 @@ gulp.task('gulp-assemble', function(done) {
                 files: {
                     'dist/pages/': [`${dirs.src}/pages/ascii/*.hbs`]
                 }
-            }
+            },
         },
         clean: {
             all: [`${dirs.dist}/**/*.html`, `${dirs.dist}/**/*.hbs`]

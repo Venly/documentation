@@ -8,9 +8,9 @@ integrate all features from the link:reference[Reference documentation].
 
 We will build an Android app that will:
 
-. authenticate the user with Arkane
-. manage Arkane wallets for our app
-. fetch a list of the user's wallets
+* authenticate the user with Arkane
+* manage Arkane wallets for our app
+* fetch a list of the user's wallets
 
 
 === Prerequisities

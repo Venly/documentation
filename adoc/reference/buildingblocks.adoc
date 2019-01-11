@@ -69,7 +69,7 @@ Content-Type: application/json
 User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/1.0 (KHTML, like Gecko; Gmail Actions)
 ----
 
-Bearer tokens can be acquired by using our <<arkane-identity,Arkane Identity Component>>
+Bearer tokens can be acquired by using our link:buildingblocks.html#_arkane_identity[[.bb-identity]#Arkane Identity#] component.
 
 ===== API Key
 

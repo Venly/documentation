@@ -23,10 +23,10 @@ https://developer.android.com/studio/intro/[Android Studio]
 
 == Let's get started
 
-First of all, let's setup a our development environment. Open a terminal window, checkout the Arketype project from GitHub and build the project.
+We’ll start by setting up our development environment. Open a terminal window, checkout the https://github.com/ArkaneNetwork/mobile-android-example[sample project], called mobile-android-example, from GitHub and build the project.
 ```
-git clone https://github.com/ArkaneNetwork/ArketypeMobile.git
-cd ArketypeMobile
+git clone https://github.com/ArkaneNetwork/mobile-android-example.git
+cd mobile-android-example
 ```
 Building your project:
 
@@ -41,14 +41,14 @@ After clicking run, you have to setup a virtual device (or connect your android 
 image::img/initial_device.png[Device,225,388]
 
 == Authentication
-Arkane uses link:https://openid.net/connect/[OpenID connect] for user authentication. For more information on the authorization flow, please check the reference documentation.
+Arkane uses link:https://openid.net/connect/[OpenID connect] for user authentication. For more information on the authorization flow, please check the link:reference[Reference documentation].
 
-You can implement the OpenId connect flow yourself or use an existing library that supports this:
+You can choose to implement the OpenId connect flow yourself or use an existing library:
 
 - link:https://appauth.io/[AppAuth]
 - link:https://aerogear.org/[Aerogear]
 
-In this example we will be using *AppAuth*. First we need to add it as a dependency inside the `build.gradle` of the app:
+In our example we will be using *AppAuth*. First we need to add it as a dependency inside the `build.gradle` of the app:
 
 === Configure AppAuth library
 
@@ -80,7 +80,7 @@ We also need a config file that will configure the library:
 |Field |Explanation
 
 |client_id
-|The id of the client, on staging you can use Arkane. For production please contact Arkane.
+|The id of the client, on staging you can use Arkane. For production please https://arkane-network.typeform.com/to/hzbcGJ[request a personal client id].
 
 |redirect_uri
 |To where does it need to redirect when authentication is done. Important note, *this must be equal to the value inside the defaultConfig of the app.gradle*: manifestPlaceholders = ["appAuthRedirectScheme": "network.arkane.arketype"]
@@ -302,7 +302,7 @@ This code block only contains snippets, please checkout the full source on GitHu
 
 ==== Authenticating a user
 
-When a user clicks a button, a custom tab should open where the user can log into Arkane. When this is done correctly, he should return to the app.
+When a user clicks a button, a custom tab should open where the user can log into Arkane. When this is done correctly, he will return to the app.
 
 ./app/src/main/java/LoginActivity.java
 [source,java]
@@ -344,10 +344,10 @@ When a user clicks a button, a custom tab should open where the user can log int
 == Wallets
 
 === Manage wallets
-As an application, it is possible to have a user manage his wallets for a specific chain. During this action, the user can link existing wallets or import a wallet.
-When the user returns to the app, a wallet will be linked to your application for the given chain. When a user does not have any wallets yet, a user can indicate to create a new wallet.
+As an application, it is possible to have a user manage his wallets for a specific blockchain. During this action, the user can link existing wallets or import a wallet.
+When the user returns to the app, a wallet will be linked to your application for the given blockchain. When a user does not have any wallets, he can indicate to create a new wallet.
 
-To manage wallets, a specific url needs to be opened in the browser (using custom tabs). It is not possible to do this directly in the background since the user needs to enter his PIN. For security reasons, we cannot allow it to be entered inside your own app.
+To manage wallets, a specific url needs to be opened in the browser (using custom tabs). It is not possible to do this directly in the background since the user needs to verify each change using PIN. For security reasons, we cannot allow the confirmation to happen through a 3th party application.
 
 The endpoint to manage wallets:
 
@@ -401,12 +401,12 @@ Make sure all query parameters are url encoded (ex. https://www.urlencoder.org/)
 <.> Open a custom tabs intent with the correct URL
 
 === Link wallets
-This allows users to link his existing wallets with your application. The difference with <<Manage wallets>>:
+This allows users to link their existing wallets with your application. The difference with <<Manage wallets>>:
 
 * A user can only link wallets, it is not possible to create or import a wallet
-* A list of all wallets is returned for any chain (it is possible to filter this).
+* A list of all blockchain wallets is returned. (It is possible to filter based on blockchain).
 
-An example use case could be a portfolio app where a user wants to quickly link all his wallets to get an overview of his complete portfolio.
+An example would be a portfolio app where a user wants to quickly link all his wallets to get an overview of his complete portfolio.
 
 The endpoint to link wallets:
 
@@ -508,4 +508,13 @@ If you want to retrieve the wallets for a user, you can call the <<rest-api-publ
 
 
 == Summary
-Congratulations! You can now start implementing your own wallet using the Arkane building blocks!
+Congratulations! You’ve just built an Android app that is able to:
+* Authenticate a user with Arkane (OAuth2)
+* Enable a user to manage his wallets connected to our application
+* Fetch a list of a user’s wallets
+
+== What's next
+Now that you've mastered the basics you can dive deeper in the different building blocks or link:reference[explore all] our functionalities so you can extent the sample app to become your own personal wallet.
+
+If at any time you get stuck and need to some help or advise don't hesitate to join our https://t.me/ArkaneNetworkOfficial[Telgram] channel, we are glad to help!
+

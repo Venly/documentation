@@ -528,10 +528,5 @@ If at any time you get stuck and need some help or advise, don't hesitate to joi
 
 == Components Used
 
-In this example, we used the following components
+In this example, the following components where used [.bb-identity]#Arkane Identity# [.bb-api]#Arkane API# [.bb-connect]#Arkane Connect#.
 
-[.bb-identity]#Arkane Identity#
-
-[.bb-api]#Arkane API#
-
-[.bb-connect]#Arkane Connect#

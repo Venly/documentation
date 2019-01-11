@@ -1,7 +1,7 @@
 == Introduction
 
 This guide will walk you through the process of logging in with Arkane using Single Sign On and displaying your Arkane wallets.
-This specific guide will focus on Spring Boot integration.
+This specific guide will focus on Spring Boot integration. After this intro you will understand the different Arkane components and be able to integrate all features from link:reference.html[Reference documentation].
 
 === What you'll build
 

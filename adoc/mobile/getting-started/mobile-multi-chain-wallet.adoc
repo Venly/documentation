@@ -523,3 +523,15 @@ Now that you've mastered the basics you can dive deeper in the different buildin
 ====
 If at any time you get stuck and need some help or advise, don't hesitate to join our https://t.me/ArkaneNetworkOfficial[Telegram] channel, we are glad to help!
 ====
+
+
+
+== Components Used
+
+In this example, we used the following components
+
+[.bb-identity]#Arkane Identity#
+
+[.bb-api]#Arkane API#
+
+[.bb-connect]#Arkane Connect#

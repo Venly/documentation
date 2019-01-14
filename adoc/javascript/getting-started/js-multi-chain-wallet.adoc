@@ -188,7 +188,7 @@ npm run start
 == Wallets
 === Fetch wallets
 
-We can fetch the user's wallets using the Arkane Connect API which can be accessed by calling `arkaneConnect.api`. This API is a JavaScript proxy to the HTTP endpoints exposed on https://api.arkane.network[]. Documentation on the endoints can be found https://api.arkane.network/docs/index.html[here]. By using the Arkane Connect API, you don't have to construct and execute the HTTP calls yourself.
+We can fetch the user's wallets using the Arkane Connect API which can be accessed by calling `arkaneConnect.api`. This API is a JavaScript proxy to the HTTP endpoints exposed on https://api.arkane.network[]. By using the Arkane Connect API, you don't have to construct and execute the HTTP calls yourself.
 
 For this example we'll extend the `authenticated(...)` handler so that it fetches the user's wallets right after he logs in, convert the array to a map (where the key is `id`), store the map in local storage and populate the wallets `<select>` with them.
 

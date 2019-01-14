@@ -25,15 +25,28 @@
   background-color: $color-greyish-brown
   width: 100%
   color: $color-white
-  display: flex
-  justify-content: center
-  align-items: center
   font-size: $font-size-bigger
-  padding: rem(28px)
+  padding: rem(22px)
+
+  &__content
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-direction: column
+    line-height: $line-height-bigger
+    @include media(tablet)
+      flex-direction: row
+
+    > *
+      text-align: center
+      margin: rem(6px)
+
   .btn
+    display: inline-block
+    width: auto
     text-transform: uppercase
     vertical-align: top
-    margin-left: rem(12px)
+    margin: rem(6px)
     font-size: $font-size-bigger
 
 .page-top

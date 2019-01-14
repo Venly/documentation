@@ -1,10 +1,12 @@
+$header-height: rem(90px)
+
 .header
   margin: 0
   padding: 0
 
   &__container
     margin: 0 auto
-    height: rem(90px)
+    height: $header-height
     display: flex
     justify-content: space-between
     align-items: flex-end
@@ -15,7 +17,7 @@
   &__logo
     display: flex
     width: $toc-width
-    height: rem(90px)
+    height: $header-height
     padding: 1rem 2.5rem
     flex-grow: 0
     align-items: center

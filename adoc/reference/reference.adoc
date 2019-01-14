@@ -34,11 +34,9 @@ https://connect-staging.arkane.network/wallets/manage
 .Data parameters
 |===
 |Name |Description |Example
-
 |chain
 |The chain for which you want to manage wallets.
 |ethereum
-
 |===
 
 

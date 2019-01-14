@@ -1,10 +1,8 @@
 == Introduction
 
-Arkane Network consists of various building blocks, which are used by our applications - like our wallet - and by various clients. 
+Arkane Network consists of various building blocks, which are used by our applications - like our wallet - and by various clients. You can leverage the power of these building blocks to easily enable blockchain capabilities in your application. 
 
-You can leverage the power of these building blocks to easily enable blockchain capabilities in your application. 
-
-== Arkane API
+== [[arkane-api]] Arkane API [.bb-api]#Arkane API#
 
 === What
 
@@ -25,7 +23,7 @@ WARNING: The Arkane API can also be used with API keys instead of Bearer Tokens.
 
 All of the API's responses are wrapped in an envelope. This envelope indicates whether the request succeeded. If the request failed, an additional `errors` object is added to the response.
 
-*Example of a successful response*
+.Example of a successful response
 [source,json]
 ----
 {
@@ -37,8 +35,7 @@ All of the API's responses are wrapped in an envelope. This envelope indicates w
 }
 ----
 
-*Example of a failed response*
-
+.Example of a failed response
 [source,json]
 ----
 {
@@ -56,8 +53,8 @@ All of the API's responses are wrapped in an envelope. This envelope indicates w
 
 Calling the Rest API requires authentication. At the moment, the following methods for authentication are available:
 
-. Bearer Token
-. API Key
+* Bearer Token
+* API Key
 
 ===== Bearer Token
 
@@ -65,6 +62,7 @@ NOTE: A security token with the property that any party in possession of the tok
 
 A Bearer Token is set in the Authorization header of every Inline Action HTTP Request. For example:
 
+[source,sh,options="nowrap"]
 ----
 GET /api/wallets HTTP/1.1
 Authorization: Bearer AbCdEf123456
@@ -72,7 +70,7 @@ Content-Type: application/json
 User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/1.0 (KHTML, like Gecko; Gmail Actions)
 ----
 
-Bearer tokens can be acquired by using our <<arkane-identity,Arkane Identity Component>>
+Bearer tokens can be acquired by using our link:buildingblocks.html#_arkane_identity[[.bb-identity]#Arkane Identity#] component.
 
 ===== API Key
 
@@ -81,6 +79,8 @@ API Keys are also supported, in a limited fashion. An API key is generated throu
 image::img/apikeys.png[Run]
 
 An API key is set in the `authToken` header of every HTTP Request. For example:
+
+[source,sh,options="nowrap"]
 ----
 GET /api/wallets HTTP/1.1
 authToken: MW90eUtjTHwzMCVNbUVwcGU3LndLJCwwMDJKLTYtW2pzS0E4ck8yVDBCcSZZNjMjNjg=
@@ -98,20 +98,20 @@ https://api-staging.arkane.network
 
 ==== Limitations
 
-Although the Arkane API supports creating signatures (it's even used as underlying building block of Arkane Connect), creating signatures is only possible when using *API Keys*. The main reason we block signature requests from being performed on other domains is because we don't want the user to enter his *private pin* on an untrusted domain. 
+Although the Arkane API supports creating signatures (it's even used as underlying building block of link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]), creating signatures is only possible when using *API Keys*. The main reason we block signature requests from being performed on other domains is because we don't want the user to enter his *private pin* on an untrusted domain. 
 
-TIP: If you want to create signatures on your own domain, use <<arkane-connect,Arkane Connect>>.
+TIP: If you want to create signatures on your own domain, use link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#].
 
-== [[arkane-connect]] ARKANE CONNECT
+== [[arkane-connect]] ARKANE CONNECT [.bb-connect]#Arkane Connect#
 
 === What
 
 Arkane Connect is an endpoint specifically designed to perform common tasks with Arkane wallets. Connect was created as a way to perform tasks which are
 
-. otherwise not possible due to security reasons, *like creating signatures*
-. necessary by all applications, like linking wallets your client
+* otherwise not possible due to security reasons, *like creating signatures*
+* necessary by all applications, like linking wallets your client
 
-Basically, Arkane Connect is a small web application without a central entry point. Calls to Arkane Connect are made by navigating to a specific url. Although you can use it by itself - by manually crafting the urls - we also provide a javascript SDK.  
+Basically, Arkane Connect is a small web application without a central entry point. Calls to Arkane Connect are made by navigating to a specific url. Although you can use it by itself - by manually crafting the urls - we also provide a link:connect-js.html[javascript SDK].  
 
 === How    
 
@@ -119,7 +119,7 @@ Arkane connect can be called by navigating to a specifically crafted URI.
 
 There are 2 ways of calling Arkane Connect, the *GET* or *POST* method. For security reasons, we advise to use the *POST* method, as this doesn't leak the short-lived bearer tokens as GET-parameters.
 
-NOTE: Although Arkane Connect can be called natively, we advise you to use the Arkane Connect JS Library when possible.
+NOTE: Although Arkane Connect can be called natively, we advise you to use the link:connect-js.html[Arkane Connect JS Library] when possible.
 
 ==== GET Method
 
@@ -130,16 +130,16 @@ NOTE: Although Arkane Connect can be called natively, we advise you to use the A
 `https://connect.arkane.network/wallets/manage/vechain?bearerToken=myToken&redirectUrl=https://fundrequest.io`
 
 |=== 
-| *url* | The actual url of the action we want to do. This consists of the base url (https://connect.arkane.network) and the endpoint (`wallets/manage/vechain`)
+| `url` | The actual url of the action we want to do. This consists of the base url (https://connect.arkane.network) and the endpoint (`wallets/manage/vechain`)
 |=== 
 
 
 ===== Query Parameters
 
 |=== 
-| *bearerToken* | the security token which performs the authentication.
-| *redirectUrl* | the url to redirect to after the action has been performed. If the redirectUrl was not passed, the referer will be used instead.
-| *data* | an optional data parameter, which will be used by the specific call. (Example: data to be signed). This should always be *encoded as base64*.
+| `bearerToken` | the security token which performs the authentication.
+| `redirectUrl` | the url to redirect to after the action has been performed. If the redirectUrl was not passed, the referer will be used instead.
+| `data` | an optional data parameter, which will be used by the specific call. (Example: data to be signed). This should always be *encoded as base64*.
 |===
 
 NOTE: Make sure all query parameters are url encoded (ex. https://www.urlencoder.org/)
@@ -156,14 +156,14 @@ NOTE: Make sure all query parameters are url encoded (ex. https://www.urlencoder
 ===== Query Parameters
 
 |=== 
-| *redirectUrl* | the url to redirect to after the action has been performed. If the redirectUrl was not passed, the referer will be used instead.
-| *correlationID* | an optional identifier which can be added. Upon navigating back to your *redirectUrl*, after an action was performed, this *correlationID* will be appended to your URL, so the origin can be tracked.  
+| `redirectUrl` | the url to redirect to after the action has been performed. If the `redirectUrl` was not passed, the referer will be used instead.
+| `correlationID` | an optional identifier which can be added. Upon navigating back to your `redirectUrl`, after an action was performed, this `correlationID` will be appended to your URL, so the origin can be tracked.
 |=== 
 
 . Post Parameters
 |=== 
-| *bearerToken* | the security token which performs the authentication. Note: it is also possible to provide this parameter inside the HTTP header “Authorization”
-| *data* | an optional data parameter, which will be used by the specific call. (Example: data to be signed). When using the *Post Method*, don't encode as base64.
+| `bearerToken` | the security token which performs the authentication. Note: it is also possible to provide this parameter inside the HTTP header “Authorization”
+| `data` | an optional data parameter, which will be used by the specific call. (Example: data to be signed). When using the *Post Method*, don't encode as base64.
 |===
 
 
@@ -175,12 +175,12 @@ https://connect.arkane.network
 .Staging
 https://connect-staging.arkane.network
 
-== [[arkane-identity]] ARKANE IDENTITY
+== [[arkane-identity]] ARKANE IDENTITY [.bb-identity]#Arkane Identity#
 
 Our third and final building block is Arkane Identity.
-Arkane Identity's sole purpose is to provide a way to authenticate to the Arkane Network using OpenID Connect, which combines the OAuth 2.0 protocol together with a simple identity layer.
+Arkane Identity's sole purpose is to provide a way to authenticate to the Arkane network using OpenID Connect, which combines the OAuth 2.0 protocol together with a simple identity layer.
 
-For your app, you will need a specific "client ID". You can request one at the Arkane website.
+For your app, you will need a specific "client ID". If you want to connect to our staging environment, which is linked to different testnets then you can us "`Arketype`" as client ID. For connection to the mainnets you will have to connect to our production environment and request your personal client id. (https://arkane-network.typeform.com/to/hzbcGJ[Request your personal client id])
 
 === Overview
 Arkane Network uses https://openid.net/connect/[OpenID Connect]'s Authorization Code Flow footnote:[https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth] for it's authentication and authorization. Below is a guide to obtain a access token manually, but for added security we recommend using a library for handling authentication/authorization. Only use the manual flow if you are very well known with OpenID Connect.
@@ -196,11 +196,11 @@ https://login.arkane.network/auth/realms/Arkane/protocol/openid-connect/auth
 .Request parameters
 |===
 | Name | Description | Constraints | Example
-| client_id | The client_id of your application (provided to you by the Arkane team) | Mandatory | client_id=Arketype
-| redirect_uri | The URI of the page you want to be redirected to after authentication (do not forget to URL-encode) | Mandatory | redirect_uri=http%3A%2F%2Flocalhost%3A4000%2F
-| scope | The basic (and required) scope for OpenID Connect is the `openid` scope | Mandatory | scope=openid
-| response_type | This should always be `code`. It specifies we will be doing the authentication using the https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth[Authorization Code Flow] | Mandatory | response_type=code
-| nonce | A string value used to associate a Client session with an ID Token, and to mitigate replay attacks. The value is passed through unmodified from the Authentication Request to the ID Token | Optional | nonce=892b2e8e-cb39-4663-b3e3-4940d4c9ed45
+| `client_id` | The `client_id `of your application (provided to you by the Arkane team) | Mandatory | `client_id`=Arketype
+| `redirect_uri` | The URI of the page you want to be redirected to after authentication (do not forget to URL-encode) | Mandatory | `redirect_uri`=http%3A%2F%2Flocalhost%3A4000%2F
+| `scope` | The basic (and required) `scope` for OpenID Connect is the *openid* scope | Mandatory | scope=openid
+| `response_type` | This should always be *code*. It specifies we will be doing the authentication using the https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth[Authorization Code Flow] | Mandatory | `response_type`=code
+| `nonce` | A string value used to associate a Client session with an ID Token, and to mitigate replay attacks. The value is passed through unmodified from the Authentication Request to the ID Token | Optional | `nonce`=892b2e8e-cb39-4663-b3e3-4940d4c9ed45
 |===
 
 .Example URL
@@ -223,14 +223,14 @@ POST https://login.arkane.network/auth/realms/Arkane/protocol/openid-connect/tok
 .Post body (use x-www-form-urlencoded)
 |===
 | Name | Description | Example
-| client_id | The client_id of your application (provided to you by the Arkane team) | client_id=Arketype
-| redirect_uri | The URI of the page you want to be redirected to after authentication (do not forget to URL-encode) | redirect_uri=http://localhost:4000/
-| grant_type | This needs to be set to `authorization_code`  | grant_type=authorization_code
-| code | The authorization code received in step 1 | code=eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..gVMvG7KlZLObMg2OE8MQ7A.3nmUJ5AQ8gEYjN_dNeZKbjH3umoYgrhowD3shIiGxHb5EGLaWwOFTlRnTVVR_BNm0vghzsmOil4qj5jdzZFJSSWbdbz17h-mIMYyfBtMSUwm9qdByD4BgorzX33fF8nqzbr4wPNIEkkqwD9r4CL2JRfNO7zNUuXy6EzYbj7KppCW0418LBCBSePxf9KDtCYSZ3Jr5ajqsm4Quz7Fb8BDA-zmhH5PJiXcA3mY8z3xE0MYXznp1JlQmzri-8mxVGEN.n03Ck3sZtQq3ccGBuEvskA
+| `client_id` | The `client_id` of your application (provided to you by the Arkane team) | `client_id`=Arketype
+| `redirect_uri` | The URI of the page you want to be redirected to after authentication (do not forget to URL-encode) | `redirect_uri`=http://localhost:4000/
+| `grant_type` | This needs to be set to `authorization_code`  | `grant_type`=authorization_code
+| `code` | The authorization code received in step 1 | `code`=eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..gVMvG7KlZLObMg2OE8MQ7A.3nmUJ5AQ8gEYjN_dNeZKbjH3umoYgrhowD3shIiGxHb5EGLaWwOFTlRnTVVR_BNm0vghzsmOil4qj5jdzZFJSSWbdbz17h-mIMYyfBtMSUwm9qdByD4BgorzX33fF8nqzbr4wPNIEkkqwD9r4CL2JRfNO7zNUuXy6EzYbj7KppCW0418LBCBSePxf9KDtCYSZ3Jr5ajqsm4Quz7Fb8BDA-zmhH5PJiXcA3mY8z3xE0MYXznp1JlQmzri-8mxVGEN.n03Ck3sZtQq3ccGBuEvskA
 |===
 
 .Example cURL request
-[source,shell,options="nowrap"]
+[source,sh,options="nowrap"]
 ----
 curl -X POST \
   https://login.arkane.network/auth/realms/Arkane/protocol/openid-connect/token \
@@ -268,14 +268,14 @@ POST https://login.arkane.network/auth/realms/Arkane/protocol/openid-connect/tok
 .Post body (use x-www-form-urlencoded)
 |===
 | Name | Description | Example
-| client_id | The client_id of your application (provided to you by the Arkane team) | client_id=Arketype
-| redirect_uri | The URI of the page you want to be redirected to after authentication (do not forget to URL-encode) | redirect_uri=http://localhost:4000/
-| grant_type | This needs to be set to `refresh_token` | grant_type=refresh_token
-| refresh_token | The refresh token received in step 2 | refresh_token=eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJmQi1UenBOb0hBVGhwT2J4aW9qTDBrdm83MldmRzRXRXh1eFpiaXlGQUhzIn0.eyJqdGkiOiIyMjc4MGE3Yy0zM2E1LTRiM2QtODcwOC04ODM1MDY3MTg3OWMiLCJleHAiOjE1NDczNzQ5NzQsIm5iZiI6MCwiaWF0IjoxNTQ2OTQyOTc0LCJpc3MiOiJodHRwczovL2xvZ2luLXN0YWdpbmcuYXJrYW5lLm5ldHdvcmsvYXV0aC9yZWFsbXMvQXJrYW5lIiwiYXVkIjoiQXJrZXR5cGUiLCJzdWIiOiI2ZDVlNmU0Yi1jOWUxLTQxODctOGY0Yy0wMzFkNzJjMmU2YWMiLCJ0eXAiOiJSZWZyZXNoIiwiYXpwIjoiQXJrZXR5cGUiLCJhdXRoX3RpbWUiOjAsInNlc3Npb25fc3RhdGUiOiIzZjM2NTIxNS0xM2IwLTQ4YzEtYjZjYS1mZDczZGFhYTI0ZGYiLCJyZXNvdXJjZV9hY2Nlc3MiOnt9LCJzY29wZSI6Im9wZW5pZCB2aWV3OndhbGxldHMgc2lnbjp3YWxsZXRzIHZpZXc6cHJvZmlsZSBlbWFpbCBwcm9maWxlIn0.JG9UIO_LrLHChSiNY9gvXdDGYCpfPna1ytVaNOTPB9p6F9kQfB9dGR8JEjX9D9HeYVXQjfhsaLFrX9ZLI1cE_SBxbqWVuLsonyoa0YsTCjUm2R91YC_CGxdECi7mG1g8YvwXMZY0ZoegPEzBTnhpCgC_WT1hZRT1TJek_fi8yWq6DLLoSwM9i4pJyOuJxJ2MvTuxxoLnZ8bNLcAAYS2dyLBoBoJqMGcXRDus0Y4_Nx3PHKfTDSmca5KoDVkrRTHl3WztfhqDotKLaR-99Jq_wqhScAggXWhLH_2WXbBzaOMcXyLJoGpn4wTqN_r8tHAYzHl6-X2rdk7fPYxh9Ii2fA
+| `client_id` | The `client_id` of your application (provided to you by the Arkane team) | `client_id`=Arketype
+| `redirect_uri` | The URI of the page you want to be redirected to after authentication (do not forget to URL-encode) | `redirect_uri`=http://localhost:4000/
+| `grant_type` | This needs to be set to `refresh_token` | `grant_type`=refresh_token
+| `refresh_token` | The refresh token received in step 2 | `refresh_token`=eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJmQi1UenBOb0hBVGhwT2J4aW9qTDBrdm83MldmRzRXRXh1eFpiaXlGQUhzIn0.eyJqdGkiOiIyMjc4MGE3Yy0zM2E1LTRiM2QtODcwOC04ODM1MDY3MTg3OWMiLCJleHAiOjE1NDczNzQ5NzQsIm5iZiI6MCwiaWF0IjoxNTQ2OTQyOTc0LCJpc3MiOiJodHRwczovL2xvZ2luLXN0YWdpbmcuYXJrYW5lLm5ldHdvcmsvYXV0aC9yZWFsbXMvQXJrYW5lIiwiYXVkIjoiQXJrZXR5cGUiLCJzdWIiOiI2ZDVlNmU0Yi1jOWUxLTQxODctOGY0Yy0wMzFkNzJjMmU2YWMiLCJ0eXAiOiJSZWZyZXNoIiwiYXpwIjoiQXJrZXR5cGUiLCJhdXRoX3RpbWUiOjAsInNlc3Npb25fc3RhdGUiOiIzZjM2NTIxNS0xM2IwLTQ4YzEtYjZjYS1mZDczZGFhYTI0ZGYiLCJyZXNvdXJjZV9hY2Nlc3MiOnt9LCJzY29wZSI6Im9wZW5pZCB2aWV3OndhbGxldHMgc2lnbjp3YWxsZXRzIHZpZXc6cHJvZmlsZSBlbWFpbCBwcm9maWxlIn0.JG9UIO_LrLHChSiNY9gvXdDGYCpfPna1ytVaNOTPB9p6F9kQfB9dGR8JEjX9D9HeYVXQjfhsaLFrX9ZLI1cE_SBxbqWVuLsonyoa0YsTCjUm2R91YC_CGxdECi7mG1g8YvwXMZY0ZoegPEzBTnhpCgC_WT1hZRT1TJek_fi8yWq6DLLoSwM9i4pJyOuJxJ2MvTuxxoLnZ8bNLcAAYS2dyLBoBoJqMGcXRDus0Y4_Nx3PHKfTDSmca5KoDVkrRTHl3WztfhqDotKLaR-99Jq_wqhScAggXWhLH_2WXbBzaOMcXyLJoGpn4wTqN_r8tHAYzHl6-X2rdk7fPYxh9Ii2fA
 |===
 
 .Example cURL request
-[source,shell,options="nowrap"]
+[source,sh,options="nowrap"]
 ----
 curl -X POST \
   https://login.arkane.network/auth/realms/Arkane/protocol/openid-connect/token \
@@ -355,7 +355,7 @@ GET https://login.arkane.network/auth/realms/Arkane/protocol/openid-connect/logo
 .Request parameters
 |===
 | Name | Description | Constraints | Example
-| redirect_uri | The URI of the page you want to be redirected to after login out (do not forget to URL-encode) | Mandatory | redirect_uri=http%3A%2F%2Flocalhost%3A4000%2F
+| `redirect_uri` | The URI of the page you want to be redirected to after login out (do not forget to URL-encode) | Mandatory | `redirect_uri`=http%3A%2F%2Flocalhost%3A4000%2F
 |===
 
 This endpoint logs out the authenticated user. +
@@ -376,11 +376,11 @@ This endpoint returns the public keys enabled by the realm, encoded as a JSON We
 === Environments
 
 .Production
-url: https://login.arkane.network
+`url`: https://login.arkane.network
 
-client id: _Request a specific application client id_
+`client id`: _Request a specific application client id_
 
 .Staging
-url: https://login-staging.arkane.network
+`url`: https://login-staging.arkane.network
 
-client id: `Arketype`
+`client id`: *Arketype*

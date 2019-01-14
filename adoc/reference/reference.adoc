@@ -2,7 +2,7 @@
 
 This section describes all actions related to wallets.
 
-=== [[link-wallets]] Link wallets [.bb-connect]#connect#
+=== [[link-wallets]] Link wallets link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
 
 This allows users to link his existing wallets with your application. The difference with <<manage-wallets, Manage wallets>>:
 
@@ -20,7 +20,7 @@ https://connect-staging.arkane.network/wallets/link
 .Data
 _No data needed_
 
-=== [[manage-wallets]] Manage wallets [.bb-connect]#connect#
+=== [[manage-wallets]] Manage wallets link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
 
 As an application, it is possible to have a user manage his wallets for a specific chain. During this action, the user can link existing wallets or import a wallet.
 When the user returns to the app, a wallet will be linked to your application for the given chain. When a user does not have any wallets yet, a user can indicate to create a new wallet.
@@ -34,11 +34,9 @@ https://connect-staging.arkane.network/wallets/manage
 .Data parameters
 |===
 |Name |Description |Example
-
 |chain
 |The chain for which you want to manage wallets.
 |ethereum
-
 |===
 
 
@@ -50,7 +48,7 @@ https://connect-staging.arkane.network/wallets/manage
 }
 ----
 
-=== [[list-wallets]] List user wallets [.bb-api]#api#
+=== [[list-wallets]] List wallets link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
 Returns all the wallets for the specified user (bearer token)
 
 operation::get-wallets[snippets='curl-request,http-response,response-fields']
@@ -61,22 +59,22 @@ operation::get-wallets-filtered[snippets='request-parameters']
 
 
 [[get-specific-user-wallet]]
-=== [[get-wallet]] Get specific user wallet [.bb-api]#api#
+=== [[get-wallet]] Get wallet link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
 Returns the details for a specific wallet (native balance is also included)
 
 operation::get-wallet[snippets='curl-request,path-parameters,http-response,response-fields']
 
-=== [[get-balance]] Native balance [.bb-api]#api#
+=== [[get-balance]] Native balance link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
 Returns the "native" balance for a wallet. This is the balance of the native token used by the chain. Ex. ETH for Ethereum.
 
 operation::get-balance[snippets='curl-request,path-parameters,http-response,response-fields']
 
-=== [[get-token-balances]] Token balances [.bb-api]#api#
+=== [[get-token-balances]] Token balances link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
 Returns the balance of all tokens currently supported by Arkane. The list of supported tokens can be found on https://github.com/ArkaneNetwork/content-management/tree/master/tokens[Github].
 
 operation::get-token-balances[snippets='curl-request,path-parameters,http-response,response-fields']
 
-=== [[get-token-balance]] Specific token balance [.bb-api]#api#
+=== [[get-token-balance]] Specific token balance link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
 Returns the token balance for a specified token (this can be any token).
 
 operation::get-token-balance[snippets='curl-request,path-parameters,http-response,response-fields']
@@ -84,7 +82,7 @@ operation::get-token-balance[snippets='curl-request,path-parameters,http-respons
 == Transactions
 
 [[transfer]]
-=== Transfer [.bb-api]#api#
+=== Transfer link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
 This can be used to transfer (native) tokens from a wallet to another wallet. To start a transfer you need to:
 
 .URL
@@ -127,9 +125,9 @@ Using this, you don't have to take the different number of decimals for differen
 ====
 
 [[native-transactions]]
-=== Native Transactions
-==== Ethereum
-===== Execute an ether transaction [.bb-connect]#connect#
+
+=== Ethereum
+==== Execute ETH transaction link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
 To execute an Ethereum transaction, use the connect building block with:
 
 .URL
@@ -148,7 +146,7 @@ operation::execute-ether-transaction[snippets='response-fields']
 .Result example
 operation::execute-ether-transaction[snippets='response-body']
 
-===== Execute an ERC20 transfer [.bb-connect]#connect#
+==== Execute ERC20 transfer link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
 
 To execute an ERC20 transaction transfer, use the connect building block with:
 
@@ -168,7 +166,7 @@ operation::execute-erc20-transaction[snippets='response-fields']
 .Result example
 operation::execute-erc20-transaction[snippets='response-body']
 
-===== Sign [.bb-connect]#connect#
+==== Sign link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
 Signs arbitrary data. This data is before UTF-8 HEX decoded and enveloped as followed:
 
 `"\x19Ethereum Signed Message:\n" + message.length + message.`
@@ -192,9 +190,9 @@ operation::sign-hex-message[snippets='response-body']
 
 
 
-==== Vechain
+=== Vechain
 
-===== Execute a VET transaction [.bb-connect]#connect#
+==== Execute VET transaction link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
 To execute an VeChain transaction, use the connect building block with:
 
 .URL
@@ -213,7 +211,7 @@ operation::execute-vet-transaction[snippets='response-fields']
 .Result example
 operation::execute-vet-transaction[snippets='response-body']
 
-===== Execute a VTHO transfer [.bb-connect]#connect#
+==== Execute VTHO transfer link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
 To execute a VTHO transfer, use the connect building block with:
 
 .URL
@@ -250,7 +248,7 @@ operation::execute-vtho-transaction[snippets='response-body']
 }
 ----
 
-===== Execute a VIP180 transfer [.bb-connect]#connect#
+==== Execute VIP180 transfer link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
 
 To execute an ERC20 transaction transfer, use the connect building block with:
 
@@ -271,7 +269,7 @@ operation::execute-vechain-erc20-transaction[snippets='response-fields']
 operation::execute-vechain-erc20-transaction[snippets='response-body']
 
 == Profile
-=== [[user-profile]] User profile [.bb-api]#api#
+=== [[user-profile]] User profile link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
 Returns more info about the connected user.
 
 operation::get-profile[snippets='http-request,http-response,response-fields']

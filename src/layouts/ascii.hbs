@@ -8,11 +8,25 @@
 {{> header}}
 
 <div class="page-main">
-  <div class="page-main__content">
+  <div class="page-main__content clearfix">
+    {{#and downloadLink githubLink}}
+      <div class="page-main__intro">
+        <div class="page-main__intro__title">
+          Explore our sample app
+        </div>
+        <div class="page-main__intro__description">
+          Get the sample code used during this guide, you can either download it our explore it directly on GitHub.
+        </div>
+        <a class="btn" href="{{downloadLink}}">Download Code</a>
+        <a class="btn btn--clean" href="{{githubLink}}">View on Github</a>
+      </div>
+    {{/and}}
+
     <h1>{{title}}</h1>
 
     {{> body}}
 
+    {{#if showTelegramNote}}{{> notes noteName="telegram"}}{{/if}}
     <a class="toTop" href="#">^</a>
     {{> footer}}
   </div>

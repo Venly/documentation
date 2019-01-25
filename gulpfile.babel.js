@@ -29,6 +29,7 @@ gulp.task('gulp-assemble', function(done) {
                 assets: `dist/assets`,
                 vars: {
                     postfix: timestamp,
+                    gtmId: 'GTM-P2JM2R2',
                 },
                 data: [`${dirs.src}/data.json`],
                 helpers: ['./node_modules/logging-helpers/index.js' ]

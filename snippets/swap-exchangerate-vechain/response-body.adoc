@@ -1,0 +1,9 @@
+[source,options="nowrap"]
+----
+{
+  "orderType" : "SELL",
+  "inputAmount" : 100,
+  "outputAmount" : 485,
+  "fee" : 1
+}
+----

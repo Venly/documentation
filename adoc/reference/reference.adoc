@@ -72,7 +72,7 @@ operation::get-balance[snippets='curl-request,path-parameters,http-response,resp
 === [[get-token-balances]] Token balances link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
 Returns the balance of all tokens currently supported by Arkane. The list of supported tokens can be found on https://github.com/ArkaneNetwork/content-management/tree/master/tokens[Github].
 
-operation::get-token-balances[snippets='curl-request,path-parameters,http-response,response-fields']
+operation::get-token-balances[snippets='curl-request,request-fields,http-response,response-fields']
 
 === [[get-token-balance]] Specific token balance link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
 Returns the token balance for a specified token (this can be any token).
@@ -192,7 +192,7 @@ operation::sign-hex-message[snippets='response-body']
 
 === Vechain
 
-==== Execute VET transaction link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
+==== [[execute-vet-transaction]] Execute VET transaction link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
 To execute an VeChain transaction, use the connect building block with:
 
 .URL
@@ -273,3 +273,23 @@ operation::execute-vechain-erc20-transaction[snippets='response-body']
 Returns more info about the connected user.
 
 operation::get-profile[snippets='http-request,http-response,response-fields']
+
+
+== Swap
+This section describes how to use the swapping functionality within Arkane. It allows you to swap/exchange a (native) token to (native) token.
+
+=== [[swap-get-trading-pairs]] Trading pairs link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
+Returns the list of possible trading pairs for a given wallet.
+
+operation::swap-tradingpairs-vechain[snippets='curl-request,path-parameters,http-response,response-fields']
+
+=== [[swap-get-exchange-rate]] Exchange rate link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
+Returns the exchange rate for a specified swap.
+
+operation::swap-exchangerate-vechain[snippets='curl-request,request-parameters,http-response,response-fields']
+
+=== [[swap-get-exchange-rate]] Create swap link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
+Creates the transaction request that is needed to execute the swap. With this result (the transaction request), you will need to call the native transactions
+endpoint to execute the swap. Ex. for VeChain, use the output from this call to the input of: <<execute-vet-transaction, Execute VET transaction>>
+
+operation::swap-vechain[snippets='curl-request,path-parameters,http-response,response-fields']

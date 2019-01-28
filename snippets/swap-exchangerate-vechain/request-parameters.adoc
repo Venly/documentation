@@ -1,0 +1,22 @@
+|===
+|Parameter|Description
+
+|`+fromSecretType+`
+|The input secret type (Possible values: [ETHEREUM, VECHAIN, BITCOIN])
+
+|`+toSecretType+`
+|The output secret type (Possible values: [ETHEREUM, VECHAIN, BITCOIN])
+
+|`+fromToken+`
+|The type of token as input
+
+|`+toToken+`
+|The type of token as output
+
+|`+amount+`
+|The amount to swap
+
+|`+orderType+`
+|The order type (SELL or BUY). For sell orders (exact input), the amount bought (output) is calculated. For buy orders (exact output), the cost (input) is calculated
+
+|===

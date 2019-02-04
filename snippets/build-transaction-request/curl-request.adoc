@@ -8,6 +8,7 @@ $ curl 'https://api.arkane.network/api/transactions/build' -i -X POST \
   "alias" : null,
   "value" : 1.15,
   "secretType" : "VECHAIN",
-  "tokenAddress" : "0x0000000000000000000000000000456E65726779"
+  "tokenAddress" : "0x0000000000000000000000000000456E65726779",
+  "data" : null
 }'
 ----

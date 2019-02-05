@@ -13,7 +13,7 @@
 
 |`+value+`
 |`+Number+`
-|value in sats
+|value in satoshi
 |must be >= 0
 
 |`+to+`

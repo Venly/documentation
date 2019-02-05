@@ -1,6 +1,6 @@
-= Arkane Connect our JavaScript SDK
+= Arkane Connect: our JavaScript SDK
 
-:secret-types: 'ETHEREUM', 'VECHAIN'
+:secret-types: 'ETHEREUM', 'VECHAIN', 'BITCOIN'
 
 == Introduction
 In order to conveniently integrate Arkane into your JavaScript applications we've developed a JavaScript SDK: *Arkane Connect JS*.

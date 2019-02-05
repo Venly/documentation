@@ -1,0 +1,7 @@
+[source,http,options="nowrap"]
+----
+GET /api/wallets/47971bdc-7edb-4657-a79b-30a27921cedb/swaps/pairs HTTP/1.1
+Content-Type: application/json
+Host: api.arkane.network
+
+----

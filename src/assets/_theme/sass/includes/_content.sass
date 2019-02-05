@@ -1,21 +1,62 @@
 .page-bg
-  position: absolute
+  position: fixed
   right: 0
-  width: 50%
+  left: 0
+  width: 100%
   top: 0
   bottom: 0
+  &::after,
+  &::before
+    content: ''
+    display: block
+    position: absolute
+    top: 0
+    bottom: 0
+    width: calc((100% - 1050px) / 2)
+  &::before
+    left: 0
+    background: url(../img/bg-blue.svg) no-repeat right top
+    background-size: cover
+  &::after
+    right: 0
+    background-color: #4a4a4a
+
+.page-banner
   background-color: $color-greyish-brown
+  width: 100%
+  color: $color-white
+  font-size: $font-size-bigger
+  padding: rem(22px)
+
+  &__content
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-direction: column
+    line-height: $line-height-bigger
+    @include media(tablet)
+      flex-direction: row
+
+    > *
+      text-align: center
+      margin: rem(6px)
+
+  .btn
+    display: inline-block
+    width: auto
+    text-transform: uppercase
+    vertical-align: top
+    margin: rem(6px)
+    font-size: $font-size-bigger
 
 .page-top
   position: relative
-  &::after
-    position: absolute
-    left: 0
-    width: 50%
-    background-color: $color-medium-grey
-    height: 1px
-    content: ''
-    bottom: 0
+  &--has-banner
+    &::after
+      display: none
+    .page-top__content
+      border-bottom: 0 none
+
   &__content
     background-color: $color-white
     border-bottom: 1px solid $color-medium-grey
@@ -34,3 +75,31 @@
     > h1:first-child
       margin-top: 0
       padding-top: rem(28px)
+
+  &__intro
+    float: right
+    background-color: $color-white-smoke
+    padding: rem(28px 28px 20px 28px)
+    margin: rem(20px 0 20px 20px)
+    width: rem(310px)
+    display: flex
+    flex-direction: column
+    align-content: stretch
+    border-radius: $border-radius-small
+
+    &__title
+      text-align: center
+      font-size: $font-size-big
+      font-weight: $font-weight-medium
+      margin-bottom: rem(22px)
+
+    &__description
+      text-align: justify
+      margin-bottom: rem(22px)
+
+    .btn
+      padding-top: rem(10px)
+      padding-bottom: rem(10px)
+      font-size: $font-size-big
+      margin-bottom: rem(12px)
+      text-transform: uppercase

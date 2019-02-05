@@ -12,7 +12,7 @@ span.icon > [class^="icon-"], span.icon > [class*=" icon-"]
     td.icon
       text-align: center
       width: rem(30px)
-      padding: rem(14px 12px 14px 20px)
+      padding: rem(20px 12px 20px 20px)
       vertical-align: top
       img
         max-width: none
@@ -21,7 +21,7 @@ span.icon > [class^="icon-"], span.icon > [class*=" icon-"]
         text-transform: uppercase
 
   td.content
-    padding: rem(12px 20px 12px 0)
+    padding: rem(16px 20px 16px 0)
     > :last-child > :last-child
       margin-bottom: 0
 
@@ -35,25 +35,13 @@ span.icon > [class^="icon-"], span.icon > [class*=" icon-"]
       font-family: "Font Awesome 5 Pro"
       font-weight: 400
 
-    .icon-note:before
-      content: "\f05a"
-      color: #850046
-
+    .icon-note:before,
     .icon-tip:before
-      content: "\f0eb"
-      text-shadow: 1px 1px 2px rgba(155, 155, 0, 0.8)
-      color: #111
+      content: "\f682"
+      color: $color-bluish
 
-    .icon-warning:before
-      content: "\f071"
-      color: $color-orange
-
+    .icon-important:before,
+    .icon-warning:before,
     .icon-caution:before
-      content: "\f06d"
-      color: $color-red
-
-    .icon-important:before
       content: "\f06a"
       color: $color-orange
-
-

@@ -21,20 +21,6 @@ a
   > h2, > h3, > h4
     margin-top: 0
 
-//.sect1 + .sect1,
-//.sect2 + .sect2,
-//.sect3 + .sect3
-//  border-top: solid $color-white-gray
-//
-//.sect1 + .sect1
-//  border-top-width: 10px
-//
-//.sect2 + .sect2
-//  border-top-width: 4px
-//
-//.sect3 + .sect3
-//  border-top-width: 1px
-
 @include media(tablet-ls)
   .toc
     width: $toc-width
@@ -49,13 +35,24 @@ a
     .page-main__content
       padding-left: $toc-width + rem(28px)
     .toc
-      transform: translateX(calc(-100% - #{rem(29px)}))
+      transform: translateX((-1 * $toc-width) - rem(28px))
 
   .toc-right
     .page-main__content
       padding-right: $toc-width + rem(28px)
     .toc
-      transform: translateX(calc(100% + #{rem(29px)}))
+      transform: translateX($toc-width + rem(28px))
+
+  .toc-left,
+  .toc-right
+    .page-top
+      position: sticky
+      top: 0
+      z-index: 2
+    .toc
+      position: fixed
+      top: rem(91px)
+      z-index: 1
 
   [id="toc"]
     position: absolute

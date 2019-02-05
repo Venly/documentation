@@ -1,0 +1,7 @@
+{{#if noteName}}
+  {{#forEach data.notes}}
+    {{#eq name ../noteName}}
+      {{>note}}
+    {{/eq}}
+  {{/forEach}}
+{{/if}}

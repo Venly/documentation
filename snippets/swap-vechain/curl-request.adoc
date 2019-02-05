@@ -1,0 +1,16 @@
+[source,bash]
+----
+$ curl 'https://api.arkane.network/api/wallets/245f32e0-7495-4e96-819f-9096b24e6e43/swaps' -i -X POST \
+    -H 'Content-Type: application/json' \
+    -d '{
+  "walletId" : "id",
+  "destinationWalletId" : "id",
+  "fromSecretType" : "VECHAIN",
+  "toSecretType" : "VECHAIN",
+  "fromToken" : "",
+  "toToken" : "0x0000000000000000000000000000456e65726779",
+  "inputAmount" : 100,
+  "outputAmount" : 1305,
+  "orderType" : "SELL"
+}'
+----

@@ -28,10 +28,23 @@
   line-height: rem(20px)
   padding: rem(7px 30px)
   white-space: nowrap
+  text-decoration: none
   transition: background-color $transition-default
   &:hover,
   &:active
+    color: $color-white
     background-color: darken($color-link-default, 10%)
+
+.btn--clean
+  color: $color-text
+  border-color: $color-medium-grey
+  background-color: $color-white-smoke
+  &:hover,
+  &:active
+    color: $color-text
+    border-color: darken($color-medium-grey, 10%)
+    background-color: darken($color-white-smoke, 10%)
+
 
 .btn--blue
     border-color: $color-bluish

@@ -1,6 +1,10 @@
 ---
 title: Arkane Documentation
 bodyClass: page--overview
+banner: true
+bannerText: Ready for mainnet? Time to request your personal Client ID
+bannerCtaLink: https://arkane-network.typeform.com/to/hzbcGJ
+bannerCtaText: Get client ID
 ---
 
 <div class="overview overview--getting-started">
@@ -11,14 +15,17 @@ bodyClass: page--overview
   </h3>
   <div class="overview__container">
     <a href="/pages/mobile-multi-chain-wallet.html" class="quickstart">
-    <div class="quickstart__image">
-      {{> animated-squares}}
-    </div>
-    <strong class="quickstart__title">Native/Mobile App</strong>
-    <p class="quickstart__description">Mobile or Desktop app that runs natively ona device</p>
-    <p class="quickstart__sample">e.g., iOS, Android</p>
-    <button class="btn btn-success btn-sm">Launch Quickstart</button>
-  </a>
+      <div class="quickstart__image">
+        {{> animated-squares}}
+      </div>
+      <strong class="quickstart__title">Native/Mobile App</strong>
+      <p class="quickstart__description">Mobile or Desktop app that runs natively ona device</p>
+      <p class="quickstart__sample">e.g., iOS, Android</p>
+      <div class="quickstart__cta">
+        <button class="btn">Launch Quickstart</button>
+      </div>
+    </a>
+
     <a href="/pages/js-multi-chain-wallet.html" class="quickstart">
       <div class="quickstart__image">
         {{> animated-triangles}}
@@ -26,37 +33,44 @@ bodyClass: page--overview
       <strong class="quickstart__title">Javascript / Single Page App</strong>
       <p class="quickstart__description">JavaScript snippet that runs in the browser</p>
       <p class="quickstart__sample">e.g. Vanilla Javascript, jQuery, Angular, React</p>
-      <button class="btn btn-success btn-sm">Launch Quickstart</button>
+      <div class="quickstart__cta">
+        <button class="btn">Launch Quickstart</button>
+      </div>
     </a>
 
-    <a href="/pages/serverside-multi-chain-wallet.html" class="quickstart" data-type="webapp">
+    <!--<a href="/pages/serverside-multi-chain-wallet.html" class="quickstart" data-type="webapp">-->
+      <!--<div class="quickstart__image">-->
+        <!--{{> animated-stars}}-->
+      <!--</div>-->
+      <!--<strong class="quickstart__title">Regular Web App</strong>-->
+      <!--<p class="quickstart__description">Traditional web app that runs on the server</p>-->
+      <!--<p class="quickstart__sample">e.g. Express.js, ASP.NET</p>-->
+      <!--<div class="quickstart__cta">-->
+        <!--<button class="btn">Launch Quickstart</button>-->
+      <!--</div>-->
+    <!--</a>-->
+
+    <a href="/pages/serverside-multi-chain-wallet.html" class="quickstart" data-type="backend">
       <div class="quickstart__image">
         {{> animated-circles}}
-      </div>
-      <strong class="quickstart__title">Regular Web App</strong>
-      <p class="quickstart__description">Traditional web app that runs on the server</p>
-      <p class="quickstart__sample">e.g. Express.js, ASP.NET</p>
-      <button class="btn btn-success btn-sm">Launch Quickstart</button>
-    </a>
-    <a href="/pages/reference.html" class="quickstart" data-type="backend">
-      <div class="quickstart__image">
-        {{> animated-stars}}
       </div>
       <strong class="quickstart__title">Backend/API</strong>
       <p class="quickstart__description">An API or service with blockchain integration</p>
       <p class="quickstart__sample">e.g. Express js API, ASP.NET API</p>
-      <button class="btn btn--primary">Launch Quickstart</button>
+      <div class="quickstart__cta">
+        <button class="btn">Launch Quickstart</button>
+      </div>
     </a>
   </div>
 
-  <div class="overview__footer">Don't forget to check out our <a href="/pages/connect-js">JavaScript SDK</a>, recommended for most applications!</div>
+  <div class="overview__footer">Don't forget to check out our <a href="/pages/connect-js.html">JavaScript SDK</a>, recommended for most applications!</div>
 </div>
 
 <div class="overview-note overview-note">
   <div class="overview-note__content">
     <span class="overview-note__bg-wrapper">
       <span class="overview-note__text">
-        <i class="far fa-graduation-cap"></i> Mastered our Quick Start guides? Go directly to our <a href="" class="link link--blue">Reference documentation</a>.
+        <i class="far fa-2x fa-graduation-cap"></i> Mastered our Quick Start guides? Go directly to our <a href="/pages/reference.html" class="link link--blue">Reference documentation</a>.
       </span>
     </span>
   </div>
@@ -69,25 +83,31 @@ bodyClass: page--overview
     <div>developers can use to create apps</div>
   </h3>
   <div class="overview__container">
-    <a href="/pages/buildingblocks#_api" class="quickstart">
-      <div class="quickstart__image">{{> animated-squares}}</div>
+    <a href="/pages/buildingblocks.html#arkane-api" class="quickstart">
+      <div class="quickstart__image">{{> animated-blocks-left}}</div>
       <strong class="quickstart__title">API</strong>
       <p class="quickstart__description">Set of functions and procedures allowing the creation of applications</p>
-      <button class="btn btn--blue">Check it out</button>
+      <div class="quickstart__cta">
+        <button class="btn btn--blue">Check it out</button>
+      </div>
     </a>
 
-    <a href="/pages/buildingblocks#_arkane_connect" class="quickstart">
-      <div class="quickstart__image">{{> animated-squares}}</div>
+    <a href="/pages/buildingblocks.html#arkane-connect" class="quickstart">
+      <div class="quickstart__image">{{> animated-blocks-middle}}</div>
       <strong class="quickstart__title">Connect</strong>
       <p class="quickstart__description">Consumer interface for transaction authorisation</p>
-      <button class="btn btn--blue">Check it out</button>
+      <div class="quickstart__cta">
+        <button class="btn btn--blue">Check it out</button>
+      </div>
     </a>
 
-    <a href="/pages/buildingblocks#_arkane_identity" class="quickstart">
-      <div class="quickstart__image">{{> animated-squares}}</div>
+    <a href="/pages/buildingblocks.html#arkane-identity" class="quickstart">
+      <div class="quickstart__image">{{> animated-blocks-right}}</div>
       <strong class="quickstart__title">Identity</strong>
       <p class="quickstart__description">Authentication for web, mobile and legacy applications</p>
-      <button class="btn btn--blue">Check it out</button>
+      <div class="quickstart__cta">
+        <button class="btn btn--blue">Check it out</button>
+      </div>
     </a>
   </div>
 

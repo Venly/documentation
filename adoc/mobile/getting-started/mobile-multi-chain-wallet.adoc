@@ -377,6 +377,8 @@ The endpoint to manage wallets:
 Make sure all query parameters are url encoded (ex. https://www.urlencoder.org/)
 ====
 
+When the user returns to the application, the status (SUCCESS or ABORTED) of the user's actions will be returned as a requestParameter added to the redirectUri (= Intent). In our `ArkaneCallbackActivity` you can access this by calling `getIntent().getData().getQueryParameter(“status”)`.
+
 ==== Example
 ./app/src/main/java/TokenActivity.java
 [source,java]
@@ -400,6 +402,42 @@ Make sure all query parameters are url encoded (ex. https://www.urlencoder.org/)
 <.> Get current authentication state
 <.> Get a valid access token
 <.> Open a custom tabs intent with the correct URL
+
+
+Upon returning to the application, we can handle the status as follows:
+
+./app/src/main/java/network/arkane/arketype/ArkaneCallbackActivity.java
+[source,java]
+----
+    @Override
+    public void onCreate(Bundle savedInstanceBundle) {
+        super.onCreate(savedInstanceBundle);
+
+        if (getIntent().getData() != null) { (1)
+            final String status = getIntent().getData().getQueryParameter("status"); (2)
+            if ("success".equalsIgnoreCase(status)) { (3)
+                Toast.makeText(getApplicationContext(),
+                               "You successfully linked wallets to this application",
+                               Toast.LENGTH_LONG)
+                     .show();
+            } else if ("aborted".equalsIgnoreCase(status)) { (4)
+                Toast.makeText(getApplicationContext(),
+                               "You did not change the wallets linked to this application",
+                               Toast.LENGTH_LONG)
+                     .show();
+            }
+        }
+
+        Intent intent = new Intent(this, TokenActivity.class);
+        startActivity(intent);
+        finish();
+    }
+----
+
+<.> Check if the intent has data
+<.> Extract the status from the intent data
+<.> Handle status is 'success'
+<.> Handle status is 'aborted'
 
 === Link wallets
 This allows users to link their existing wallets with your application. 
@@ -452,6 +490,41 @@ The endpoint to link wallets:
 <.> Get current authentication state
 <.> Get a valid access token
 <.> Open a custom tabs intent with the correct URL
+
+Upon returning to the application, we can handle the status as follows:
+
+./app/src/main/java/network/arkane/arketype/ArkaneCallbackActivity.java
+[source,java]
+----
+    @Override
+    public void onCreate(Bundle savedInstanceBundle) {
+        super.onCreate(savedInstanceBundle);
+
+        if (getIntent().getData() != null) { (1)
+            final String status = getIntent().getData().getQueryParameter("status"); (2)
+            if ("success".equalsIgnoreCase(status)) { (3)
+                Toast.makeText(getApplicationContext(),
+                               "You successfully linked wallets to this application",
+                               Toast.LENGTH_LONG)
+                     .show();
+            } else if ("aborted".equalsIgnoreCase(status)) { (4)
+                Toast.makeText(getApplicationContext(),
+                               "You did not change the wallets linked to this application",
+                               Toast.LENGTH_LONG)
+                     .show();
+            }
+        }
+
+        Intent intent = new Intent(this, TokenActivity.class);
+        startActivity(intent);
+        finish();
+    }
+----
+
+<.> Check if the intent has data
+<.> Extract the status from the intent data
+<.> Handle status is 'success'
+<.> Handle status is 'aborted'
 
 === View wallets
 If you want to retrieve the wallets for a user, you can call the API endpoint for link:reference#_list_user_wallets_api[listing user wallets].

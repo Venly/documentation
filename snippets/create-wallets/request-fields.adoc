@@ -19,7 +19,7 @@
 |`+secretType+`
 |`+String+`
 |Type of secret to be generated. (possible values: ETHEREUM)
-|mandator, allowed values: [ETHEREUM, VECHAIN]
+|mandator, allowed values: [AETERNITY, BITCOIN, ETHEREUM, GOCHAIN, LITECOIN, VECHAIN]
 |`+hasCustomPin+`
 |`+Boolean+`
 |Whether the wallet should have a custom pincode, instead of the master pincode

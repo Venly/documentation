@@ -1,28 +1,21 @@
 |===
 |Path|Type|Description
-
 |`+type+`
 |`+String+`
 |The type transaction result you need to send
-
 |`+walletId+`
 |`+String+`
 |The id of the wallet
-
 |`+clauses+`
 |`+Array+`
 |the clauses associated to this swap
-
 |`+clauses[].to+`
 |`+String+`
 |Destination address for the clause
-
 |`+clauses[].amount+`
 |`+Number+`
 |Amount for the clause
-
 |`+clauses[].data+`
 |`+String+`
 |Data for the clause
-
 |===

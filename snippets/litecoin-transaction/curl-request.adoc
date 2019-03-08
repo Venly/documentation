@@ -1,0 +1,12 @@
+[source,bash]
+----
+$ curl 'https://api.arkane.network/api/transactions' -i -X POST \
+    -H 'Content-Type: application/json;charset=UTF-8' \
+    -d '{
+  "type" : "LTC_TRANSACTION",
+  "walletId" : "1543",
+  "value" : 10000000000,
+  "feePerKiloByte" : 6,
+  "to" : "MTvnA4CN73ry7c65wEuTSaKzb2pNKHB4n1"
+}'
+----

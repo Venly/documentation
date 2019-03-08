@@ -2,8 +2,9 @@
 ----
 HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
-Content-Length: 217
+Content-Length: 240
 {
+  "available" : false,
   "secretType" : "ETHEREUM",
   "balance" : 1.0,
   "gasBalance" : 1.0,

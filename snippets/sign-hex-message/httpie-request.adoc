@@ -3,7 +3,6 @@
 $ echo '{
   "type" : "ETHEREUM_RAW",
   "walletId" : "1",
-  "pincode" : "31345",
   "data" : "Some data"
 }' | http POST 'http://localhost:8080/api/signatures' \
     'Content-Type:application/json;charset=UTF-8'

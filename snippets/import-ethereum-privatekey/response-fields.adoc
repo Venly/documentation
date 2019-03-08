@@ -30,6 +30,9 @@
 |`+description+`
 |`+String+`
 |description of the wallet
+|`+status+`
+|`+String+`
+|status of the wallet
 |`+balance+`
 |`+Object+`
 |The native token balance of the wallet

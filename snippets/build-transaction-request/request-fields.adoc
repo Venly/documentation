@@ -1,34 +1,27 @@
 |===
 |Path|Type|Description|Constraints
-
 |`+walletId+`
 |`+String+`
 |The id of the wallet one wants to sign with.
 |Mandatory
-
 |`+to+`
 |`+String+`
 |The destination address of the transaction.
 |Mandatory, a valid address for the specified chain or the email address of the person you want to send tokens to
-
 |`+value+`
 |`+Number+`
 |The value transferred for the transaction in the token value
 |Mandatory, must be >= 0
-
 |`+secretType+`
 |`+String+`
 |Which chain you want to do a transaction for
-|Mandatory. Must be one of: [ETHEREUM, VECHAIN, BITCOIN]
-
+|Mandatory. Must be one of: [AETERNITY, BITCOIN, ETHEREUM, GOCHAIN, LITECOIN, VECHAIN]
 |`+tokenAddress+`
 |`+String+`
 |The address of the token to be used in this transaction
 |Optional
-
 |`+data+`
 |`+Null+`
 |The data you want to send with this transaction. This field will be ignored when building a token transaction request
 |Optional
-
 |===

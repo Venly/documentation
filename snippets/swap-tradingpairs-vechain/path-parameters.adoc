@@ -1,8 +1,6 @@
 .+/api/wallets/{id}/swaps/pairs+
 |===
 |Parameter|Description
-
 |`+id+`
 |The id of the wallet
-
 |===

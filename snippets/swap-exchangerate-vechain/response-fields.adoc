@@ -1,20 +1,18 @@
 |===
 |Path|Type|Description
-
 |`+orderType+`
 |`+String+`
 |The order type (SELL or BUY)
-
 |`+inputAmount+`
 |`+Number+`
 |The input amount
-
 |`+outputAmount+`
 |`+Number+`
 |The output amount (rate = outputAmount / inputAmount)
-
+|`+slippage+`
+|`+Number+`
+|The slippage (in %) that is allowed for the swap
 |`+fee+`
 |`+Number+`
 |Optional token address, when empty it represents the native token (ex ETH)
-
 |===

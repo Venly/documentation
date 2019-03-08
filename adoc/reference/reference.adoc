@@ -189,6 +189,67 @@ operation::sign-hex-message[snippets='response-fields']
 operation::sign-hex-message[snippets='response-body']
 
 
+=== Gochain
+==== Execute GO transaction link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
+To execute an Gochain transaction, use the connect building block with:
+
+.URL
+https://connect-staging.arkane.network/transaction/execute/go_transaction
+
+
+.Data parameters
+operation::execute-go-transaction[snippets='request-fields']
+
+.Data example
+operation::execute-go-transaction[snippets='request-body']
+
+.Result parameters
+operation::execute-go-transaction[snippets='response-fields']
+
+.Result example
+operation::execute-go-transaction[snippets='response-body']
+
+==== Execute GO20 transfer link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
+
+To execute an GO20 transaction transfer, use the connect building block with:
+
+.URL
+https://connect-staging.arkane.network/transaction/execute/ethereum_go20_transaction
+
+
+.Data parameters
+operation::execute-go20-transaction[snippets='request-fields']
+
+.Data example
+operation::execute-go20-transaction[snippets='request-body']
+
+.Result parameters
+operation::execute-go20-transaction[snippets='response-fields']
+
+.Result example
+operation::execute-go20-transaction[snippets='response-body']
+
+==== Sign link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
+Signs arbitrary data. This data is before UTF-8 HEX decoded and enveloped as followed:
+
+`"\x19Ethereum Signed Message:\n" + message.length + message.`
+
+To sign data, use the connect building block with:
+
+.URL
+https://connect-staging.arkane.network/transaction/sign/gochain_raw
+
+.Data parameters
+operation::sign-hex-message[snippets='request-fields']
+
+.Data example
+operation::sign-hex-message[snippets='request-body']
+
+.Result parameters
+operation::sign-hex-message[snippets='response-fields']
+
+.Result example
+operation::sign-hex-message[snippets='response-body']
 
 === Vechain
 
@@ -288,6 +349,27 @@ operation::execute-btc-transaction[snippets='response-fields']
 
 .Result example
 operation::execute-btc-transaction[snippets='response-body']
+
+=== Litecoin
+
+==== [[execute-litecoin-transaction]] Execute Bitcoin transaction link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
+To execute an Litecoin transaction, use the connect building block with:
+
+.URL
+https://connect-staging.arkane.network/transaction/execute/ltc_transaction
+
+
+.Data parameters
+operation::execute-ltc-transaction[snippets='request-fields']
+
+.Data example
+operation::execute-ltc-transaction[snippets='request-body']
+
+.Result parameters
+operation::execute-ltc-transaction[snippets='response-fields']
+
+.Result example
+operation::execute-ltc-transaction[snippets='response-body']
 
 == Profile
 === [[user-profile]] User profile link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]

@@ -302,15 +302,15 @@ This section describes how to use the swapping functionality within Arkane. It a
 === [[swap-get-trading-pairs]] Trading pairs link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
 Returns the list of possible trading pairs for a given wallet.
 
-operation::swap-tradingpairs-vechain[snippets='curl-request,path-parameters,http-response,response-fields']
+operation::swap-tradingpairs[snippets='curl-request,path-parameters,http-response,response-fields']
 
 === [[swap-get-exchange-rate]] Exchange rate link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
-Returns the exchange rate for a specified swap.
+Returns the exchange rates for a specified swap.
 
-operation::swap-exchangerate-vechain[snippets='curl-request,request-parameters,http-response,response-fields']
+operation::swap-exchangerate[snippets='curl-request,request-parameters,http-response,response-fields']
 
 === [[swap-get-exchange-rate]] Create swap link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
-Creates the transaction request that is needed to execute the swap. With this result (the transaction request), you will need to call the native transactions
+Creates the transaction requests that are needed to execute the swap. With this result (the transaction requests), you will need to call the native transactions
 endpoint to execute the swap. Ex. for VeChain, use the output from this call to the input of: <<execute-vet-transaction, Execute VET transaction>>
 
-operation::swap-vechain[snippets='curl-request,path-parameters,http-response,response-fields']
+operation::swap[snippets='curl-request,path-parameters,http-response,response-fields']

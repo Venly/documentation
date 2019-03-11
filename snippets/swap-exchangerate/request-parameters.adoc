@@ -2,10 +2,10 @@
 |Parameter|Description
 
 |`+fromSecretType+`
-|The input secret type (Possible values: [ETHEREUM, VECHAIN, BITCOIN])
+|The input secret type (Possible values: [AETERNITY, BITCOIN, ETHEREUM, GOCHAIN, LITECOIN, VECHAIN])
 
 |`+toSecretType+`
-|The output secret type (Possible values: [ETHEREUM, VECHAIN, BITCOIN])
+|The output secret type (Possible values: [AETERNITY, BITCOIN, ETHEREUM, GOCHAIN, LITECOIN, VECHAIN])
 
 |`+fromToken+`
 |The type of token as input

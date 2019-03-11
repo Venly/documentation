@@ -9,6 +9,7 @@
   "toToken" : "0x0000000000000000000000000000456e65726779",
   "inputAmount" : 100,
   "outputAmount" : 1305,
-  "orderType" : "SELL"
+  "orderType" : "SELL",
+  "exchange" : "VEXCHANGE"
 }
 ----

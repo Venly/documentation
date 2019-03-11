@@ -3,7 +3,7 @@
 {
   "type" : "ETH_TRANSACTION",
   "walletId" : "adc4c08a-b8fa-4e4c-z5a2-92c87b80f174",
-  "gasPrice" : 10000000000,
+  "gasPrice" : 300000000000000,
   "gas" : 23000,
   "nonce" : 0,
   "value" : 10000000000,

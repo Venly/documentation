@@ -1,0 +1,9 @@
+[source,bash]
+----
+$ curl 'http://localhost:8080/api/wallets/export' -i -X POST \
+    -H 'Content-Type: application/json;charset=UTF-8' \
+    -d '{
+  "walletId" : "1",
+  "password" : "secret-password"
+}'
+----

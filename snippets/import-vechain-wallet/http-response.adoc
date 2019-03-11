@@ -2,7 +2,7 @@
 ----
 HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
-Content-Length: 548
+Content-Length: 599
 {
   "id" : "3",
   "address" : "0xae52b72db54e137a65a42434ab2543d31f8454c3",
@@ -15,6 +15,7 @@ Content-Length: 548
   "primary" : false,
   "hasCustomPin" : false,
   "balance" : {
+    "available" : false,
     "secretType" : "ETHEREUM",
     "balance" : 1.0,
     "gasBalance" : 1.0,
@@ -23,6 +24,7 @@ Content-Length: 548
     "rawBalance" : "1000000000000000000",
     "rawGasBalance" : "1000000000000000000",
     "decimals" : 18
-  }
+  },
+  "status" : "AVAILABLE"
 }
 ----

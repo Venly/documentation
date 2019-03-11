@@ -1,34 +1,27 @@
 |===
 |Path|Type|Description|Constraints
-
 |`+type+`
 |`+String+`
 |The type of the transaction
 |Mandatory, value for bitcoin transaction: BTC_TRANSACTION
-
 |`+walletId+`
 |`+String+`
 |The id of the wallet one wants to sign with.
 |Mandatory
-
 |`+value+`
 |`+Number+`
 |value in satoshi
 |must be >= 0
-
 |`+to+`
 |`+String+`
 |The destination address of the transaction.
 |Mandatory, a valid bitcoin address
-
 |`+feePerByte+`
 |`+Number+`
 |The fee per byte for the transaction (satoshi value)
 |Optional
-
 |`+pincode+`
 |`+String+`
 |The pincode of the specified wallet
 |Mandatory, must be between 4-6 digits
-
 |===

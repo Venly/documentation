@@ -7,7 +7,7 @@
 |`+importWalletType+`
 |`+String+`
 |The type of the wallet import
-|Mandatory, must be one of: [ETHEREUM_KEYSTORE, ETHEREUM_PRIVATE_KEY, VECHAIN_PRIVATE_KEY, VECHAIN_KEYSTORE]
+|Mandatory, must be one of: [ETHEREUM_KEYSTORE, ETHEREUM_PRIVATE_KEY, GOCHAIN_KEYSTORE, GOCHAIN_PRIVATE_KEY, VECHAIN_PRIVATE_KEY, VECHAIN_KEYSTORE, BITCOIN_WIF, LITECOIN_WIF]
 |`+privateKey+`
 |`+String+`
 |The private key to be imported

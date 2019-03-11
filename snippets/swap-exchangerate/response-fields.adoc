@@ -1,0 +1,52 @@
+|===
+|Path|Type|Description
+
+|`+exchangeRates+`
+|`+Array+`
+|The exchange rates
+
+|`+exchangeRates[].orderType+`
+|`+String+`
+|The order type (SELL or BUY)
+
+|`+exchangeRates[].inputAmount+`
+|`+Number+`
+|The input amount
+
+|`+exchangeRates[].outputAmount+`
+|`+Number+`
+|The output amount (rate = outputAmount / inputAmount)
+
+|`+exchangeRates[].slippage+`
+|`+Number+`
+|The slippage (in %) that is allowed for the swap
+
+|`+exchangeRates[].fee+`
+|`+Number+`
+|The fee (percentage) that is included in the exchange rate
+
+|`+bestRate+`
+|`+Object+`
+|The best exchange rate (included in the exchangeRates list)
+
+|`+bestRate.orderType+`
+|`+String+`
+|The order type (SELL or BUY)
+
+|`+bestRate.inputAmount+`
+|`+Number+`
+|The input amount
+
+|`+bestRate.outputAmount+`
+|`+Number+`
+|The output amount (rate = outputAmount / inputAmount)
+
+|`+bestRate.slippage+`
+|`+Number+`
+|The slippage (in %) that is allowed for the swap
+
+|`+bestRate.fee+`
+|`+Number+`
+|The fee (percentage) that is included in the exchange rate
+
+|===

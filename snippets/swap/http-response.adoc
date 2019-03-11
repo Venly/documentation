@@ -1,8 +1,13 @@
-[source,options="nowrap"]
+[source,http,options="nowrap"]
 ----
-{
+HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+Content-Length: 568
+
+[ {
   "type" : "VET_TRANSACTION",
-  "walletId" : "0e65be14-d8f0-48db-8917-f2f05d4c723a",
+  "walletId" : "e5255fce-7099-403b-af1c-9fac0063bb31",
+  "pincode" : null,
   "blockRef" : null,
   "chainTag" : null,
   "expiration" : 0,
@@ -14,5 +19,5 @@
     "amount" : 1305000000000000000000,
     "data" : "0xad65d76d000000000000000000000000000000000000000000000044f9c0112b17a58000000000000000000000000000000000000000000000000000000000005c5452f200000000000000000000000033e2f608129ffca67c9fdc56cd9d2354a79d2919"
   } ]
-}
+} ]
 ----

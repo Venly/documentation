@@ -352,7 +352,7 @@ operation::execute-btc-transaction[snippets='response-body']
 
 === Litecoin
 
-==== [[execute-litecoin-transaction]] Execute Bitcoin transaction link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
+==== [[execute-litecoin-transaction]] Execute Litecoin transaction link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
 To execute an Litecoin transaction, use the connect building block with:
 
 .URL

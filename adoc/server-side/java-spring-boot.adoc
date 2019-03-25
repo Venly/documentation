@@ -15,7 +15,7 @@ In this example, the following components will be used link:buildingblocks.html#
 === Prerequisities
 
 * A text editor or IDE
-* Java 8+ and Maven must be installed
+* Java 10+ and Maven must be installed
 
 
 == Let’s get started

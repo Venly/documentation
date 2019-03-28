@@ -1,0 +1,16 @@
+[source,bash]
+----
+$ echo '{
+  "walletId" : "id",
+  "destinationWalletId" : "id",
+  "fromSecretType" : "VECHAIN",
+  "toSecretType" : "VECHAIN",
+  "fromToken" : "",
+  "toToken" : "0x0000000000000000000000000000456e65726779",
+  "inputAmount" : 100,
+  "outputAmount" : 1305,
+  "orderType" : "SELL",
+  "exchange" : "VEXCHANGE"
+}' | http POST 'https://api.arkane.network/api/wallets/e5255fce-7099-403b-af1c-9fac0063bb31/swaps' \
+    'Content-Type:application/json'
+----

@@ -1,0 +1,15 @@
+[source,http,options="nowrap"]
+----
+POST /api/signatures HTTP/1.1
+Content-Type: application/json;charset=UTF-8
+Host: localhost:8080
+Content-Length: 182
+{
+  "type" : "BITCOIN_TRANSACTION",
+  "walletId" : "1",
+  "submit" : true,
+  "to" : "mpi2SkK5vKipCNE9h1HtRgDg6UM44AuN9S",
+  "value" : 10,
+  "feePerByte" : 6
+}
+----

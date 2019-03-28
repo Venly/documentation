@@ -189,6 +189,67 @@ operation::sign-hex-message[snippets='response-fields']
 operation::sign-hex-message[snippets='response-body']
 
 
+=== Gochain
+==== Execute GO transaction link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
+To execute an Gochain transaction, use the connect building block with:
+
+.URL
+https://connect-staging.arkane.network/transaction/execute/go_transaction
+
+
+.Data parameters
+operation::execute-go-transaction[snippets='request-fields']
+
+.Data example
+operation::execute-go-transaction[snippets='request-body']
+
+.Result parameters
+operation::execute-go-transaction[snippets='response-fields']
+
+.Result example
+operation::execute-go-transaction[snippets='response-body']
+
+==== Execute GO20 transfer link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
+
+To execute an GO20 transaction transfer, use the connect building block with:
+
+.URL
+https://connect-staging.arkane.network/transaction/execute/ethereum_go20_transaction
+
+
+.Data parameters
+operation::execute-go20-transaction[snippets='request-fields']
+
+.Data example
+operation::execute-go20-transaction[snippets='request-body']
+
+.Result parameters
+operation::execute-go20-transaction[snippets='response-fields']
+
+.Result example
+operation::execute-go20-transaction[snippets='response-body']
+
+==== Sign link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
+Signs arbitrary data. This data is before UTF-8 HEX decoded and enveloped as followed:
+
+`"\x19Ethereum Signed Message:\n" + message.length + message.`
+
+To sign data, use the connect building block with:
+
+.URL
+https://connect-staging.arkane.network/transaction/sign/gochain_raw
+
+.Data parameters
+operation::sign-hex-message[snippets='request-fields']
+
+.Data example
+operation::sign-hex-message[snippets='request-body']
+
+.Result parameters
+operation::sign-hex-message[snippets='response-fields']
+
+.Result example
+operation::sign-hex-message[snippets='response-body']
 
 === Vechain
 
@@ -289,6 +350,27 @@ operation::execute-btc-transaction[snippets='response-fields']
 .Result example
 operation::execute-btc-transaction[snippets='response-body']
 
+=== Litecoin
+
+==== [[execute-litecoin-transaction]] Execute Litecoin transaction link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
+To execute an Litecoin transaction, use the connect building block with:
+
+.URL
+https://connect-staging.arkane.network/transaction/execute/ltc_transaction
+
+
+.Data parameters
+operation::execute-ltc-transaction[snippets='request-fields']
+
+.Data example
+operation::execute-ltc-transaction[snippets='request-body']
+
+.Result parameters
+operation::execute-ltc-transaction[snippets='response-fields']
+
+.Result example
+operation::execute-ltc-transaction[snippets='response-body']
+
 == Profile
 === [[user-profile]] User profile link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
 Returns more info about the connected user.
@@ -302,15 +384,15 @@ This section describes how to use the swapping functionality within Arkane. It a
 === [[swap-get-trading-pairs]] Trading pairs link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
 Returns the list of possible trading pairs for a given wallet.
 
-operation::swap-tradingpairs-vechain[snippets='curl-request,path-parameters,http-response,response-fields']
+operation::swap-tradingpairs[snippets='curl-request,path-parameters,http-response,response-fields']
 
 === [[swap-get-exchange-rate]] Exchange rate link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
-Returns the exchange rate for a specified swap.
+Returns the exchange rates for a specified swap.
 
-operation::swap-exchangerate-vechain[snippets='curl-request,request-parameters,http-response,response-fields']
+operation::swap-exchangerate[snippets='curl-request,request-parameters,http-response,response-fields']
 
 === [[swap-get-exchange-rate]] Create swap link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
-Creates the transaction request that is needed to execute the swap. With this result (the transaction request), you will need to call the native transactions
+Creates the transaction requests that are needed to execute the swap. With this result (the transaction requests), you will need to call the native transactions
 endpoint to execute the swap. Ex. for VeChain, use the output from this call to the input of: <<execute-vet-transaction, Execute VET transaction>>
 
-operation::swap-vechain[snippets='curl-request,path-parameters,http-response,response-fields']
+operation::swap[snippets='curl-request,path-parameters,http-response,response-fields']

@@ -5,12 +5,13 @@
   "address" : "0xdc72b72db54e227e65a45004ab2798d31e8934c2",
   "walletType" : "THREEWAY_SHARED",
   "secretType" : "ETHEREUM",
-  "createdAt" : [ 2019, 1, 9, 16, 18, 26, 157049000 ],
+  "createdAt" : [ 2019, 3, 8, 9, 20, 18, 50515000 ],
   "archived" : false,
   "alias" : "aliasEth",
   "description" : "descriptionEth",
   "primary" : false,
   "balance" : {
+    "available" : false,
     "secretType" : "ETHEREUM",
     "balance" : 1.0,
     "gasBalance" : 1.0,
@@ -21,6 +22,6 @@
     "decimals" : 18
   },
   "hasCustomPin" : false,
-  "status" : "AVAILABLE"
+  "status" : "UNAVAILABLE"
 }
 ----

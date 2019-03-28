@@ -24,4 +24,7 @@
 |`+decimals+`
 |`+Number+`
 |Decimals of the native coin
+|`+available+`
+|`+Boolean+`
+|Whether the balance service is currently available or not
 |===

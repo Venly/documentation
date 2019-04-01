@@ -1,10 +1,6 @@
-[source,http,options="nowrap"]
+[source,bash]
 ----
-POST /api/wallets/0e65be14-d8f0-48db-8917-f2f05d4c723a/swaps HTTP/1.1
-Content-Type: application/json
-Host: api.arkane.network
-Content-Length: 269
-{
+$ echo '{
   "walletId" : "id",
   "destinationWalletId" : "id",
   "fromSecretType" : "VECHAIN",
@@ -13,6 +9,8 @@ Content-Length: 269
   "toToken" : "0x0000000000000000000000000000456e65726779",
   "inputAmount" : 100,
   "outputAmount" : 1305,
-  "orderType" : "SELL"
-}
+  "orderType" : "SELL",
+  "exchange" : "VEXCHANGE"
+}' | http POST 'https://api.arkane.network/api/wallets/8eca0014-7238-4432-a244-0bfff9e53535/swaps' \
+    'Content-Type:application/json'
 ----

@@ -5,6 +5,8 @@ $ curl 'http://localhost:8080/api/signatures' -i -X POST \
     -d '{
   "type" : "ETHEREUM_RAW",
   "walletId" : "1",
-  "data" : "Some data"
+  "data" : "Some data",
+  "hash" : true,
+  "prefix" : true
 }'
 ----

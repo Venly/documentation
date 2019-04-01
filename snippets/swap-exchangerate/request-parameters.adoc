@@ -1,22 +1,15 @@
 |===
 |Parameter|Description
-
 |`+fromSecretType+`
-|The input secret type (Possible values: [AETERNITY, BITCOIN, ETHEREUM, GOCHAIN, LITECOIN, VECHAIN])
-
+|The input secret type (Possible values: [AETERNITY, BITCOIN, ETHEREUM, GOCHAIN, LITECOIN, TRON, VECHAIN])
 |`+toSecretType+`
-|The output secret type (Possible values: [AETERNITY, BITCOIN, ETHEREUM, GOCHAIN, LITECOIN, VECHAIN])
-
+|The output secret type (Possible values: [AETERNITY, BITCOIN, ETHEREUM, GOCHAIN, LITECOIN, TRON, VECHAIN])
 |`+fromToken+`
 |The type of token as input
-
 |`+toToken+`
 |The type of token as output
-
 |`+amount+`
 |The amount to swap
-
 |`+orderType+`
 |The order type (SELL or BUY). For sell orders (exact input), the amount bought (output) is calculated. For buy orders (exact output), the cost (input) is calculated
-
 |===

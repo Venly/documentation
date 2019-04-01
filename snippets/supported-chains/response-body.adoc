@@ -2,6 +2,6 @@
 ----
 {
   "success" : true,
-  "result" : [ "ETHEREUM", "VECHAIN", "BITCOIN" ]
+  "result" : [ "ETHEREUM", "VECHAIN", "BITCOIN", "TRON" ]
 }
 ----

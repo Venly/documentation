@@ -311,10 +311,10 @@ operation::execute-vtho-transaction[snippets='response-body']
 
 ==== Execute VIP180 transfer link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
 
-To execute an VIP180 transaction transfer, use the connect building block with:
+To execute an ERC20 transaction transfer, use the connect building block with:
 
 .URL
-https://connect-staging.arkane.network/transaction/execute/vechain_vip180_transaction
+https://connect-staging.arkane.network/transaction/execute/ethereum_erc20_transaction
 
 
 .Data parameters
@@ -370,48 +370,6 @@ operation::execute-ltc-transaction[snippets='response-fields']
 
 .Result example
 operation::execute-ltc-transaction[snippets='response-body']
-
-=== Tron
-
-==== [[execute-trx-transaction]] Execute a TRON transaction link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
-To execute an TRON transaction, use the connect building block with:
-
-.URL
-https://connect-staging.arkane.network/transaction/execute/trx_transaction
-
-
-.Data parameters
-operation::execute-trx-transaction[snippets='request-fields']
-
-.Data example
-operation::execute-trx-transaction[snippets='request-body']
-
-.Result parameters
-operation::execute-trx-transaction[snippets='response-fields']
-
-.Result example
-operation::execute-trx-transaction[snippets='response-body']
-
-
-==== Execute TRC10 transfer link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
-
-To execute a TRC10 transaction transfer, use the connect building block with:
-
-.URL
-https://connect-staging.arkane.network/transaction/execute/tron_trc10_transaction
-
-
-.Data parameters
-operation::execute-trc10-transaction[snippets='request-fields']
-
-.Data example
-operation::execute-trc10-transaction[snippets='request-body']
-
-.Result parameters
-operation::execute-trc10-transaction[snippets='response-fields']
-
-.Result example
-operation::execute-trc10-transaction[snippets='response-body']
 
 == Profile
 === [[user-profile]] User profile link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]

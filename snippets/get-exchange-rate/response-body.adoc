@@ -1,10 +1,21 @@
 [source,options="nowrap"]
 ----
 {
-  "orderType" : "SELL",
-  "inputAmount" : 100,
-  "outputAmount" : 485,
-  "slippage" : 0.025,
-  "fee" : 1
+  "exchangeRates" : [ {
+    "exchange" : "VEXCHANGE",
+    "orderType" : "SELL",
+    "inputAmount" : 100,
+    "outputAmount" : 485,
+    "slippage" : 0.025,
+    "fee" : 1
+  } ],
+  "bestRate" : {
+    "exchange" : "VEXCHANGE",
+    "orderType" : "SELL",
+    "inputAmount" : 100,
+    "outputAmount" : 485,
+    "slippage" : 0.025,
+    "fee" : 1
+  }
 }
 ----

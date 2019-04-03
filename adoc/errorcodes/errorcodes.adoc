@@ -1,0 +1,217 @@
+= Arkane Error Codes
+
+.Profile errors
+|===
+|Error Code | Meaning
+|profile.pincode.already-initialized
+|The master pin was already initialized
+
+|profile.pincode.update-failed
+|Unable to update the master pin
+
+|pincode.no-tries-left
+|Max pincode tries exceeded
+
+|pincode.empty
+|The provided pincode should not be empty
+
+|pincode.incorrect
+|Pincode was not correct
+|===
+
+.Wallet Errors
+|===
+|Error Code | Meaning
+
+|wallet.archived
+|The wallet that is used appears to be archived
+
+|wallet.forbidden
+|Wallet to update was not found or does not belong to the correct user
+
+|wallet.balance.not.supported.yet
+|Getting the balance for chain is not supported yet
+
+|wallet.alias.non-unique
+|A wallet with that alias already exists for you account
+
+|wallet.encrypt.internal-error
+|Problem while trying to encrypt user secret
+
+|wallet.import.internal-error
+|A problem occurred trying to import a wallet.
+
+|wallet.import.duplicate
+|Wallet already exists
+
+|wallet.alias.length-exceeded
+|The length of the name of a wallet cannot be bigger than 50
+
+|wallet.alias.non-unique
+|A wallet with that alias already exists for you account
+
+|wallet.generate.internal-error
+|Unexpected error while trying to generate wallet
+
+|wallet.decrypt.internal-error
+|A problem occurred while trying to access your wallet. Please contact support
+
+|wallet.secret.not-found
+|The specified secret was not found in our vault
+
+|wallet.secret.internal-error
+|An unknown error occurred when trying to fetch the secret. Please contact support.
+|===
+
+.Transaction Errors
+|===
+|Error Code | Meaning
+
+|transaction.sign.internal-error
+|A problem occurred trying to submit the sign the request
+
+|transaction.insufficient-funds
+|The account that initiated the transfer does not have enough energy
+
+|transaction.submit.ethereum-error
+|Something went wrong while trying to submit the ethereum transaction
+
+|transaction.submit.gochain-error
+|Something went wrong while trying to submit the Gochain transaction
+
+|transaction.sign.gas-error
+|Unable to fetch default gas prices for Ethereum
+
+|transaction.submit.internal-error
+|A problem occurred trying to submit the sign the request
+
+|transaction.submit.not-supported-yet
+|Submitting a request to this network is not possible yet
+
+|tranactionrouter.secrettype.not-implemented-yet
+|Preparation not available for given secret type
+|===
+
+.API Token Errors
+|===
+|Error Code | Meaning
+
+|apitoken.create.internal-error
+|A problem occurred trying to create an api token
+
+|apitoken.update.internal-error
+|A problem occurred trying to update the api token
+|===
+
+.Token Swap Errors
+|===
+|Error Code | Meaning
+
+|swap.no-exchange-found
+|No SwapService found for SwapExchange
+
+|swap.uniswap.get-price.failed
+|Unable to get the price of a token on uniswap
+
+|swap.uniswap.allowance-error
+|Unable to get allowance for token on uniswap
+
+|swap.uniswap.exchange-not-found
+|An exchange contract for a token on uniswap could not be found
+|===
+
+.Bitcoin specific Errors
+|Error Code | Meaning
+|===
+|bitcoin.address-wrong-network
+|Something went wrong with the address of this bitcoin wallet on this specific network.
+
+|bitcoin.creation-error
+|An error occurred trying to create the Bitcoin transaction.
+
+|bitcoin.transaction-inputs
+|The account you're trying to use as origin in the transaction doesn't have valid inputs to send
+
+|bitcoin.not-enough-funds
+|Not enough funds to create the transaction
+
+|bitcoin.signing-error
+|An error occurred trying to sign the bitcoin transaction.
+|===
+
+.Ethereum Specific Errors
+|===
+|Error Code | Meaning
+
+|web3.internal-error
+|Something went wrong with the underlying web3 connection.
+
+|web3.estimate.gas.internal-error
+|A problem occurred trying to estimate the gas.
+
+|web3.nonce.internal-error
+|A problem occurred trying to get the next nonce
+
+|web3.transaction.submit.internal-error
+|A problem occurred trying to submit the transaction to the Ethereum network
+|===
+
+.Litecoin Specific Errors
+|===
+|Error Code | Meaning
+
+|litecoin.address-wrong-network
+|Something went wrong with the address of this litecoin wallet on this specific network.
+
+|litecoin.creation-error
+|An error occurred trying to create the Litecoin transaction.
+
+|litecoin.transaction-inputs
+|The account you're trying to use as origin in the transaction doesn't have valid inputs to send
+
+|litecoin.not-enough-funds
+|Not enough funds to create the transaction
+
+|litecoin.signing-error
+|An error occurred trying to sign the litecoin transaction
+|===
+
+.Tron Specific Errors
+|===
+|Error Code | Meaning
+
+|tron.balance.bandwidth-error
+|Unable to fetch bandwidth
+
+|tron.signature.error
+|An error occurred trying to create a tron signature
+
+|thorify.internal-error
+|Something went wrong with the underlying thor connection
+
+|thorify.transaction.submit.internal-error
+|A problem occurred trying to submit the transaction to the Vechain network
+|===
+
+.Key Export Errors
+|===
+|Error Code | Meaning
+
+|export.bitcoin
+|An error occurred while trying to export the key
+
+|export.litecoin
+|Unable to create export format from secret key
+
+|export.ethereum
+|An error occurred while trying to export the key
+
+|export.gochain
+|An error occurred while trying to export the gochain key
+
+|export.vechain
+|An error occurred while trying to export the key
+
+|export.tron
+|An error occurred while trying to export the key
+|===

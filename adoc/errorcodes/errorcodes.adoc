@@ -185,12 +185,6 @@
 
 |tron.signature.error
 |An error occurred trying to create a tron signature
-
-|thorify.internal-error
-|Something went wrong with the underlying thor connection
-
-|thorify.transaction.submit.internal-error
-|A problem occurred trying to submit the transaction to the Vechain network
 |===
 
 .Key Export Errors

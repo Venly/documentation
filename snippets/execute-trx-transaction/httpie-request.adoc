@@ -3,6 +3,7 @@
 $ echo '{
   "type" : "TRX_TRANSACTION",
   "walletId" : "adc4c08a-b8fa-4e4c-z5a2-92c87b80f174",
+  "pincode" : "549644",
   "value" : 10000000000,
   "to" : "TAGGUxf5VvuA7UJdzAtjoS3gJuJytLQiYo",
   "data" : "0x"

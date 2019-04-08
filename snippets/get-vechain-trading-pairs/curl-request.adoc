@@ -1,5 +1,0 @@
-[source,bash]
-----
-$ curl 'https://api.arkane.network/api/wallets/40903873-1e28-4b00-86fe-91d160c6adcf/swaps/pairs' -i -X GET \
-    -H 'Content-Type: application/json'
-----

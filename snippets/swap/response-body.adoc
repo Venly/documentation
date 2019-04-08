@@ -2,8 +2,7 @@
 ----
 [ {
   "type" : "VET_TRANSACTION",
-  "walletId" : "e5255fce-7099-403b-af1c-9fac0063bb31",
-  "pincode" : null,
+  "walletId" : "8eca0014-7238-4432-a244-0bfff9e53535",
   "blockRef" : null,
   "chainTag" : null,
   "expiration" : 0,

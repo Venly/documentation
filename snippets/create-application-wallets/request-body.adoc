@@ -1,0 +1,8 @@
+[source,options="nowrap"]
+----
+{
+  "alias" : "TheAlias",
+  "description" : "The description",
+  "secretType" : "ETHEREUM"
+}
+----

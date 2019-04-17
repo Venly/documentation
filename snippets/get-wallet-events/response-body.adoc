@@ -2,7 +2,7 @@
 ----
 [ {
   "id" : 1,
-  "eventTimestamp" : 1554108131163,
+  "eventTimestamp" : 1554718519597,
   "client" : "Arkane",
   "apiToken" : "xxx-xxx-xxx",
   "type" : "MASTER_PIN_UPDATED",

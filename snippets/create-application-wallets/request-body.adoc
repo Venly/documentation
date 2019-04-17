@@ -1,0 +1,10 @@
+[source,options="nowrap"]
+----
+{
+  "walletType" : "APPLICATION",
+  "pincode" : null,
+  "alias" : "TheAlias",
+  "description" : "The description",
+  "secretType" : "ETHEREUM"
+}
+----

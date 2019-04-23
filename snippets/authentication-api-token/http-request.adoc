@@ -1,6 +1,6 @@
 [source,http,options="nowrap"]
 ----
 GET /api/profile HTTP/1.1
-authToken: a27781e6-beef-4c4e-ba6c-ce66609c9688
+authToken: 98cbdfc0-bc4b-40a0-a6ce-bea0bd5a3f9c
 Host: localhost:8080
 ----

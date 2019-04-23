@@ -1,0 +1,19 @@
+|===
+|Path|Type|Description|Constraints
+|`+pincode+`
+|`+String+`
+|The master pin code of the user
+|Mandatory, 4-6 digits
+|`+alias+`
+|`+String+`
+|Alias of the wallet. Needs to be unique across your account
+|Optional, max 50 chars, allowed charachters: A-Z, a-z, 0-9, - and _
+|`+description+`
+|`+String+`
+|General description of your wallet
+|Optional, max 200 chars
+|`+secretType+`
+|`+String+`
+|Type of secret to be generated. (possible values: ETHEREUM)
+|mandator, allowed values: [AETERNITY, BITCOIN, ETHEREUM, GOCHAIN, LITECOIN, TRON, VECHAIN]
+|===

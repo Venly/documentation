@@ -1,0 +1,10 @@
+[source,bash]
+----
+$ curl 'http://localhost:8080/api/signatures' -i -X POST \
+    -H 'Content-Type: application/json;charset=UTF-8' \
+    -d '{
+  "type" : "TRX_RAW",
+  "walletId" : "1",
+  "data" : "Some data"
+}'
+----

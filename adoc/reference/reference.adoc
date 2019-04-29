@@ -99,7 +99,7 @@ operation::get-balance[snippets='curl-request,path-parameters,http-response,resp
 === [[get-token-balances]] Token balances link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
 Returns the balance of all tokens currently supported by Arkane. The list of supported tokens can be found on https://github.com/ArkaneNetwork/content-management/tree/master/tokens[Github].
 
-operation::get-token-balances[snippets='curl-request,request-fields,http-response,response-fields']
+operation::get-token-balances[snippets='curl-request,http-response,response-fields']
 
 === [[get-token-balance]] Specific token balance link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
 Returns the token balance for a specified token (this can be any token).
@@ -401,7 +401,7 @@ operation::sign-hex-message[snippets='response-body']
 
 |thorify.transaction.submit.internal-error
 |A problem occurred trying to submit the transaction to the vechain network
-|==
+|===
 
 ==== [[execute-vet-transaction]] Execute VET transaction link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
 To execute an VeChain transaction, use the connect building block with:

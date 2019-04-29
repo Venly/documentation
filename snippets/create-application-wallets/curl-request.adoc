@@ -1,0 +1,12 @@
+[source,bash]
+----
+$ curl 'https://api.arkane.network/api/wallets' -i -X POST \
+    -H 'Content-Type: application/json' \
+    -d '{
+  "walletType" : "APPLICATION",
+  "pincode" : null,
+  "alias" : "TheAlias",
+  "description" : "The description",
+  "secretType" : "ETHEREUM"
+}'
+----

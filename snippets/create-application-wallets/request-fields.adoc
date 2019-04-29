@@ -1,0 +1,24 @@
+|===
+|Path|Type|Description|Constraints
+
+|`+walletType+`
+|`+String+`
+|The type of wallet you are trying to create
+|Mandatory, must be APPLICATION to create an application wallet
+
+|`+alias+`
+|`+String+`
+|Alias of the wallet. Needs to be unique across your account
+|Optional, max 50 chars, allowed charachters: A-Z, a-z, 0-9, - and _
+
+|`+description+`
+|`+String+`
+|General description of your wallet
+|Optional, max 200 chars
+
+|`+secretType+`
+|`+String+`
+|Type of secret to be generated. (Ex. ETHEREUM)
+|Mandatory, allowed values: [AETERNITY, BITCOIN, ETHEREUM, GOCHAIN, LITECOIN, TRON, VECHAIN]
+
+|===

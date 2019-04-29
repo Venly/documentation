@@ -106,6 +106,64 @@ Returns the token balance for a specified token (this can be any token).
 
 operation::get-token-balance[snippets='curl-request,path-parameters,http-response,response-fields']
 
+== Application Wallet
+
+Application wallets are a special type of hybrid wallets that are owned by the user but transactions are initiated by an application. Only
+transactions coming from the original application are accepted. Consequently, a user cannot move digital assets out of the wallet
+without the application's approval. +
+On the other hand, a transaction for this wallet always needs to be signed off with the user's PIN. So the user keeps the right of actually executing a transaction at all times.
+
+Limitations on the application wallets:
+
+* The user cannot initiate a transaction from outside the original application
+* The user cannot export the private key of the wallet
+* The user cannot connect other 3rd party applications to this application wallet
+* The application is able to remove the above-mentioned restrictions, transforming the
+application wallet into a normal Arkane wallet (this process cannot be reverted)
+
+image::img/appwallets.png[App wallets]
+
+=== Authentication
+To use the application wallet functionality, two separate client id's will need to be created (see link:buildingblocks.html#_arkane_identity[[.bb-api]#Arkane Identity#]).
+
+* One will be used to create the transaction (steps 2 and 4). This client will authenticate to Arkane using a shared secret, meaning it needs to be used in a server to server
+ communication channel (the secret may never be exposed to the outside world)
+* The other is used to initiate the signing of a transaction by the user (steps 5, 6, 7, 8, 10). This is the same client used for all other Arkane actions and will authenticate to
+Arkane using a users Bearer token.
+
+=== Create application wallet link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
+To create an application wallet, Arkane Connect must be used to confirm the creation of the wallet. The user will then be requested to enter their PIN as confirmation.
+
+.URL
+https://connect-staging.arkane.network/confirm
+
+
+.[[create-application-wallet]] Data parameters
+|===
+|Path|Type|Description|Constraints
+
+|`+confirmationRequestType+`
+|`+String+`
+|The type of confirmation you are requesting
+|Mandatory, must be CREATE_APPLICATION_WALLET to create an application wallet
+
+|`+secretType+`
+|`+String+`
+|Type of secret to be generated. (Ex. ETHEREUM)
+|Mandatory, allowed values: [AETERNITY, BITCOIN, ETHEREUM, GOCHAIN, LITECOIN, TRON, VECHAIN]
+
+|`+alias+`
+|`+String+`
+|Alias of the wallet. Needs to be unique across your account
+|Optional, max 50 chars, allowed charachters: A-Z, a-z, 0-9, - and _
+
+|`+description+`
+|`+String+`
+|General description of your wallet
+|Optional, max 200 chars
+
+|===
+
 == Transactions
 
 === [[transaction-error-codes]] Transaction Error Codes

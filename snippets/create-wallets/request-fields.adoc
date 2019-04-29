@@ -1,5 +1,9 @@
 |===
 |Path|Type|Description|Constraints
+|`+walletType+`
+|`+String+`
+|The type of wallet you are trying to create
+|Mandatory, THREEWAY_SHARED or APPLICATION
 |`+pincode+`
 |`+String+`
 |If hasCustomPin (see below), the custom pincode to be used with this wallet, otherwise: the master pin code of the user

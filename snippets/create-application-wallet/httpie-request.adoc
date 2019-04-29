@@ -1,9 +1,10 @@
 [source,bash]
 ----
 $ echo '{
+  "walletType" : "APPLICATION",
   "alias" : "TheAlias",
   "description" : "The description",
   "secretType" : "ETHEREUM"
-}' | http POST 'https://api.arkane.network/api/wallets/application-wallet' \
+}' | http POST 'https://api.arkane.network/api/wallets' \
     'Content-Type:application/json'
 ----

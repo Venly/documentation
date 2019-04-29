@@ -3,11 +3,12 @@
 $ curl 'https://api.arkane.network/api/wallets' -i -X POST \
     -H 'Content-Type: application/json' \
     -d '{
+  "walletType" : "THREEWAY_SHARED",
   "alias" : null,
-  "hasCustomPin" : true,
   "description" : null,
   "primary" : false,
   "secretType" : "ETHEREUM",
-  "clients" : [ "ThorBlock" ]
+  "clients" : [ "ThorBlock" ],
+  "hasCustomPin" : true
 }'
 ----

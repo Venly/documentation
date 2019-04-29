@@ -1,12 +1,13 @@
 [source,bash]
 ----
 $ echo '{
+  "walletType" : "THREEWAY_SHARED",
   "alias" : null,
-  "hasCustomPin" : true,
   "description" : null,
   "primary" : false,
   "secretType" : "ETHEREUM",
-  "clients" : [ "ThorBlock" ]
+  "clients" : [ "ThorBlock" ],
+  "hasCustomPin" : true
 }' | http POST 'https://api.arkane.network/api/wallets' \
     'Content-Type:application/json'
 ----

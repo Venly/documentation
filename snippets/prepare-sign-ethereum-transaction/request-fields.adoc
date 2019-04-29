@@ -2,8 +2,8 @@
 |Path|Type|Description|Constraints
 |`+type+`
 |`+String+`
-|The type of the transaction. ex: ETHEREUM.
-|Mandatory, possible values: ETHEREUM_TRANSACTION, ETHEREUM_RAW, VECHAIN_TRANSACTION
+|The type of the transaction. ex: ETHEREUM_TRANSACTION.
+|Mandatory, possible values: ETHEREUM_TRANSACTION, VECHAIN_TRANSACTION, GOCHAIN_TRANSACTION, BITCOIN_TRANSACTION, LITECOIN_TRANSACTION, TRX_TRANSACTION, TRC10_TRANSACTION
 |`+walletId+`
 |`+String+`
 |The id of the wallet one wants to sign with.

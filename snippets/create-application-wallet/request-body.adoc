@@ -1,6 +1,7 @@
 [source,options="nowrap"]
 ----
 {
+  "walletType" : "APPLICATION",
   "alias" : "TheAlias",
   "description" : "The description",
   "secretType" : "ETHEREUM"

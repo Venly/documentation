@@ -1,6 +1,6 @@
 [source,bash]
 ----
-$ curl 'https://api.arkane.network/api/wallets/7e2401ac-c432-4a18-b202-a7b6119f54de/swaps' -i -X POST \
+$ curl 'https://api.arkane.network/api/wallets/57804d15-ff76-4385-9a78-f1d4f8d8d8f2/swaps' -i -X POST \
     -H 'Content-Type: application/json' \
     -d '{
   "walletId" : "id",

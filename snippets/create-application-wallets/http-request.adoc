@@ -3,11 +3,9 @@
 POST /api/wallets HTTP/1.1
 Content-Type: application/json
 Host: api.arkane.network
-Content-Length: 144
-
+Content-Length: 146
 {
   "walletType" : "APPLICATION",
-  "pincode" : null,
   "alias" : "TheAlias",
   "description" : "The description",
   "secretType" : "ETHEREUM"

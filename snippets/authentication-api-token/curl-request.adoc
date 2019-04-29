@@ -1,5 +1,5 @@
 [source,bash]
 ----
 $ curl 'http://localhost:8080/api/profile' -i -X GET \
-    -H 'authToken: 98cbdfc0-bc4b-40a0-a6ce-bea0bd5a3f9c'
+    -H 'authToken: a95232c3-86af-4e22-b4e5-46837e719255'
 ----

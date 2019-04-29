@@ -48,5 +48,4 @@
 |`+balance+`
 |`+Object+`
 |The native token balance of the wallet
-
 |===

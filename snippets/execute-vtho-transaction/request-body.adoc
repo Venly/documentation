@@ -8,7 +8,7 @@
   "expiration" : 3,
   "gas" : 23000,
   "gasPriceCoef" : 46576,
-  "nonce" : "5d7c46bd-dd70-438a-858c-e11ad1a6f085",
+  "nonce" : "23666b86-8501-44a7-967b-647c1a277143",
   "clauses" : [ {
     "to" : "0xdc71b72db51e227e65a45004ab2798d31e8934c9",
     "amount" : 10000000000

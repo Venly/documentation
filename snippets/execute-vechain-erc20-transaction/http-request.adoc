@@ -12,7 +12,7 @@ Content-Length: 455
   "expiration" : 3,
   "gas" : 23000,
   "gasPriceCoef" : 46576,
-  "nonce" : "642d29e5-a724-4f11-9977-fe7591c1367c",
+  "nonce" : "085f1d87-a60c-490a-8b7e-5b7d37c68db3",
   "clauses" : [ {
     "to" : "0xdc71b72db51e227e65a45004ab2798d31e8934c9",
     "amount" : 10000000000,

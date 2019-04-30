@@ -1,0 +1,4 @@
+[source,bash]
+----
+$ curl 'https://api.arkane.network/api/wallets?walletType=APPLICATION' -i -X GET
+----

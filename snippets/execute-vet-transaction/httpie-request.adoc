@@ -1,19 +1,19 @@
 [source,bash]
 ----
 $ echo '{
-  "type" : "VET_TRANSACTION",
   "walletId" : "cdc4c08a-b8fa-4e4c-z5a2-92c87b80f174",
   "blockRef" : null,
   "chainTag" : null,
   "expiration" : 3,
   "gas" : 23000,
   "gasPriceCoef" : 46576,
-  "nonce" : "fc5dd560-bc8a-482e-b1b4-acadb97337bf",
+  "nonce" : "42f81df8-e493-4446-b59c-fb44c517d91f",
   "clauses" : [ {
     "to" : "0xdc71b72db51e227e65a45004ab2798d31e8934c9",
     "amount" : 10000000000,
     "data" : "0x0000"
-  } ]
+  } ],
+  "type" : "VET_TRANSACTION"
 }' | http POST 'https://api.arkane.network/api/transactions' \
     'Content-Type:application/json;charset=UTF-8'
 ----

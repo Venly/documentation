@@ -1,5 +1,5 @@
 [source,bash]
 ----
 $ http GET 'http://localhost:8080/api/profile' \
-    'authToken:a95232c3-86af-4e22-b4e5-46837e719255'
+    'authToken:2afdc6cc-6dea-4e8a-ae6d-dfb7aa9f9993'
 ----

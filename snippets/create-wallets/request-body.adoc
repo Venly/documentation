@@ -1,12 +1,12 @@
 [source,options="nowrap"]
 ----
 {
-  "walletType" : "THREEWAY_SHARED",
   "alias" : null,
   "description" : null,
   "primary" : false,
   "secretType" : "ETHEREUM",
   "clients" : [ "ThorBlock" ],
-  "hasCustomPin" : true
+  "hasCustomPin" : true,
+  "walletType" : "THREEWAY_SHARED"
 }
 ----

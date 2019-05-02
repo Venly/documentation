@@ -477,7 +477,7 @@ arkaneConnect.api.getTokenBalance(walletId: string, tokenAddress: string): Promi
 | `tokenAddress` | true | The address of the token contract you want to fetch the balance of.
 |===
 
-== Application wallets
+== Application wallet
 === Create application wallet link:reference.html#create-app-wallet[[.small]#+[Reference]+#]
 To create an application wallet for a user, he needs to enter his PIN for approval. For this we can use an <<signer, Arkane Connect JS Signer>>,
 
@@ -488,7 +488,7 @@ signer.confirm(confirmRequest, options?): Promise<SignerResult>
 ----
 Returns `Promise++<++<<signer-result,SignerResult>>++>++`
 
-When successful, the `signerResult.data`-field will contain the wallet ID of the newly created wallet
+When successful, the `signerResult.data`-property will contain the wallet ID of the newly created wallet
 
 .Parameters
 [cols="1,1,3"]
@@ -509,6 +509,42 @@ signer.confirm({ secretType: 'TRON', confirmationRequestType: 'CREATE_APPLICATIO
               console.log(`An application wallet with ID ${signerResult.result.walletId} has been successfully created!`);
           } else {
               console.warn(`Something went wrong while trying to create an application wallet`);
+          }
+      })
+      .catch((reason) => {
+          console.log(error);
+      });
+----
+
+=== Execute a requested transaction link:reference.html#execute-app-wallet-transaction[[.small]#+[Reference]+#]
+.Signature
+[source,javascript,options="nowrap"]
+----
+signer.executeTransaction(transactionRequestID: string, redirectOptions?: RedirectOptions): Promise<SignerResult>
+----
+Returns `Promise++<++<<signer-result,SignerResult>>++>++`
+
+When successful, the `SignerResult.data`-property will contain the transaction hash of the executed transaction
+
+.Parameters
+[cols="1,1,3"]
+|===
+| Parameter | Required | Description
+| `transactionRequestID` | true | The ID of the transaction request you want the user to sign off.
+| `redirectOptions` | false | The <<redirectOptions,RedirectOptions>> you want to pass.
+|===
+
+.Full example
+[source,javascript,options="nowrap"]
+----
+const signer = arkaneConnect.createSigner();
+
+signer.executeTransaction('70fc00ec-9b0f-4edb-b301-097cf6ee8e31')
+      .then((signerResult) => {
+          if (signerResult.success) {
+              console.log(`Transaction ${signerResult.result.transactionHash} has been successfully executed!`);
+          } else {
+              console.warn(`Something went wrong while executing the transaction`);
           }
       })
       .catch((reason) => {
@@ -636,7 +672,7 @@ Returns `Promise++<++<<signer-result,SignerResult>>++>++`
 |===
 | Parameter | Required | Description
 | `signatureRequest` | true | The transaction request you want to execute. More info on the structure of the native transaction requests can be found in the link:reference.html#native-transactions[Reference]. Exactly the same request bodies are accepted by this function.
-| `redirectOptions` | false | The <<RedirectOptions,redirectOptions>> you want to pass.
+| `redirectOptions` | false | The <<redirectOptions,RedirectOptions>> you want to pass.
 |===
 
 .Example
@@ -659,7 +695,7 @@ signer.sign({...signatureRequest...})
 ==== [[signer-options]]Options
 IMPORTANT: Options are only applicable to the *redirect-signer*
 
-.*RedirectOptions*
+.[[redirectOptions]] *RedirectOptions*
 [source,javascript,options="nowrap"]
 ----
 {

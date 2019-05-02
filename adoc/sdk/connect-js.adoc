@@ -98,7 +98,7 @@ const arkaneConnect = new ArkaneConnect('Arketype', { environment: 'staging',
 [source]
 ----
 {
-    POPUP = 'POPOP',
+    POPUP = 'POPUP',
     REDIRECT = 'REDIRECT'
 }
 ----
@@ -176,7 +176,7 @@ arkaneConnect.authenticate({ redirectUri: 'https://arkane.network', windowMode: 
 [source,javascript,options="nowrap"]
 ----
 // Login using popup
-arkaneConnect.authenticate({ windowMode: 'POPOP' })
+arkaneConnect.authenticate({ windowMode: 'POPUP' })
     .then((result: AuthenticationResult) => {
         result
             .authenticated((auth: AuthenticationInstance) => {
@@ -620,7 +620,7 @@ signer.sign({...signatureRequest...})
 ==== [[signer-options]]Options
 IMPORTANT: Options are only applicable to the *redirect-signer*
 
-.*RedirectOptions* options
+.*RedirectOptions*
 [source,javascript,options="nowrap"]
 ----
 {

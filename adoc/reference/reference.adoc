@@ -183,7 +183,7 @@ operation::execute-generic-app-wallet-transaction[snippets='response-fields']
 .Result example
 operation::execute-generic-app-wallet-transaction[snippets='response-body']
 
-=== Execute a requested transaction link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
+=== [[execute-app-wallet-transaction]] Execute a requested transaction link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
 Before the transaction will be pushed to the blockchain, it first needs to be approved by the user. This can be done using Arkane Connect.
 
 .URL

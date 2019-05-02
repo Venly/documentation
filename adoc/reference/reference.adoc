@@ -131,7 +131,7 @@ To use the application wallet functionality, two separate client ID's will need 
 * The other is used to initiate the signing of a transaction by the user (steps 5, 6, 7, 8, 10). This is the same client used for all other Arkane actions and will authenticate to
 Arkane using a users Bearer token.
 
-=== Create application wallet link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
+=== [[create-app-wallet]] Create application wallet link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
 To create an application wallet, Arkane Connect must be used to confirm the creation of the wallet. The user will then be requested to enter their PIN as confirmation.
 
 .URL

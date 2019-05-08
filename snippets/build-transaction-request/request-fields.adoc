@@ -15,7 +15,7 @@
 |`+secretType+`
 |`+String+`
 |Which chain you want to do a transaction for
-|Mandatory. Must be one of: [AETERNITY, BITCOIN, ETHEREUM, GOCHAIN, LITECOIN, TRON, VECHAIN]
+|Mandatory. Must be one of: [BITCOIN, ETHEREUM, GOCHAIN, LITECOIN, TRON, VECHAIN]
 |`+tokenAddress+`
 |`+String+`
 |The address of the token to be used in this transaction

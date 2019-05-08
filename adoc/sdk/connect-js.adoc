@@ -1,6 +1,6 @@
 = Arkane Connect: our JavaScript SDK
 
-:secret-types: 'BITCOIN', 'ETHEREUM', 'GOCHAIN', 'LITECOIN', 'TRON', 'VECHAIN'
+:secret-types: 'AETERNITY', 'BITCOIN', 'ETHEREUM', 'GOCHAIN', 'LITECOIN', 'TRON', 'VECHAIN'
 
 == Introduction
 In order to conveniently integrate Arkane into your JavaScript applications we've developed a JavaScript SDK: *Arkane Connect JS*.

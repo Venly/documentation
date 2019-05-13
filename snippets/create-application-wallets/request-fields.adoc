@@ -19,5 +19,5 @@
 |`+secretType+`
 |`+String+`
 |Type of secret to be generated. (possible values: ETHEREUM)
-|mandator, allowed values: [BITCOIN, ETHEREUM, GOCHAIN, LITECOIN, TRON, VECHAIN]
+|mandator, allowed values: [AETERNITY, BITCOIN, ETHEREUM, GOCHAIN, LITECOIN, TRON, VECHAIN]
 |===

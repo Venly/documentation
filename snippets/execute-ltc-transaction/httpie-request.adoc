@@ -1,11 +1,11 @@
 [source,bash]
 ----
 $ echo '{
-  "type" : "LTC_TRANSACTION",
   "walletId" : "1543",
   "value" : 10000000000,
   "feePerKiloByte" : 6,
-  "to" : "MTvnA4CN73ry7c65wEuTSaKzb2pNKHB4n1"
+  "to" : "MTvnA4CN73ry7c65wEuTSaKzb2pNKHB4n1",
+  "type" : "LTC_TRANSACTION"
 }' | http POST 'https://api.arkane.network/api/transactions' \
     'Content-Type:application/json;charset=UTF-8'
 ----

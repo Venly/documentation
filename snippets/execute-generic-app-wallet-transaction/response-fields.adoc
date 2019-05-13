@@ -1,0 +1,6 @@
+|===
+|Path|Type|Description
+|`+transactionRequestId+`
+|`+String+`
+|The id of the transaction you just requested
+|===

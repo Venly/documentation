@@ -5,7 +5,7 @@ Content-Type: application/json;charset=UTF-8
 Content-Length: 181
 [ {
   "id" : 1,
-  "eventTimestamp" : 1556550349458,
+  "eventTimestamp" : 1556618142368,
   "client" : "Arkane",
   "apiToken" : "xxx-xxx-xxx",
   "type" : "MASTER_PIN_UPDATED",

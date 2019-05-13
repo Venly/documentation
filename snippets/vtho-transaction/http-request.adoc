@@ -5,17 +5,17 @@ Content-Type: application/json;charset=UTF-8
 Host: api.arkane.network
 Content-Length: 378
 {
-  "type" : "VTHO_TRANSACTION",
   "walletId" : "ddc4c08a-b8fa-4e4c-z5a2-92c87b80f174",
   "blockRef" : null,
   "chainTag" : null,
   "expiration" : 3,
   "gas" : 23000,
   "gasPriceCoef" : 46576,
-  "nonce" : "77d977ec-cd7f-4991-b82f-47e947fd1167",
+  "nonce" : "47a745f3-9f1d-477d-8821-cc98ec75837c",
   "clauses" : [ {
     "to" : "0xdc71b72db51e227e65a45004ab2798d31e8934c9",
     "amount" : 10000000000
-  } ]
+  } ],
+  "type" : "VTHO_TRANSACTION"
 }
 ----

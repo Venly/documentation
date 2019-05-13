@@ -5,12 +5,12 @@ Content-Type: application/json
 Host: api.arkane.network
 Content-Length: 208
 {
-  "walletType" : "THREEWAY_SHARED",
   "alias" : null,
   "description" : null,
   "primary" : false,
   "secretType" : "ETHEREUM",
   "clients" : [ "ThorBlock" ],
-  "hasCustomPin" : true
+  "hasCustomPin" : true,
+  "walletType" : "THREEWAY_SHARED"
 }
 ----

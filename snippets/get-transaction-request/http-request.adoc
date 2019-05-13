@@ -1,5 +1,5 @@
 [source,http,options="nowrap"]
 ----
-GET /api/transactions/fd0b388a-8494-4c7a-a0c4-2524589d2787 HTTP/1.1
+GET /api/transactions/2cf893a7-2582-4416-aed5-f7024df9934a HTTP/1.1
 Host: api.arkane.network
 ----

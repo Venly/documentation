@@ -165,7 +165,7 @@ https://connect-staging.arkane.network/confirm
 |===
 
 === Create a transaction link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
-Creating a transaction is done by sending the transaction to Arkane API using your `..._app` client ID. +
+Creating a transaction is done by sending the transaction to Arkane API using your confidential client ID (`..._app`). +
 In this example we are doing a generic <<transfer, transfer>>, but you can submit any type of transaction described under <<transactions, Transactions>> as long as the provided
 wallet ID is of an application wallet (this is the reason we haven't documented the other request parameters).
 

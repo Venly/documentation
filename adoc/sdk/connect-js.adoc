@@ -1,6 +1,6 @@
 = Arkane Connect: our JavaScript SDK
 
-:secret-types: 'ETHEREUM', 'VECHAIN', 'BITCOIN'
+:secret-types: 'AETERNITY', 'BITCOIN', 'ETHEREUM', 'GOCHAIN', 'LITECOIN', 'TRON', 'VECHAIN'
 
 == Introduction
 In order to conveniently integrate Arkane into your JavaScript applications we've developed a JavaScript SDK: *Arkane Connect JS*.
@@ -38,26 +38,7 @@ new ArkaneConnect(clientID:string, options?: ConstructorOptions);
 |===
 | Parameter | Required | Description | Example
 | `clientID` | true | The clientID (case sensitive) | 'Arketype'
-| `options` | false | A `<<ConstructorOptions>>` object which contains the options you want to pass to Arkane Connect JS | `{ signMethod: 'REDIRECT' }`
-|===
-
-=== ConstructorOptions
-.Signature
-[source]
-----
-{
-  environment?: string,
-  signMethod?: string,
-  bearerTokenProvider?: () => string
-}
-----
-
-.Parameters
-|===
-| Option | Required | Description | Example
-| `environment` | false (default = 'prod') | The environment to which you want to connect, possible values are 'local', 'tst1', 'staging', 'prod' | 'staging'
-| `signMethod` | false (default = 'POPUP') | The sign method you want to use, possible values are 'POPUP' or 'REDIRECT' | 'REDIRECT'
-| `bearerTokenProvider` | false (default = the Arkane Connect JS authentication client) | You can implement all the authentication handling yourself and provide Arkane Connect JS with your own bearer token provider. The bearer token provider is a function returning the bearer token (access token) to login to Arkane. | `() => auth.token`
+| `options` | false | `<<ConstructorOptions>>` | `{ windowMode: 'REDIRECT' }`
 |===
 
 === Examples
@@ -76,7 +57,7 @@ const arkaneConnect = new ArkaneConnect('Arketype');
 // use production environment
 // + sign transactions using the REDIRECT method
 // + authentication using Arkane Connect JS
-const arkaneConnect = new ArkaneConnect('Arketype', { signMethod: 'REDIRECT' });
+const arkaneConnect = new ArkaneConnect('Arketype', { windowMode: 'REDIRECT' });
 ----
 
 .Example 3
@@ -86,8 +67,40 @@ const arkaneConnect = new ArkaneConnect('Arketype', { signMethod: 'REDIRECT' });
 // + sign transactions using the REDIRECT method
 // + authentication using bearerTokenProvider supplied by the client
 const arkaneConnect = new ArkaneConnect('Arketype', { environment: 'staging',
-                                                      signMethod: 'REDIRECT',
+                                                      windowMode: 'REDIRECT',
                                                       bearerTokenProvider: () => auth.token});
+----
+
+=== DataTypes
+==== ConstructorOptions
+.Signature
+[source]
+----
+{
+  environment?: string,
+  windowMode?: WindowMode,
+  signMethod?: string,
+  bearerTokenProvider?: () => string
+}
+----
+
+.Parameters
+|===
+| Option | Required | Description | Example
+| `environment` | false (default = 'prod') | The environment to which you want to connect, possible values are 'local', 'tst1', 'staging', 'prod' | 'staging'
+| `windowMode` | false (default = 'POPUP') | <<WindowMode>> The sign method you want to use, possible values are 'POPUP' or 'REDIRECT' | 'REDIRECT'
+| `signMethod` | false (default = 'POPUP') | *Deprecated* Use windowMode instead |
+| `bearerTokenProvider` | false (default = the Arkane Connect JS authentication client) | You can implement all the authentication handling yourself and provide Arkane Connect JS with your own bearer token provider. The bearer token provider is a function returning the bearer token (access token) to login to Arkane. | `() => auth.token`
+|===
+
+==== WindowMode
+.Signature
+[source]
+----
+{
+    POPUP = 'POPUP',
+    REDIRECT = 'REDIRECT'
+}
 ----
 
 == Authentication
@@ -107,7 +120,7 @@ IMPORTANT: If you set the redirectUri option, make sure that the SDK and the `Au
 .Parameters
 |===
 | Parameter | Required | Description | Example
-| `options` | false | A `<<AuthenticationOptions>>` object | `{ redirectUri?: string }`
+| `options` | false | `<<AuthenticationOptions>>` | `{ redirectUri: 'https://arkane.network' }`
 |===
 
 === Examples
@@ -122,7 +135,7 @@ arkaneConnect.checkAuthenticated();
 [source,javascript,options="nowrap"]
 ----
 // Redirect to https://arkane.network
-arkaneConnect.checkAuthenticated({ redirectUri: 'https://arkane.network'});
+arkaneConnect.checkAuthenticated({ redirectUri: 'https://arkane.network' });
 ----
 
 === Authenticate a user
@@ -141,7 +154,7 @@ IMPORTANT: If you set the redirectUri option, make sure that the SDK and the `Au
 .Parameters
 |===
 | Parameter | Required | Description | Example
-| `options` | false | A `<<AuthenticationOptions>>` object | `{ redirectUri?: string }`
+| `options` | false | `<<AuthenticationOptions>>` | `{ redirectUri: 'https://arkane.network', windowMode: 'REDIRECT' }`
 |===
 
 === Examples
@@ -149,14 +162,30 @@ IMPORTANT: If you set the redirectUri option, make sure that the SDK and the `Au
 [source,javascript,options="nowrap"]
 ----
 // Redirect to the current page
-arkaneConnect.authenticate();
+arkaneConnect.authenticate({ windowMode: 'REDIRECT' });
 ----
 
 .Example 2
 [source,javascript,options="nowrap"]
 ----
 // Redirect to https://arkane.network
-arkaneConnect.authenticate({ redirectUri: 'https://arkane.network'});
+arkaneConnect.authenticate({ redirectUri: 'https://arkane.network', windowMode: 'REDIRECT'});
+----
+
+.Example 4
+[source,javascript,options="nowrap"]
+----
+// Login using popup
+arkaneConnect.authenticate({ windowMode: 'POPUP' })
+    .then((result: AuthenticationResult) => {
+        result
+            .authenticated((auth: AuthenticationInstance) => {
+                alert('logged in: ' + auth.subject);
+            })
+            .notAuthenticated((auth: AuthenticationInstance) => {
+                alert('not logged in');
+            });
+    });
 ----
 
 === Log a user out
@@ -197,14 +226,16 @@ arkaneConnect.addOnTokenRefreshCallback(token => {
 [source,javascript,options="nowrap"]
 ----
 {
-  redirectUri?: string
+  redirectUri?: string,
+  windowMode: WindowMode
 }
 ----
 
 .Parameters
 |===
 | Parameter | Required | Description | Example
-| `redirectUri` | false (default = the current URI)| The URI you want the user to be redirected after checking authentication | 'https://arkane.network'
+| `redirectUri` | false (default = the current URI) | The URI you want the user to be redirected after checking authentication. Only used when windowMode=REDIRECT | 'https://arkane.network'
+| `windowMode`  | false (default = windowMode passed in ConstructorOptions) | `<<WindowMode>>` Show login form in POPUP, or login using redirect | 'REDIRECT'
 |===
 
 ==== AuthenticationResult
@@ -446,8 +477,83 @@ arkaneConnect.api.getTokenBalance(walletId: string, tokenAddress: string): Promi
 | `tokenAddress` | true | The address of the token contract you want to fetch the balance of.
 |===
 
+== Application wallet
+=== Create application wallet link:reference.html#create-app-wallet[[.small]#+[Reference]+#]
+To create an application wallet for a user, he needs to enter his PIN for approval. For this we can use an <<signer, Arkane Connect JS Signer>>,
+
+.Signature
+[source,javascript,options="nowrap"]
+----
+signer.confirm(confirmRequest, options?): Promise<SignerResult>
+----
+Returns `Promise++<++<<signer-result,SignerResult>>++>++`
+
+When successful, the `signerResult.data`-property will contain the wallet ID of the newly created wallet
+
+.Parameters
+[cols="1,1,3"]
+|===
+| Parameter | Required | Description
+| `confirmRequest` | true | The confirm request you want to execute. For more info on how this request should look like, see link:reference.html#create-app-wallet[reference].
+| `options` | false | The <<signer-options,options>> you want to pass.
+|===
+
+.Full example
+[source,javascript,options="nowrap"]
+----
+const signer = arkaneConnect.createSigner();
+
+signer.confirm({ secretType: 'TRON', confirmationRequestType: 'CREATE_APPLICATION_WALLET' })
+      .then((signerResult) => {
+          if (signerResult.success) {
+              console.log(`An application wallet with ID ${signerResult.result.walletId} has been successfully created!`);
+          } else {
+              console.warn(`Something went wrong while trying to create an application wallet`);
+          }
+      })
+      .catch((reason) => {
+          console.log(error);
+      });
+----
+
+=== Execute a requested transaction link:reference.html#execute-app-wallet-transaction[[.small]#+[Reference]+#]
+.Signature
+[source,javascript,options="nowrap"]
+----
+signer.executeTransaction(transactionRequestID: string, redirectOptions?: RedirectOptions): Promise<SignerResult>
+----
+Returns `Promise++<++<<signer-result,SignerResult>>++>++`
+
+When successful, the `SignerResult.data`-property will contain the transaction hash of the executed transaction
+
+.Parameters
+[cols="1,1,3"]
+|===
+| Parameter | Required | Description
+| `transactionRequestID` | true | The ID of the transaction request you want the user to sign off.
+| `redirectOptions` | false | The <<redirectOptions,RedirectOptions>> you want to pass.
+|===
+
+.Full example
+[source,javascript,options="nowrap"]
+----
+const signer = arkaneConnect.createSigner();
+
+signer.executeTransaction('70fc00ec-9b0f-4edb-b301-097cf6ee8e31')
+      .then((signerResult) => {
+          if (signerResult.success) {
+              console.log(`Transaction ${signerResult.result.transactionHash} has been successfully executed!`);
+          } else {
+              console.warn(`Something went wrong while executing the transaction`);
+          }
+      })
+      .catch((reason) => {
+          console.log(error);
+      });
+----
+
 == Transactions
-=== The signer
+=== [[signer]] The signer
 To execute and sign transactions, the user needs to enter his PIN. To enable him to do so, we have to create a `Signer`. In Arkane Connect JS we provide you with two types of signers:
 
 * *popup-signer (default)*: This will open the signer in a popup
@@ -552,12 +658,12 @@ signer.executeNativeTransaction({...nativeTransactionRequest...})
 ----
 
 === Signing data / transactions
-You can use the `signer.signTransaction(...)` function to sign data or a transaction. This function accepts `signatureRequests` of which you can find an overview below and will return a Promise containing a result which on its turn contains the signed transaction.
+You can use the `signer.sign(...)` function to sign data or a transaction. This function accepts `signatureRequests` of which you can find an overview below and will return a Promise containing a result which on its turn contains the signed transaction.
 
 .Signature
 [source,javascript,options="nowrap"]
 ----
-signer.signTransaction(signatureRequest, options?): Promise<SignerResult>
+signer.sign(signatureRequest, redirectOptions?): Promise<SignerResult>
 ----
 Returns `Promise++<++<<signer-result,SignerResult>>++>++`
 
@@ -566,14 +672,14 @@ Returns `Promise++<++<<signer-result,SignerResult>>++>++`
 |===
 | Parameter | Required | Description
 | `signatureRequest` | true | The transaction request you want to execute. More info on the structure of the native transaction requests can be found in the link:reference.html#native-transactions[Reference]. Exactly the same request bodies are accepted by this function.
-| `options` | false | The <<signer-options,options>> you want to pass.
+| `redirectOptions` | false | The <<redirectOptions,RedirectOptions>> you want to pass.
 |===
 
 .Example
 [source,javascript,options="nowrap"]
 ----
 const signer = arkaneConnect.createSigner();
-signer.signTransaction({...signatureRequest...})
+signer.sign({...signatureRequest...})
       .then((signerResult) => {
           if (signerResult.success) {
               console.log(`The request has been successfuly signed: ${signerResult.result.signedTransaction}`);
@@ -589,7 +695,7 @@ signer.signTransaction({...signatureRequest...})
 ==== [[signer-options]]Options
 IMPORTANT: Options are only applicable to the *redirect-signer*
 
-.*Redirect-signer* options
+.[[redirectOptions]] *RedirectOptions*
 [source,javascript,options="nowrap"]
 ----
 {
@@ -615,16 +721,24 @@ The result after the user enters his PIN differs on the Signer type.
 [source,javascript,options="nowrap"]
 ----
 {
-    status: 'SUCCESS' | 'ABORTED',
-    result?: string,
+    status: 'SUCCESS' | 'ABORTED' | 'FAILED',
+    result?: any,
     errors?: []
 }
 ----
 [cols="1,1,3,2a"]
 |===
 | Parameter | Required | Description | Example
-| `status` | true | The status of the transaction. `'ABORTED'` means that the user has closed the popup or clicked the back to <app> link. | `'SUCCESS'`
-| `result` | false, only when status `'SUCCESS'` | An object containing the transaction hash of the executed transaction. | '0x4b4c1e2d83 +
+| `status` | true | The status of the transaction: +
+ `SUCCESS` means that the request is successfully executed. +
+ `ABORTED` means that the user has closed the popup or clicked the back to <app> link. +
+ `FAILED` means that something went wrong while trying to process the request.
+| `'SUCCESS'`
+| `result` | false, only when status `'SUCCESS'` | An object containing the result of the sign action, this is different for different actions: +
+ `execute(Native)Transaction`: The transactionHash of the transaction +
+ `sign`: The signature of the requested data +
+ `confirm - Create Application Wallet`: the wallet ID of the newly created wallet
+  | '0x4b4c1e2d83 +
 6dc31ad27fc5 +
 4fed4d7dbabd +
 41aa1b070fb8 +

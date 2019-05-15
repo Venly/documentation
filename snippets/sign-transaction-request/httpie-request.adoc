@@ -1,0 +1,6 @@
+[source,bash]
+----
+$ echo '{
+}' | http PUT 'https://api.arkane.network/api/transactions/57464944-3f2e-4d62-8b2f-38ccdf330acd' \
+    'Content-Type:application/json;charset=UTF-8'
+----

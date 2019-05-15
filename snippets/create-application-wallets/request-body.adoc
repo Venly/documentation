@@ -3,6 +3,7 @@
 {
   "alias" : "TheAlias",
   "description" : "The description",
-  "secretType" : "ETHEREUM"
+  "secretType" : "ETHEREUM",
+  "walletType" : "APPLICATION"
 }
 ----

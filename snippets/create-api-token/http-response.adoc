@@ -6,13 +6,13 @@ Content-Length: 327
 {
   "success" : true,
   "result" : {
-    "token" : "5891957c-83df-492c-a4d6-fcb89e6c2dfa",
+    "token" : "e8aadc1b-4d61-431e-885f-59e91815fa1c",
     "userId" : "davy",
     "walletId" : "1",
     "claim" : "SIGN_WALLETS",
     "enabled" : true,
     "description" : "Development API Key",
-    "tokenSecret" : "RGdFNy4/c3NlbTFASy51OEZuWU1CcnVHUylfW3M8RFVTJCoyTFkyP3NTW043JCFTcTE="
+    "tokenSecret" : "RGZMXTNIRnhxXV1LM2hseXghMVtocTxfeHI5OWNqQW4sJkJ1YnU/MDdpITEjLjxURzU="
   }
 }
 ----

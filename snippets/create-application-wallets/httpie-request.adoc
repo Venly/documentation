@@ -3,7 +3,8 @@
 $ echo '{
   "alias" : "TheAlias",
   "description" : "The description",
-  "secretType" : "ETHEREUM"
-}' | http POST 'https://api.arkane.network/api/wallets/application-wallet' \
+  "secretType" : "ETHEREUM",
+  "walletType" : "APPLICATION"
+}' | http POST 'https://api.arkane.network/api/wallets' \
     'Content-Type:application/json'
 ----

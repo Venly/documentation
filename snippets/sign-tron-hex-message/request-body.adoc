@@ -1,0 +1,8 @@
+[source,options="nowrap"]
+----
+{
+  "type" : "TRX_RAW",
+  "walletId" : "1",
+  "data" : "Some data"
+}
+----

@@ -1,5 +1,5 @@
 [source,bash]
 ----
-$ http GET 'https://api.arkane.network/api/wallets/b46315af-ccf6-411b-b754-74f028051e1b/swaps/pairs' \
+$ http GET 'https://api.arkane.network/api/wallets/e5bcf403-20f3-4e7d-8772-ebb981885c5a/swaps/pairs' \
     'Content-Type:application/json'
 ----

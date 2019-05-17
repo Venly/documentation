@@ -6,6 +6,6 @@ $ echo '{
   "feePerKiloByte" : 6,
   "to" : "MTvnA4CN73ry7c65wEuTSaKzb2pNKHB4n1",
   "type" : "LTC_TRANSACTION"
-}' | http POST 'https://api.arkane.network/api/transactions' \
+}' | http POST 'https://api.arkane.network/api/transactions/execute' \
     'Content-Type:application/json;charset=UTF-8'
 ----

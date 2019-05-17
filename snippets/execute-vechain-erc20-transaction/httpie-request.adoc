@@ -7,13 +7,13 @@ $ echo '{
   "expiration" : 3,
   "gas" : 23000,
   "gasPriceCoef" : 46576,
-  "nonce" : "3a2905cc-4ebb-4139-bfc6-873a622c261f",
+  "nonce" : "982378f1-f4bd-4151-9ab7-601dad484a89",
   "clauses" : [ {
     "to" : "0xdc71b72db51e227e65a45004ab2798d31e8934c9",
     "amount" : 10000000000,
     "tokenAddress" : "0x0000000000000000000000000000456E65726779"
   } ],
   "type" : "VECHAIN_VIP180_TRANSACTION"
-}' | http POST 'https://api.arkane.network/api/transactions' \
+}' | http POST 'https://api.arkane.network/api/transactions/execute' \
     'Content-Type:application/json;charset=UTF-8'
 ----

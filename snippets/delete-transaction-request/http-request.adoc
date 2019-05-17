@@ -1,0 +1,5 @@
+[source,http,options="nowrap"]
+----
+DELETE /api/transactions/0952235a-98aa-48b4-a0cc-8da6dcec4332 HTTP/1.1
+Host: api.arkane.network
+----

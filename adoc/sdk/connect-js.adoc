@@ -21,10 +21,6 @@ https://unpkg.com/@arkane-network/arkane-connect
 
 TIP: It is best to point Arkane Connect JS to a specific version when including this URL in your code. See https://unpkg.com/ on how to do that.
 
-== Migrating from 1.1.10 to 1.1.12
-
-link:connect-js-migration.html[Migration guide]
-
 == Integrating Arkane Connect JS
 To integrate Arkane Connect JS in your web application, you will need to create a new ArkaneConnect instance and provide the instance with a way to authenticate. There are two options for doing this:
 

@@ -11,6 +11,6 @@ $ echo '{
   "outputAmount" : 1305,
   "orderType" : "SELL",
   "exchange" : "VEXCHANGE"
-}' | http POST 'https://api.arkane.network/api/wallets/26db617c-8944-43d3-81e0-dac687d4d746/swaps' \
+}' | http POST 'https://api.arkane.network/api/wallets/e30a6a01-8d9a-412e-b0c8-eb04d86d1daa/swaps' \
     'Content-Type:application/json'
 ----

@@ -1,4 +1,4 @@
 [source,bash]
 ----
-$ http GET 'https://api.arkane.network/api/transactions/2cf893a7-2582-4416-aed5-f7024df9934a'
+$ http GET 'https://api.arkane.network/api/transactions/feb65896-ab54-45b7-9980-c786800f3310'
 ----

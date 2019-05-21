@@ -18,6 +18,9 @@
 |`+description+`
 |`+String+`
 |description of the wallet
+|`+walletType+`
+|`+String+`
+|type of the wallet (ex: THREEWAY_SHARED
 |`+status+`
 |`+String+`
 |status of the wallet

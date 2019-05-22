@@ -2,6 +2,6 @@
 ----
 $ echo '{
   "walletType" : "THREEWAY_SHARED"
-}' | http PATCH 'https://api.arkane.network/api/wallets/1/walletType' \
+}' | http PATCH 'https://api.arkane.network/api/wallets/4fe29f8e-6047-4d2d-86f8-75076711dd52/walletType' \
     'Content-Type:application/json;charset=UTF-8'
 ----

@@ -265,6 +265,15 @@ https://api.arkane.network/api/transactions/:transactionId
 
 operation::delete-transaction-request[snippets='curl-request']
 
+=== [[update-wallet-type]] Migrate wallet to a user wallet link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
+From the moment the requirements of an application wallet are not applicable anymore, the type of the application wallet can be migrated to user wallet. As a result, the wallet
+will behave the same way as other wallets the user has created manually in Arkane. The user will be able to perform any transaction using this wallet.
+
+In the case for a user wallet, the type of the wallet needs to be updated to:
+`THREEWAY_SHARED`
+
+operation::update-wallet-type[snippets='http-request,path-parameters,http-response']
+
 == [[transactions]] Transactions
 
 === [[transaction-error-codes]] Transaction Error Codes

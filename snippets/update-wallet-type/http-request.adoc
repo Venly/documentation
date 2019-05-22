@@ -1,9 +1,10 @@
 [source,http,options="nowrap"]
 ----
-PATCH /api/wallets/1/walletType HTTP/1.1
+PATCH /api/wallets/4fe29f8e-6047-4d2d-86f8-75076711dd52/walletType HTTP/1.1
 Content-Type: application/json;charset=UTF-8
 Host: api.arkane.network
 Content-Length: 38
+
 {
   "walletType" : "THREEWAY_SHARED"
 }

@@ -1,6 +1,6 @@
 [source,http,options="nowrap"]
 ----
-PATCH /api/wallets/4fe29f8e-6047-4d2d-86f8-75076711dd52/walletType HTTP/1.1
+PATCH /api/wallets/466e0920-cbaa-4be3-a800-1f00dbd0c989/walletType HTTP/1.1
 Content-Type: application/json;charset=UTF-8
 Host: api.arkane.network
 Content-Length: 38

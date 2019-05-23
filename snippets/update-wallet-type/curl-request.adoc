@@ -1,6 +1,6 @@
 [source,bash]
 ----
-$ curl 'https://api.arkane.network/api/wallets/4fe29f8e-6047-4d2d-86f8-75076711dd52/walletType' -i -X PATCH \
+$ curl 'https://api.arkane.network/api/wallets/466e0920-cbaa-4be3-a800-1f00dbd0c989/walletType' -i -X PATCH \
     -H 'Content-Type: application/json;charset=UTF-8' \
     -d '{
   "walletType" : "THREEWAY_SHARED"

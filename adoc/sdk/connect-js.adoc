@@ -388,8 +388,8 @@ When finished, popup closes (if opened of course) and promise resolves.
 // Authenticate, and get the ethereum wallets of current user.
 arkaneConnect.flows.getAccount('ETHEREUM').then((account: Account) => {
     if(account.isAuthenticated) {
-        console.log('wallets', wallets);
-        console.log('name', auth.tokenParsed.name);
+        console.log('wallets', account.wallets);
+        console.log('name', account.auth.tokenParsed.name);
     }
 }).catch((e) => {
     console.log('user closed window, or an error occurred', e);

@@ -240,7 +240,7 @@ arkaneConnect.addOnTokenRefreshCallback(token => {
 | Parameter | Required | Description | Example
 | `redirectUri` | false (default = the current URI) | The URI you want the user to be redirected after checking authentication. Only used when windowMode=REDIRECT | 'https://arkane.network'
 | `windowMode`  | false (default = windowMode passed in ConstructorOptions) | `<<WindowMode>>` Show login form in POPUP, or login using redirect | 'REDIRECT'
-| `closePopup`  | false (default = true) | If true, the popup closes when the action is finished. But is used internally when multiple actions that need a popup are called in sequence. When setting it to false the next action will be loaded in the same popup without first closing it.
+| `closePopup`  | false (default = true) | If true, the popup closes when the action is finished. When setting it to false the next action will be loaded in the same popup without first closing it (is used internally when multiple actions needing a popup are called in sequence).
 |===
 
 ==== [[authentication-result]]AuthenticationResult

@@ -385,7 +385,7 @@ When finished, popup closes (if opened of course) and promise resolves.
 .Example
 [source, javascript,options="nowrap"]
 ----
-Authenticate, and get the ethereum wallets of current user.
+// Authenticate, and get the ethereum wallets of current user.
 arkaneConnect.flows.getAccount('ETHEREUM').then((account: Account) => {
     if(account.isAuthenticated) {
         console.log('wallets', wallets);

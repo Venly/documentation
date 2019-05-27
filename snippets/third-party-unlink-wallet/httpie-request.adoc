@@ -1,0 +1,4 @@
+[source,bash]
+----
+$ http DELETE 'https://api.arkane.network/api/wallets/5e47860a-2507-414c-98ae-8cc6af778552/link'
+----

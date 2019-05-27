@@ -47,6 +47,13 @@ https://connect-staging.arkane.network/wallets/link
 .Data
 _No data needed_
 
+=== [[unlink-wallet]] Unlink wallet link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
+This allows applications to unlink a wallet from their app.
+
+Example: a user of a portfolio app does not want a specific Arkane wallet anymore inside the app
+
+operation::third-party-unlink-wallet[snippets='http-request,http-response']
+
 === [[manage-wallets]] Manage wallets link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
 
 As an application, it is possible to have a user manage his wallets for a specific chain. During this action, the user can link existing wallets or import a wallet.

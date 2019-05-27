@@ -103,14 +103,14 @@ const arkaneConnect = new ArkaneConnect('Arketype', { environment: 'staging',
 }
 ----
 
-== Authentication
+== [[_authentication]]Authentication link:buildingblocks.html#arkane-identity[[.small]#+[Check buildingblock Arkane Identity]+#]
 === Check if a user is authenticated
 .Signature
 [source,javascript,options="nowrap"]
 ----
 arkaneConnect.checkAuthenticated(options?: AuthenticationOptions): Promise<AuthenticationResult>
 ----
-Returns `<<AuthenticationResult>>`
+Returns `<<authentication-result,AuthenticationResult>>`
 
 .Description
 This function call will check if the user is authenticated and redirect the user to `options.redirectUri` (if present) with the result.
@@ -120,7 +120,7 @@ IMPORTANT: If you set the redirectUri option, make sure that the SDK and the `Au
 .Parameters
 |===
 | Parameter | Required | Description | Example
-| `options` | false | `<<AuthenticationOptions>>` | `{ redirectUri: 'https://arkane.network' }`
+| `options` | false | `<<authentication-options,AuthenticationOptions>>` | `{ redirectUri: 'https://arkane.network' }`
 |===
 
 === Examples
@@ -144,7 +144,7 @@ arkaneConnect.checkAuthenticated({ redirectUri: 'https://arkane.network' });
 ----
 arkaneConnect.flows.authenticate(options?: AuthenticationOptions): Promise<AuthenticationResult>
 ----
-Returns `<<AuthenticationResult>>`
+Returns `<<authentication-result,AuthenticationResult>>`
 
 .Description
 This function will check if the user is authenticated (showing a login form if the user is not already authenticated).
@@ -157,7 +157,7 @@ IMPORTANT: If you set the redirectUri option, make sure that the SDK and the `Au
 .Parameters
 |===
 | Parameter | Required | Description | Example
-| `options` | false | `<<AuthenticationOptions>>` | `{ redirectUri: 'https://arkane.network', windowMode: 'REDIRECT' }`
+| `options` | false | `<<authentication-options,AuthenticationOptions>>` | `{ redirectUri: 'https://arkane.network', windowMode: 'REDIRECT' }`
 |===
 
 === Examples
@@ -224,7 +224,7 @@ arkaneConnect.addOnTokenRefreshCallback(token => {
 |===
 
 === Data types
-==== AuthenticationOptions
+==== [[authentication-options]]AuthenticationOptions
 .Signature
 [source,javascript,options="nowrap"]
 ----
@@ -256,7 +256,7 @@ arkaneConnect.addOnTokenRefreshCallback(token => {
 ----
 
 .Description
-You can supply two callback functions to the `<<AuthenticationResult>>`: authenticated and notAuthenticated, each will be passed the `<<AuthenticationInstance>>`.
+You can supply two callback functions to the `<<authentication-result,AuthenticationResult>>`: authenticated and notAuthenticated, each will be passed the `<<authentication-instance,AuthenticationInstance>>`.
 
 .Parameters
 [cols="1,1,2,4a"]
@@ -358,7 +358,7 @@ arkaneConnect.api.getProfile(): Promise<Profile>
 ----
 
 == Wallet Flows
-=== Get Account
+=== [[get-account]]Get Account
 .Signature
 [source,javascript,options="nowrap"]
 ----
@@ -489,7 +489,7 @@ arkaneConnect.manageWallets(
 }
 ----
 
-== Wallet Api
+== [[wallet-api]]Wallet Api
 === List user wallets link:reference.html#list-wallets[[.small]#+[Reference]+#]
 .Signature
 [source,javascript,options="nowrap"]
@@ -637,7 +637,7 @@ signer.executeTransaction('70fc00ec-9b0f-4edb-b301-097cf6ee8e31')
       });
 ----
 
-== Transactions
+== [[transactions]]Transactions
 === [[signer]] The signer
 To execute and sign transactions, the user needs to enter his PIN. To enable him to do so, we have to create a `Signer`. In Arkane Connect JS we provide you with two types of signers:
 

@@ -38,7 +38,7 @@ It will also setup an http server which you can start by executing `npm run star
 
 At the moment the application isn't doing much, so let's go ahead and implement the JavaScript.
 
-== Arkane Connect
+== Arkane Connect link:connect-js.html[[.small]#+[More info]+#]
 
 Before we can actually start writing the JavaScript, we need to add https://www.npmjs.com/package/@arkane-network/arkane-connect[Arkane Connect] as a dependency to our project. To do this, open up `package.json` and add `"@arkane-network/arkane-connect": "latest"` to the `dependencies` section.
 
@@ -59,6 +59,8 @@ npm install
 ----
 
 Now we can add `connect.js` to our application by adding it in the `<head>` section of `/public/index.html`.
+
+NOTE: If using Typescript, it can also be included as `import ArkaneConnect from '@arkane-network/arkane-connect;`.
 
 ./public/index.html
 [source,html]
@@ -89,14 +91,20 @@ app.initApp();
 
 By adding this snippet, we will create an ArkaneConnect instance that will connect to the Arkane staging environment (for production, you can just omit the `environment` property).
 
-== Authenticating
+
+== Quick and easy
+After finishing the steps above, the fastest and easiest way to get started will be using the `arkaneConnect.flows.getAccount` function.
+This function starts a flow that will make sure the user logs in (if not already) and gives access to at least one wallet. More info on this flow, link:connect-js.html#get-account[+[Check getAccount()]+].
+This quick start will go a bit more in depth, and gives a step by step guide how to manage the user and wallets. Starting with authentication in the next paragraph.
+
+== Authenticating link:connect-js.html#_authentication[[.small]#+[More info]+#] link:buildingblocks.html#arkane-identity[[.small]#+[More on Arkane Identity]+#]
 
 In this guide, we're going to use the authentication client baked into Arkane Connect. This client will authenticate against the Arkane Connect authentication provider and then store (and refresh when needed) the bearer token necessary for any call to Arkane.
 
 === Check if authenticated
 The first thing we'll want to do is check if the user is already authenticated.
 
-In the snippet below, you can see that the `checkAuthenticated()` function is called. This will redirect the user to our authentication provider, were it will check if the user is authenticated and redirect back to our original page passing an authentication result.
+In the snippet below, you can see that the `checkAuthenticated()` function is called. This will check if the user is authenticated.
 
 The outcome of calling this function is a Promise containing an authentication result, which contains two callback methods `+authenticated((auth) => { ... });+` and `+notAuthenticated((auth) => { ... });+`.
 
@@ -104,20 +112,39 @@ The outcome of calling this function is a Promise containing an authentication r
 [source,javascript]
 ----
 ...
-app.initApp = async () => { // <1>
-  window.arkaneConnect = new ArkaneConnect('Arketype', { environment: 'staging'});
-  try {
-    const authenticationResult = await window.arkaneConnect.checkAuthenticated(); // <2>
-    authenticationResult.authenticated((auth) => {
-      console.log("This user is authenticated", auth); // <3>
-    })
-    .notAuthenticated((auth) => {
-      console.log("This user is not authenticated", auth); // <4>
-    });
-  }
-  catch (reason) {
-      console.error(reason);
-  }
+app.initApp = async () => {
+    window.arkaneConnect = new ArkaneConnect('Arketype', {environment: 'staging'});
+    try {
+        const authenticationResult = await window.arkaneConnect.checkAuthenticated();
+        app.afterAuthentication(authenticationResult);
+    } catch (reason) {
+        console.error(reason);
+    }
+};
+
+app.afterAuthentication = (authenticationResult) => {
+    authenticationResult
+        .authenticated(async (auth) => {
+            console.log('This user is authenticated', auth);
+            document.body.classList.add('logged-in');
+            $('#auth-username').text(auth.idTokenParsed.name);
+
+            try {
+                const wallets = await window.arkaneConnect.api.getWallets();
+                if (wallets.length > 0) {
+                    const walletsMap = app.convertArrayToMap(wallets, 'id');
+                    localStorage.setItem('wallets', JSON.stringify(walletsMap));
+                    app.populateWalletsSelect(wallets);
+                } else {
+                    window.arkaneConnect.manageWallets('ETHEREUM');
+                }
+            } catch (err) {
+                console.error('Something went wrong while fetching the user\'s wallets');
+            }
+        })
+        .notAuthenticated((auth) => {
+            console.log('This user is not authenticated', auth);
+        });
 };
 
 app.initApp();
@@ -157,7 +184,7 @@ try {
 
 Next we'll want to allow the user to authenticate when he clicks the login-link and log out when he calls the logout-link.
 
-We'll do this by adding 'click' event listeners to the bottom of our script. These will handle a click by calling the `arkaneConnect.authenticate()` or `arkaneConnect.logout()` respectively.
+We'll do this by adding 'click' event listeners to the bottom of our script. These will handle a click by calling the `arkaneConnect.flows.authenticate()` or `arkaneConnect.logout()` respectively.
 
 ./public/assets/js/main.js
 [source,javascript]
@@ -165,9 +192,10 @@ We'll do this by adding 'click' event listeners to the bottom of our script. The
 ...
 app.initApp();
 
-$('#auth-loginlink').click((event) => {
-  event.preventDefault();
-  window.arkaneConnect.authenticate(); // <1>
+$('#auth-loginlink').click(async (event) => {
+    event.preventDefault();
+    authenticationResult = await window.arkaneConnect.flows.authenticate(); // <1>
+    app.afterAuthentication(authenticationResult);
 });
 
 $('#auth-logout').click((event) => {
@@ -185,7 +213,7 @@ That's it, we've now integrated the authentication client of Arkane Connect. It 
 npm run start
 ----
 
-== Wallets
+== Wallets link:connect-js.html#wallet-api[[.small]#+[More info]+#]
 === Fetch wallets
 
 We can fetch the user's wallets using the Arkane Connect API which can be accessed by calling `arkaneConnect.api`. This API is a JavaScript proxy to the HTTP endpoints exposed on https://api.arkane.network[]. By using the Arkane Connect API, you don't have to construct and execute the HTTP calls yourself.
@@ -247,7 +275,7 @@ app.populateWalletsSelect = (wallets) => {
 The first time a user enters our sample application, he will need to give our our application access to at least one of his wallets. To do this we will launch Arkane Connect’s `Manage wallets` page. +
 This page displays all the user’s wallets for a specified blockchain and allows him to give our application access to one or more. Additionally he has the ability to create a new, or import an existing wallet.
 
-To redirect the user to the `Manage wallets` page, we need to call `arkaneConnect.manageWallets(<blockchain>)`. Let’s do this right after we’ve gotten the user’s wallets. If no wallets are returned, we’ll redirect the user to the manage wallets page (for Ethereum wallets).
+To redirect the user to the `Manage wallets` page, we need to call `arkaneConnect.flows.manageWallets(<blockchain>)`. Let’s do this right after we’ve gotten the user’s wallets. If no wallets are returned, we’ll redirect the user to the manage wallets page (for Ethereum wallets).
 
 ./public/assets/js/main.js
 [source,javascript]
@@ -260,7 +288,7 @@ try {
     localStorage.setItem('wallets', JSON.stringify(walletsMap));
     app.populateWalletsSelect(wallets);
   } else {
-    window.arkaneConnect.manageWallets('ETHEREUM'); <2>
+    window.arkaneConnect.flows.manageWallets('ETHEREUM'); <2>
   }
 }
 ...
@@ -277,12 +305,12 @@ We'll also want `Manage wallets` links so that the user can go to the page witho
 ...
 $('#manage-eth-wallets').click((event) => {
   event.preventDefault();
-  window.arkaneConnect.manageWallets('ETHEREUM'); <1>
+  window.arkaneConnect.flows.manageWallets('ETHEREUM'); <1>
 });
 
 $('#manage-vechain-wallets').click((event) => {
   event.preventDefault();
-  window.arkaneConnect.manageWallets('VECHAIN'); <2>
+  window.arkaneConnect.flows.manageWallets('VECHAIN'); <2>
 });
 ----
 <.> Manage Ethereum wallets
@@ -352,7 +380,9 @@ $('#wallets-select').change(async (event) => { // <1>
 <.> Fetching the tokens balance for our wallet
 <.> Displaying the tokens balance
 
-== Transactions
+NOTE: Reference documentation: link:reference.html#wallet[Wallet]
+
+== [[transactions]]Transactions link:connect-js.html#transactions[[.small]#+[More info]+#]
 === Show form
 The main feature of our multi-chain wallet is the transaction functionality. In `/public/index.html` there is already a form present. We're going to extend `wallets-select` 'change' event listener so that it pre-fills the walletId and populates a `<select>` to select the token the user wants to transfer.
 

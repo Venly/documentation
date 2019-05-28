@@ -31,7 +31,7 @@ To integrate Arkane Connect JS in your web application, you will need to create 
 1. You use the Arkane authentication provider.
 2. You initialize Arkane Connect JS providing it with your own bearer token provider.
 
-=== Constructor
+=== [[constructor]] Constructor
 .Signature
 [source,options="nowrap"]
 ----
@@ -148,7 +148,7 @@ arkaneConnect.checkAuthenticated({ redirectUri: 'https://arkane.network' });
 ----
 arkaneConnect.authenticate(options?: AuthenticationOptions): Promise<AuthenticationResult>
 ----
-Returns `<<AuthenticationResult>>`
+Returns `Promise<<<AuthenticationResult>>>`
 
 .Description
 This function call will check if the user is authenticated (showing a login form if the user is not already authenticated) and redirect the user to `options.redirectUri` (if present) with the result.
@@ -196,9 +196,47 @@ arkaneConnect.authenticate({ windowMode: 'POPUP' })
 .Signature
 [source,javascript,options="nowrap"]
 ----
-arkaneConnect.logout()
+arkaneConnect.logout(options?: AuthentciationOptions): Promise<void>
 ----
-Returns `void`
+Returns `Promise<void>`
+
+.Description
+This logs the user out of Arkane. The behaviour is different depending on the windowMode used to <<constructor, instantiate ArkaneConnect>> or provided in the options:
+
+1. *POPUP* (default): The user will be logged out in the background and the promise will resolve when finished. This means the application needs to cleanup all user data on screen itself.
+2. *REDIRECT*: The user will be redirected to the logout endpoint of our Arkane authentication provider and afterwards will be redirected back to the page he/she was on
+(or the redirectUri provided in the options). So the page refreshes automatically and no cleanup should be necessary.
+
+.Parameters
+|===
+| Parameter | Required | Description | Example
+| `options` | false | `<<AuthenticationOptions>>` | `{ redirectUri: 'https://arkane.network', windowMode: 'REDIRECT' }`
+|===
+
+.Example 1
+[source,javascript,options="nowrap"]
+----
+// Log out, then cleanup user data on screen
+arkaneConnect.logout({ windowMode: 'POPUP' })
+             .then(() => {
+                 // Cleanup user data on screen
+                 handleLogout();
+             });
+----
+
+.Example 2
+[source,javascript,options="nowrap"]
+----
+// Log out and redirect to the current page
+arkaneConnect.logout({ windowMode: 'REDIRECT' });
+----
+
+.Example 3
+[source,javascript,options="nowrap"]
+----
+// Log out and redirect to https://arkane.network
+arkaneConnect.logout({ windowMode: 'REDIRECT' , redirectUri: 'https://arkane.network'});
+----
 
 === Receive a callback when the bearer token refreshes
 .Signature

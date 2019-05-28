@@ -104,7 +104,7 @@ In this guide, we're going to use the authentication client baked into Arkane Co
 === Check if authenticated
 The first thing we'll want to do is check if the user is already authenticated.
 
-In the snippet below, you can see that the `checkAuthenticated()` function is called. This will check if the user is authentication.
+In the snippet below, you can see that the `checkAuthenticated()` function is called. This will check if the user is authenticated.
 
 The outcome of calling this function is a Promise containing an authentication result, which contains two callback methods `+authenticated((auth) => { ... });+` and `+notAuthenticated((auth) => { ... });+`.
 

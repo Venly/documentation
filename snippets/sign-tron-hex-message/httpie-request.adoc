@@ -1,7 +1,7 @@
 [source,bash]
 ----
 $ echo '{
-  "type" : "TRX_RAW",
+  "type" : "TRON_RAW",
   "walletId" : "1",
   "data" : "Some data"
 }' | http POST 'http://localhost:8080/api/signatures' \

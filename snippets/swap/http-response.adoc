@@ -4,7 +4,7 @@ HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
 Content-Length: 568
 [ {
-  "walletId" : "26db617c-8944-43d3-81e0-dac687d4d746",
+  "walletId" : "e30a6a01-8d9a-412e-b0c8-eb04d86d1daa",
   "blockRef" : null,
   "chainTag" : null,
   "expiration" : 0,

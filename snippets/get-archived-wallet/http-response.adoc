@@ -2,7 +2,7 @@
 ----
 HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
-Content-Length: 211
+Content-Length: 247
 {
   "id" : "1",
   "address" : "0xdc72b72db54e227e65a45004ab2798d31e8934c2",
@@ -10,6 +10,7 @@ Content-Length: 211
   "archived" : true,
   "alias" : "aliasEth",
   "description" : "descriptionEth",
+  "walletType" : "THREEWAY_SHARED",
   "status" : "ARCHIVED"
 }
 ----

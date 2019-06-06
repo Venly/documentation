@@ -8,6 +8,6 @@ $ echo '{
   "secretType" : "ETHEREUM",
   "tokenAddress" : "0x02f96ef85cad6639500ca1cc8356f0b5ca5bf1d2",
   "data" : null
-}' | http POST 'https://api.arkane.network/api/transactions' \
+}' | http POST 'https://api.arkane.network/api/transactions/execute' \
     'Content-Type:application/json;charset=UTF-8'
 ----

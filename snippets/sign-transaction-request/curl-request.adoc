@@ -1,6 +1,6 @@
 [source,bash]
 ----
-$ curl 'https://api.arkane.network/api/transactions/57464944-3f2e-4d62-8b2f-38ccdf330acd' -i -X PUT \
+$ curl 'https://api.arkane.network/api/transactions/daeab218-91f1-4aed-b131-2626a700e386' -i -X PUT \
     -H 'Content-Type: application/json;charset=UTF-8' \
     -d '{
 }'

@@ -47,6 +47,13 @@ https://connect-staging.arkane.network/wallets/link
 .Data
 _No data needed_
 
+=== [[unlink-wallet]] Unlink wallet link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
+This allows applications to unlink a wallet from their app.
+
+Example: a user of a portfolio app does not want a specific Arkane wallet anymore inside the app
+
+operation::third-party-unlink-wallet[snippets='http-request,http-response']
+
 === [[manage-wallets]] Manage wallets link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
 
 As an application, it is possible to have a user manage his wallets for a specific chain. During this action, the user can link existing wallets or import a wallet.
@@ -126,10 +133,63 @@ image::img/appwallets.png[App wallets]
 === Authentication
 To use the application wallet functionality, two separate client ID's will need to be created (see link:buildingblocks.html#_arkane_identity[[.bb-api]#Arkane Identity#]).
 
-* One will be used to create the transaction (steps 2 and 4). This client will authenticate to Arkane using a shared secret, meaning it needs to be used in a server to server
- communication channel (the secret may never be exposed to the outside world)
+* One will be used to create the transaction (steps 2 and 4). It has a naming convention of `<clientId>_app`. This client will authenticate to Arkane using a combination of shared secret and a Bearer token. Because it uses a
+shared secret, it needs to be used in a server to server communication channel (the secret may never be exposed to the outside world). How to use this client will be described bellow.
 * The other is used to initiate the signing of a transaction by the user (steps 5, 6, 7, 8, 10). This is the same client used for all other Arkane actions and will authenticate to
 Arkane using a users Bearer token.
+
+==== [[clientId_app-client]] The `<clientId>_app`-client
+As described above, to create a transaction you need to use a `<clientId>_app`-client. For this we use OpenId Connect's link:https://tools.ietf.org/html/rfc6749#section-4.4[Client Credentials Grant]
+
+image::img/appclientauthentication.png[<clientId>_app flow]
+
+Here we'll describe how to obtain a bearer token from our authentication server using your `<clientId>_app`-client:
+
+.URL
+https://login.arkane.network/auth/realms/Arkane/protocol/openid-connect/token
+
+.Example Curl Request
+[source,bash]
+----
+$ curl https://login.arkane.network/auth/realms/Arkane/protocol/openid-connect/token -i -X POST \
+    -H 'Content-Type: application/x-www-form-urlencoded' \
+    -d 'grant_type=client_credentials&client_id=Arketype_app&client_secret=02053a9d-8293-43c4-a201-f8669f1329af'
+----
+IMPORTANT: Do not forget to set the `Content-Type: application/x-www-form-urlencoded` header (and to make the request body application/x-www-form-urlencoded),
+otherwise the request will fail
+
+.Request Fields
+|===
+| Path | Type | Description | Constraints
+| grant_type | String | The OpenId Connect grant type you want to use | Mandatory, always `client_credentials`
+| client_id | String | The `<clientId>_app` you want to request a token for | Mandatory, e.g. `Arketype_app`
+| client_secret | String | The shared secret you've received when you requested your `<clientId>_app`-client | Mandatory
+|===
+
+
+.Reponse Fields
+|===
+| Path | Type | Description
+| access_token | String | The JWT token to use as bearer token when doing the api calls
+| expires_in | number | The amount of seconds the access_token is valid
+| refresh_expires_in | number | The amount of seconds the refresh_token is valid
+| refresh_token | String | The JWT token which can be used to refresh the current token
+| token_type | String | bearer | The type of the access_token
+|===
+
+
+.Response Body
+[source,json]
+----
+{
+    "access_token": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJmQi1UenBOb0hBVGhwT2J4aW9qTDBrdm83MldmRzRXRXh1eFpiaXlGQUhzIn0.eyJqdGkiOiI0ODc4NDM4Ny0xMjE0LTQ0ZTAtYWIzNy0yZDAyZjNjNTYxZWYiLCJleHAiOjE1NTgxMDMxNjIsIm5iZiI6MCwiaWF0IjoxNTU4MTAxMzYyLCJpc3MiOiJodHRwczovL2xvZ2luLXN0YWdpbmcuYXJrYW5lLm5ldHdvcmsvYXV0aC9yZWFsbXMvQXJrYW5lIiwiYXVkIjoiQXJrZXR5cGVfYXBwIiwic3ViIjoiZDQ3NWQwYWEtNjRmOC00MTJhLTg5NmEtOTRmM2RlNjZlNzFkIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiQXJrZXR5cGVfYXBwIiwiYXV0aF90aW1lIjowLCJzZXNzaW9uX3N0YXRlIjoiNzA2MjczYzEtMzBkYi00MDdlLTk1ZmEtZDRlNzg3NDQ5NDY5IiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyIqIl0sInJlc291cmNlX2FjY2VzcyI6e30sInNjb3BlIjoic2F2ZTp0cmFuc2FjdGlvbiIsImNsaWVudElkIjoiQXJrZXR5cGVfYXBwIiwiY2xpZW50SG9zdCI6Ijg0LjE5OC4xMzIuMTM0IiwiY2xpZW50QWRkcmVzcyI6Ijg0LjE5OC4xMzIuMTM0In0.iBsj3jlmg0Ns3J4qB9Ii3a3d0Bn4472fhPNrfsYm5gPFnt2l7TOvE4JdUolv0UJe9IMrTyQYv-_EPDU7_lv8edQmyEm2YxUwUzDT747sQmkByPrxguECMrG5eOw69Iw2mtfOHVipGhivXGDr3J-Bngwj1dilYLEz8ncuAG8XrGIlqjZ3C0h_XVKUsfQcg2_EIbqcNPTwoovma1qbpS5kwWmBI4xdNHUVyV_m9HFabc2M8RQvvz5xTX4xhICJzvKRQCKOPFd3XqBNW3kG0iCJkHfOX5GNPn9Efcqfo1xFAEEjTKUOFbs8g4FQlm_YcGPumj3jk0dbN8ROlH8vuuvPxw",
+    "expires_in": 1800,
+    "refresh_expires_in": 432000,
+    "refresh_token": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJmQi1UenBOb0hBVGhwT2J4aW9qTDBrdm83MldmRzRXRXh1eFpiaXlGQUhzIn0.eyJqdGkiOiI2MTI1MjhkMy02ZGE4LTQwMGMtODAxMS1jNDQ0M2U1MzQ0YzMiLCJleHAiOjE1NTg1MzMzNjIsIm5iZiI6MCwiaWF0IjoxNTU4MTAxMzYyLCJpc3MiOiJodHRwczovL2xvZ2luLXN0YWdpbmcuYXJrYW5lLm5ldHdvcmsvYXV0aC9yZWFsbXMvQXJrYW5lIiwiYXVkIjoiQXJrZXR5cGVfYXBwIiwic3ViIjoiZDQ3NWQwYWEtNjRmOC00MTJhLTg5NmEtOTRmM2RlNjZlNzFkIiwidHlwIjoiUmVmcmVzaCIsImF6cCI6IkFya2V0eXBlX2FwcCIsImF1dGhfdGltZSI6MCwic2Vzc2lvbl9zdGF0ZSI6IjcwNjI3M2MxLTMwZGItNDA3ZS05NWZhLWQ0ZTc4NzQ0OTQ2OSIsInJlc291cmNlX2FjY2VzcyI6e30sInNjb3BlIjoic2F2ZTp0cmFuc2FjdGlvbiJ9.FayuAxy2x1lOw4nQqvn2gZs6Vhqtt7pai6H6LNvFmAxqab3qdnMxQRRFVgrvqfgwaI5bsLrs6CdPU1w2DJmNjh3ubcw-arpM25FVWHufldcTpEA0Xvpo1zssXQrt46kMQ0SMDiRY5e3dhpcd1Uoib9NzZTM5sbwHihqxGyH9HlcO7kGGhdoFW7jXQgGSoBhKsQN1BGvam9p9v-vZSBBQD6YPNttf7cZG77PjK8BAuZczhl7cX8Csmyht6clRTeFKF06NNUwaEcvz7ZXBf2QNJVfAyG26OwUu9ER5bADofGn2P7PnAxDsq_kRXMzOULISLLPi2hdNHOzh2XNvM6znOQ",
+    "token_type": "bearer",
+}
+----
+
 
 === [[create-app-wallet]] Create application wallet link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
 To create an application wallet, Arkane Connect must be used to confirm the creation of the wallet. The user will then be requested to enter their PIN as confirmation.
@@ -165,23 +225,23 @@ https://connect-staging.arkane.network/confirm
 |===
 
 === Create a transaction link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
-Creating a transaction is done by sending the transaction to Arkane API using your confidential client ID (`..._app`). +
+Creating a transaction is done by sending the transaction to Arkane API using the bearer token of your <<clientId_app-client, <clientId>_app-client>>. +
 In this example we are doing a generic <<transfer, transfer>>, but you can submit any type of transaction described under <<transactions, Transactions>> as long as the provided
 wallet ID is of an application wallet (this is the reason we haven't documented the other request parameters).
 
-operation::execute-generic-app-wallet-transaction[snippets='curl-request']
+operation::save-generic-transaction[snippets='curl-request']
 
 .Data parameters
-operation::execute-generic-app-wallet-transaction[snippets='request-fields']
+operation::save-generic-transaction[snippets='request-fields']
 
 .Data example
-operation::execute-generic-app-wallet-transaction[snippets='request-body']
+operation::save-generic-transaction[snippets='request-body']
 
 .Result parameters
-operation::execute-generic-app-wallet-transaction[snippets='response-fields']
+operation::save-generic-transaction[snippets='response-fields']
 
 .Result example
-operation::execute-generic-app-wallet-transaction[snippets='response-body']
+operation::save-generic-transaction[snippets='response-body']
 
 === [[execute-app-wallet-transaction]] Execute a requested transaction link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
 Before the transaction will be pushed to the blockchain, it first needs to be approved by the user. This can be done using Arkane Connect.
@@ -197,6 +257,29 @@ https://connect-staging.arkane.network/transaction/execute/:transactionId
 
 .Example URL
 https://connect-staging.arkane.network/transaction/execute/70fc00ec-9b0f-4edb-b301-097cf6ee8e31
+
+=== [[delete-app-wallet-transaction]] Delete  a requested transaction link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
+You can delete a requested transaction by calling the transaction endpoint of the Arkane API with method `DELETE`. This can be done by both the user as the application.
+
+.URL
+https://api.arkane.network/api/transactions/:transactionId
+
+.[[execute-application-transaction]] Path Parameters
+|===
+| Parameter | Description
+| `+transactionId+` | The transactionId of the requested transaction
+|===
+
+operation::delete-transaction-request[snippets='curl-request']
+
+=== [[update-wallet-type]] Migrate wallet to a user wallet link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
+From the moment the requirements of an application wallet are not applicable anymore, the type of the application wallet can be migrated to user wallet. As a result, the wallet
+will behave the same way as other wallets the user has created manually in Arkane. The user will be able to perform any transaction using this wallet.
+
+In the case for a user wallet, the type of the wallet needs to be updated to:
+`THREEWAY_SHARED`
+
+operation::update-wallet-type[snippets='http-request,path-parameters,http-response']
 
 == [[transactions]] Transactions
 
@@ -669,6 +752,27 @@ operation::sign-tron-hex-message[snippets='response-fields']
 
 .Result example
 operation::sign-tron-hex-message[snippets='response-body']
+
+=== Aeternity
+
+==== [[execute-aeternity-transaction]] Execute AEternity transaction link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
+To execute an AEternity transaction, use the connect building block with:
+
+.URL
+https://connect-staging.arkane.network/transaction/execute/ae_transaction
+
+
+.Data parameters
+operation::execute-ae-transaction[snippets='request-fields']
+
+.Data example
+operation::execute-ae-transaction[snippets='request-body']
+
+.Result parameters
+operation::execute-ae-transaction[snippets='response-fields']
+
+.Result example
+operation::execute-ae-transaction[snippets='response-body']
 
 == Profile
 === [[user-profile]] User profile link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]

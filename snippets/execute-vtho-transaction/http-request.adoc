@@ -1,6 +1,6 @@
 [source,http,options="nowrap"]
 ----
-POST /api/transactions HTTP/1.1
+POST /api/transactions/execute HTTP/1.1
 Content-Type: application/json;charset=UTF-8
 Host: api.arkane.network
 Content-Length: 378
@@ -11,7 +11,7 @@ Content-Length: 378
   "expiration" : 3,
   "gas" : 23000,
   "gasPriceCoef" : 46576,
-  "nonce" : "47a745f3-9f1d-477d-8821-cc98ec75837c",
+  "nonce" : "80299fe8-4058-4da2-aeba-a8e5e896aae4",
   "clauses" : [ {
     "to" : "0xdc71b72db51e227e65a45004ab2798d31e8934c9",
     "amount" : 10000000000

@@ -21,10 +21,6 @@ https://unpkg.com/@arkane-network/arkane-connect
 
 TIP: It is best to point Arkane Connect JS to a specific version when including this URL in your code. See https://unpkg.com/ on how to do that.
 
-== Migrating from 1.1.10 to 1.1.12
-
-link:connect-js-migration.html[Migration guide]
-
 == Integrating Arkane Connect JS
 To integrate Arkane Connect JS in your web application, you will need to create a new ArkaneConnect instance and provide the instance with a way to authenticate. There are two options for doing this:
 
@@ -107,14 +103,14 @@ const arkaneConnect = new ArkaneConnect('Arketype', { environment: 'staging',
 }
 ----
 
-== Authentication
+== [[_authentication]]Authentication link:buildingblocks.html#arkane-identity[[.small]#+[Check buildingblock Arkane Identity]+#]
 === Check if a user is authenticated
 .Signature
 [source,javascript,options="nowrap"]
 ----
 arkaneConnect.checkAuthenticated(options?: AuthenticationOptions): Promise<AuthenticationResult>
 ----
-Returns `<<AuthenticationResult>>`
+Returns `Promise<<<authentication-result,AuthenticationResult>>>`
 
 .Description
 This function call will check if the user is authenticated and redirect the user to `options.redirectUri` (if present) with the result.
@@ -124,7 +120,7 @@ IMPORTANT: If you set the redirectUri option, make sure that the SDK and the `Au
 .Parameters
 |===
 | Parameter | Required | Description | Example
-| `options` | false | `<<AuthenticationOptions>>` | `{ redirectUri: 'https://arkane.network' }`
+| `options` | false | `<<authentication-options,AuthenticationOptions>>` | `{ redirectUri: 'https://arkane.network' }`
 |===
 
 === Examples
@@ -146,19 +142,22 @@ arkaneConnect.checkAuthenticated({ redirectUri: 'https://arkane.network' });
 .Signature
 [source,javascript,options="nowrap"]
 ----
-arkaneConnect.authenticate(options?: AuthenticationOptions): Promise<AuthenticationResult>
+arkaneConnect.flows.authenticate(options?: AuthenticationOptions): Promise<AuthenticationResult>
 ----
-Returns `Promise<<<AuthenticationResult>>>`
+Returns `Promise<<<authentication-result,AuthenticationResult>>>`
 
 .Description
-This function call will check if the user is authenticated (showing a login form if the user is not already authenticated) and redirect the user to `options.redirectUri` (if present) with the result.
+This function will check if the user is authenticated (showing a login form if the user is not already authenticated).
+
+* For windowMode = 'REDIRECT', the user will be redirect to `options.redirectUri` (if present) with the result (after logging in).
+* For windowMode = 'POPUP', when the user finishes the popup closes and the promise resolves. No extra options are required.
 
 IMPORTANT: If you set the redirectUri option, make sure that the SDK and the `AuthenticationResult` handling is also present on the page you redirect to.
 
 .Parameters
 |===
 | Parameter | Required | Description | Example
-| `options` | false | `<<AuthenticationOptions>>` | `{ redirectUri: 'https://arkane.network', windowMode: 'REDIRECT' }`
+| `options` | false | `<<authentication-options,AuthenticationOptions>>` | `{ redirectUri: 'https://arkane.network', windowMode: 'REDIRECT' }`
 |===
 
 === Examples
@@ -166,21 +165,21 @@ IMPORTANT: If you set the redirectUri option, make sure that the SDK and the `Au
 [source,javascript,options="nowrap"]
 ----
 // Redirect to the current page
-arkaneConnect.authenticate({ windowMode: 'REDIRECT' });
+arkaneConnect.flows.authenticate({ windowMode: 'REDIRECT' });
 ----
 
 .Example 2
 [source,javascript,options="nowrap"]
 ----
 // Redirect to https://arkane.network
-arkaneConnect.authenticate({ redirectUri: 'https://arkane.network', windowMode: 'REDIRECT'});
+arkaneConnect.flows.authenticate({ redirectUri: 'https://arkane.network', windowMode: 'REDIRECT'});
 ----
 
 .Example 4
 [source,javascript,options="nowrap"]
 ----
 // Login using popup
-arkaneConnect.authenticate({ windowMode: 'POPUP' })
+arkaneConnect.flows.authenticate({ windowMode: 'POPUP' })
     .then((result: AuthenticationResult) => {
         result
             .authenticated((auth: AuthenticationInstance) => {
@@ -263,13 +262,14 @@ arkaneConnect.addOnTokenRefreshCallback(token => {
 |===
 
 === Data types
-==== AuthenticationOptions
+==== [[authentication-options]]AuthenticationOptions
 .Signature
 [source,javascript,options="nowrap"]
 ----
 {
   redirectUri?: string,
-  windowMode: WindowMode
+  windowMode: WindowMode,
+  closePopup?: boolean
 }
 ----
 
@@ -278,20 +278,23 @@ arkaneConnect.addOnTokenRefreshCallback(token => {
 | Parameter | Required | Description | Example
 | `redirectUri` | false (default = the current URI) | The URI you want the user to be redirected after checking authentication. Only used when windowMode=REDIRECT | 'https://arkane.network'
 | `windowMode`  | false (default = windowMode passed in ConstructorOptions) | `<<WindowMode>>` Show login form in POPUP, or login using redirect | 'REDIRECT'
+| `closePopup`  | false (default = true) | If true, the popup closes when the action is finished. When setting it to false the next action will be loaded in the same popup without first closing it (is used internally when multiple actions needing a popup are called in sequence).
 |===
 
-==== AuthenticationResult
+==== [[authentication-result]]AuthenticationResult
 .Signature
 [source]
 ----
 {
+    auth: AuthenticationInstance,
+    isAuthenticated: boolean,
     authenticated: (onAuthenticated: (auth: AuthenticationInstance) => void) => AuthenticationResult;
     notAuthenticated: (onNotAuthenticated: (auth: AuthenticationInstance) => void) => AuthenticationResult;
 }
 ----
 
 .Description
-You can supply two callback functions to the `<<AuthenticationResult>>`: authenticated and notAuthenticated, each will be passed the `<<AuthenticationInstance>>`.
+You can supply two callback functions to the `<<authentication-result,AuthenticationResult>>`: authenticated and notAuthenticated, each will be passed the `<<authentication-instance,AuthenticationInstance>>`.
 
 .Parameters
 [cols="1,1,2,4a"]
@@ -338,7 +341,7 @@ arkaneConnect.authenticate()
 ----
 
 
-==== AuthenticationInstance
+==== [[authentication-instance]]AuthenticationInstance
 .Signature
 [source,json,options="nowrap"]
 ----
@@ -350,6 +353,8 @@ arkaneConnect.authenticate()
   token?: string;
   tokenParsed?: {
     exp?: number;
+    email?: string,
+    name?: string,
     iat?: number;
     nonce?: string;
     sub?: string;
@@ -390,13 +395,64 @@ arkaneConnect.authenticate()
 arkaneConnect.api.getProfile(): Promise<Profile>
 ----
 
-== Wallet
+== Wallet Flows
+=== [[get-account]]Get Account
+.Signature
+[source,javascript,options="nowrap"]
+----
+arkaneConnect.flows.getAccount(chain: SecretType): Promise<Account>
+----
+Returns <<account,Account>>
+
+.Description
+
+* In case the user is authenticated and has linked wallets, no popup opens.
+* If user is not authenticated, it will open a popup to login in or create a new account.
+* If user has no linked wallets, it will open the manage wallets popup and ask to link a wallet or create a new one.
+* When not logged in and no linked wallets / or no account yet, it will do all the steps above sequentially.
+
+When finished, popup closes (if opened of course) and promise resolves.
+
+.Parameters
+[cols="1,1,3"]
+|===
+| Parameter | Required | Description
+| `chain` | true | The requested chain of which it will return it's wallets.
+|===
+
+.Example
+[source, javascript,options="nowrap"]
+----
+// Authenticate, and get the ethereum wallets of current user.
+arkaneConnect.flows.getAccount('ETHEREUM').then((account: Account) => {
+    if(account.isAuthenticated) {
+        console.log('wallets', account.wallets);
+        console.log('name', account.auth.tokenParsed.name);
+    }
+}).catch((e) => {
+    console.log('user closed window, or an error occurred', e);
+});
+----
+
+==== [[account]]Account
+.Signature
+[source,json,options="nowrap"]
+----
+{
+   wallets: Wallet[],
+   auth: AuthenticationInstance,
+   isAuthenticated: boolean
+}
+----
+
 === Link wallets link:reference.html#link-wallets[[.small]#+[Reference]+#]
 .Signature
 [source,javascript,options="nowrap"]
 ----
-arkaneConnect.linkWallets(options?: { redirectUri?: string,
-                                      correlationID?: string }): void
+arkaneConnect.flows.linkWallets(options?: {
+    redirectUri?: string,
+    correlationID?: string
+}): Promise<PopupResult | void>
 ----
 
 .Parameters
@@ -414,17 +470,26 @@ arkaneConnect.linkWallets(options?: { redirectUri?: string,
 // redirects the user to the link wallets screen
 // + redirects the user to https://arkane.network once he's done
 // + appends the correlationID as a request parameter when being redirected back
-arkaneConnect.linkWallets({ redirectUri: 'https://arkane.network',
-                            correlationID: 'f173a18d-7a75-4429-9df4-25153d64a921' }});
+arkaneConnect.flows.linkWallets({
+    redirectUri: 'https://arkane.network',
+    correlationID: 'f173a18d-7a75-4429-9df4-25153d64a921'
+});
 ----
 
 === Manage wallets link:reference.html#manage-wallets[[.small]#+[Reference]+#]
 .Signature
 [source,javascript,options="nowrap"]
 ----
-arkaneConnect.manageWallets(chain: string, options?: { redirectUri?: string,
-                                                       correlationID?: string }): void
+arkaneConnect.flows.manageWallets(
+    chain: string,
+    options?: {
+        redirectUri?: string,
+        correlationID?: string
+    }
+): Promise<PopupResult | void>
 ----
+Returns `Promise<<<popup-result,PopupResult>> | void>`
+
 
 .Parameters
 [cols="1,1,3"]
@@ -442,11 +507,27 @@ arkaneConnect.manageWallets(chain: string, options?: { redirectUri?: string,
 // redirects the user to the manage wallets screen for his Ethereum wallets
 // + redirects the user to https://arkane.network once he's done
 // + appends the correlationID as a request parameter when being redirected back
-arkaneConnect.manageWallets('ETHEREUM',
-                            { redirectUri: 'https://arkane.network',
-                              correlationID: 'f173a18d-7a75-4429-9df4-25153d64a921' }});
+arkaneConnect.manageWallets(
+    'ETHEREUM',
+    {
+        redirectUri: 'https://arkane.network',
+        correlationID: 'f173a18d-7a75-4429-9df4-25153d64a921'
+    }
+);
 ----
 
+==== [[popup-result]]PopupResult
+.Signature
+[source,json,options="nowrap"]
+----
+{
+    status: 'SUCCESS' | 'ABORTED' | 'FAILED',
+    result?: any,
+    errors?: any[]
+}
+----
+
+== [[wallet-api]]Wallet Api
 === List user wallets link:reference.html#list-wallets[[.small]#+[Reference]+#]
 .Signature
 [source,javascript,options="nowrap"]
@@ -594,7 +675,7 @@ signer.executeTransaction('70fc00ec-9b0f-4edb-b301-097cf6ee8e31')
       });
 ----
 
-== Transactions
+== [[transactions]]Transactions
 === [[signer]] The signer
 To execute and sign transactions, the user needs to enter his PIN. To enable him to do so, we have to create a `Signer`. In Arkane Connect JS we provide you with two types of signers:
 

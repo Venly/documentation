@@ -9,6 +9,6 @@ $ echo '{
   "to" : "0xdc71b72db51e227e65a45004ab2798d31e8934c9",
   "data" : "0x",
   "type" : "GO_TRANSACTION"
-}' | http POST 'https://api.arkane.network/api/transactions' \
+}' | http POST 'https://api.arkane.network/api/transactions/execute' \
     'Content-Type:application/json;charset=UTF-8'
 ----

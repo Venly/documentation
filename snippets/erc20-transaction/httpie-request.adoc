@@ -9,6 +9,6 @@ $ echo '{
   "to" : "0xdc71b72db51e227e65a45004ab2798d31e8934c9",
   "tokenAddress" : "0x4df47b4969b2911c966506e3592c41389493953b",
   "type" : "ETHEREUM_ERC20_TRANSACTION"
-}' | http POST 'https://api.arkane.network/api/transactions' \
+}' | http POST 'https://api.arkane.network/api/transactions/execute' \
     'Content-Type:application/json;charset=UTF-8'
 ----

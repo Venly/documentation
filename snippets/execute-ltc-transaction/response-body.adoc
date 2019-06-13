@@ -1,6 +1,6 @@
 [source,options="nowrap"]
 ----
 {
-  "transactionRequestId" : "21a8d992-9eea-4109-85b2-32de5fb1639d"
+  "transactionHash" : "9c0278cd0ee9edf48e75c012142f26594684eef4f52ec59e2276fa83e3f29a18"
 }
 ----

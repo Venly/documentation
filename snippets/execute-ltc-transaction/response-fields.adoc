@@ -1,6 +1,6 @@
 |===
 |Path|Type|Description
-|`+transactionRequestId+`
+|`+transactionHash+`
 |`+String+`
-|The id of the transaction you just requested
+|The transaction hash
 |===

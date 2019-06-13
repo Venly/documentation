@@ -3,11 +3,12 @@
 POST /api/signatures HTTP/1.1
 Content-Type: application/json;charset=UTF-8
 Host: localhost:8080
-Content-Length: 350
+Content-Length: 370
 {
   "type" : "VECHAIN_TRANSACTION",
   "walletId" : "1",
   "submit" : false,
+  "network" : null,
   "blockRef" : "0x1",
   "chainTag" : "0x2",
   "expiration" : 10,

@@ -2,7 +2,7 @@
 ----
 HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
-Content-Length: 599
+Content-Length: 573
 {
   "id" : "3",
   "address" : "0xae52b72db54e137a65a42434ab2543d31f8454c3",
@@ -24,7 +24,6 @@ Content-Length: 599
     "rawBalance" : "1000000000000000000",
     "rawGasBalance" : "1000000000000000000",
     "decimals" : 18
-  },
-  "status" : "AVAILABLE"
+  }
 }
 ----

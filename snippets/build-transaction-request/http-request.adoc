@@ -3,7 +3,7 @@
 POST /api/transactions/build HTTP/1.1
 Content-Type: application/json;charset=UTF-8
 Host: api.arkane.network
-Content-Length: 258
+Content-Length: 369
 {
   "walletId" : "edc4c08a-b8fa-4e4c-z5a2-92c87b80f174",
   "to" : "0xdc71b72db51e227e65a45004ab2798d31e8934c9",
@@ -11,6 +11,11 @@ Content-Length: 258
   "value" : 1.15,
   "secretType" : "VECHAIN",
   "tokenAddress" : "0x0000000000000000000000000000456E65726779",
-  "data" : null
+  "data" : null,
+  "network" : {
+    "name" : "Rinkeby",
+    "nodeUrl" : "https://rinkeby.infura.io",
+    "chainId" : null
+  }
 }
 ----

@@ -2,15 +2,17 @@
 ----
 HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
-Content-Length: 247
+Content-Length: 326
 {
   "id" : "1",
   "address" : "0xdc72b72db54e227e65a45004ab2798d31e8934c2",
+  "walletType" : "THREEWAY_SHARED",
   "secretType" : "ETHEREUM",
-  "archived" : true,
+  "createdAt" : [ 2019, 6, 13, 14, 49, 19, 257000000 ],
+  "archived" : false,
   "alias" : "aliasEth",
   "description" : "descriptionEth",
-  "walletType" : "THREEWAY_SHARED",
-  "status" : "ARCHIVED"
+  "primary" : false,
+  "hasCustomPin" : false
 }
 ----

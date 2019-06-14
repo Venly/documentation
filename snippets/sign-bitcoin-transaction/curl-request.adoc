@@ -6,6 +6,7 @@ $ curl 'http://localhost:8080/api/signatures' -i -X POST \
   "type" : "BITCOIN_TRANSACTION",
   "walletId" : "1",
   "submit" : true,
+  "network" : null,
   "to" : "mpi2SkK5vKipCNE9h1HtRgDg6UM44AuN9S",
   "value" : 10,
   "feePerByte" : 6

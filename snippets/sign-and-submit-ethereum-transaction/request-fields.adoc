@@ -36,4 +36,16 @@
 |`+Boolean+`
 |Whether to immediately submit the transaction to the blockchain or not.
 |Optional, false by default
+|`+network+`
+|`+Object+`
+|The network to submit the transaction to
+|Optional
+|`+network.name+`
+|`+String+`
+|The display name of the network to submit the transaction to (e.g.: "Rinkeby"). This will be shown to the user when signing the transaction
+|Required. Free text
+|`+network.nodeUrl+`
+|`+String+`
+|The URL of the node to submit the transaction to (e.g.: "https://rinkeby.infura.io")
+|Required
 |===

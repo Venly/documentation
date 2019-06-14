@@ -3,7 +3,7 @@
 POST /api/transactions HTTP/1.1
 Content-Type: application/json;charset=UTF-8
 Host: api.arkane.network
-Content-Length: 259
+Content-Length: 370
 {
   "walletId" : "adc4c08a-b8fa-4e4c-z5a2-92c87b80f174",
   "to" : "0xdc71b72db51e227e65a45004ab2798d31e8934c9",
@@ -11,6 +11,11 @@ Content-Length: 259
   "value" : 1.15,
   "secretType" : "ETHEREUM",
   "tokenAddress" : "0x02f96ef85cad6639500ca1cc8356f0b5ca5bf1d2",
-  "data" : null
+  "data" : null,
+  "network" : {
+    "name" : "Rinkeby",
+    "nodeUrl" : "https://rinkeby.infura.io",
+    "chainId" : null
+  }
 }
 ----

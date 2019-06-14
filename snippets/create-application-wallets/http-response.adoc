@@ -2,17 +2,18 @@
 ----
 HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
-Content-Length: 624
+Content-Length: 597
 {
   "id" : null,
   "address" : "0xdc72b72db54e227e65a45004ab2798d31e8934c2",
   "walletType" : "APPLICATION",
   "secretType" : "ETHEREUM",
-  "createdAt" : [ 2019, 5, 17, 12, 2, 29, 610000000 ],
+  "createdAt" : [ 2019, 6, 13, 14, 49, 19, 214000000 ],
   "archived" : false,
   "alias" : "aliasEth",
   "description" : "descriptionEth",
   "primary" : false,
+  "hasCustomPin" : false,
   "balance" : {
     "available" : false,
     "secretType" : "ETHEREUM",
@@ -23,8 +24,6 @@ Content-Length: 624
     "rawBalance" : "1000000000000000000",
     "rawGasBalance" : "1000000000000000000",
     "decimals" : 18
-  },
-  "hasCustomPin" : false,
-  "status" : "UNAVAILABLE"
+  }
 }
 ----

@@ -1,5 +1,5 @@
 |===
 |Parameter|Description
 |`+contract-addresses+`
-|When set, the result will only contain tokens of these NFT contract addresses. Multiple values can be set.
+|(Optional) When set, the result will only contain tokens of these NFT contract addresses. Multiple values can be set.
 |===

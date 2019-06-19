@@ -86,6 +86,17 @@ Returns the token balance for a specified token (this can be any token).
 
 operation::get-token-balance[snippets='curl-request,path-parameters,http-response,response-fields']
 
+=== [[nft-get-for-address]] List Non Fungible Tokens (NFT's) link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
+
+[WARNING]
+====
+Currently this functionallity is only supported for Ethereum wallets (ERC-721), other chains will follow
+====
+
+Returns the list of NFT's owned by a wallet
+
+operation::list-non-fungibles[snippets='curl-request,path-parameters,request-parameters,http-response,response-fields']
+
 === [[wallet-error-codes]] Error codes
 
 |===
@@ -826,18 +837,6 @@ operation::swap[snippets='curl-request,path-parameters,http-response,response-fi
 |swap.uniswap.exchange-not-found
 |An exchange contract for a token on uniswap could not be found
 |===
-
-== Non Fungible Tokens (NFT's)
-
-[NOTE]
-====
-Currently this functionallity is only supported for Ethereum, other chains will follow
-====
-
-=== [[nft-get-for-address]] List the NFT's of an address link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
-Returns the list of NFT's owned by the given address
-
-operation::list-non-fungibles[snippets='curl-request,path-parameters,request-parameters,http-response,response-fields']
 
 == Profile
 === [[user-profile]] User profile link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]

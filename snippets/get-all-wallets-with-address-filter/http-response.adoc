@@ -2,7 +2,7 @@
 ----
 HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
-Content-Length: 265
+Content-Length: 239
 [ {
   "id" : "1",
   "address" : null,
@@ -13,8 +13,7 @@ Content-Length: 265
   "alias" : null,
   "description" : null,
   "primary" : false,
-  "balance" : null,
   "hasCustomPin" : false,
-  "status" : "AVAILABLE"
+  "balance" : null
 } ]
 ----

@@ -10,8 +10,7 @@
   "alias" : null,
   "description" : null,
   "primary" : false,
-  "balance" : null,
   "hasCustomPin" : false,
-  "status" : "AVAILABLE"
+  "balance" : null
 } ]
 ----

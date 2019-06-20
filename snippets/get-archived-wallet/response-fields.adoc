@@ -18,10 +18,10 @@
 |`+description+`
 |`+String+`
 |description of the wallet
+|`+createdAt+`
+|`+Array+`
+|date and time the secret was created or imported
 |`+walletType+`
 |`+String+`
 |type of the wallet (ex: THREEWAY_SHARED
-|`+status+`
-|`+String+`
-|status of the wallet
 |===

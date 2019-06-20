@@ -32,4 +32,16 @@
 |`+String+`
 |The destination address of the transaction.
 |Mandatory, a valid ethereum address
+|`+network+`
+|`+Object+`
+|<<erc20-network, ^[1]^>> The network to submit the transaction to
+|Optional
+|`+network.name+`
+|`+String+`
+|The display name of the network to submit the transaction to (e.g.: "Rinkeby"). This will be shown to the user when signing the transaction
+|Required. Free text
+|`+network.nodeUrl+`
+|`+String+`
+|The URL of the node to submit the transaction to (e.g.: "https://rinkeby.infura.io")
+|Required
 |===

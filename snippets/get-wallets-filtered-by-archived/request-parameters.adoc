@@ -1,0 +1,5 @@
+|===
+|Parameter|Description
+|`+archived+`
+|Filter by archive state of the wallet
+|===

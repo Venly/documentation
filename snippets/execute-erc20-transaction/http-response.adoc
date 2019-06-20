@@ -2,8 +2,8 @@
 ----
 HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
-Content-Length: 69
+Content-Length: 94
 {
-  "transactionRequestId" : "33c4ad77-aeb5-425e-9d93-6fed36baa8c3"
+  "transactionHash" : "0x621f692e386a8bc0c53d36aa793864893106e10f54f63fa9c063e24ad975d907"
 }
 ----

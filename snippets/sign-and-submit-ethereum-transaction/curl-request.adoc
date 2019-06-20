@@ -6,6 +6,11 @@ $ curl 'http://localhost:8080/api/signatures' -i -X POST \
   "type" : "ETHEREUM_TRANSACTION",
   "walletId" : "1",
   "submit" : true,
+  "network" : {
+    "name" : "Rinkeby",
+    "nodeUrl" : "https://rinkeby.infura.io",
+    "chainId" : null
+  },
   "gasPrice" : 10000000000,
   "gas" : 23000,
   "nonce" : 0,

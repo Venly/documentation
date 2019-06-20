@@ -21,7 +21,6 @@
     "rawBalance" : "1000000000000000000",
     "rawGasBalance" : "1000000000000000000",
     "decimals" : 18
-  },
-  "status" : "AVAILABLE"
+  }
 }
 ----

@@ -10,7 +10,7 @@
 |Mandatory, a valid address for the specified chain or the email address of the person you want to send tokens to
 |`+value+`
 |`+Number+`
-|The value transferred for the transaction in the token value
+|<<build-value, ^[1]^>> The value transferred for the transaction in the token value
 |Mandatory, must be >= 0
 |`+secretType+`
 |`+String+`
@@ -18,8 +18,20 @@
 |Mandatory. Must be one of: [AETERNITY, BITCOIN, ETHEREUM, GOCHAIN, LITECOIN, TRON, VECHAIN]
 |`+tokenAddress+`
 |`+String+`
-|The address of the token to be used in this transaction
+|<<build-token-address, ^[2]^>> The address of the token to be used in this transaction
 |Optional
+|`+network+`
+|`+Object+`
+|<<build-network, ^[3]^>> The network to submit the transaction to
+|Optional. Currently supported chains: [ETHEREUM]
+|`+network.name+`
+|`+String+`
+|The display name of the network to submit the transaction to (e.g.: "Rinkeby"). This will be shown to the user when signing the transaction
+|Required. Free text
+|`+network.nodeUrl+`
+|`+String+`
+|The URL of the node to submit the transaction to (e.g.: "https://rinkeby.infura.io")
+|Required
 |`+data+`
 |`+Null+`
 |The data you want to send with this transaction. This field will be ignored when building a token transaction request

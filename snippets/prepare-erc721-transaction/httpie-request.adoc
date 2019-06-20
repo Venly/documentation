@@ -1,0 +1,17 @@
+[source,bash]
+----
+$ echo '{
+  "walletId" : "1543",
+  "gasPrice" : 10000000000,
+  "gas" : 23000,
+  "nonce" : 0,
+  "tokenId" : 236547,
+  "to" : "0xdc71b72db51e227e65a45004ab2798d31e8934c9",
+  "from" : null,
+  "network" : null,
+  "tokenAddress" : "0x4df47b4969b2911c966506e3592c41389493953b",
+  "type" : "ETHEREUM_ERC721_TRANSACTION",
+  "value" : 0
+}' | http POST 'https://api.arkane.network/api/transactions/prepare' \
+    'Content-Type:application/json;charset=UTF-8'
+----

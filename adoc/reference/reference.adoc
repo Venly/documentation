@@ -386,6 +386,33 @@ operation::execute-erc20-transaction[snippets='response-fields']
 .Result example
 operation::execute-erc20-transaction[snippets='response-body']
 
+==== Execute ERC721 transfer link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
+
+To execute an ERC721 transaction transfer, use the connect building block with:
+
+.URL
+https://connect-staging.arkane.network/transaction/execute/ethereum_erc721_transaction
+
+
+.Data parameters
+operation::execute-erc721-transaction[snippets='request-fields']
+
+[NOTE]
+====
+[[erc721-network]] ^[1]^ The node to which the transaction will be send can be set manually. This can be done using the `network` parameter. +
+This feature enables you to submit a transaction to any mainnet node of your choosing, a testnet node (e.g. Kovan, Rinkeby, …​) or a different (private) network altogether.
+====
+
+.Data example
+operation::execute-erc721-transaction[snippets='request-body']
+
+.Result parameters
+operation::execute-erc721-transaction[snippets='response-fields']
+
+.Result example
+operation::execute-erc721-transaction[snippets='response-body']
+
+
 ==== Sign link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
 Signs arbitrary data. This data is before UTF-8 HEX decoded and enveloped as followed:
 

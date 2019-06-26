@@ -9,7 +9,7 @@ $ curl 'https://api.arkane.network/api/transactions/execute' -i -X POST \
   "expiration" : 3,
   "gas" : 23000,
   "gasPriceCoef" : 46576,
-  "nonce" : "05ed2cc8-8415-4c73-a31c-274d4bfb0272",
+  "nonce" : "f3c028e9-b86f-4d34-bc74-b436b4613da8",
   "clauses" : [ {
     "to" : "0xdc71b72db51e227e65a45004ab2798d31e8934c9",
     "amount" : 10000000000,

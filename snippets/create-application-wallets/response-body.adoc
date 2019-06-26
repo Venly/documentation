@@ -5,7 +5,7 @@
   "address" : "0xdc72b72db54e227e65a45004ab2798d31e8934c2",
   "walletType" : "APPLICATION",
   "secretType" : "ETHEREUM",
-  "createdAt" : [ 2019, 6, 20, 7, 9, 13, 636834000 ],
+  "createdAt" : [ 2019, 6, 26, 9, 14, 27, 798863000 ],
   "archived" : false,
   "alias" : "aliasEth",
   "description" : "descriptionEth",

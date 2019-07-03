@@ -1,0 +1,6 @@
+.+/api/wallets/{walletId}/nonfungibles+
+|===
+|Parameter|Description
+|`+walletId+`
+|The ID of the wallet to list the non fungible tokens for
+|===

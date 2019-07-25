@@ -10,7 +10,6 @@ pipeline {
     stages {
         stage('Docker Build') {
           steps {
-            sh 'npm install'
             sh 'docker build -t arkanenetwork/arkane-documentation:${BRANCH_NAME} .'
           }
         }

@@ -20,7 +20,13 @@
 |Background color to use when displaying this item
 |`+imageUrl+`
 |`+String+`
-|URL to an image of this item
+|URL to an image of this item (original size)
+|`+imagePreviewUrl+`
+|`+Null+`
+|URL to an image of this item (size 512px)
+|`+imageThumbnailUrl+`
+|`+Null+`
+|URL to an image of this item (size 128px)
 |`+contract+`
 |`+Object+`
 |The contract that manages this item

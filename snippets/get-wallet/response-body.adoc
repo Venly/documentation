@@ -5,7 +5,7 @@
   "address" : "0xdc72b72db54e227e65a45004ab2798d31e8934c2",
   "walletType" : "THREEWAY_SHARED",
   "secretType" : "ETHEREUM",
-  "createdAt" : [ 2019, 6, 26, 15, 16, 19, 758753000 ],
+  "createdAt" : [ 2019, 8, 12, 15, 12, 30, 765197000 ],
   "archived" : false,
   "alias" : "aliasEth",
   "description" : "descriptionEth",

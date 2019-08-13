@@ -2,6 +2,6 @@
 ----
 HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
-Content-Length: 481
-[{"id":"3","address":"0xae52b72db54e137a65a42434ab2543d31f8454c3","walletType":"THREEWAY_SHARED","secretType":"VECHAIN","createdAt":[2019,8,12,15,12,29,981889000],"archived":false,"alias":"aliasVechain","description":"descriptionVechain","primary":false,"hasCustomPin":false,"balance":{"available":false,"secretType":"VECHAIN","balance":1.0,"gasBalance":1.0,"symbol":"VET","gasSymbol":"VTHO","rawBalance":"1000000000000000000","rawGasBalance":"1000000000000000000","decimals":18}}]
+Content-Length: 479
+[{"id":"3","address":"0xae52b72db54e137a65a42434ab2543d31f8454c3","walletType":"THREEWAY_SHARED","secretType":"VECHAIN","createdAt":[2019,8,13,13,33,59,2465000],"archived":false,"alias":"aliasVechain","description":"descriptionVechain","primary":false,"hasCustomPin":false,"balance":{"available":false,"secretType":"VECHAIN","balance":1.0,"gasBalance":1.0,"symbol":"VET","gasSymbol":"VTHO","rawBalance":"1000000000000000000","rawGasBalance":"1000000000000000000","decimals":18}}]
 ----

@@ -3,5 +3,5 @@
 HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
 Content-Length: 173
-{"success":true,"result":[{"token":"3c3b1a74-fa44-4a64-90b4-52767a33b346","userId":"davy","walletId":"1","claim":"SIGN_WALLETS","enabled":true,"description":"description"}]}
+{"success":true,"result":[{"token":"8149c7a4-54aa-427d-a5c3-3628a2dc1855","userId":"davy","walletId":"1","claim":"SIGN_WALLETS","enabled":true,"description":"description"}]}
 ----

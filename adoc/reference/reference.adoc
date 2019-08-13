@@ -828,6 +828,67 @@ operation::execute-ae-transaction[snippets='response-body']
 |Submitting a request to this network is not possible yet
 |===
 
+=== Neo
+
+==== [[execute-neo-native-transaction]] Execute NEO Native transaction link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
+To execute an Neo Native transaction, use the connect building block with:
+
+.URL
+https://connect-staging.arkane.network/transaction/execute/neo_native_transaction
+
+
+.Data parameters
+operation::execute-neo-native-transaction[snippets='request-fields']
+
+.Data example
+operation::execute-neo-native-transaction[snippets='request-body']
+
+.Result parameters
+operation::execute-neo-native-transaction[snippets='response-fields']
+
+.Result example
+operation::execute-neo-native-transaction[snippets='response-body']
+
+==== [[execute-neo-gas-transaction]] Execute NEO Gas transaction link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
+To execute an Neo Gas transaction, use the connect building block with:
+
+.URL
+https://connect-staging.arkane.network/transaction/execute/neo_gas_transaction
+
+
+.Data parameters
+operation::execute-neo-gas-transaction[snippets='request-fields']
+
+.Data example
+operation::execute-neo-gas-transaction[snippets='request-body']
+
+.Result parameters
+operation::execute-neo-gas-transaction[snippets='response-fields']
+
+.Result example
+operation::execute-neo-gas-transaction[snippets='response-body']
+
+=== [[transaction-error-codes]] Transaction Error Codes
+
+|===
+|Error Code | Meaning
+
+|transaction.sign.internal-error
+|A problem occurred trying to submit the sign the request
+
+|transaction.insufficient-funds
+|The account that initiated the transfer does not have enough energy
+
+|transaction.sign.gas-error
+|Unable to fetch default gas prices
+
+|transaction.submit.internal-error
+|A problem occurred trying to submit the sign the request
+
+|transaction.submit.not-supported-yet
+|Submitting a request to this network is not possible yet
+|===
+
 == Swap
 This section describes how to use the swapping functionality within Arkane. It allows you to swap/exchange a (native) token to (native) token.
 

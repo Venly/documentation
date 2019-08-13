@@ -1,0 +1,67 @@
+|===
+|Path|Type|Description|Constraints
+|`+type+`
+|`+String+`
+|type of the signature request
+|Mandatory, possible values: ETHEREUM_TRANSACTION, ETHEREUM_RAW, VECHAIN_TRANSACTION, GOCHAIN_TRANSACTION, GOCHAIN_RAW, BITCOIN_TRANSACTION, LITECOIN_TRANSACTION, TRX_TRANSACTION, TRC10_TRANSACTION, TRON_RAW, NEO_GAS_TRANSACTION, NEO_NATIVE_TRANSACTION, NEO_RAW
+|`+walletId+`
+|`+String+`
+|The id of the wallet one wants to sign with.
+|Mandatory
+|`+inputs+`
+|`+Array+`
+|Inputs of a raw neo transaction
+|Optional (default gas price is used otherwise), must be > 0
+|`+inputs[].prevHash+`
+|`+String+`
+|PrevHash of the input for a raw neo transaction
+|Needs to be a valid hash
+|`+inputs[].prevIndex+`
+|`+Number+`
+|PrevIndex of the input for a raw neo transaction
+|Needs to be a valid integer > 0
+|`+outputs+`
+|`+Array+`
+|Outputs of a raw neo transaction
+|Optional (default gas price is used otherwise), must be > 0
+|`+outputs[].address+`
+|`+String+`
+|address of the output for a raw Neo transaction
+|Needs to be a valid NEO address
+|`+outputs[].value+`
+|`+String+`
+|value of the output for a raw Neo transaction
+|Needs to be >= 0
+|`+outputs[].assetId+`
+|`+String+`
+|AssetId of the output for a raw Neo transaction
+|Needs to be a valid hash
+|`+transactionType+`
+|`+Null+`
+|TransactionType of the transaction
+|Available possibilities: INVOCATION_TRANSACTION, CLAIM_TRANSACTION, CONTRACT_TRANSACTION
+|`+attributes+`
+|`+Null+`
+|Attributes of a raw neo transaction
+|Optional (default gas price is used otherwise), must be > 0
+|`+attributes[].data+`
+|`+String (Hex)+`
+|Data of an attribute of a raw neo transaction
+|The 
+|`+attributes[].usage+`
+|`+TransactionAttributeUsageType+`
+|Usage of an attribute of a raw neo transaction
+|Optional (default gas price is used otherwise), must be > 0
+|`+claims+`
+|`+Null+`
+|The gas price of the transaction
+|Optional (default gas price is used otherwise), must be > 0
+|`+contractScript+`
+|`+Null+`
+|The gas price of the transaction
+|Optional (default gas price is used otherwise), must be > 0
+|`+systemFee+`
+|`+Null+`
+|The gas price of the transaction
+|Optional (default gas price is used otherwise), must be > 0
+|===

@@ -1,0 +1,27 @@
+[source,bash]
+----
+$ curl 'http://localhost:8080/api/signatures' -i -X POST \
+    -H 'Content-Type: application/json;charset=UTF-8' \
+    -d '{
+  "type" : "NEO_RAW",
+  "walletId" : "1",
+  "transactionType" : null,
+  "attributes" : null,
+  "inputs" : [ {
+    "prevHash" : "c94d0f94b0ac9bacd86737c428344cb2d8be9aad296659e85c065d4f88cd2dd2",
+    "prevIndex" : 0
+  } ],
+  "outputs" : [ {
+    "assetId" : "c56f33fc6ecfcd0c225c4ab356fee59390af8560be0e930faebe74a6daff7c9b",
+    "value" : "10.0",
+    "address" : "AK2nJJpJr6o664CWJKi1QRXjqeic2zRp8y"
+  }, {
+    "assetId" : "c56f33fc6ecfcd0c225c4ab356fee59390af8560be0e930faebe74a6daff7c9b",
+    "value" : "90.0",
+    "address" : "AKYdmtzCD6DtGx16KHzSTKY8ji29sMTbEZ"
+  } ],
+  "claims" : null,
+  "contractScript" : null,
+  "systemFee" : null
+}'
+----

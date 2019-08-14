@@ -1,0 +1,19 @@
+|===
+|Path|Type|Description|Constraints
+|`+type+`
+|`+String+`
+|The type of the transaction
+|Mandatory, value for Neo Native transaction: NEO_NATIVE_TRANSACTION
+|`+walletId+`
+|`+String+`
+|The id of the wallet one wants to sign with.
+|Mandatory
+|`+value+`
+|`+Number+`
+|The value transferred for the transaction 
+|Mandatory, must be >= 0
+|`+to+`
+|`+String+`
+|The destination address of the transaction.
+|Mandatory, a valid AE address
+|===

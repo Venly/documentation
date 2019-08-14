@@ -3,8 +3,10 @@
 $ curl 'http://localhost:8080/api/signatures' -i -X POST \
     -H 'Content-Type: application/json;charset=UTF-8' \
     -d '{
-  "type" : "NEO_RAW",
+  "type" : "NEO_RAW_TRANSACTION",
   "walletId" : "1",
+  "submit" : false,
+  "network" : null,
   "transactionType" : null,
   "attributes" : null,
   "inputs" : [ {
@@ -20,7 +22,10 @@ $ curl 'http://localhost:8080/api/signatures' -i -X POST \
     "value" : "90.0",
     "address" : "AKYdmtzCD6DtGx16KHzSTKY8ji29sMTbEZ"
   } ],
-  "claims" : null,
+  "claims" : [ {
+    "prevHash" : "c94d0f94b0ac9bacd86737c428344cb2d8be9aad296659e85c065d4f88cd2dd2",
+    "prevIndex" : 0
+  } ],
   "contractScript" : null,
   "systemFee" : null
 }'

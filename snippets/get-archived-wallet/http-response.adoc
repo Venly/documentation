@@ -8,7 +8,7 @@ Content-Length: 326
   "address" : "0xdc72b72db54e227e65a45004ab2798d31e8934c2",
   "walletType" : "THREEWAY_SHARED",
   "secretType" : "ETHEREUM",
-  "createdAt" : [ 2019, 8, 13, 13, 33, 59, 668902000 ],
+  "createdAt" : [ 2019, 8, 14, 15, 15, 24, 973845000 ],
   "archived" : false,
   "alias" : "aliasEth",
   "description" : "descriptionEth",

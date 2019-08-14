@@ -3,13 +3,13 @@
 {
   "success" : true,
   "result" : {
-    "token" : "2102fc55-b605-4568-b5c9-a09c9acd1880",
+    "token" : "fb6283f3-bd27-49d0-b43d-9c9cfbaf03e2",
     "userId" : "davy",
     "walletId" : "1",
     "claim" : "SIGN_WALLETS",
     "enabled" : true,
     "description" : "Development API Key",
-    "tokenSecret" : "Y24wYiU3c3F3dk52RWx0YjI+Y2Y9NmE1NnBDWjhwfGwzNlchZjBqLjEyMzB8KzRxN2M="
+    "tokenSecret" : "bEctMTZuXyVlZ0VATHNaNUs1NDx8TWRPejJAcTQvZEhDNWg+Xy00IS5MMnJZX3p1WzA="
   }
 }
 ----

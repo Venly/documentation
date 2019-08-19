@@ -295,14 +295,14 @@ operation::update-wallet-type[snippets='http-request,path-parameters,http-respon
 == [[transactions]] Transactions
 
 [[transfer]]
-=== Transfer link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
-This can be used to transfer (native) tokens from a wallet to another wallet. To start a transfer you need to:
+=== Generic Transfer link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
+This can be used to transfer native tokens from a wallet to another wallet. To start a transfer you need to:
 
 .URL
 https://connect-staging.arkane.network/transaction/execute
 
-.[[generic-transaction-request]] Data parameters
-operation::build-transaction-request[snippets='request-fields']
+.[[generic-transfer]] Data parameters
+operation::build-generic-transfer-request[snippets='request-fields']
 
 [IMPORTANT]
 ====
@@ -312,17 +312,135 @@ Using this, you don't have to take into account the number of decimals for diffe
 
 [NOTE]
 ====
-[[build-token-address]] ^[2]^ If you want to perform a *token transfer*, add the field `tokenAddress`. For native transfers, simply omit it.
-====
-
-[NOTE]
-====
-[[build-network]] ^[3]^ (Only for Ethereum) The node to which the transaction will be send can be set manually. This can be done using the `network` parameter. +
+[[build-network]] ^[2]^ (Only for Ethereum) The node to which the transaction will be send can be set manually. This can be done using the `network` parameter. +
 This feature enables you to submit a transaction to any mainnet node of your choosing, a testnet node (e.g. Kovan, Rinkeby, …​) or a different (private) network altogether.
 ====
 
 .Data example
-operation::build-transaction-request[snippets='request-body']
+operation::build-generic-transfer-request[snippets='request-body']
+
+.Result parameters
+|===
+|Path|Type|Description
+
+|`+transactionHash+`
+|`+String+`
+|The transaction hash
+
+|===
+
+.Result example
+[source,json]
+----
+{
+  "transactionHash" : "0x621f692e386a8bc0c53d36aa793864893106e10f54f63fa9c063e24ad975d907"e
+}
+----
+
+[[token-transfer]]
+=== Generic Token Transfer link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
+This can be used to transfer tokens (ex. ERC20/VIP180/NEP5/GO20/...) from a wallet to another wallet. To start a transfer you need to:
+
+.URL
+https://connect-staging.arkane.network/transaction/execute
+
+.[[generic-token-transfer]] Data parameters
+operation::build-generic-token-transfer-request[snippets='request-fields']
+
+[IMPORTANT]
+====
+[[build-value]] ^[1]^ As *value*, we expect the "*decimal value*". If a token has 18 decimals and you want to transfer 1 token, provide the value 1. Arkane will translate this to the correct non decimal value (1 * 10e18).
+Using this, you don't have to take into account the number of decimals for different tokens.
+====
+
+[NOTE]
+====
+[[build-network]] ^[2]^ (Only for Ethereum) The node to which the transaction will be send can be set manually. This can be done using the `network` parameter. +
+This feature enables you to submit a transaction to any mainnet node of your choosing, a testnet node (e.g. Kovan, Rinkeby, …​) or a different (private) network altogether.
+====
+
+.Data example
+operation::build-generic-token-transfer-request[snippets='request-body']
+
+.Result parameters
+|===
+|Path|Type|Description
+
+|`+transactionHash+`
+|`+String+`
+|The transaction hash
+
+|===
+
+.Result example
+[source,json]
+----
+{
+  "transactionHash" : "0x621f692e386a8bc0c53d36aa793864893106e10f54f63fa9c063e24ad975d907"e
+}
+----
+
+[[gas-transfer]]
+=== Generic Gas Transfer link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
+This can be used to transfer gas (ex. NEO gas/VTHO/...) from a wallet to another wallet. To start a transfer you need to:
+
+.URL
+https://connect-staging.arkane.network/transaction/execute
+
+.[[generic-gas-transfer]] Data parameters
+operation::build-generic-gas-transfer-request[snippets='request-fields']
+
+[IMPORTANT]
+====
+[[build-value]] ^[1]^ As *value*, we expect the "*decimal value*". If a token has 18 decimals and you want to transfer 1 token, provide the value 1. Arkane will translate this to the correct non decimal value (1 * 10e18).
+Using this, you don't have to take into account the number of decimals for different tokens.
+====
+
+[NOTE]
+====
+[[build-network]] ^[2]^ (Only for Ethereum) The node to which the transaction will be send can be set manually. This can be done using the `network` parameter. +
+This feature enables you to submit a transaction to any mainnet node of your choosing, a testnet node (e.g. Kovan, Rinkeby, …​) or a different (private) network altogether.
+====
+
+.Data example
+operation::build-generic-gas-transfer-request[snippets='request-body']
+
+.Result parameters
+|===
+|Path|Type|Description
+
+|`+transactionHash+`
+|`+String+`
+|The transaction hash
+
+|===
+
+.Result example
+[source,json]
+----
+{
+  "transactionHash" : "0x621f692e386a8bc0c53d36aa793864893106e10f54f63fa9c063e24ad975d907"e
+}
+----
+
+[[nft-transfer]]
+=== Generic NFT Transfer link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
+This can be used to transfer NFT's (ex. ERC721/...) from a wallet to another wallet. To start a transfer you need to:
+
+.URL
+https://connect-staging.arkane.network/transaction/execute
+
+.[[generic-gas-transfer]] Data parameters
+operation::build-generic-nft-transfer-request[snippets='request-fields']
+
+[NOTE]
+====
+[[build-network]] ^[1]^ (Only for Ethereum) The node to which the transaction will be send can be set manually. This can be done using the `network` parameter. +
+This feature enables you to submit a transaction to any mainnet node of your choosing, a testnet node (e.g. Kovan, Rinkeby, …​) or a different (private) network altogether.
+====
+
+.Data example
+operation::build-generic-nft-transfer-request[snippets='request-body']
 
 .Result parameters
 |===

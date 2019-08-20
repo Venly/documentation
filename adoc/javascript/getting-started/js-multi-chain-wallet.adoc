@@ -461,7 +461,6 @@ $('#transaction-form').submit(async (event) => {
             to, // <4>
             value, // <4>
             secretType, // <4>
-            tokenAddress, // <4>
         });
     }
     console.log(transactionResult.result.transactionHash);  // <4>

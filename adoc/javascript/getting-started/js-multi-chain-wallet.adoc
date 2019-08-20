@@ -424,7 +424,7 @@ app.preFillTransactionTokens = (wallet, tokenBalances) => {
 ----
 
 === Execute transaction
-To wrap things up, we'll want to execute a transaction. Using Arkane Connect, this is done by creating a new `Signer` via `arkaneConnect.createSigner()` and then calling its `signer.executeTransaction(genericTransactionRequest)` function.
+To wrap things up, we'll want to execute a transaction. Using Arkane Connect, this is done by creating a new `Signer` via `arkaneConnect.createSigner()` and then calling one of the transfer functions f.e. `signer.executeTransfer(buildTransferRequestDto)` function.
 
 We'll implement this by adding a `submit` event listener on the form to process the transaction.
 
@@ -441,15 +441,29 @@ $('#transaction-form').submit(async (event) => {
   const signer = window.arkaneConnect.createSigner(); // <1>
 
   try {
-    const transactionResult = await signer.executeTransaction( // <2>
-      {
-        walletId: $("#transaction-form select[name='from']").val(), // <3>
-        to: $("#transaction-form input[name='to']").val(), // <3>
-        value: ($("#transaction-form input[name='amount']").val()), // <3>
-        secretType: $("#transaction-form input[name='secretType']").val(), // <3>
-        tokenAddress: $("#transaction-form select[name='tokenAddress']").val(), // <3>
-      }
-    );
+    const walletId = $("#transaction-form select[name='from']").val();
+    const to = $("#transaction-form select[name='to']").val();
+    const value = ($("#transaction-form input[name='amount']").val());
+    const secretType = $("#transaction-form input[name='secretType']").val();
+    const tokenAddress = $("#transaction-form select[name='tokenAddress']").val();
+    let transactionResult;
+    if(tokenAddress.length > 0) { // <2>
+        transactionResult = await signer.executeTokenTransfer({ // <3>
+            walletId, // <4>
+            to, // <4>
+            value, // <4>
+            secretType, // <4>
+            tokenAddress, // <4>
+        });
+    } else {
+        transactionResult = await signer.executeTransfer({ // <3>
+            walletId, // <4>
+            to, // <4>
+            value, // <4>
+            secretType, // <4>
+            tokenAddress, // <4>
+        });
+    }
     console.log(transactionResult.result.transactionHash);  // <4>
   }
   catch (reason) {
@@ -458,6 +472,7 @@ $('#transaction-form').submit(async (event) => {
 });
 ----
 <.> Creating the signer instance (+ opening the popup)
+<.> Check if we need a normal transfer or a token transfer
 <.> Execute the transaction
 <.> Passing the form data
 <.> Logging the transactionHash to the console

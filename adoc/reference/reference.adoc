@@ -430,7 +430,7 @@ This can be used to transfer NFT's (ex. ERC721/...) from a wallet to another wal
 .URL
 https://connect-staging.arkane.network/transaction/execute
 
-.[[generic-gas-transfer]] Data parameters
+.[[generic-nft-transfer]] Data parameters
 operation::build-generic-nft-transfer-request[snippets='request-fields']
 
 [NOTE]

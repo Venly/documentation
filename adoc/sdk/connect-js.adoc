@@ -746,7 +746,7 @@ signer.executeTransfer({
 });
 ----
 
-=== Token transfer link:reference.html#transfer[[.small]#+[Reference]+#]
+=== Token transfer link:reference.html#token-transfer[[.small]#+[Reference]+#]
 .Signature
 [source,javascript,options="nowrap"]
 ----
@@ -767,7 +767,7 @@ Returns `Promise++<++<<signer-result,SignerResult>>++>++`
 ----
 const signer = arkaneConnect.createSigner();
 
-signer.executeTransfer({
+signer.executeTokenTransfer({
     walletId: '71dec640-4eb8-4321-adb8-b79461573fc4',
     to: '0xf147cA0b981C0CD0955D1323DB9980F4B43e9FED',
     value: 1010,
@@ -805,7 +805,7 @@ Returns `Promise++<++<<signer-result,SignerResult>>++>++`
 ----
 const signer = arkaneConnect.createSigner();
 
-signer.executeGasTransfer({
+signer.executeNftTransfer({
     walletId: '71dec640-4eb8-4321-adb8-b79461573fc4',
     to: '0xf147cA0b981C0CD0955D1323DB9980F4B43e9FED',
     tokenAddress: '0x158b6a3540eeced8ecb40f9389e88f0902a3da9f'

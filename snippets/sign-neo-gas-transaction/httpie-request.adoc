@@ -1,0 +1,12 @@
+[source,bash]
+----
+$ echo '{
+  "type" : "NEO_GAS_TRANSACTION",
+  "walletId" : "1",
+  "submit" : false,
+  "network" : null,
+  "to" : "AbArunq3PGYmQv4xhduTKva7r2ppUqeaDi",
+  "value" : 12
+}' | http POST 'http://localhost:8080/api/signatures' \
+    'Content-Type:application/json;charset=UTF-8'
+----

@@ -643,7 +643,7 @@ signer.confirm({ secretType: 'TRON', confirmationRequestType: 'CREATE_APPLICATIO
 .Signature
 [source,javascript,options="nowrap"]
 ----
-signer.executeTransaction(transactionRequestID: string, redirectOptions?: RedirectOptions): Promise<SignerResult>
+signer.executeSavedTransaction(transactionRequestId: string, redirectOptions?: RedirectOptions): Promise<SignerResult>
 ----
 Returns `Promise++<++<<signer-result,SignerResult>>++>++`
 
@@ -653,7 +653,7 @@ When successful, the `SignerResult.data`-property will contain the transaction h
 [cols="1,1,3"]
 |===
 | Parameter | Required | Description
-| `transactionRequestID` | true | The ID of the transaction request you want the user to sign off.
+| `transactionRequestId` | true | The ID of the transaction request you want the user to sign off.
 | `redirectOptions` | false | The <<redirectOptions,RedirectOptions>> you want to pass.
 |===
 
@@ -709,11 +709,11 @@ if (arkaneConnect.isPopupSigner(signer)) {
 ----
 If you want to close the signer popup manually (e.g. if something goes wrong between opening it and submitting the `transactionRequest`), you can use above code snippet to close it. The type guard, isn't mandatory, but it makes the code more robust.
 
-=== Generic transaction link:reference.html#transfer[[.small]#+[Reference]+#]
+=== Simple transfer link:reference.html#transfer[[.small]#+[Reference]+#]
 .Signature
 [source,javascript,options="nowrap"]
 ----
-signer.executeTransaction(transactionRequest, options?): Promise<SignerResult>
+signer.executeTransfer(transferRequestDto, options?): Promise<SignerResult>
 ----
 Returns `Promise++<++<<signer-result,SignerResult>>++>++`
 
@@ -721,7 +721,7 @@ Returns `Promise++<++<<signer-result,SignerResult>>++>++`
 [cols="1,1,3"]
 |===
 | Parameter | Required | Description
-| `transactionRequest` | true | The transaction request you want to execute. For more info on how this request should look like, see link:reference.html#generic-transaction-request[reference].
+| `transferRequestDto` | true | The transfer request you want to execute. For more info on how this request should look like, see link:reference.html#generic-transfer[reference].
 | `options` | false | The <<signer-options,options>> you want to pass.
 |===
 
@@ -730,11 +730,124 @@ Returns `Promise++<++<<signer-result,SignerResult>>++>++`
 ----
 const signer = arkaneConnect.createSigner();
 
-signer.executeTransaction({
+signer.executeTransfer({
     walletId: '71dec640-4eb8-4321-adb8-b79461573fc4',
     to: '0xf147cA0b981C0CD0955D1323DB9980F4B43e9FED',
     value: 3.14159265359,
     secretType: 'ETHEREUM',
+}).then((signerResult) => {
+   if (signerResult.success) {
+       console.log(`Transaction ${signerResult.result.transactionHash} has been successfully executed!`);
+   } else {
+       console.warn(`Something went wrong while executing the transaction`);
+   }
+}).catch((reason) => {
+    console.log(error);
+});
+----
+
+=== Token transfer link:reference.html#token-transfer[[.small]#+[Reference]+#]
+.Signature
+[source,javascript,options="nowrap"]
+----
+signer.executeTokenTransfer(tokenTransferRequestDto, options?): Promise<SignerResult>
+----
+Returns `Promise++<++<<signer-result,SignerResult>>++>++`
+
+.Parameters
+[cols="1,1,3"]
+|===
+| Parameter | Required | Description
+| `tokenTransferRequestDto` | true | The transfer request you want to execute. For more info on how this request should look like, see link:reference.html#generic-token-transfer[reference].
+| `options` | false | The <<signer-options,options>> you want to pass.
+|===
+
+.Full example
+[source,javascript,options="nowrap"]
+----
+const signer = arkaneConnect.createSigner();
+
+signer.executeTokenTransfer({
+    walletId: '71dec640-4eb8-4321-adb8-b79461573fc4',
+    to: '0xf147cA0b981C0CD0955D1323DB9980F4B43e9FED',
+    value: 1010,
+    tokenAddress: '0x02f96ef85cad6639500ca1cc8356f0b5ca5bf1d2'
+    secretType: 'ETHEREUM',
+}).then((signerResult) => {
+    if (signerResult.success) {
+        console.log(`Transaction ${signerResult.result.transactionHash} has been successfully executed!`);
+    } else {
+        console.warn(`Something went wrong while executing the transaction`);
+    }
+}).catch((reason) => {
+    console.log(error);
+});
+----
+
+=== NFT transfer link:reference.html#nft-transfer[[.small]#+[Reference]+#]
+.Signature
+[source,javascript,options="nowrap"]
+----
+signer.executeNftTransfer(nftTransferRequestDto, options?): Promise<SignerResult>
+----
+Returns `Promise++<++<<signer-result,SignerResult>>++>++`
+
+.Parameters
+[cols="1,1,3"]
+|===
+| Parameter | Required | Description
+| `nftTransferRequestDto` | true | The transfer request you want to execute. For more info on how this request should look like, see link:reference.html#generic-nft-transfer[reference].
+| `options` | false | The <<signer-options,options>> you want to pass.
+|===
+
+.Full example
+[source,javascript,options="nowrap"]
+----
+const signer = arkaneConnect.createSigner();
+
+signer.executeNftTransfer({
+    walletId: '71dec640-4eb8-4321-adb8-b79461573fc4',
+    to: '0xf147cA0b981C0CD0955D1323DB9980F4B43e9FED',
+    tokenAddress: '0x158b6a3540eeced8ecb40f9389e88f0902a3da9f'
+    tokenId: '65'
+    secretType: 'ETHEREUM',
+}).then((signerResult) => {
+    if (signerResult.success) {
+        console.log(`Transaction ${signerResult.result.transactionHash} has been successfully executed!`);
+    } else {
+        console.warn(`Something went wrong while executing the transaction`);
+    }
+}).catch((reason) => {
+    console.log(error);
+});
+----
+
+=== Gas transfer link:reference.html#gas-transfer[[.small]#+[Reference]+#]
+.Signature
+[source,javascript,options="nowrap"]
+----
+signer.executeGasTransfer(gasTransferRequestDto, options?): Promise<SignerResult>
+----
+Returns `Promise++<++<<signer-result,SignerResult>>++>++`
+
+.Parameters
+[cols="1,1,3"]
+|===
+| Parameter | Required | Description
+| `gasTransferRequestDto` | true | The transfer request you want to execute. For more info on how this request should look like, see link:reference.html#generic-gas-transfer[reference].
+| `options` | false | The <<signer-options,options>> you want to pass.
+|===
+
+.Full example
+[source,javascript,options="nowrap"]
+----
+const signer = arkaneConnect.createSigner();
+
+signer.executeGasTransfer({
+    walletId: '6683c01d-2e10-4982-9b3a-c6ecd45896bb',
+    to: 'AN2VD52SLntUGFwzZyjzsRqBBkUzjKpKpT',
+    value: 18,
+    secretType: 'NEO',
 }).then((signerResult) => {
    if (signerResult.success) {
        console.log(`Transaction ${signerResult.result.transactionHash} has been successfully executed!`);

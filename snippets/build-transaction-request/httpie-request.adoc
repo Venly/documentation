@@ -8,6 +8,8 @@ $ echo '{
   "secretType" : "VECHAIN",
   "tokenAddress" : "0x0000000000000000000000000000456E65726779",
   "data" : null,
+  "from" : null,
+  "tokenId" : null,
   "network" : {
     "name" : "Rinkeby",
     "nodeUrl" : "https://rinkeby.infura.io",

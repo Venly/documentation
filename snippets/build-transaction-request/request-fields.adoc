@@ -15,7 +15,7 @@
 |`+secretType+`
 |`+String+`
 |Which chain you want to do a transaction for
-|Mandatory. Must be one of: [AETERNITY, BITCOIN, ETHEREUM, GOCHAIN, LITECOIN, TRON, VECHAIN]
+|Mandatory. Must be one of: [AETERNITY, BITCOIN, ETHEREUM, GOCHAIN, LITECOIN, TRON, VECHAIN, NEO]
 |`+tokenAddress+`
 |`+String+`
 |<<build-token-address, ^[2]^>> The address of the token to be used in this transaction
@@ -24,6 +24,14 @@
 |`+Object+`
 |<<build-network, ^[3]^>> The network to submit the transaction to
 |Optional. Currently supported chains: [ETHEREUM]
+|`+tokenId+`
+|`+Null+`
+|The id of the non fungible token
+|Optional
+|`+from+`
+|`+Null+`
+|The wallet containing the non fungible token. By default this will be the current wallet
+|Optional
 |`+network.name+`
 |`+String+`
 |The display name of the network to submit the transaction to (e.g.: "Rinkeby"). This will be shown to the user when signing the transaction

@@ -1,0 +1,23 @@
+[source,http,options="nowrap"]
+----
+HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+Content-Length: 429
+
+{
+  "walletId" : "edc4c08a-b8fa-4e4c-z5a2-92c87b80f174",
+  "pincode" : null,
+  "blockRef" : null,
+  "chainTag" : null,
+  "expiration" : 0,
+  "gas" : 23000,
+  "gasPriceCoef" : 0,
+  "nonce" : "0xd6c88ad6c6751c60",
+  "clauses" : [ {
+    "to" : "0xdc71b72db51e227e65a45004ab2798d31e8934c9",
+    "amount" : 10000000000,
+    "tokenAddress" : "0x0000000000000000000000000000456E65726779"
+  } ],
+  "type" : "VECHAIN_VIP180_TRANSACTION"
+}
+----

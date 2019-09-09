@@ -7,7 +7,7 @@ $ echo '{
   "expiration" : 3,
   "gas" : 23000,
   "gasPriceCoef" : 46576,
-  "nonce" : "9ece47b5-0416-4717-8897-5320a0e9a8a6",
+  "nonce" : "0d468b21-e2f3-44c4-b3d2-a84b7ae37503",
   "clauses" : [ {
     "to" : "0xdc71b72db51e227e65a45004ab2798d31e8934c9",
     "amount" : 10000000000,

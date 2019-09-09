@@ -1,0 +1,9 @@
+|===
+|Path|Type|Description
+|`+success+`
+|`+Boolean+`
+|See if the response contains a result
+|`+result.signedTransaction+`
+|`+String+`
+|the transactionHash, which is only available if it has been submitted to the blockchain
+|===

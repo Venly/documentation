@@ -464,7 +464,7 @@ operation::build-generic-nft-transfer-request[snippets='request-body']
 [[generic-contract-execution]]
 === Generic contract execution link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
 Generic endpoint to execute a function on a smart contract (write) on any (supported) blockchain.
-As a result, a new transaction will be submitted to the networking containing the smart contract execution.
+As a result, a new transaction will be submitted to the network containing the smart contract execution.
 
 .URL
 https://connect-staging.arkane.network/transaction/execute

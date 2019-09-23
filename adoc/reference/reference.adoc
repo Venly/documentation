@@ -460,6 +460,47 @@ operation::build-generic-nft-transfer-request[snippets='request-body']
 }
 ----
 
+
+[[generic-contract-execution]]
+=== Generic contract execution link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
+Generic endpoint to execute a function on a smart contract (write) on any (supported) blockchain.
+As a result, a new transaction will be submitted to the network containing the smart contract execution.
+
+.URL
+https://connect-staging.arkane.network/transaction/execute
+
+.[[generic-contract-execution-data-parameters]] Data parameters
+operation::build-generic-contract-execution[snippets='request-fields']
+
+[NOTE]
+====
+[[build-network]] ^[1]^ (Only for Ethereum) The node to which the transaction will be send can be set manually. This can be done using the `network` parameter. +
+This feature enables you to submit a transaction to any mainnet node of your choosing, a testnet node (e.g. Kovan, Rinkeby, …​) or a different (private) network altogether.
+====
+
+.Data example
+This example will execute an ERC20 transfer using the direct execution of the smart contract function "transfer".
+The inputs for this function are: destination (address) and amount (uint265)
+operation::build-generic-contract-execution[snippets='request-body']
+
+.Result parameters
+|===
+|Path|Type|Description
+
+|`+transactionHash+`
+|`+String+`
+|The transaction hash
+
+|===
+
+.Result example
+[source,json]
+----
+{
+  "transactionHash" : "0x621f692e386a8bc0c53d36aa793864893106e10f54f63fa9c063e24ad975d907"e
+}
+----
+
 [[native-transactions]]
 
 === Ethereum

@@ -235,6 +235,8 @@ https://connect-staging.arkane.network/confirm
 
 |===
 
+
+
 === Create a transaction link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
 Creating a transaction is done by sending the transaction to Arkane API using the bearer token of your <<clientId_app-client, <clientId>_app-client>>. +
 In this example we are doing a generic <<transfer, transfer>>, but you can submit any type of transaction described under <<transactions, Transactions>> as long as the provided
@@ -291,6 +293,10 @@ In the case for a user wallet, the type of the wallet needs to be updated to:
 `THREEWAY_SHARED`
 
 operation::update-wallet-type[snippets='http-request,path-parameters,http-response']
+
+== Whitelabel Wallet
+
+Arkane also offers whitelabel wallets. link:whitelabel.html[Go to documentation]
 
 == [[transactions]] Transactions
 
@@ -1006,7 +1012,7 @@ operation::execute-neo-gas-transaction[snippets='response-fields']
 .Result example
 operation::execute-neo-gas-transaction[snippets='response-body']
 
-==== [[sign-neo-raw-message]] Sign Raw NEO Message link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
+==== [[sign-neo-message]] Sign Raw NEO Message link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
 To sign a raw neo transaction, use the connect building block with:
 
 .URL
@@ -1014,16 +1020,16 @@ https://connect-staging.arkane.network/transaction/execute/neo_raw
 
 
 .Data parameters
-operation::sign-neo-raw-message[snippets='request-fields']
+operation::sign-neo-message[snippets='request-fields']
 
 .Data example
-operation::sign-neo-raw-message[snippets='request-body']
+operation::sign-neo-message[snippets='request-body']
 
 .Result parameters
-operation::sign-neo-raw-message[snippets='response-fields']
+operation::sign-neo-message[snippets='response-fields']
 
 .Result example
-operation::sign-neo-raw-message[snippets='response-body']
+operation::sign-neo-message[snippets='response-body']
 
 ==== Sign message link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
 Sign a message (arbitrary data).

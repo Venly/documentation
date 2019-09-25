@@ -1,0 +1,69 @@
+|===
+|Path|Type|Description|Constraints
+
+|`+type+`
+|`+String+`
+|The type of the transaction. ex: ETHEREUM_TRANSACTION.
+|Mandatory, possible values: ETHEREUM_TRANSACTION, ETHEREUM_RAW, VECHAIN_TRANSACTION, GOCHAIN_TRANSACTION, GOCHAIN_RAW, BITCOIN_TRANSACTION, LITECOIN_TRANSACTION, TRX_TRANSACTION, TRC10_TRANSACTION, TRON_RAW
+
+|`+walletId+`
+|`+String+`
+|The id of the wallet one wants to sign with.
+|Mandatory
+
+|`+gasPrice+`
+|`+Number+`
+|The gas price of the transaction
+|Optional (default gas price is used otherwise), must be > 0
+
+|`+gas+`
+|`+Number+`
+|The amount of gas to use for the transaction (unused gas is refunded)
+|Optional (by default calculated), must be >= 0
+
+|`+value+`
+|`+Number+`
+|The value transferred for the transaction in Wei, also the endowment if it's a contract-creation transaction
+|Mandatory, must be >= 0
+
+|`+data+`
+|`+String+`
+|Either a byte string containing the associated data of the message, or in the case of a contract-creation transaction, the initialisation code
+|Optional
+
+|`+data+`
+|`+String+`
+|Either a byte string containing the associated data of the message, or in the case of a contract-creation transaction, the initialisation code
+|Optional
+
+|`+network+`
+|`+Object+`
+|The network to submit the transaction to
+|Optional
+
+|`+network.name+`
+|`+String+`
+|The display name of the network to submit the transaction to (e.g.: "Rinkeby"). This will be shown to the user when signing the transaction
+|Required. Free text
+
+|`+network.nodeUrl+`
+|`+String+`
+|The URL of the node to submit the transaction to (e.g.: "https://rinkeby.infura.io")
+|Required
+
+|`+nonce+`
+|`+Number+`
+|Integer of a nonce. This allows to overwrite your own pending transactions that use the same nonce.
+|Optional (next nonce will be used by defaut), must be >= 0
+
+|`+to+`
+|`+String+`
+|The destination address of the transaction.
+|Mandatory, a valid ethereum address
+
+|`+submit+`
+|`+Boolean+`
+|Whether to immediately submit the transaction to the blockchain or not.
+|Optional, false by default
+
+|===

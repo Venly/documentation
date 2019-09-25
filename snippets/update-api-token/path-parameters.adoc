@@ -1,6 +1,0 @@
-.+/api/apitokens/{apiTokenId}+
-|===
-|Parameter|Description
-|`+apiTokenId+`
-|Id of the token to update
-|===

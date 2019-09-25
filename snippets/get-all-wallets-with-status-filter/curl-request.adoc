@@ -1,4 +1,0 @@
-[source,bash]
-----
-$ curl 'https://api.arkane.network/api/wallets?status=AVAILABLE&status=archived' -i -X GET
-----

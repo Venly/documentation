@@ -1,0 +1,8 @@
+[source,bash]
+----
+$ echo '{
+  "pincode" : "1234",
+  "newPincode" : "5678"
+}' | http PATCH 'https://api.arkane.network/api/profile' \
+    'Content-Type:application/json;charset=UTF-8'
+----

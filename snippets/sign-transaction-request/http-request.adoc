@@ -1,9 +1,0 @@
-[source,http,options="nowrap"]
-----
-PUT /api/transactions/daeab218-91f1-4aed-b131-2626a700e386 HTTP/1.1
-Content-Type: application/json;charset=UTF-8
-Host: api.arkane.network
-Content-Length: 24
-{
-}
-----

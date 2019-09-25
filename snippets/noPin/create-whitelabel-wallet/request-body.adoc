@@ -1,0 +1,10 @@
+[source,options="nowrap"]
+----
+{
+  "alias" : "alias",
+  "description" : "description",
+  "identifier" : "identifier",
+  "secretType" : "ETHEREUM",
+  "walletType" : "WHITE_LABEL"
+}
+----

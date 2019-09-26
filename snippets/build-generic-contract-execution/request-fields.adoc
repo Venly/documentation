@@ -13,7 +13,7 @@
 
 |`+value+`
 |`+Number+`
-|The value transferred for the transaction in the token value
+|The amount that will be sent with the contract execution. Value will be passed as-is. This means that for example in Etheruem the value is in WEI
 |Optional, default = 0, must be >= 0
 
 |`+secretType+`

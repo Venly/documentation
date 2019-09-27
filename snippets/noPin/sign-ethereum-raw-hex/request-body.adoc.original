@@ -3,7 +3,6 @@
 {
   "type" : "ETHEREUM_RAW",
   "walletId" : "1",
-  "pincode" : "31345",
   "data" : "Some data",
   "hash" : true,
   "prefix" : true

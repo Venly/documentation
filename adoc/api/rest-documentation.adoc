@@ -1,0 +1,188 @@
+== Wallet
+
+This section describes all actions related to wallets.
+
+=== [[create-wallet]] Create wallet link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
+Create a whitelabel wallet
+
+operation::create-whitelabel-wallet[snippets='curl-request,http-response,response-fields'&pincode=true]
+
+=== [[list-wallets]] List wallets link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
+Returns all the wallets for the client
+
+operation::get-wallets[snippets='curl-request,http-response,response-fields'&pincode=true]
+
+It's also possible to filter based on secret type
+
+operation::get-wallets-filtered[snippets='request-parameters'&pincode=true]
+
+
+[[get-specific-user-wallet]]
+=== [[get-wallet]] Get wallet link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
+Returns the details for a specific wallet (native balance is also included)
+
+operation::get-wallet[snippets='curl-request,path-parameters,http-response,response-fields'&pincode=true]
+
+=== [[get-balance]] Native balance link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
+Returns the "native" balance for a wallet. This is the balance of the native token used by the chain. Ex. ETH for Ethereum.
+
+operation::get-balance[snippets='curl-request,path-parameters,http-response,response-fields'&pincode=true]
+
+=== [[get-token-balances]] Token balances link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
+Returns the balance of all tokens currently supported by Arkane. The list of supported tokens can be found on https://github.com/ArkaneNetwork/content-management/tree/master/tokens[Github].
+
+operation::get-token-balances[snippets='curl-request,http-response,response-fields'&pincode=true]
+
+=== [[get-token-balance]] Specific token balance link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
+Returns the token balance for a specified token (this can be any token).
+
+operation::get-token-balance[snippets='curl-request,path-parameters,http-response,response-fields'&pincode=true]
+
+=== [[nft-get-for-address]] List Non Fungible Tokens (NFT's) link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
+
+[WARNING]
+====
+Currently this functionallity is only supported for Ethereum wallets (ERC-721), other chains will follow
+====
+
+Returns the list of NFT's owned by a wallet
+
+operation::list-non-fungibles[snippets='curl-request,path-parameters,request-parameters,http-response,response-fields'&pincode=true]
+
+=== [[wallet-error-codes]] Error codes
+
+|===
+|Error Code | Meaning
+
+|wallet.archived
+|The wallet that is used appears to be archived
+
+|wallet.forbidden
+|Wallet to update was not found or does not belong to the correct user
+
+|wallet.balance.not.supported.yet
+|Getting the balance for chain is not supported yet
+
+|wallet.encrypt.internal-error
+|Problem while trying to encrypt user secret
+
+|wallet.decrypt.internal-error
+|A problem occurred while trying to access your wallet. Please contact support
+
+|wallet.secret.not-found
+|The specified secret was not found in our vault
+
+|wallet.secret.internal-error
+|An unknown error occurred when trying to fetch the secret. Please contact support.
+|===
+
+== [[transactions]] Transactions
+
+[[transfer]]
+=== Transfer
+
+.[[generic-transaction-request]] Data parameters
+operation::build-generic-transfer-request[snippets='request-fields'&pincode=true]
+
+[NOTE]
+====
+[[build-network]] ^[3]^ (Only for Ethereum) The node to which the transaction will be send can be set manually. This can be done using the `network` parameter. +
+This feature enables you to submit a transaction to any mainnet node of your choosing, a testnet node (e.g. Kovan, Rinkeby, …​) or a different (private) network altogether.
+====
+
+.Data example
+operation::build-generic-transfer-request[snippets='curl-request'&pincode=true]
+
+.Result parameters
+|===
+|Path|Type|Description
+
+|`+transactionHash+`
+|`+String+`
+|The transaction hash
+
+|===
+
+.Result example
+[source,json]
+----
+{
+  "transactionHash" : "0x621f692e386a8bc0c53d36aa793864893106e10f54f63fa9c063e24ad975d907"
+}
+----
+
+
+=== Token Transfer
+
+.[[generic-token-transfer-request]] Data parameters
+operation::build-generic-token-transfer-request[snippets='request-fields'&pincode=true]
+
+.Data example
+operation::build-generic-token-transfer-request[snippets='curl-request'&pincode=true]
+
+.Result example
+
+operation::build-generic-token-transfer-request[snippets='response-body'&pincode=true]
+
+=== NFT Transfer
+
+
+.[[generic-nft-transfer-request]] Data parameters
+operation::build-generic-nft-transfer-request[snippets='request-fields'&pincode=true]
+
+.Data example
+operation::build-generic-nft-transfer-request[snippets='curl-request'&pincode=true]
+
+.Result example
+
+operation::build-generic-nft-transfer-request[snippets='response-body'&pincode=true]
+
+=== Gas Transfer
+
+
+.[[generic-gas-transfer-request]] Data parameters
+operation::build-generic-gas-transfer-request[snippets='request-fields'&pincode=true]
+
+.Data example
+operation::build-generic-gas-transfer-request[snippets='curl-request'&pincode=true]
+
+.Result example
+
+operation::build-generic-gas-transfer-request[snippets='response-body'&pincode=true]
+
+== Swap
+This section describes how to use the swapping functionality within Arkane. It allows you to swap/exchange a (native) token to (native) token.
+
+=== [[swap-get-trading-pairs]] Trading pairs link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
+Returns the list of possible trading pairs for a given wallet.
+
+operation::swap-tradingpairs[snippets='curl-request,path-parameters,http-response,response-fields'&pincode=true]
+
+=== [[swap-get-exchange-rate]] Exchange rate link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
+Returns the exchange rates for a specified swap.
+
+operation::swap-exchangerate[snippets='curl-request,request-parameters,http-response,response-fields'&pincode=true]
+
+=== [[swap-get-exchange-rate]] Create swap link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
+Creates the transaction requests that are needed to execute the swap. With this result (the transaction requests), you will need to call the native transactions
+endpoint to execute the swap. Ex. for VeChain, use the output from this call to the input of: <<execute-vet-transaction, Execute VET transaction>>
+
+operation::swap[snippets='curl-request,path-parameters,http-response,response-fields'&pincode=true]
+
+=== [[swap-error-codes]] Swap Error Tokens
+
+|===
+|Error Code | Meaning
+
+|swap.no-exchange-found
+|No SwapService found for SwapExchange
+
+|swap.uniswap.get-price.failed
+|Unable to get the price of a token on uniswap
+
+|swap.uniswap.allowance-error
+|Unable to get allowance for token on uniswap
+
+|swap.uniswap.exchange-not-found
+|An exchange contract for a token on uniswap could not be found
+|===

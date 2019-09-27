@@ -4,11 +4,9 @@ POST /api/signatures HTTP/1.1
 Host: api.arkane.network
 Content-Length: 370
 Content-Type: application/json;charset=UTF-8
-
 {
   "type" : "VECHAIN_TRANSACTION",
   "walletId" : "1",
-  "pincode" : "54973",
   "submit" : false,
   "network" : null,
   "blockRef" : "0x1",

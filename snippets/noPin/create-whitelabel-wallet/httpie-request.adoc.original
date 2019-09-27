@@ -1,7 +1,6 @@
 [source,bash]
 ----
 $ echo '{
-  "pincode" : "1234",
   "alias" : "alias",
   "description" : "description",
   "identifier" : "identifier",

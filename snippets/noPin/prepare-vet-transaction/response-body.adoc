@@ -1,0 +1,11 @@
+[source,options="nowrap"]
+----
+{
+  "gasPriceCoefficients" : [ {
+    "gasPriceCoef" : 0,
+    "defaultPrice" : true
+  } ],
+  "gasLimit" : 21000,
+  "reverted" : false
+}
+----

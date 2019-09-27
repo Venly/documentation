@@ -1,0 +1,39 @@
+|===
+|Path|Type|Description|Constraints
+
+|`+type+`
+|`+String+`
+|type of the signature request
+|Mandatory, possible values: ETHEREUM_TRANSACTION, VECHAIN_TRANSACTION, GOCHAIN_TRANSACTION, BITCOIN_TRANSACTION, LITECOIN_TRANSACTION, TRX_TRANSACTION, TRC10_TRANSACTION
+
+|`+walletId+`
+|`+String+`
+|The id of the wallet one wants to sign with.
+|Mandatory
+
+|`+pincode+`
+|`+String+`
+|The pincode of the specified wallet
+|Mandatory, must be between 4-6 digits
+
+|`+submit+`
+|`+Boolean+`
+|Whether to immediately submit the transaction to the blockchain or not.
+|Optional, false by default
+
+|`+to+`
+|`+String+`
+|The destination address of the transaction.
+|Mandatory, a valid bitcoin address
+
+|`+feePerByte+`
+|`+Number+`
+|The fee per byte for the transaction (satoshi value)
+|Optional
+
+|`+value+`
+|`+Number+`
+|value in satoshi
+|must be >= 0
+
+|===

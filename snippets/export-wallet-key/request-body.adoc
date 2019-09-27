@@ -1,7 +1,0 @@
-[source,options="nowrap"]
-----
-{
-  "walletId" : "1",
-  "password" : "secret-password"
-}
-----

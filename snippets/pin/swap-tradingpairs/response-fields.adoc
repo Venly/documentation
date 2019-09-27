@@ -1,0 +1,32 @@
+|===
+|Path|Type|Description
+
+|`+[]+`
+|`+Array+`
+|The available trading pairs for this wallet
+
+|`+[].from.secretType+`
+|`+String+`
+|Source secret type
+
+|`+[].from.symbol+`
+|`+String+`
+|Source token symbol (native token symbol will also be present (ex. VET)
+
+|`+[].from.tokenAddress+`
+|`+String+`
+|Optional token address, when empty it represents the native token (ex. VET)
+
+|`+[].to.secretType+`
+|`+String+`
+|Destination secret type
+
+|`+[].to.symbol+`
+|`+String+`
+|Destination token symbol (native token symbol will also be present (ex. VET)
+
+|`+[].to.tokenAddress+`
+|`+String+`
+|Destination token address, when empty it represents the native token (VET)
+
+|===

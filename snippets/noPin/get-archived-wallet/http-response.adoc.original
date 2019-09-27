@@ -1,0 +1,19 @@
+[source,http,options="nowrap"]
+----
+HTTP/1.1 200 OK
+Content-Length: 325
+Content-Type: application/json;charset=UTF-8
+
+{
+  "id" : "1",
+  "address" : "0xdc72b72db54e227e65a45004ab2798d31e8934c2",
+  "walletType" : "THREEWAY_SHARED",
+  "secretType" : "ETHEREUM",
+  "createdAt" : [ 2019, 9, 25, 8, 21, 36, 128104000 ],
+  "archived" : false,
+  "alias" : "aliasEth",
+  "description" : "descriptionEth",
+  "primary" : false,
+  "hasCustomPin" : false
+}
+----

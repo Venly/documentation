@@ -1,9 +1,0 @@
-|===
-|Path|Type|Description
-|`+success+`
-|`+Boolean+`
-|See if the response contains a result
-|`+result+`
-|`+Array+`
-|The list of all supported chains
-|===

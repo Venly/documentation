@@ -235,6 +235,8 @@ https://connect-staging.arkane.network/confirm
 
 |===
 
+
+
 === Create a transaction link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
 Creating a transaction is done by sending the transaction to Arkane API using the bearer token of your <<clientId_app-client, <clientId>_app-client>>. +
 In this example we are doing a generic <<transfer, transfer>>, but you can submit any type of transaction described under <<transactions, Transactions>> as long as the provided
@@ -291,6 +293,10 @@ In the case for a user wallet, the type of the wallet needs to be updated to:
 `THREEWAY_SHARED`
 
 operation::update-wallet-type[snippets='http-request,path-parameters,http-response']
+
+== Whitelabel Wallet
+
+Arkane also offers whitelabel wallets. link:whitelabel.html[Go to documentation]
 
 == [[transactions]] Transactions
 
@@ -459,6 +465,82 @@ operation::build-generic-nft-transfer-request[snippets='request-body']
   "transactionHash" : "0x621f692e386a8bc0c53d36aa793864893106e10f54f63fa9c063e24ad975d907"e
 }
 ----
+
+
+[[generic-contract-execution]]
+=== Generic contract execution link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
+Generic endpoint to execute a function on a smart contract (write) on any (supported) blockchain.
+As a result, a new transaction will be submitted to the network containing the smart contract execution.
+
+.URL
+https://connect-staging.arkane.network/transaction/execute
+
+.[[generic-contract-execution-data-parameters]] Data parameters
+operation::build-generic-contract-execution[snippets='request-fields']
+
+[NOTE]
+====
+[[build-network]] ^[1]^ (Only for Ethereum) The node to which the transaction will be send can be set manually. This can be done using the `network` parameter. +
+This feature enables you to submit a transaction to any mainnet node of your choosing, a testnet node (e.g. Kovan, Rinkeby, …​) or a different (private) network altogether.
+====
+
+.Data example
+This example will execute an ERC20 transfer using the direct execution of the smart contract function "transfer".
+The inputs for this function are: destination (address) and amount (uint265)
+operation::build-generic-contract-execution[snippets='request-body']
+
+.Result parameters
+|===
+|Path|Type|Description
+
+|`+transactionHash+`
+|`+String+`
+|The transaction hash
+
+|===
+
+.Result example
+[source,json]
+----
+{
+  "transactionHash" : "0x621f692e386a8bc0c53d36aa793864893106e10f54f63fa9c063e24ad975d907"
+}
+----
+
+==== Supported chains
+.Ethereum
+All solidity types are supported:
+[source]
+----
+address, bool, bytes, bytes1, bytes2, bytes3, bytes4, bytes5, bytes6, bytes7, bytes8, bytes9, bytes10, bytes11, bytes12, bytes13, bytes14, bytes15, bytes16, bytes17, bytes18, bytes19, bytes20, bytes21, bytes22, bytes23, bytes24, bytes25, bytes26, bytes27, bytes28, bytes29, bytes30, bytes31, bytes32, int8, int16, int24, int32, int40, int48, int56, int64, int72, int80, int88, int96, int104, int112, int120, int128, int136, int144, int152, int160, int168, int176, int184, int192, int200, int208, int216, int224, int232, int240, int248, int256, string, uint8, uint16, uint24, uint32, uint40, uint48, uint56, uint64, uint72, uint80, uint88, uint96, uint104, uint112, uint120, uint128, uint136, uint144, uint152, uint160, uint168, uint176, uint184, uint192, uint200, uint208, uint216, uint224, uint232, uint240, uint248, uint256
+----
+
+For arrays, please provide the type from above followed by square braces ( ex: uint256[] ). The values for an array must be surrounded with square brackets and delimited with "," (ex. [1,2,3]).
+
+Byte values must be hex encoded.
+
+.Vechain
+All solidity types are supported:
+[source]
+----
+address, bool, bytes, bytes1, bytes2, bytes3, bytes4, bytes5, bytes6, bytes7, bytes8, bytes9, bytes10, bytes11, bytes12, bytes13, bytes14, bytes15, bytes16, bytes17, bytes18, bytes19, bytes20, bytes21, bytes22, bytes23, bytes24, bytes25, bytes26, bytes27, bytes28, bytes29, bytes30, bytes31, bytes32, int8, int16, int24, int32, int40, int48, int56, int64, int72, int80, int88, int96, int104, int112, int120, int128, int136, int144, int152, int160, int168, int176, int184, int192, int200, int208, int216, int224, int232, int240, int248, int256, string, uint8, uint16, uint24, uint32, uint40, uint48, uint56, uint64, uint72, uint80, uint88, uint96, uint104, uint112, uint120, uint128, uint136, uint144, uint152, uint160, uint168, uint176, uint184, uint192, uint200, uint208, uint216, uint224, uint232, uint240, uint248, uint256
+----
+
+For arrays, please provide the type from above followed by square braces ( ex: uint256[] ). The values for an array must be surrounded with square brackets and delimited with "," (ex. [1,2,3]).
+
+Byte values must be hex encoded.
+
+.Tron
+All solidity types are supported:
+[source]
+----
+address, bool, bytes, bytes1, bytes2, bytes3, bytes4, bytes5, bytes6, bytes7, bytes8, bytes9, bytes10, bytes11, bytes12, bytes13, bytes14, bytes15, bytes16, bytes17, bytes18, bytes19, bytes20, bytes21, bytes22, bytes23, bytes24, bytes25, bytes26, bytes27, bytes28, bytes29, bytes30, bytes31, bytes32, int8, int16, int24, int32, int40, int48, int56, int64, int72, int80, int88, int96, int104, int112, int120, int128, int136, int144, int152, int160, int168, int176, int184, int192, int200, int208, int216, int224, int232, int240, int248, int256, string, uint8, uint16, uint24, uint32, uint40, uint48, uint56, uint64, uint72, uint80, uint88, uint96, uint104, uint112, uint120, uint128, uint136, uint144, uint152, uint160, uint168, uint176, uint184, uint192, uint200, uint208, uint216, uint224, uint232, uint240, uint248, uint256
+----
+
+For arrays, please provide the type from above followed by square braces ( ex: uint256[] ). The values for an array must be surrounded with square brackets and delimited with "," (ex. [1,2,3]).
+
+Byte values must be hex encoded.
+
 
 [[native-transactions]]
 
@@ -925,27 +1007,6 @@ operation::execute-ae-transaction[snippets='response-fields']
 .Result example
 operation::execute-ae-transaction[snippets='response-body']
 
-=== [[transaction-error-codes]] Transaction Error Codes
-
-|===
-|Error Code | Meaning
-
-|transaction.sign.internal-error
-|A problem occurred trying to submit the sign the request
-
-|transaction.insufficient-funds
-|The account that initiated the transfer does not have enough energy
-
-|transaction.sign.gas-error
-|Unable to fetch default gas prices
-
-|transaction.submit.internal-error
-|A problem occurred trying to submit the sign the request
-
-|transaction.submit.not-supported-yet
-|Submitting a request to this network is not possible yet
-|===
-
 === Neo
 
 ==== [[execute-neo-native-transaction]] Execute NEO Native transaction link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
@@ -986,7 +1047,7 @@ operation::execute-neo-gas-transaction[snippets='response-fields']
 .Result example
 operation::execute-neo-gas-transaction[snippets='response-body']
 
-==== [[sign-neo-raw-message]] Sign Raw NEO Message link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
+==== [[sign-neo-message]] Sign Raw NEO Message link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
 To sign a raw neo transaction, use the connect building block with:
 
 .URL
@@ -994,16 +1055,16 @@ https://connect-staging.arkane.network/transaction/execute/neo_raw
 
 
 .Data parameters
-operation::sign-neo-raw-message[snippets='request-fields']
+operation::sign-neo-message[snippets='request-fields']
 
 .Data example
-operation::sign-neo-raw-message[snippets='request-body']
+operation::sign-neo-message[snippets='request-body']
 
 .Result parameters
-operation::sign-neo-raw-message[snippets='response-fields']
+operation::sign-neo-message[snippets='response-fields']
 
 .Result example
-operation::sign-neo-raw-message[snippets='response-body']
+operation::sign-neo-message[snippets='response-body']
 
 ==== Sign message link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
 Sign a message (arbitrary data).

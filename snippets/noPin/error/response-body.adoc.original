@@ -1,0 +1,10 @@
+[source,options="nowrap"]
+----
+{
+  "success" : false,
+  "errors" : [ {
+    "code" : "UNKNOWN_ERROR",
+    "message" : "This is an example of an unknown exception"
+  } ]
+}
+----

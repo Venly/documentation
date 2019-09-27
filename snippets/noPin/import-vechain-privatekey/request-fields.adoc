@@ -1,0 +1,19 @@
+|===
+|Path|Type|Description|Constraints
+|`+pincode+`
+|`+String+`
+|The master pincode of the account
+|Mandatory, must be between 4-6 digits
+|`+importWalletType+`
+|`+String+`
+|The type of the wallet import
+|Mandatory, must be one of: [AETERNITY_KEYSTORE, AETERNITY_PRIVATE_KEY, ETHEREUM_KEYSTORE, ETHEREUM_PRIVATE_KEY, GOCHAIN_KEYSTORE, GOCHAIN_PRIVATE_KEY, VECHAIN_PRIVATE_KEY, VECHAIN_KEYSTORE, BITCOIN_WIF, LITECOIN_WIF, TRON_KEYSTORE, TRON_PRIVATE_KEY, NEO_KEYSTORE, NEO_PRIVATE_KEY, NEO_WIF]
+|`+privateKey+`
+|`+String+`
+|The private key to be imported
+|Mandatory, cannot be empty
+|`+clients+`
+|`+Null+`
+|New wallet will be automatically linked to given clients
+|Optional, only valid clients
+|===

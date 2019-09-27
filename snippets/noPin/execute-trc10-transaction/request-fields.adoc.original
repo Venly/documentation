@@ -1,0 +1,29 @@
+|===
+|Path|Type|Description|Constraints
+
+|`+type+`
+|`+String+`
+|The type of the transaction
+|Mandatory, value for a trc10 transaction: TRC10_TRANSACTION
+
+|`+walletId+`
+|`+String+`
+|The id of the wallet one wants to sign with.
+|Mandatory
+
+|`+value+`
+|`+Number+`
+|The value transferred for the transaction in "sun"
+|Mandatory, must be >= 0
+
+|`+to+`
+|`+String+`
+|The destination address of the transaction.
+|Mandatory, a valid tron address
+
+|`+token+`
+|`+String+`
+|The address of the TRC10 token to be used in this transaction
+|Mandatory, valid ethereum contract address
+
+|===

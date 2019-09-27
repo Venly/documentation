@@ -1,0 +1,24 @@
+[source,http,options="nowrap"]
+----
+POST /api/transactions/prepare HTTP/1.1
+Host: api.arkane.network
+Content-Length: 380
+Content-Type: application/json;charset=UTF-8
+
+{
+  "walletId" : "1543",
+  "pincode" : null,
+  "blockRef" : null,
+  "chainTag" : null,
+  "expiration" : 0,
+  "gas" : 0,
+  "gasPriceCoef" : null,
+  "nonce" : null,
+  "clauses" : [ {
+    "to" : "0xdc71b72db51e227e65a45004ab2798d31e8934c9",
+    "amount" : 10000000000,
+    "tokenAddress" : "0x0000000000000000000000000000456E65726779"
+  } ],
+  "type" : "VECHAIN_VIP180_TRANSACTION"
+}
+----

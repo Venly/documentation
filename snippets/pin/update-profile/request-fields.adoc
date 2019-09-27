@@ -1,0 +1,14 @@
+|===
+|Path|Type|Description|Constraints
+
+|`+pincode+`
+|`+String+`
+|Your current master pincode, which is required to update your profile
+|Optional when initializing profile, otherwise mandatory. Must be between 4-6 digits
+
+|`+newPincode+`
+|`+String+`
+|The new master pincode that needs to be set globally
+|Optional, must be between 4-6 digits
+
+|===

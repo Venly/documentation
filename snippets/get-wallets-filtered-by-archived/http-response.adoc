@@ -1,7 +1,0 @@
-[source,http,options="nowrap"]
-----
-HTTP/1.1 200 OK
-Content-Type: application/json;charset=UTF-8
-Content-Length: 165
-[{"id":"3","address":null,"walletType":null,"secretType":null,"createdAt":null,"archived":true,"alias":null,"description":null,"primary":false,"hasCustomPin":false}]
-----

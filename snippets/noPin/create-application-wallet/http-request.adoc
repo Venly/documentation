@@ -1,0 +1,13 @@
+[source,http,options="nowrap"]
+----
+POST /api/wallets HTTP/1.1
+Host: api.arkane.network
+Content-Type: application/json
+Content-Length: 146
+{
+  "alias" : "TheAlias",
+  "description" : "The description",
+  "secretType" : "ETHEREUM",
+  "walletType" : "APPLICATION"
+}
+----

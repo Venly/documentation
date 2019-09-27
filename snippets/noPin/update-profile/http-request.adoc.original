@@ -1,0 +1,12 @@
+[source,http,options="nowrap"]
+----
+PATCH /api/profile HTTP/1.1
+Host: api.arkane.network
+Content-Length: 49
+Content-Type: application/json;charset=UTF-8
+
+{
+  "pincode" : "1234",
+  "newPincode" : "5678"
+}
+----

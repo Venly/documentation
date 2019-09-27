@@ -1,0 +1,102 @@
+== [[arkane-api]] Arkane API [.bb-api]#Arkane API#
+
+=== What
+
+The Arkane API is the core application of Arkane Network. It's a restful API, which consists of various endpoints to:
+
+- View a user's wallets
+- Request the balance or token balance of any Arkane Wallet
+- Get the profile of a user
+- Create signatures using an Arkane Wallet.
+
+
+=== How
+To call an Arkane API, all you need is an endpoint and a valid authentication.
+
+WARNING: The Arkane API can also be used with API keys instead of Bearer Tokens. Using this authentication method is only encouraged in small scripts.
+
+==== Result Wrapping
+
+All of the API's responses are wrapped in an envelope. This envelope indicates whether the request succeeded. If the request failed, an additional `errors` object is added to the response.
+
+.Example of a successful response
+[source,json]
+----
+{
+  "success" : true,
+  "result" : {
+    "userId" : "davy",
+    "hasMasterPin" : true
+  }
+}
+----
+
+.Example of a failed response
+[source,json]
+----
+{
+    "success": false,
+    "errors": [
+        {
+            "code": "pincode.no-tries-left",
+            "message": "Max pincode tries exceeded"
+        }
+    ]
+}
+----
+
+==== Authentication
+
+Calling the Rest API requires authentication. At the moment, the following methods for authentication are available:
+
+* Bearer Token
+* API Key
+
+===== Bearer Token
+
+NOTE: A security token with the property that any party in possession of the token (a "bearer") can use the token in any way that any other party in possession of it can. Using a bearer token does not require a bearer to prove possession of cryptographic key material (proof-of-possession).
+
+A Bearer Token is set in the Authorization header of every Inline Action HTTP Request. For example:
+
+[source,sh,options="nowrap"]
+----
+GET /api/wallets HTTP/1.1
+Authorization: Bearer AbCdEf123456
+Content-Type: application/json
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/1.0 (KHTML, like Gecko; Gmail Actions)
+----
+
+Bearer tokens can be acquired by using our link:buildingblocks.html#_arkane_identity[[.bb-identity]#Arkane Identity#] component.
+
+===== API Key
+
+API Keys are also supported, in a limited fashion. An API key is generated through the Arkane Webapp and is always linked to a single wallet.
+
+image::img/apikeys.png[Run]
+
+An API key is set in the `authToken` header of every HTTP Request. For example:
+
+[source,sh,options="nowrap"]
+----
+GET /api/wallets HTTP/1.1
+authToken: MW90eUtjTHwzMCVNbUVwcGU3LndLJCwwMDJKLTYtW2pzS0E4ck8yVDBCcSZZNjMjNjg=
+Content-Type: application/json
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/1.0 (KHTML, like Gecko; Gmail Actions)
+----
+
+===== Environments
+
+.Production
+https://api.arkane.network
+
+.Staging
+https://api-staging.arkane.network
+
+==== Limitations
+
+Although the Arkane API supports creating signatures (it's even used as underlying building block of link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]), creating signatures is only possible when using *API Keys*. The main reason we block signature requests from being performed on other domains is because we don't want the user to enter his *private pin* on an untrusted domain.
+
+TIP: If you want to create signatures on your own domain, use link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#].
+
+
+include::./adoc/reference/rest-documentation.adoc[]

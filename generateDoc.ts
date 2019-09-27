@@ -1,13 +1,13 @@
 ///<reference path="node_modules/@types/node/index.d.ts"/>
 
 import * as Asciidoctor from 'asciidoctor.js';
-import * as readline    from 'readline';
-import { Interface }    from 'readline';
-import * as fs          from 'fs';
+import * as readline from 'readline';
+import {Interface} from 'readline';
+import * as fs from 'fs';
 
 let imgDir = './dist/pages/img/';
-if(!fs.existsSync(imgDir)) {
-    fs.mkdirSync(imgDir, { recursive: true });
+if (!fs.existsSync(imgDir)) {
+    fs.mkdirSync(imgDir, {recursive: true});
 }
 // letsGenerateSomeDocs('../rest/src/main/asciidoc/', '../rest/target/generated-snippets');
 letsGenerateSomeDocs('./adoc/', './snippets');
@@ -82,7 +82,8 @@ function runAsciidoc(content: string, fileName: string, snippetsLocation: string
         'to_file': `${fileName}.hbs`,
         'attributes': {
             'icons': 'font',
-            'snippets': snippetsLocation,
+            'snippets': snippetsLocation + '/noPin',
+            'pincodeSnippets': snippetsLocation + '/pin',
             'toc': 'left',
             'toclevels': 4,
         },
@@ -134,6 +135,22 @@ function operate(line: string, titlePrefix: string) {
             const title = titlePrependExample(t.replace(/-/g, ' ').replace('http', 'HTTP'), t);
 
             result += `\n\n[.sect-${type}]\n[[example_${u}_${name}]]\n${titlePrefix} ${capitalize(title)}\n\ninclude::{snippets}/${name}/${t}.adoc[]`;
+        });
+        return result.trimLeft();
+    }
+
+    const rePatternWithPin = new RegExp(/operation::([0-9a-zA-Z_-]+)\[(snippets=)?['"]([0-9a-zA-Z-,_]+)['"]\&pincode=true\]/i);
+    const arrMatchesWithPin = line.match(rePatternWithPin);
+    if (arrMatchesWithPin) {
+        const name = arrMatchesWithPin[1];
+        const snippets = arrMatchesWithPin[3].split(',');
+        let result = '';
+        snippets.forEach((type: string) => {
+            const t = type.toLowerCase();
+            const u = t.replace(/-/g, '_');
+            const title = titlePrependExample(t.replace(/-/g, ' ').replace('http', 'HTTP'), t);
+
+            result += `\n\n[.sect-${type}]\n[[example_${u}_${name}]]\n${titlePrefix} ${capitalize(title)}\n\ninclude::{pincodeSnippets}/${name}/${t}.adoc[]`;
         });
         return result.trimLeft();
     }

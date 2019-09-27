@@ -139,11 +139,11 @@ function operate(line: string, titlePrefix: string) {
         return result.trimLeft();
     }
 
-    const rePatternWithPin = new RegExp(/operation::([0-9a-zA-Z_-]+)\[(snippets=)?['"]([0-9a-zA-Z-,_]+)['"]&pincode=true\]/i);
+    const rePatternWithPin = new RegExp(/operation::([0-9a-zA-Z_-]+)\[(snippets=)?['"]([0-9a-zA-Z-,_]+)['"]\&pincode=true\]/i);
     const arrMatchesWithPin = line.match(rePatternWithPin);
     if (arrMatchesWithPin) {
-        const name = arrMatches[1];
-        const snippets = arrMatches[3].split(',');
+        const name = arrMatchesWithPin[1];
+        const snippets = arrMatchesWithPin[3].split(',');
         let result = '';
         snippets.forEach((type: string) => {
             const t = type.toLowerCase();

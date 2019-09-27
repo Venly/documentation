@@ -1,5 +1,0 @@
-[source,http,options="nowrap"]
-----
-GET /api/wallets/1/apps HTTP/1.1
-Host: localhost:8080
-----

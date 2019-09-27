@@ -1,0 +1,24 @@
+|===
+|Path|Type|Description
+|`+name+`
+|`+String+`
+|Name of the contract
+|`+description+`
+|`+String+`
+|Description of the contract
+|`+address+`
+|`+String+`
+|Address of the contract
+|`+symbol+`
+|`+String+`
+|Symbol of the contract (e.g. GODS, CKITTY, STRK)
+|`+url+`
+|`+String+`
+|Link to the website/application that issued this contract
+|`+imageUrl+`
+|`+String+`
+|Link to an image (logo) of this contract
+|`+type+`
+|`+String+`
+|The type of the contract (ex. ERC721)
+|===

@@ -1,7 +1,0 @@
-|===
-|Path|Type|Description|Constraints
-|`+walletId+`
-|`+String+`
-|The id of the application wallet you want to execute this transaction from.
-|Mandatory. Must be the id of an application wallet
-|===

@@ -1,0 +1,8 @@
+[source,bash]
+----
+$ curl 'https://api.arkane.network/api/wallets/claim' -i -X POST \
+    -H 'Content-Type: application/json;charset=utf-8' \
+    -d '{
+  "masterPincode" : "123456"
+}'
+----

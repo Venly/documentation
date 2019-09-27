@@ -1,0 +1,26 @@
+[source,options="nowrap"]
+----
+[ {
+  "from" : {
+    "secretType" : "VECHAIN",
+    "symbol" : "VET",
+    "tokenAddress" : ""
+  },
+  "to" : {
+    "secretType" : "VECHAIN",
+    "symbol" : "VTHO",
+    "tokenAddress" : "0x0000000000000000000000000000456e65726779"
+  }
+}, {
+  "from" : {
+    "secretType" : "VECHAIN",
+    "symbol" : "VTHO",
+    "tokenAddress" : "0x0000000000000000000000000000456e65726779"
+  },
+  "to" : {
+    "secretType" : "VECHAIN",
+    "symbol" : "VET",
+    "tokenAddress" : ""
+  }
+} ]
+----

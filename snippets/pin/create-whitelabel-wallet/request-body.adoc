@@ -1,0 +1,11 @@
+[source,options="nowrap"]
+----
+{
+  "pincode" : "1234",
+  "alias" : "alias",
+  "description" : "description",
+  "identifier" : "identifier",
+  "secretType" : "ETHEREUM",
+  "walletType" : "WHITE_LABEL"
+}
+----

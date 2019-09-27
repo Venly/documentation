@@ -1,0 +1,30 @@
+[source,http,options="nowrap"]
+----
+HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+Content-Length: 573
+
+{
+  "id" : "3",
+  "address" : "0xae52b72db54e137a65a42434ab2543d31f8454c3",
+  "secretType" : "VECHAIN",
+  "walletType" : "THREEWAY_SHARED",
+  "createdAt" : null,
+  "archived" : false,
+  "alias" : "aliasVechain",
+  "description" : "descriptionVechain",
+  "primary" : false,
+  "hasCustomPin" : false,
+  "balance" : {
+    "available" : false,
+    "secretType" : "ETHEREUM",
+    "balance" : 1.0,
+    "gasBalance" : 1.0,
+    "symbol" : null,
+    "gasSymbol" : null,
+    "rawBalance" : "1000000000000000000",
+    "rawGasBalance" : "1000000000000000000",
+    "decimals" : 18
+  }
+}
+----

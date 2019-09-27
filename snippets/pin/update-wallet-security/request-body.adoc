@@ -1,0 +1,9 @@
+[source,options="nowrap"]
+----
+{
+  "pincode" : "1234",
+  "newPincode" : "4321",
+  "hasCustomPin" : "true",
+  "recoverable" : "true"
+}
+----

@@ -1,0 +1,11 @@
+[source,http,options="nowrap"]
+----
+POST /api/wallets/unlink HTTP/1.1
+Host: api.arkane.network
+Content-Length: 55
+Content-Type: application/json
+{
+  "client" : "cindercloud",
+  "walletIds" : [ "1" ]
+}
+----

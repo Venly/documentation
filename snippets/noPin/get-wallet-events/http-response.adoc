@@ -1,0 +1,15 @@
+[source,http,options="nowrap"]
+----
+HTTP/1.1 200 OK
+Content-Length: 181
+Content-Type: application/json;charset=UTF-8
+[ {
+  "id" : 1,
+  "eventTimestamp" : 1569399696527,
+  "client" : "Arkane",
+  "apiToken" : "xxx-xxx-xxx",
+  "type" : "MASTER_PIN_UPDATED",
+  "metadata" : "{}",
+  "walletId" : "1"
+} ]
+----

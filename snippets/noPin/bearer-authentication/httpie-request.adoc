@@ -1,0 +1,5 @@
+[source,bash]
+----
+$ http GET 'https://api.arkane.network/api/profile' \
+    'Authorization:Bearer BEARER-TOKEN'
+----

@@ -1,0 +1,4 @@
+[source,bash]
+----
+$ curl 'https://api.arkane.network/api/apitokens/1234' -i -X DELETE
+----

@@ -1,0 +1,13 @@
+[source,http,options="nowrap"]
+----
+PATCH /api/apitokens/2189ba84-d088-11e8-a8d5-f2801f1b9fd1 HTTP/1.1
+Host: api.arkane.network
+Content-Type: application/json;charset=UTF-8
+Content-Length: 89
+
+{
+  "description" : "My Awesome APIKey",
+  "enabled" : true,
+  "claim" : "VIEW_WALLETS"
+}
+----

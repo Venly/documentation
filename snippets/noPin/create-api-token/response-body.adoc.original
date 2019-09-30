@@ -1,0 +1,12 @@
+[source,options="nowrap"]
+----
+{
+  "token" : "4efe60c8-53e5-41cf-a1c5-39104698d557",
+  "userId" : "davy",
+  "walletId" : "1",
+  "claim" : "SIGN_WALLETS",
+  "enabled" : true,
+  "description" : "Development API Key",
+  "tokenSecret" : "QzhzUTdrbkohWzErMCs0cmdXMSQ5JXMhUjUsOTBOZW4oOF9KKi1nMUhEPHwoRUVQPVs="
+}
+----

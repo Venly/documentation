@@ -1,0 +1,14 @@
+[source,bash]
+----
+$ curl 'https://api.arkane.network/api/signatures' -i -X POST \
+    -H 'Content-Type: application/json;charset=UTF-8' \
+    -d '{
+  "type" : "NEO_NATIVE_TRANSACTION",
+  "walletId" : "1",
+  "pincode" : "738276",
+  "submit" : true,
+  "network" : null,
+  "to" : "AbArunq3PGYmQv4xhduTKva7r2ppUqeaDi",
+  "value" : 55
+}'
+----

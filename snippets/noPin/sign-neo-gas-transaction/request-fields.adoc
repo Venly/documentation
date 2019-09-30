@@ -1,0 +1,23 @@
+|===
+|Path|Type|Description|Constraints
+|`+type+`
+|`+String+`
+|The type of the transaction. ex: NEO_GAS_TRANSACTION.
+|Mandatory, possible values: ETHEREUM_TRANSACTION, VECHAIN_TRANSACTION, GOCHAIN_TRANSACTION, BITCOIN_TRANSACTION, LITECOIN_TRANSACTION, TRX_TRANSACTION, TRC10_TRANSACTION, TRON_RAW, NEO_GAS_TRANSACTION, NEO_NATIVE_TRANSACTION, NEO_RAW_TRANSACTION
+|`+walletId+`
+|`+String+`
+|The id of the wallet one wants to sign with.
+|Mandatory
+|`+value+`
+|`+Number+`
+|The value transferred for the transaction in Wei, also the endowment if it's a contract-creation transaction
+|Mandatory, must be >= 0
+|`+to+`
+|`+String+`
+|The destination address of the transaction.
+|Mandatory, a valid ethereum address
+|`+submit+`
+|`+Boolean+`
+|Whether to immediately submit the transaction to the blockchain or not.
+|Optional, false by default
+|===

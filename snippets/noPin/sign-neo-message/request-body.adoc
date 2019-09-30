@@ -1,0 +1,9 @@
+[source,options="nowrap"]
+----
+{
+  "type" : "NEO_MESSAGE",
+  "walletId" : "1",
+  "data" : "the message to sign",
+  "hash" : true
+}
+----

@@ -1,0 +1,20 @@
+|===
+|Path|Type|Description
+
+|`+r+`
+|`+String+`
+|The R value of the signature
+
+|`+s+`
+|`+String+`
+|The S value of the signature
+
+|`+v+`
+|`+String+`
+|The V value of the signature
+
+|`+signature+`
+|`+String+`
+|The value of the signature
+
+|===

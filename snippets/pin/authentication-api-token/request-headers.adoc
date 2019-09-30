@@ -1,0 +1,7 @@
+|===
+|Name|Description
+
+|`+authToken+`
+|The API token of a wallet for a certain user
+
+|===

@@ -1,0 +1,10 @@
+[source,bash]
+----
+$ curl 'https://api.arkane.network/api/apitokens' -i -X POST \
+    -H 'Content-Type: application/json' \
+    -d '{
+  "walletId" : "1",
+  "claim" : "SIGN_WALLETS",
+  "description" : "description"
+}'
+----

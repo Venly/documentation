@@ -1,0 +1,19 @@
+|===
+|Path|Type|Description|Constraints
+
+|`+walletId+`
+|`+String+`
+|The id of the wallet one wants to sign with.
+|Mandatory
+
+|`+pincode+`
+|`+Null+`
+|The pincode of the specified wallet
+|Mandatory, must be between 4-6 digits
+
+|`+password+`
+|`+String+`
+|The password to be used to encrypt
+|Mandatory
+
+|===

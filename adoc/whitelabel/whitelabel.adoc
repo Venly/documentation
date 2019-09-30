@@ -208,6 +208,19 @@ operation::build-generic-gas-transfer-request[snippets='curl-request'&pincode=tr
 
 operation::build-generic-gas-transfer-request[snippets='response-body'&pincode=true]
 
+=== Contract Execution
+
+
+.[[generic-contract-execution-request]] Data parameters
+operation::build-generic-contract-execution[snippets='request-fields'&pincode=true]
+
+.Data example
+operation::build-generic-gas-transfer-request[snippets='curl-request'&pincode=true]
+
+.Result example
+
+operation::build-generic-gas-transfer-request[snippets='response-body'&pincode=true]
+
 == Swap
 This section describes how to use the swapping functionality within Arkane. It allows you to swap/exchange a (native) token to (native) token.
 

@@ -51,6 +51,11 @@
 |The value of the input parameter. This needs to be passed as a string value, will be parsed by Arkane
 |Mandatory
 
+|`+chainSpecificFields+`
+|`+Object+`
+|Field that contains chain specific values. For possible values, please see <<contract-execution-supported-chains,chain specific fields documentation>>. 
+|Mandatory
+
 |`+network+`
 |`+Object+`
 |<<build-network, ^[1]^>> The network to submit the transaction to

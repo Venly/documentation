@@ -518,14 +518,16 @@ Supported chain specific fields:
 
 
 |===
-|Field name |Field value| Example
+|Field name |Field value|Type |Example
 
 |gasLimit
 |When specified, this gas limit will be used for the contract call
+|Integer
 |300000
 
 |gasPrice
 |When specified, this gas price will be used for the contract call (in WEI)
+|Integer
 |5000000000
 
 |===
@@ -545,14 +547,16 @@ Byte values must be hex encoded.
 
 Supported chain specific fields:
 |===
-|Field name |Field value| Example
+|Field name |Field value|Type |Example
 
 |gasLimit
 |When specified, this gas limit will be used for the contract call
+|Integer
 |300000
 
 |gasPriceCoef
 |When specified, this gas price coefficient will be used for the contract call
+|Integer
 | 0
 
 |===
@@ -582,14 +586,16 @@ Byte values must be hex encoded.
 
 Supported chain specific fields:
 |===
-|Field name |Field value| Example
+|Field name |Field value|Type | Example
 
 |networkFee
 |When specified, this network fee will be used for the contract call
-| 0.1
+|Number
+|0.1
 
 |outputs
 |It is possible to add additional asset transfers together with a contract call by attaching additional outputs. This is a JSON object containing "to", "amount" and "assetId".
+|JSON object
 |
 {
 "to": "AKJrLM5QCdr8opd1JZhYWnHZrBJbz6rbXv",

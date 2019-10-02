@@ -594,13 +594,14 @@ Supported chain specific fields:
 |0.1
 
 |outputs
-|It is possible to add additional asset transfers together with a contract call by attaching additional outputs. This is a JSON object containing "to", "amount" and "assetId".
-|JSON object
+|It is possible to add additional asset transfers together with a contract call by attaching additional outputs. This is a JSON object containing "to", "amount" and "assetId" with json types
+respectively string, number and string. If "to" is a script hash, it will be translated to a valid NEO address
+|JSON
 |
 {
-"to": "AKJrLM5QCdr8opd1JZhYWnHZrBJbz6rbXv",
+"to": "AKJrLM5Q...",
 "amount": 1,
-"assetId": "602c79718b16e442de58778e148d0b1084e3b2dffd5de6b7b16cee7969282de7"
+"assetId": "602c79718..."
 }
 |===
 

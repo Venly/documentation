@@ -1,0 +1,18 @@
+|===
+|Path|Type|Description
+|`+gasPriceCoefficients+`
+|`+Array+`
+|List containing the gas price coefficients
+|`+gasPriceCoefficients.[].gasPriceCoef+`
+|`+Number+`
+|A possible gas price coefficient
+|`+gasPriceCoefficients.[].defaultPrice+`
+|`+Boolean+`
+|True if it should be proposed as the default price, false otherwise
+|`+gasLimit+`
+|`+Number+`
+|The estimated gas limit
+|`+reverted+`
+|`+Boolean+`
+|True if transaction will likely fail, false otherwise
+|===

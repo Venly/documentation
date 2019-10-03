@@ -1,0 +1,34 @@
+[source,http,options="nowrap"]
+----
+HTTP/1.1 200 OK
+Content-Length: 688
+Content-Type: application/json;charset=UTF-8
+[ {
+  "tokenAddress" : "0x4df47b4969b2911c966506e3592c41389493953b",
+  "rawBalance" : "10000000283000000000000",
+  "balance" : 10000.000283,
+  "decimals" : 18,
+  "symbol" : "FND",
+  "logo" : null,
+  "type" : "ERC20",
+  "transferable" : true
+}, {
+  "tokenAddress" : "0x89d24A6b4CcB1B6fAA2625fE562bDD9a23260359",
+  "rawBalance" : "0",
+  "balance" : 0.0,
+  "decimals" : 18,
+  "symbol" : "DAI",
+  "logo" : null,
+  "type" : "ERC20",
+  "transferable" : true
+}, {
+  "tokenAddress" : "0xE41d2489571d322189246DaFA5ebDe1F4699F498",
+  "rawBalance" : "655000000000000000000",
+  "balance" : 655.0,
+  "decimals" : 18,
+  "symbol" : "ZRX",
+  "logo" : null,
+  "type" : "ERC20",
+  "transferable" : true
+} ]
+----

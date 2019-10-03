@@ -1,0 +1,14 @@
+[source,http,options="nowrap"]
+----
+POST /api/transactions/execute HTTP/1.1
+Host: api.arkane.network
+Content-Type: application/json;charset=UTF-8
+Content-Length: 235
+{
+  "walletId" : "adc4c08a-b8fa-4e4c-z5a2-92c87b80f174",
+  "value" : 10000000000,
+  "to" : "TAGGUxf5VvuA7UJdzAtjoS3gJuJytLQiYo",
+  "token" : "TCFXpuCNS77Ha6Nj9RU5Vr97TY7fG1YfzF",
+  "type" : "TRC10_TRANSACTION"
+}
+----

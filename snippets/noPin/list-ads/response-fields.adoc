@@ -1,0 +1,21 @@
+|===
+|Path|Type|Description
+|`+[].icon+`
+|`+String+`
+|The url to the icon for the ad
+|`+[].name+`
+|`+String+`
+|The name of the ad
+|`+[].description+`
+|`+String+`
+|The description of the ad
+|`+[].ctaText+`
+|`+String+`
+|The text for the call to action of the ad
+|`+[].ctaLink+`
+|`+String+`
+|The url for the call to action of the ad
+|`+[].viewIn+`
+|`+Null+`
+|The list of chains where to view the ads
+|===

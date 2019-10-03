@@ -1,0 +1,5 @@
+[source,bash]
+----
+$ curl 'https://api.arkane.network/api/profile' -i -X GET \
+    -H 'Authorization: Bearer BEARER-TOKEN'
+----

@@ -1,6 +1,0 @@
-[source,options="nowrap"]
-----
-{
-  "transactionRequestId" : "70fc00ec-9b0f-4edb-b301-097cf6ee8e31"
-}
-----

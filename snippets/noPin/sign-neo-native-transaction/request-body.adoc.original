@@ -1,0 +1,12 @@
+[source,options="nowrap"]
+----
+{
+  "type" : "NEO_NATIVE_TRANSACTION",
+  "walletId" : "1",
+  "pincode" : "738276",
+  "submit" : true,
+  "network" : null,
+  "to" : "AbArunq3PGYmQv4xhduTKva7r2ppUqeaDi",
+  "value" : 55
+}
+----

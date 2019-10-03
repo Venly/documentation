@@ -1,0 +1,10 @@
+[source,bash]
+----
+$ echo '{
+  "alias" : "alias",
+  "description" : "description",
+  "archived" : "false",
+  "primary" : "false"
+}' | http PATCH 'https://api.arkane.network/api/wallets/1' \
+    'Content-Type:application/json;charset=UTF-8'
+----

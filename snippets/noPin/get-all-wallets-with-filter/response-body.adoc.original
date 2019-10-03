@@ -1,0 +1,26 @@
+[source,options="nowrap"]
+----
+[ {
+  "id" : "3",
+  "address" : "0xae52b72db54e137a65a42434ab2543d31f8454c3",
+  "walletType" : "THREEWAY_SHARED",
+  "secretType" : "VECHAIN",
+  "createdAt" : [ 2019, 9, 30, 8, 9, 33, 810136000 ],
+  "archived" : false,
+  "alias" : "aliasVechain",
+  "description" : "descriptionVechain",
+  "primary" : false,
+  "hasCustomPin" : false,
+  "balance" : {
+    "available" : false,
+    "secretType" : "VECHAIN",
+    "balance" : 1.0,
+    "gasBalance" : 1.0,
+    "symbol" : "VET",
+    "gasSymbol" : "VTHO",
+    "rawBalance" : "1000000000000000000",
+    "rawGasBalance" : "1000000000000000000",
+    "decimals" : 18
+  }
+} ]
+----

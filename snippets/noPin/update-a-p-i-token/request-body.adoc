@@ -1,0 +1,8 @@
+[source,options="nowrap"]
+----
+{
+  "description" : "My Awesome APIKey",
+  "enabled" : true,
+  "claim" : "VIEW_WALLETS"
+}
+----

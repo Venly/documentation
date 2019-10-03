@@ -1,0 +1,10 @@
+[source,http,options="nowrap"]
+----
+HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+Content-Length: 69
+
+{
+  "transactionRequestId" : "7ca3e444-8296-4c88-a671-b7ec0c0cee73"
+}
+----

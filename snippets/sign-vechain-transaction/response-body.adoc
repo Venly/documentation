@@ -1,9 +1,0 @@
-[source,options="nowrap"]
-----
-{
-  "success" : true,
-  "result" : {
-    "signedTransaction" : "transaction"
-  }
-}
-----

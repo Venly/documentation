@@ -1,7 +1,0 @@
-[source,options="nowrap"]
-----
-{
-  "success" : true,
-  "result" : [ "BITCOIN", "ETHEREUM", "GOCHAIN", "LITECOIN", "TRON", "VECHAIN" ]
-}
-----

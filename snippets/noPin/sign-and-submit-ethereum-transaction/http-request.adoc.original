@@ -1,0 +1,25 @@
+[source,http,options="nowrap"]
+----
+POST /api/signatures HTTP/1.1
+Host: api.arkane.network
+Content-Type: application/json;charset=UTF-8
+Content-Length: 367
+
+{
+  "type" : "ETHEREUM_TRANSACTION",
+  "walletId" : "1",
+  "pincode" : "31644",
+  "submit" : true,
+  "network" : {
+    "name" : "Rinkeby",
+    "nodeUrl" : "https://rinkeby.infura.io",
+    "chainId" : null
+  },
+  "gasPrice" : 10000000000,
+  "gas" : 23000,
+  "nonce" : 0,
+  "value" : 10000000000,
+  "data" : "0x",
+  "to" : "0xdc71b72db51e227e65a45004ab2798d31e8934c9"
+}
+----

@@ -1,0 +1,14 @@
+[source,http,options="nowrap"]
+----
+POST /api/transactions HTTP/1.1
+Host: api.arkane.network
+Content-Length: 171
+Content-Type: application/json;charset=UTF-8
+{
+  "walletId" : "1543",
+  "value" : 10000000000,
+  "feePerByte" : 6,
+  "to" : "mpi2SkK5vKipCNE9h1HtRgDg6UM44AuN9S",
+  "type" : "BTC_TRANSACTION"
+}
+----

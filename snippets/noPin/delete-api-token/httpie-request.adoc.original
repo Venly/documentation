@@ -1,0 +1,4 @@
+[source,bash]
+----
+$ http DELETE 'https://api.arkane.network/api/apitokens/1234'
+----

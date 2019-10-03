@@ -1,0 +1,4 @@
+[source,bash]
+----
+$ http GET 'https://api.arkane.network/api/wallets/1/balance'
+----

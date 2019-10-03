@@ -286,14 +286,15 @@ In the case for a user wallet, the type of the wallet needs to be updated to:
 
 operation::update-wallet-type[snippets='http-request,path-parameters,http-response']
 
+
 == Whitelabel Wallet
 
 Arkane also offers whitelabel wallets. link:whitelabel.html[Go to documentation]
 
-== [[transactions]] Transactions
+== [[generic-transactions]] Transactions
 
 [[transfer]]
-=== Generic Transfer link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
+=== Transfer link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
 This can be used to transfer native tokens from a wallet to another wallet. To start a transfer you need to:
 
 .URL
@@ -336,7 +337,7 @@ operation::build-generic-transfer-request[snippets='request-body']
 ----
 
 [[token-transfer]]
-=== Generic Token Transfer link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
+=== Token Transfer link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
 This can be used to transfer tokens (ex. ERC20/VIP180/NEP5/GO20/...) from a wallet to another wallet. To start a transfer you need to:
 
 .URL
@@ -379,7 +380,7 @@ operation::build-generic-token-transfer-request[snippets='request-body']
 ----
 
 [[gas-transfer]]
-=== Generic Gas Transfer link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
+=== Gas Transfer link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
 This can be used to transfer gas (ex. NEO gas/VTHO/...) from a wallet to another wallet. To start a transfer you need to:
 
 .URL
@@ -422,7 +423,7 @@ operation::build-generic-gas-transfer-request[snippets='request-body']
 ----
 
 [[nft-transfer]]
-=== Generic NFT Transfer link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
+=== NFT Transfer link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
 This can be used to transfer NFT's (ex. ERC721/...) from a wallet to another wallet. To start a transfer you need to:
 
 .URL
@@ -460,7 +461,7 @@ operation::build-generic-nft-transfer-request[snippets='request-body']
 
 
 [[generic-contract-execution]]
-=== Generic contract execution link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
+=== Contract execution link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
 Generic endpoint to execute a function on a smart contract (write) on any (supported) blockchain.
 As a result, a new transaction will be submitted to the network containing the smart contract execution.
 
@@ -499,8 +500,67 @@ operation::build-generic-contract-execution[snippets='request-body']
 }
 ----
 
+[[contract-execution-supported-chains]]
 ==== Supported chains
-.Ethereum
+===== Ethereum
+Supported types:
+[source]
+----
+address, bool, bytes, bytes1, bytes2, bytes3, bytes4, bytes5, bytes6, bytes7, bytes8, bytes9, bytes10, bytes11, bytes12, bytes13, bytes14, bytes15, bytes16, bytes17, bytes18, bytes19, bytes20, bytes21, bytes22, bytes23, bytes24, bytes25, bytes26, bytes27, bytes28, bytes29, bytes30, bytes31, bytes32, int8, int16, int24, int32, int40, int48, int56, int64, int72, int80, int88, int96, int104, int112, int120, int128, int136, int144, int152, int160, int168, int176, int184, int192, int200, int208, int216, int224, int232, int240, int248, int256, string, uint8, uint16, uint24, uint32, uint40, uint48, uint56, uint64, uint72, uint80, uint88, uint96, uint104, uint112, uint120, uint128, uint136, uint144, uint152, uint160, uint168, uint176, uint184, uint192, uint200, uint208, uint216, uint224, uint232, uint240, uint248, uint256
+----
+
+For arrays, please provide the type from above followed by square braces ( ex: uint256[] ). The values for an array must be surrounded with square brackets and delimited with "," (ex. [1,2,3]).
+
+Byte values must be hex encoded.
+
+Supported chain specific fields:
+
+
+|===
+|Field name |Field value|Type |Example
+
+|gasLimit
+|When specified, this gas limit will be used for the contract call
+|Integer
+|300000
+
+|gasPrice
+|When specified, this gas price will be used for the contract call (in WEI)
+|Integer
+|5000000000
+
+|===
+
+
+===== Vechain
+Supported types:
+[source]
+----
+address, bool, bytes, bytes1, bytes2, bytes3, bytes4, bytes5, bytes6, bytes7, bytes8, bytes9, bytes10, bytes11, bytes12, bytes13, bytes14, bytes15, bytes16, bytes17, bytes18, bytes19, bytes20, bytes21, bytes22, bytes23, bytes24, bytes25, bytes26, bytes27, bytes28, bytes29, bytes30, bytes31, bytes32, int8, int16, int24, int32, int40, int48, int56, int64, int72, int80, int88, int96, int104, int112, int120, int128, int136, int144, int152, int160, int168, int176, int184, int192, int200, int208, int216, int224, int232, int240, int248, int256, string, uint8, uint16, uint24, uint32, uint40, uint48, uint56, uint64, uint72, uint80, uint88, uint96, uint104, uint112, uint120, uint128, uint136, uint144, uint152, uint160, uint168, uint176, uint184, uint192, uint200, uint208, uint216, uint224, uint232, uint240, uint248, uint256
+----
+
+For arrays, please provide the type from above followed by square braces ( ex: uint256[] ). The values for an array must be surrounded with square brackets and delimited with "," (ex. [1,2,3]).
+
+Byte values must be hex encoded.
+
+
+Supported chain specific fields:
+|===
+|Field name |Field value|Type |Example
+
+|gasLimit
+|When specified, this gas limit will be used for the contract call
+|Integer
+|300000
+
+|gasPriceCoef
+|When specified, this gas price coefficient will be used for the contract call
+|Integer
+| 0
+
+|===
+
+===== Tron
 All solidity types are supported:
 [source]
 ----
@@ -511,30 +571,41 @@ For arrays, please provide the type from above followed by square braces ( ex: u
 
 Byte values must be hex encoded.
 
-.Vechain
-All solidity types are supported:
+===== Neo
+Supported types:
 [source]
 ----
-address, bool, bytes, bytes1, bytes2, bytes3, bytes4, bytes5, bytes6, bytes7, bytes8, bytes9, bytes10, bytes11, bytes12, bytes13, bytes14, bytes15, bytes16, bytes17, bytes18, bytes19, bytes20, bytes21, bytes22, bytes23, bytes24, bytes25, bytes26, bytes27, bytes28, bytes29, bytes30, bytes31, bytes32, int8, int16, int24, int32, int40, int48, int56, int64, int72, int80, int88, int96, int104, int112, int120, int128, int136, int144, int152, int160, int168, int176, int184, int192, int200, int208, int216, int224, int232, int240, int248, int256, string, uint8, uint16, uint24, uint32, uint40, uint48, uint56, uint64, uint72, uint80, uint88, uint96, uint104, uint112, uint120, uint128, uint136, uint144, uint152, uint160, uint168, uint176, uint184, uint192, uint200, uint208, uint216, uint224, uint232, uint240, uint248, uint256
+signature, boolean, integer, hash160, hash256, byte_array, address, public_key, string
 ----
 
-For arrays, please provide the type from above followed by square braces ( ex: uint256[] ). The values for an array must be surrounded with square brackets and delimited with "," (ex. [1,2,3]).
-
-Byte values must be hex encoded.
-
-.Tron
-All solidity types are supported:
-[source]
-----
-address, bool, bytes, bytes1, bytes2, bytes3, bytes4, bytes5, bytes6, bytes7, bytes8, bytes9, bytes10, bytes11, bytes12, bytes13, bytes14, bytes15, bytes16, bytes17, bytes18, bytes19, bytes20, bytes21, bytes22, bytes23, bytes24, bytes25, bytes26, bytes27, bytes28, bytes29, bytes30, bytes31, bytes32, int8, int16, int24, int32, int40, int48, int56, int64, int72, int80, int88, int96, int104, int112, int120, int128, int136, int144, int152, int160, int168, int176, int184, int192, int200, int208, int216, int224, int232, int240, int248, int256, string, uint8, uint16, uint24, uint32, uint40, uint48, uint56, uint64, uint72, uint80, uint88, uint96, uint104, uint112, uint120, uint128, uint136, uint144, uint152, uint160, uint168, uint176, uint184, uint192, uint200, uint208, uint216, uint224, uint232, uint240, uint248, uint256
-----
-
-For arrays, please provide the type from above followed by square braces ( ex: uint256[] ). The values for an array must be surrounded with square brackets and delimited with "," (ex. [1,2,3]).
+For arrays, please provide the type from above followed by square braces ( ex: string[] ). The values for an array must be surrounded with square brackets and delimited with "," (ex. [1,2,3]).
 
 Byte values must be hex encoded.
 
 
-[[native-transactions]]
+Supported chain specific fields:
+|===
+|Field name |Field value|Type | Example
+
+|networkFee
+|When specified, this network fee will be used for the contract call
+|Number
+|0.1
+
+|outputs
+|It is possible to add additional asset transfers together with a contract call by attaching additional outputs. This is a JSON object containing "to", "amount" and "assetId" with json types
+respectively string, number and string. If "to" is a script hash, it will be translated to a valid NEO address
+|JSON
+|
+{
+"to": "AKJrLM5Q...",
+"amount": 1,
+"assetId": "602c79718..."
+}
+|===
+
+== [[native-transactions]] Native Transactions
+
 
 === Ethereum
 

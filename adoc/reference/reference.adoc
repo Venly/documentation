@@ -575,10 +575,10 @@ Byte values must be hex encoded.
 Supported types:
 [source]
 ----
-signature, boolean, integer, hash160, hash256, byte_array, address, public_key, string
+Signature, Boolean, Integer, Hash160, Hash256, ByteArray, Address, PublicKey, String
 ----
 
-For arrays, please provide the type from above followed by square braces ( ex: string[] ). The values for an array must be surrounded with square brackets and delimited with "," (ex. [1,2,3]).
+For arrays, please provide the type from above followed by square braces ( ex: String[] ). The values for an array must be surrounded with square brackets and delimited with "," (ex. [1,2,3]).
 
 Byte values must be hex encoded.
 

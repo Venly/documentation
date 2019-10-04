@@ -1,0 +1,11 @@
+[source,http,options="nowrap"]
+----
+POST /api/apps/1/contracts HTTP/1.1
+Host: business.arkane.network
+Content-Type: application/json;charset=UTF-8
+Content-Length: 80
+{
+  "name" : "Awesome Contract",
+  "description" : "This is my first contract"
+}
+----

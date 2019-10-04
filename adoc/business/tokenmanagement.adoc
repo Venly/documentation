@@ -1,0 +1,86 @@
+== Authentication
+
+* The client will authenticate to Arkane using a a Bearer token.
+
+
+=== [[clientId-client]] The `<clientId>`-client
+
+image::img/appclientauthentication.png[<clientId>_app flow]
+
+Here we'll describe how to obtain a bearer token from our authentication server using your `<clientId>_app`-client:
+
+.URL
+https://login.arkane.network/auth/realms/Arkane/protocol/openid-connect/token
+
+.Example Curl Request
+[source,bash]
+----
+$ curl https://login.arkane.network/auth/realms/Arkane/protocol/openid-connect/token -i -X POST \
+    -H 'Content-Type: application/x-www-form-urlencoded' \
+    -d 'grant_type=client_credentials&client_id=Arketype_app&client_secret=02053a9d-8293-43c4-a201-f8669f1329af'
+----
+IMPORTANT: Do not forget to set the `Content-Type: application/x-www-form-urlencoded` header (and to make the request body application/x-www-form-urlencoded),
+otherwise the request will fail
+
+.Request Fields
+|===
+| Path | Type | Description | Constraints
+| grant_type | String | The OpenId Connect grant type you want to use | Mandatory, always `client_credentials`
+| client_id | String | The `<clientId>_app` you want to request a token for | Mandatory, e.g. `Arketype_app`
+| client_secret | String | The shared secret you've received when you requested your `<clientId>_app`-client | Mandatory
+|===
+
+
+.Reponse Fields
+|===
+| Path | Type | Description
+| access_token | String | The JWT token to use as bearer token when doing the api calls
+| expires_in | number | The amount of seconds the access_token is valid
+| refresh_expires_in | number | The amount of seconds the refresh_token is valid
+| refresh_token | String | The JWT token which can be used to refresh the current token
+| token_type | String | bearer | The type of the access_token
+|===
+
+
+.Response Body
+[source,json]
+----
+{
+    "access_token": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJmQi1UenBOb0hBVGhwT2J4aW9qTDBrdm83MldmRzRXRXh1eFpiaXlGQUhzIn0.eyJqdGkiOiI0ODc4NDM4Ny0xMjE0LTQ0ZTAtYWIzNy0yZDAyZjNjNTYxZWYiLCJleHAiOjE1NTgxMDMxNjIsIm5iZiI6MCwiaWF0IjoxNTU4MTAxMzYyLCJpc3MiOiJodHRwczovL2xvZ2luLXN0YWdpbmcuYXJrYW5lLm5ldHdvcmsvYXV0aC9yZWFsbXMvQXJrYW5lIiwiYXVkIjoiQXJrZXR5cGVfYXBwIiwic3ViIjoiZDQ3NWQwYWEtNjRmOC00MTJhLTg5NmEtOTRmM2RlNjZlNzFkIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiQXJrZXR5cGVfYXBwIiwiYXV0aF90aW1lIjowLCJzZXNzaW9uX3N0YXRlIjoiNzA2MjczYzEtMzBkYi00MDdlLTk1ZmEtZDRlNzg3NDQ5NDY5IiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyIqIl0sInJlc291cmNlX2FjY2VzcyI6e30sInNjb3BlIjoic2F2ZTp0cmFuc2FjdGlvbiIsImNsaWVudElkIjoiQXJrZXR5cGVfYXBwIiwiY2xpZW50SG9zdCI6Ijg0LjE5OC4xMzIuMTM0IiwiY2xpZW50QWRkcmVzcyI6Ijg0LjE5OC4xMzIuMTM0In0.iBsj3jlmg0Ns3J4qB9Ii3a3d0Bn4472fhPNrfsYm5gPFnt2l7TOvE4JdUolv0UJe9IMrTyQYv-_EPDU7_lv8edQmyEm2YxUwUzDT747sQmkByPrxguECMrG5eOw69Iw2mtfOHVipGhivXGDr3J-Bngwj1dilYLEz8ncuAG8XrGIlqjZ3C0h_XVKUsfQcg2_EIbqcNPTwoovma1qbpS5kwWmBI4xdNHUVyV_m9HFabc2M8RQvvz5xTX4xhICJzvKRQCKOPFd3XqBNW3kG0iCJkHfOX5GNPn9Efcqfo1xFAEEjTKUOFbs8g4FQlm_YcGPumj3jk0dbN8ROlH8vuuvPxw",
+    "expires_in": 1800,
+    "refresh_expires_in": 432000,
+    "refresh_token": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJmQi1UenBOb0hBVGhwT2J4aW9qTDBrdm83MldmRzRXRXh1eFpiaXlGQUhzIn0.eyJqdGkiOiI2MTI1MjhkMy02ZGE4LTQwMGMtODAxMS1jNDQ0M2U1MzQ0YzMiLCJleHAiOjE1NTg1MzMzNjIsIm5iZiI6MCwiaWF0IjoxNTU4MTAxMzYyLCJpc3MiOiJodHRwczovL2xvZ2luLXN0YWdpbmcuYXJrYW5lLm5ldHdvcmsvYXV0aC9yZWFsbXMvQXJrYW5lIiwiYXVkIjoiQXJrZXR5cGVfYXBwIiwic3ViIjoiZDQ3NWQwYWEtNjRmOC00MTJhLTg5NmEtOTRmM2RlNjZlNzFkIiwidHlwIjoiUmVmcmVzaCIsImF6cCI6IkFya2V0eXBlX2FwcCIsImF1dGhfdGltZSI6MCwic2Vzc2lvbl9zdGF0ZSI6IjcwNjI3M2MxLTMwZGItNDA3ZS05NWZhLWQ0ZTc4NzQ0OTQ2OSIsInJlc291cmNlX2FjY2VzcyI6e30sInNjb3BlIjoic2F2ZTp0cmFuc2FjdGlvbiJ9.FayuAxy2x1lOw4nQqvn2gZs6Vhqtt7pai6H6LNvFmAxqab3qdnMxQRRFVgrvqfgwaI5bsLrs6CdPU1w2DJmNjh3ubcw-arpM25FVWHufldcTpEA0Xvpo1zssXQrt46kMQ0SMDiRY5e3dhpcd1Uoib9NzZTM5sbwHihqxGyH9HlcO7kGGhdoFW7jXQgGSoBhKsQN1BGvam9p9v-vZSBBQD6YPNttf7cZG77PjK8BAuZczhl7cX8Csmyht6clRTeFKF06NNUwaEcvz7ZXBf2QNJVfAyG26OwUu9ER5bADofGn2P7PnAxDsq_kRXMzOULISLLPi2hdNHOzh2XNvM6znOQ",
+    "token_type": "bearer"
+}
+----
+
+== Token Management
+
+This section describes all actions related to token management.
+
+=== [[deploy-contract]] Deploy Contract
+Deploying a new Token Contract
+
+operation::deploy-contract[snippets='curl-request,path-parameters,request-fields,http-response,response-fields'&pincode=true]
+
+=== [[get-contract]] Get Contract
+Get Information about a contract
+
+operation::get-contract[snippets='curl-request,http-response,response-fields'&pincode=true]
+
+=== [[define-token-type]] Defining a Token Type
+Before generating tokens, we need to define the type which will describe the token.
+
+operation::define-token-type[snippets='curl-request,request-fields,path-parameters,http-response,response-fields'&pincode=true]
+
+=== [[create-fungible]] Create Fungible
+
+Create a fungible token based off of a fungible token type.
+
+operation::create-fungible[snippets='curl-request,request-fields,http-response,response-fields'&pincode=true]
+
+=== [[create-non-fungible]] Create Non-Fungible
+
+Create a non-fungible token based off of a non-fungible token type.
+
+operation::create-non-fungible[snippets='curl-request,request-fields,http-response,response-fields'&pincode=true]

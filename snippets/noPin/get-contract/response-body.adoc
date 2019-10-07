@@ -1,0 +1,10 @@
+[source,options="nowrap"]
+----
+{
+  "name" : "name",
+  "description" : "description",
+  "confirmed" : true,
+  "address" : "address",
+  "id" : 1
+}
+----

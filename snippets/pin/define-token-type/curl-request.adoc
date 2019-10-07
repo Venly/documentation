@@ -1,0 +1,12 @@
+[source,bash]
+----
+$ curl 'https://business.arkane.network/api/apps/1/contracts/2/define-token-type' -i -X POST \
+    -H 'Content-Type: application/json' \
+    -d '{
+  "name" : "name",
+  "description" : "description",
+  "decimals" : 0,
+  "nft" : true,
+  "properties" : "{\"image\": \"none\"}"
+}'
+----

@@ -1,0 +1,15 @@
+[source,http,options="nowrap"]
+----
+POST /api/apps/1/contracts/2/define-token-type HTTP/1.1
+Content-Length: 130
+Host: business.arkane.network
+Content-Type: application/json
+
+{
+  "name" : "name",
+  "description" : "description",
+  "decimals" : 0,
+  "nft" : true,
+  "properties" : "{\"image\": \"none\"}"
+}
+----

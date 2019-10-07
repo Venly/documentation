@@ -1,0 +1,12 @@
+|===
+|Path|Type|Description
+
+|`+name+`
+|`+String+`
+|The name of the contract to be deployed
+
+|`+description+`
+|`+String+`
+|A description of the contract to be deployed
+
+|===

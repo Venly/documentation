@@ -592,6 +592,11 @@ Supported chain specific fields:
 |Number
 |0.1
 
+|systemFee
+|When specified, this system fee will be used for the contract call
+|Number
+|0.1
+
 |outputs
 |It is possible to add additional asset transfers together with a contract call by attaching additional outputs. This is a JSON object containing "to", "amount" and "assetId" with json types
 respectively string, number and string. If "to" is a script hash, it will be translated to a valid NEO address

@@ -588,7 +588,12 @@ Supported chain specific fields:
 |Field name |Field value|Type | Example
 
 |networkFee
-|When specified, this network fee will be used for the contract call
+|When specified, this network fee will be used for the contract call. By default, 0.1 is used
+|Number
+|0.1
+
+|systemFee
+|When specified, this system fee will be used for the contract call
 |Number
 |0.1
 

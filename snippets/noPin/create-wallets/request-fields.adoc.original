@@ -1,44 +1,35 @@
 |===
 |Path|Type|Description|Constraints
-
 |`+walletType+`
 |`+String+`
 |The type of wallet you are trying to create
 |Mandatory, THREEWAY_SHARED or APPLICATION
-
 |`+pincode+`
 |`+String+`
 |If hasCustomPin (see below), the custom pincode to be used with this wallet, otherwise: the master pin code of the user
 |Mandatory, 4-6 digits
-
 |`+alias+`
 |`+Null+`
 |Alias of the wallet. Needs to be unique across your account
 |Optional, max 50 chars, allowed charachters: A-Z, a-z, 0-9, - and _
-
 |`+description+`
 |`+Null+`
 |General description of your wallet
 |Optional, max 200 chars
-
 |`+primary+`
 |`+Boolean+`
 |Makes the wallet primary. Will reset any other primary of that chain
 |Optional, default false
-
 |`+secretType+`
 |`+String+`
 |Type of secret to be generated. (possible values: ETHEREUM)
 |mandator, allowed values: [AETERNITY, BITCOIN, ETHEREUM, GOCHAIN, LITECOIN, TRON, VECHAIN, NEO]
-
 |`+hasCustomPin+`
 |`+Boolean+`
 |Whether the wallet should have a custom pincode, instead of the master pincode
 |Optional, by default false
-
 |`+clients+`
 |`+Array+`
 |New wallet will be automatically linked to given clients
 |Optional, only valid clients
-
 |===

@@ -3,7 +3,6 @@
 {
   "type" : "TRON_RAW",
   "walletId" : "1",
-  "pincode" : "31345",
   "data" : "Some data"
 }
 ----

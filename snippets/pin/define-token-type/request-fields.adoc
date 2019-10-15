@@ -15,7 +15,7 @@
 
 |`+nft+`
 |`+Boolean+`
-|Whether it's an NFT or not
+|Whether it'createTokenTypeDto an NFT or not
 
 |`+properties+`
 |`+String+`

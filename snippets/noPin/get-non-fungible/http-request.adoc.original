@@ -2,5 +2,4 @@
 ----
 GET /api/nonfungibles/ETHEREUM/0x6ebeaf8e8e946f0716e6533a6f2cefc83f60e8ab/7664 HTTP/1.1
 Host: api.arkane.network
-
 ----

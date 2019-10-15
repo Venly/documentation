@@ -6,6 +6,6 @@ $ echo '{
   "decimals" : 0,
   "nft" : true,
   "properties" : "{\"image\": \"none\"}"
-}' | http POST 'https://business.arkane.network/api/apps/1/contracts/2/define-token-type' \
+}' | http POST 'https://business.arkane.network/api/apps/app-id/contracts/1/define-token-type' \
     'Content-Type:application/json'
 ----

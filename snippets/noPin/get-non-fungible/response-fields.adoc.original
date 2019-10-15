@@ -1,76 +1,57 @@
 |===
 |Path|Type|Description
-
 |`+id+`
 |`+String+`
 |The token ID of this non fungible token
-
 |`+tokenId+`
 |`+String+`
 |The token ID of this non fungible token
-
 |`+owner+`
 |`+String+`
 |The wallet address owning the item
-
 |`+name+`
 |`+String+`
 |Name of this item
-
 |`+description+`
 |`+String+`
 |Description of the item
-
 |`+url+`
 |`+String+`
 |Link to the detail page of this item
-
 |`+backgroundColor+`
 |`+String+`
 |Background color to use when displaying this item
-
 |`+imageUrl+`
 |`+String+`
 |URL to an image of this item (original size)
-
 |`+imagePreviewUrl+`
 |`+Null+`
 |URL to an image of this item (size 512px)
-
 |`+imageThumbnailUrl+`
 |`+Null+`
 |URL to an image of this item (size 128px)
-
 |`+contract+`
 |`+Object+`
 |The contract that manages this item
-
 |`+contract.name+`
 |`+String+`
 |Name of the contract
-
 |`+contract.description+`
 |`+String+`
 |Description of the contract
-
 |`+contract.address+`
 |`+String+`
 |Address of the contract
-
 |`+contract.symbol+`
 |`+String+`
 |Symbol of the contract (e.g. GODS, CKITTY, STRK)
-
 |`+contract.url+`
 |`+String+`
 |Link to the website/application that issued this contract
-
 |`+contract.imageUrl+`
 |`+String+`
 |Link to an image (logo) of this contract
-
 |`+contract.type+`
 |`+String+`
 |The type of the contract (ex. ERC721)
-
 |===

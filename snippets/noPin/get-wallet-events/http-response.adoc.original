@@ -3,7 +3,6 @@
 HTTP/1.1 200 OK
 Content-Length: 181
 Content-Type: application/json;charset=UTF-8
-
 [ {
   "id" : 1,
   "eventTimestamp" : 1569830975578,

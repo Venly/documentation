@@ -4,11 +4,9 @@ POST /api/signatures HTTP/1.1
 Host: api.arkane.network
 Content-Type: application/json;charset=UTF-8
 Content-Length: 367
-
 {
   "type" : "ETHEREUM_TRANSACTION",
   "walletId" : "1",
-  "pincode" : "31644",
   "submit" : true,
   "network" : {
     "name" : "Rinkeby",

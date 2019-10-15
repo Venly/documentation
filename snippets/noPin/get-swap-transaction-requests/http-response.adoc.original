@@ -3,10 +3,8 @@
 HTTP/1.1 200 OK
 Content-Length: 571
 Content-Type: application/json;charset=UTF-8
-
 [ {
   "walletId" : "e30a6a01-8d9a-412e-b0c8-eb04d86d1daa",
-  "pincode" : null,
   "blockRef" : null,
   "chainTag" : null,
   "expiration" : 0,

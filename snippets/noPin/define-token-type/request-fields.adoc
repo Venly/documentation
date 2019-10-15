@@ -11,7 +11,7 @@
 |only applicable in case of a fungible token
 |`+nft+`
 |`+Boolean+`
-|Whether it's an NFT or not
+|Whether it'createTokenTypeDto an NFT or not
 |`+properties+`
 |`+String+`
 |Free text field of extra properties for the token

@@ -3,6 +3,5 @@
 HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
 Content-Length: 145
-
 {"token":"70911658-9548-42b3-b0f8-6c1b7b0bb03b","userId":"davy","walletId":"1","claim":"SIGN_WALLETS","enabled":true,"description":"description"}
 ----

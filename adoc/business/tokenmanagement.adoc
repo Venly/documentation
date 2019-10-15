@@ -61,26 +61,32 @@ This section describes all actions related to token management.
 === [[deploy-contract]] Deploy Contract
 Deploying a new Token Contract
 
-operation::deploy-contract[snippets='curl-request,path-parameters,request-fields,http-response,response-fields'&pincode=true]
+operation::deploy-contract[snippets='curl-request,request-fields,http-response,response-fields']
 
 === [[get-contract]] Get Contract
 Get Information about a contract
 
-operation::get-contract[snippets='curl-request,http-response,response-fields'&pincode=true]
+operation::get-contract[snippets='curl-request,http-response,response-fields']
 
 === [[define-token-type]] Defining a Token Type
 Before generating tokens, we need to define the type which will describe the token.
 
-operation::define-token-type[snippets='curl-request,request-fields,path-parameters,http-response,response-fields'&pincode=true]
+operation::define-token-type[snippets='curl-request,request-fields,http-response,response-fields']
 
 === [[create-fungible]] Create Fungible
 
 Create a fungible token based off of a fungible token type.
 
-operation::create-fungible[snippets='curl-request,request-fields,http-response,response-fields'&pincode=true]
+operation::create-fungible[snippets='curl-request,request-fields,http-response']
 
 === [[create-non-fungible]] Create Non-Fungible
 
 Create a non-fungible token based off of a non-fungible token type.
 
-operation::create-non-fungible[snippets='curl-request,request-fields,http-response,response-fields'&pincode=true]
+operation::create-non-fungible[snippets='curl-request,request-fields,http-response']
+
+=== [[list-tokens]] List Tokens.
+
+List the tokens of an account. This is a public endpoint.
+
+operation::list-tokens[snippets='curl-request,http-response,response-fields']

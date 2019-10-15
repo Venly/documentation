@@ -1,8 +1,9 @@
 [source,bash]
 ----
-$ curl 'https://business.arkane.network/api/apps/1/contracts/2/create-non-fungible' -i -X POST \
+$ curl 'https://business.arkane.network/api/apps/1/contracts/2/create-fungible' -i -X POST \
     -H 'Content-Type: application/json' \
     -d '{
-  "type" : 12239
+  "type" : 12234,
+  "amount" : 2000
 }'
 ----

@@ -3,5 +3,4 @@
 GET /api/profile HTTP/1.1
 Host: api.arkane.network
 authToken: c8f41e43-e0cb-4796-9782-cd915f91347e
-
 ----

@@ -3,7 +3,6 @@
 $ echo '{
   "type" : "ETHEREUM_TRANSACTION",
   "walletId" : "1",
-  "pincode" : "31644",
   "submit" : true,
   "network" : {
     "name" : "Rinkeby",

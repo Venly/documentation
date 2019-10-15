@@ -5,7 +5,6 @@ $ curl 'https://api.arkane.network/api/signatures' -i -X POST \
     -d '{
   "type" : "TRON_RAW",
   "walletId" : "1",
-  "pincode" : "31345",
   "data" : "Some data"
 }'
 ----

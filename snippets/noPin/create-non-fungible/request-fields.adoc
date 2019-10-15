@@ -1,0 +1,6 @@
+|===
+|Path|Type|Description
+|`+type+`
+|`+Number+`
+|The id of the Token Type we wish to generate an item for
+|===

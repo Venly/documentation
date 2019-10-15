@@ -1,0 +1,34 @@
+[source,options="nowrap"]
+----
+[ {
+  "secretType" : "VECHAIN",
+  "contractAddress" : "0xb",
+  "tokenId" : 98798,
+  "tokenType" : {
+    "id" : 1,
+    "name" : "name",
+    "description" : "description",
+    "nf" : true,
+    "decimals" : 0,
+    "typeId" : 1,
+    "transactionHash" : "hash",
+    "confirmed" : true,
+    "mineDate" : "2019-10-15T08:26:41.807+0000",
+    "transactionDate" : "2019-10-15T08:26:41.807+0000",
+    "tokenContract" : {
+      "id" : 1,
+      "address" : "0xB06e7986b7CA6de204D92ba6b32b5cbAC25fa16b",
+      "confirmed" : true,
+      "deployDate" : "2019-10-15T08:26:41.807+0000",
+      "mineDate" : "2019-10-15T08:26:41.807+0000",
+      "description" : "description",
+      "applicationId" : "app_id",
+      "name" : "name",
+      "transactionHash" : "hash",
+      "owner" : "Quinten"
+    },
+    "properties" : "{\"property1\": \"test\""
+  },
+  "amount" : 1
+} ]
+----

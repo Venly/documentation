@@ -3,7 +3,6 @@
 HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
 Content-Length: 69
-
 {
   "transactionRequestId" : "12691351-1035-4066-bc70-3c7bd6bdc185"
 }

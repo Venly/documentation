@@ -1,0 +1,4 @@
+[source,bash]
+----
+$ curl 'https://business.arkane.network/api/0xa/items' -i -X GET
+----

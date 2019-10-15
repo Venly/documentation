@@ -3,5 +3,4 @@
 GET /api/profile HTTP/1.1
 Host: api.arkane.network
 Authorization: Bearer BEARER-TOKEN
-
 ----

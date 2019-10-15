@@ -81,6 +81,11 @@ Returns the details for a specific wallet (native balance is also included)
 
 operation::get-wallet[snippets='curl-request,path-parameters,http-response,response-fields'&pincode=true]
 
+[[find-by-identifier]]
+=== [[find-by-identifier]] Find a wallet with a specific identifier
+
+operation::find-by-identifier[snippets='curl-request,path-parameters,http-response,response-fields'&pincode=true]
+
 === [[get-balance]] Native balance link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
 Returns the "native" balance for a wallet. This is the balance of the native token used by the chain. Ex. ETH for Ethereum.
 

@@ -5,6 +5,7 @@ $ curl 'https://api.arkane.network/api/signatures/prepare' -i -X POST \
     -d '{
   "type" : "VECHAIN_TRANSACTION",
   "walletId" : "1",
+  "pincode" : null,
   "submit" : false,
   "network" : null,
   "blockRef" : null,

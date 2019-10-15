@@ -1,6 +1,7 @@
 [source,bash]
 ----
 $ echo '{
+  "pincode" : "1234"
 }' | http PUT 'https://api.arkane.network/api/transactions/daeab218-91f1-4aed-b131-2626a700e386' \
     'Content-Type:application/json;charset=UTF-8'
 ----

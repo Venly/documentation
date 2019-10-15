@@ -2,6 +2,7 @@
 ----
 {
   "walletId" : "edc4c08a-b8fa-4e4c-z5a2-92c87b80f174",
+  "pincode" : null,
   "blockRef" : null,
   "chainTag" : null,
   "expiration" : 0,

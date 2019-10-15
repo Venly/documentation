@@ -4,6 +4,7 @@ $ curl 'https://api.arkane.network/api/transactions/execute' -i -X POST \
     -H 'Content-Type: application/json;charset=UTF-8' \
     -d '{
   "walletId" : "ddc4c08a-b8fa-4e4c-z5a2-92c87b80f174",
+  "pincode" : "597314",
   "blockRef" : null,
   "chainTag" : null,
   "expiration" : 3,

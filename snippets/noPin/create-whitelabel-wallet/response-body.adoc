@@ -5,7 +5,7 @@
   "address" : "0xdc72b72db54e227e65a45004ab2798d31e8934c2",
   "walletType" : "WHITE_LABEL",
   "secretType" : "ETHEREUM",
-  "createdAt" : [ 2019, 9, 30, 8, 9, 34, 315906000 ],
+  "createdAt" : [ 2019, 10, 15, 12, 50, 0, 470611000 ],
   "archived" : false,
   "alias" : "aliasEth",
   "description" : "descriptionEth",

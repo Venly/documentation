@@ -1,9 +1,12 @@
 |===
 |Path|Type|Description
+
 |`+signedTransaction+`
 |`+String+`
 |The signed transaction.
+
 |`+transactionHash+`
 |`+String+`
 |the transactionHash, which is only available if it has been submitted to the blockchain
+
 |===

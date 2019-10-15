@@ -4,7 +4,9 @@ POST /api/wallets HTTP/1.1
 Host: api.arkane.network
 Content-Length: 208
 Content-Type: application/json
+
 {
+  "pincode" : "1234",
   "alias" : null,
   "description" : null,
   "primary" : false,

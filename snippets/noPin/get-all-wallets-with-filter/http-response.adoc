@@ -1,14 +1,14 @@
 [source,http,options="nowrap"]
 ----
 HTTP/1.1 200 OK
-Content-Length: 611
+Content-Length: 613
 Content-Type: application/json;charset=UTF-8
 [ {
   "id" : "3",
   "address" : "0xae52b72db54e137a65a42434ab2543d31f8454c3",
   "walletType" : "THREEWAY_SHARED",
   "secretType" : "VECHAIN",
-  "createdAt" : [ 2019, 9, 30, 8, 9, 33, 810136000 ],
+  "createdAt" : [ 2019, 10, 15, 12, 50, 0, 152502000 ],
   "archived" : false,
   "alias" : "aliasVechain",
   "description" : "descriptionVechain",

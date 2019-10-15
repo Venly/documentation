@@ -1,51 +1,64 @@
 |===
 |Path|Type|Description|Constraints
+
 |`+type+`
 |`+String+`
 |The type of the transaction
 |Mandatory, value for vet transaction: VECHAIN_VIP180_TRANSACTION
+
 |`+walletId+`
 |`+String+`
 |The id of the wallet one wants to sign with.
 |Mandatory
+
 |`+blockRef+`
 |`+Null+`
 | BlockRef is the reference to a specific block. When the BlockRef is a block ID in the future, it enables users to configure the transactions to be executed as a specific block height;
 |Optional
+
 |`+chainTag+`
 |`+Null+`
 |chaintag
 |Optional
+
 |`+expiration+`
 |`+Number+`
 |The number of blocks that can be used to specify when the transaction expires
 |Optional, must be >= 0
+
 |`+gas+`
 |`+Number+`
 |the maximum amount of VeThor the sender is willing to pay to execute all the clauses in the transaction
 |Optional, must be > 0
+
 |`+gasPriceCoef+`
 |`+Number+`
 |Users can modify the Gas Price Coefficient to increase the amount of VeThor they are willing to commit in the predefined range as to prioritize the transaction
 |Optional, must be >= 0
+
 |`+nonce+`
 |`+String+`
 |TxNonce is a random number in the transaction. Users are able to change the nonce to generate unique TxID as part of the “in-transaction proof of work” feature
 |Optional
+
 |`+clauses+`
 |`+Array+`
 |Each transaction may contain multiple clauses, and each clause contains the “To”, “Value”, and “Data” fields that can be used to commence different tasks such as payment or smart contracts
 |At least 1 must be present
+
 |`+clauses[].to+`
 |`+String+`
 |address of the to clause
 |Mandatory, valid vechain address
+
 |`+clauses[].tokenAddress+`
 |`+String+`
 |The address of the token to be used in this application
 |Mandatory, valid vechain ERC20 token address
+
 |`+clauses[].amount+`
 |`+Number+`
 |amount of the to clause
 |Mandatory, must be >= 0
+
 |===

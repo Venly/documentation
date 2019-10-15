@@ -1,24 +1,18 @@
 |===
 |Path|Type|Description
-
 |`+name+`
 |`+String+`
 |name of the token type
-
 |`+description+`
 |`+String+`
 |description of the token type
-
 |`+decimals+`
 |`+Number+`
 |only applicable in case of a fungible token
-
 |`+nft+`
 |`+Boolean+`
 |Whether it'createTokenTypeDto an NFT or not
-
 |`+properties+`
 |`+String+`
 |Free text field of extra properties for the token
-
 |===

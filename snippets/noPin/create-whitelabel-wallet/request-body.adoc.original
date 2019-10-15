@@ -1,6 +1,7 @@
 [source,options="nowrap"]
 ----
 {
+  "pincode" : "1234",
   "alias" : "alias",
   "description" : "description",
   "identifier" : "identifier",

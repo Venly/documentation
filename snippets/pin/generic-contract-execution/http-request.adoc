@@ -1,8 +1,8 @@
 [source,http,options="nowrap"]
 ----
 POST /api/transactions/build HTTP/1.1
+Content-Length: 571
 Host: api.arkane.network
-Content-Length: 512
 Content-Type: application/json;charset=UTF-8
 
 {
@@ -24,6 +24,9 @@ Content-Type: application/json;charset=UTF-8
   }, {
     "type" : "uint256",
     "value" : "73680000"
-  } ]
+  } ],
+  "chainSpecificFields" : {
+    "gasLimit" : "300000"
+  }
 }
 ----

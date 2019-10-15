@@ -1,7 +1,9 @@
 |===
 |Path|Type|Description|Constraints
+
 |`+walletType+`
 |`+String+`
 |The new walletType
 |Mandatory, currently only THREEWAY_SHARED is supported
+
 |===

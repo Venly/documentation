@@ -5,6 +5,7 @@ $ curl 'https://api.arkane.network/api/signatures' -i -X POST \
     -d '{
   "type" : "NEO_GAS_TRANSACTION",
   "walletId" : "1",
+  "pincode" : "738276",
   "submit" : false,
   "network" : null,
   "to" : "AbArunq3PGYmQv4xhduTKva7r2ppUqeaDi",

@@ -3,6 +3,7 @@
 {
   "type" : "NEO_MESSAGE",
   "walletId" : "1",
+  "pincode" : "31345",
   "data" : "the message to sign",
   "hash" : true
 }

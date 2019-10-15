@@ -22,7 +22,7 @@
 |Optional, default false
 |`+secretType+`
 |`+String+`
-|Type of secret to be generated. (possible values: ETHEREUM)
+|Type of secret to be generated. (possible values: AETERNITY, BITCOIN, ETHEREUM, GOCHAIN, LITECOIN, TRON, VECHAIN, NEO)
 |mandator, allowed values: [AETERNITY, BITCOIN, ETHEREUM, GOCHAIN, LITECOIN, TRON, VECHAIN, NEO]
 |`+hasCustomPin+`
 |`+Boolean+`

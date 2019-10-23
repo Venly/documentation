@@ -3,7 +3,6 @@
 HTTP/1.1 200 OK
 Content-Length: 240
 Content-Type: application/json;charset=UTF-8
-
 {
   "available" : false,
   "secretType" : "ETHEREUM",

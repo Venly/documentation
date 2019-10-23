@@ -5,7 +5,12 @@ $ echo '{
   "description" : "description",
   "decimals" : 0,
   "nft" : true,
-  "properties" : "{\"image\": \"none\"}"
+  "properties" : "{\"image\": \"none\"}",
+  "backgroundColor" : "white",
+  "url" : "url",
+  "image" : "image",
+  "imagePreview" : "imagePreview",
+  "imageThumbnail" : "imageThumbnail"
 }' | http POST 'https://business.arkane.network/api/apps/app-id/contracts/1/define-token-type' \
     'Content-Type:application/json'
 ----

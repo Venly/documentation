@@ -3,7 +3,6 @@
 $ curl 'https://api.arkane.network/api/wallets' -i -X POST \
     -H 'Content-Type: application/json' \
     -d '{
-  "pincode" : "1234",
   "alias" : "TheAlias",
   "description" : "The description",
   "secretType" : "ETHEREUM",

@@ -4,7 +4,6 @@ $ curl 'https://api.arkane.network/api/transactions/prepare' -i -X POST \
     -H 'Content-Type: application/json;charset=UTF-8' \
     -d '{
   "walletId" : "1543",
-  "pincode" : "531644",
   "gasPrice" : 10000000000,
   "gas" : 23000,
   "nonce" : 0,

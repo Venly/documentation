@@ -3,6 +3,5 @@
 HTTP/1.1 200 OK
 Content-Length: 181
 Content-Type: application/json;charset=UTF-8
-
 [{"id":"3","address":null,"walletType":null,"secretType":null,"createdAt":null,"archived":false,"alias":null,"description":null,"primary":false,"hasCustomPin":false,"balance":null}]
 ----

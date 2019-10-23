@@ -5,7 +5,6 @@ $ curl 'https://api.arkane.network/api/signatures' -i -X POST \
     -d '{
   "type" : "ETHEREUM_TRANSACTION",
   "walletId" : "1",
-  "pincode" : "738276",
   "submit" : false,
   "network" : {
     "name" : "Rinkeby",

@@ -4,7 +4,6 @@ POST /api/transactions/build HTTP/1.1
 Host: api.arkane.network
 Content-Length: 314
 Content-Type: application/json;charset=UTF-8
-
 {
   "type" : "GAS_TRANSFER",
   "walletId" : "ddc4c08a-b8fa-4e4c-z5a2-92c87b80f174",

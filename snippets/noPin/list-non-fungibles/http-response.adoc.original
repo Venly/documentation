@@ -3,7 +3,6 @@
 HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
 Content-Length: 2093
-
 [ {
   "id" : "7664",
   "tokenId" : "7664",

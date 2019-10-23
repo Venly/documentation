@@ -4,10 +4,8 @@ POST /api/transactions/execute HTTP/1.1
 Host: api.arkane.network
 Content-Type: application/json;charset=UTF-8
 Content-Length: 399
-
 {
   "walletId" : "cdc4c08a-b8fa-4e4c-z5a2-92c87b80f174",
-  "pincode" : "54716",
   "blockRef" : null,
   "chainTag" : null,
   "expiration" : 3,

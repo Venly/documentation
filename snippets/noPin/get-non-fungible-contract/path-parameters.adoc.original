@@ -1,11 +1,8 @@
 .+/api/nonfungibles/{secretType}/{contractAddress}+
 |===
 |Parameter|Description
-
 |`+secretType+`
 |SecretType of chain where the non fungible contract lives
-
 |`+contractAddress+`
 |NFT contract address
-
 |===

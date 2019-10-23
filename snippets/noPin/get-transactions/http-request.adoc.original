@@ -2,5 +2,4 @@
 ----
 GET /api/transactions HTTP/1.1
 Host: api.arkane.network
-
 ----

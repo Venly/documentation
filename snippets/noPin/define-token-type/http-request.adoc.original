@@ -1,14 +1,20 @@
 [source,http,options="nowrap"]
 ----
 POST /api/apps/app-id/contracts/1/define-token-type HTTP/1.1
-Content-Length: 130
+Content-Length: 273
 Host: business.arkane.network
 Content-Type: application/json
+
 {
   "name" : "name",
   "description" : "description",
   "decimals" : 0,
   "nft" : true,
-  "properties" : "{\"image\": \"none\"}"
+  "properties" : "{\"image\": \"none\"}",
+  "backgroundColor" : "white",
+  "url" : "url",
+  "image" : "image",
+  "imagePreview" : "imagePreview",
+  "imageThumbnail" : "imageThumbnail"
 }
 ----

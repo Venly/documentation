@@ -1,32 +1,24 @@
 |===
 |Path|Type|Description
-
 |`+[].type+`
 |`+String+`
 |Type of the event
-
 |`+[].id+`
 |`+String+`
 |Type of the event
-
 |`+[].client+`
 |`+String+`
 |Type of the event
-
 |`+[].eventTimestamp+`
 |`+String+`
 |Type of the event
-
 |`+[].apiToken+`
 |`+String+`
 |Type of the event
-
 |`+[].metadata+`
 |`+String+`
 |Type of the event
-
 |`+[].walletId+`
 |`+String+`
 |Type of the event
-
 |===

@@ -4,7 +4,6 @@ $ curl 'https://api.arkane.network/api/wallets/export' -i -X POST \
     -H 'Content-Type: application/json;charset=UTF-8' \
     -d '{
   "walletId" : "1",
-  "pincode" : null,
   "password" : "secret-password"
 }'
 ----

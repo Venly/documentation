@@ -5,6 +5,11 @@
   "description" : "description",
   "decimals" : 0,
   "nft" : true,
-  "properties" : "{\"image\": \"none\"}"
+  "properties" : "{\"image\": \"none\"}",
+  "backgroundColor" : "white",
+  "url" : "url",
+  "image" : "image",
+  "imagePreview" : "imagePreview",
+  "imageThumbnail" : "imageThumbnail"
 }
 ----

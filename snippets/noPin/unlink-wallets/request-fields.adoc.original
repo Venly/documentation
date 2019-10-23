@@ -1,14 +1,11 @@
 |===
 |Path|Type|Description|Constraints
-
 |`+walletIds+`
 |`+Array+`
 |Ids of the wallet we'd like to unlink
 |Mandatory, valid wallet ids
-
 |`+client+`
 |`+String+`
 |client we're trying to unlink
 |Mandatory, one valid client
-
 |===

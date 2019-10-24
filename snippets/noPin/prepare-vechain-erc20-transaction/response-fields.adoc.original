@@ -1,6 +1,10 @@
 |===
 |Path|Type|Description
 
+|`+secretType+`
+|`+String+`
+|The SecretType this transactionPreparation is for
+
 |`+gasPriceCoefficients+`
 |`+Array+`
 |List containing the gas price coefficients

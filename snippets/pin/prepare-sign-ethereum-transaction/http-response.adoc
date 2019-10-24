@@ -1,10 +1,11 @@
 [source,http,options="nowrap"]
 ----
 HTTP/1.1 200 OK
-Content-Length: 319
+Content-Length: 348
 Content-Type: application/json;charset=UTF-8
 
 {
+  "secretType" : "ETHEREUM",
   "gasPrices" : [ {
     "gasPrice" : 1000000000,
     "defaultPrice" : false

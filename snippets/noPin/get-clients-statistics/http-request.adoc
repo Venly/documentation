@@ -1,0 +1,5 @@
+[source,http,options="nowrap"]
+----
+GET /api/wallets/clients/statistics?clients=Arketype HTTP/1.1
+Host: api.arkane.network
+----

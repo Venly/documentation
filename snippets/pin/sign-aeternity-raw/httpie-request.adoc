@@ -1,0 +1,11 @@
+[source,bash]
+----
+$ echo '{
+  "type" : "AETERNITY_RAW",
+  "walletId" : "1",
+  "pincode" : "738276",
+  "data" : "tx_+IUrAaEBV1+B/7Cil7dyXcZx2gsXabH8XL5FOFx7WtH8Lq8dYJ0LoQXc8QU36IYbbsXk7d7Lg77BPQuicjS136jJKX5wHepi9QOHAZu6brCYAAAAgicQhDuaygCqKxFM1wuWG58AoFFwNxylSmNg4Pv8OlwzrrPdOBQ95X6DOW+5H6nRMbqY3bEntQ==",
+  "type" : "AETERNITY_RAW"
+}' | http POST 'https://api.arkane.network/api/signatures' \
+    'Content-Type:application/json;charset=UTF-8'
+----

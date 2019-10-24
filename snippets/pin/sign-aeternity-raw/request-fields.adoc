@@ -1,0 +1,24 @@
+|===
+|Path|Type|Description|Constraints
+
+|`+type+`
+|`+String+`
+|The type of the transaction. ex: NEO_NATIVE_TRANSACTION.
+|Mandatory, possible values: ETHEREUM_TRANSACTION, VECHAIN_TRANSACTION, GOCHAIN_TRANSACTION, BITCOIN_TRANSACTION, LITECOIN_TRANSACTION, TRX_TRANSACTION, TRC10_TRANSACTION, TRON_RAW, NEO_GAS_TRANSACTION, NEO_NATIVE_TRANSACTION, NEO_RAW_TRANSACTION, AETERNITY_RAW
+
+|`+walletId+`
+|`+String+`
+|The id of the wallet one wants to sign with.
+|Mandatory
+
+|`+pincode+`
+|`+String+`
+|The pincode of the specified wallet
+|Mandatory, must be between 4-6 digits
+
+|`+data+`
+|`+String+`
+|The data you wish to sign.
+|Mandatory
+
+|===

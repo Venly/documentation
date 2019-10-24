@@ -1080,6 +1080,25 @@ operation::execute-ae-transaction[snippets='response-fields']
 .Result example
 operation::execute-ae-transaction[snippets='response-body']
 
+==== [[sign-raw-aeternity-transaction]] Sign raw AEternity transaction link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
+To sign a raw AEternity transaction, use the connect building block with:
+
+.URL
+https://connect-staging.arkane.network/transaction/sign/aeternity_raw
+
+
+.Data parameters
+operation::sign-aeternity-raw[snippets='request-fields']
+
+.Data example
+operation::sign-aeternity-raw[snippets='request-body']
+
+.Result parameters
+operation::sign-aeternity-raw[snippets='response-fields']
+
+.Result example
+operation::sign-aeternity-raw[snippets='response-body']
+
 === Neo
 
 ==== [[execute-neo-native-transaction]] Execute NEO Native transaction link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]

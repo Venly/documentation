@@ -8,7 +8,7 @@ Content-Type: application/json;charset=UTF-8
   "address" : "0xdc72b72db54e227e65a45004ab2798d31e8934c2",
   "walletType" : "THREEWAY_SHARED",
   "secretType" : "ETHEREUM",
-  "createdAt" : [ 2019, 10, 15, 12, 50, 1, 148078000 ],
+  "createdAt" : [ 2019, 10, 24, 13, 7, 38, 538735000 ],
   "archived" : false,
   "alias" : "aliasEth",
   "description" : "descriptionEth",

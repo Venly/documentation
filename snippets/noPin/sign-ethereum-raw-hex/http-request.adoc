@@ -5,10 +5,10 @@ Host: api.arkane.network
 Content-Length: 132
 Content-Type: application/json;charset=UTF-8
 {
-  "type" : "ETHEREUM_RAW",
   "walletId" : "1",
   "data" : "Some data",
   "hash" : true,
-  "prefix" : true
+  "prefix" : true,
+  "type" : "ETHEREUM_RAW"
 }
 ----

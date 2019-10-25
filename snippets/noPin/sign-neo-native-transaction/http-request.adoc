@@ -5,11 +5,11 @@ Content-Length: 185
 Host: api.arkane.network
 Content-Type: application/json;charset=UTF-8
 {
-  "type" : "NEO_NATIVE_TRANSACTION",
   "walletId" : "1",
   "submit" : true,
   "network" : null,
   "to" : "AbArunq3PGYmQv4xhduTKva7r2ppUqeaDi",
-  "value" : 55
+  "value" : 55,
+  "type" : "NEO_NATIVE_TRANSACTION"
 }
 ----

@@ -5,8 +5,8 @@ Host: api.arkane.network
 Content-Length: 92
 Content-Type: application/json;charset=UTF-8
 {
-  "type" : "TRON_RAW",
   "walletId" : "1",
-  "data" : "Some data"
+  "data" : "Some data",
+  "type" : "TRON_RAW"
 }
 ----

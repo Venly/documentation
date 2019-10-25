@@ -6,11 +6,11 @@ Content-Length: 132
 Content-Type: application/json;charset=UTF-8
 
 {
-  "type" : "ETHEREUM_RAW",
   "walletId" : "1",
   "pincode" : "31345",
   "data" : "Some data",
   "hash" : true,
-  "prefix" : true
+  "prefix" : true,
+  "type" : "ETHEREUM_RAW"
 }
 ----

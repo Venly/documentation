@@ -1,10 +1,10 @@
 [source,bash]
 ----
 $ echo '{
-  "type" : "NEO_MESSAGE",
   "walletId" : "1",
   "data" : "the message to sign",
-  "hash" : true
+  "hash" : true,
+  "type" : "NEO_MESSAGE"
 }' | http POST 'https://api.arkane.network/api/signatures' \
     'Content-Type:application/json;charset=UTF-8'
 ----

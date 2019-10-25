@@ -11,6 +11,6 @@ Content-Type: application/json;charset=UTF-8
   "claim" : "SIGN_WALLETS",
   "enabled" : true,
   "description" : "Development API Key",
-  "tokenSecret" : "PUo0aWl2KDNGPUFOQG5BR19nSzFvIUpddnlBYmx6b2g3OW5HW1ElNEJPNmZySmw3MzM="
+  "tokenSecret" : "NFM5K0I8ZjIkLyp6OWIhc3dfZ0VERlIzP3A5MCE0QjkzMG10cWZuOVZYNGglMUI1SHI="
 }
 ----

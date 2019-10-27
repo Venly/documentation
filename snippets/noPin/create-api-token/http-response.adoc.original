@@ -3,6 +3,7 @@
 HTTP/1.1 200 OK
 Content-Length: 274
 Content-Type: application/json;charset=UTF-8
+
 {
   "token" : "4efe60c8-53e5-41cf-a1c5-39104698d557",
   "userId" : "davy",
@@ -10,6 +11,6 @@ Content-Type: application/json;charset=UTF-8
   "claim" : "SIGN_WALLETS",
   "enabled" : true,
   "description" : "Development API Key",
-  "tokenSecret" : "IywxR25KeD42YjBsWykxPzdsSFZKSzRTM11IczBkeWMrRE1XNTdmdFA0bjRaSys3ajY="
+  "tokenSecret" : "L1kxMFpkYi9mNlZOUTJdLkIxQjUyW1Z6JjNMbG15NjJIV0JobWpVXVRZJWxiMnJPPlE="
 }
 ----

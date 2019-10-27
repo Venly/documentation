@@ -4,8 +4,10 @@ POST /api/wallets/export HTTP/1.1
 Content-Length: 76
 Host: api.arkane.network
 Content-Type: application/json;charset=UTF-8
+
 {
   "walletId" : "1",
+  "pincode" : null,
   "password" : "secret-password"
 }
 ----

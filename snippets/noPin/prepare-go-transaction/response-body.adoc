@@ -1,6 +1,7 @@
 [source,options="nowrap"]
 ----
 {
+  "secretType" : "GOCHAIN",
   "gasPrices" : [ {
     "gasPrice" : 1000000000,
     "defaultPrice" : false

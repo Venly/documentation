@@ -2,14 +2,14 @@
 ----
 HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
-Content-Length: 596
+Content-Length: 597
 
 {
   "id" : "1",
   "address" : "0xdc72b72db54e227e65a45004ab2798d31e8934c2",
   "walletType" : "WHITE_LABEL",
   "secretType" : "ETHEREUM",
-  "createdAt" : [ 2019, 10, 15, 12, 50, 0, 470611000 ],
+  "createdAt" : [ 2019, 10, 27, 11, 27, 58, 990235000 ],
   "archived" : false,
   "alias" : "aliasEth",
   "description" : "descriptionEth",

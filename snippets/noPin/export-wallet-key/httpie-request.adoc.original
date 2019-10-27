@@ -2,6 +2,7 @@
 ----
 $ echo '{
   "walletId" : "1",
+  "pincode" : null,
   "password" : "secret-password"
 }' | http POST 'https://api.arkane.network/api/wallets/export' \
     'Content-Type:application/json;charset=UTF-8'

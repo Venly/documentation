@@ -3,10 +3,10 @@
 $ curl 'https://api.arkane.network/api/signatures' -i -X POST \
     -H 'Content-Type: application/json;charset=UTF-8' \
     -d '{
-  "type" : "ETHEREUM_RAW",
   "walletId" : "1",
   "data" : "Some data",
   "hash" : true,
-  "prefix" : true
+  "prefix" : true,
+  "type" : "ETHEREUM_RAW"
 }'
 ----

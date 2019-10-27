@@ -22,6 +22,6 @@
 |mandator, allowed values: [AETERNITY, BITCOIN, ETHEREUM, GOCHAIN, LITECOIN, TRON, VECHAIN, NEO]
 |`+identifier+`
 |`+String+`
-|an identifier that can be used to discriminate between your wallets
+|Add a custom identifier that allows you to retrieve the wallet based on this identifier 
 |Optional
 |===

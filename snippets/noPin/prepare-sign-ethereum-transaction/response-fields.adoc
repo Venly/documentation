@@ -1,5 +1,8 @@
 |===
 |Path|Type|Description
+|`+secretType+`
+|`+String+`
+|The SecretType this transactionPreparation is for
 |`+gasLimit+`
 |`+Number+`
 |The estimated gas limit

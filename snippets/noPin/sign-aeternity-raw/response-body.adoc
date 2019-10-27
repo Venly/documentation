@@ -1,0 +1,4 @@
+[source,options="nowrap"]
+----
+{"@class":".TransactionSignature","signedTransaction":"transaction"}
+----

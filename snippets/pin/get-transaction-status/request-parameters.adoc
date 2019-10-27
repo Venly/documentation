@@ -1,0 +1,10 @@
+|===
+|Parameter|Description
+
+|`+secretType+`
+|the secret type, possible values are: AETERNITY, BITCOIN, ETHEREUM, GOCHAIN, LITECOIN, TRON, VECHAIN, NEO
+
+|`+transactionId+`
+|The id of the transaction
+
+|===

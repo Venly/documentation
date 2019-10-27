@@ -3,8 +3,8 @@
 $ curl 'https://api.arkane.network/api/signatures' -i -X POST \
     -H 'Content-Type: application/json;charset=UTF-8' \
     -d '{
-  "type" : "ETHEREUM_TRANSACTION",
   "walletId" : "1",
+  "pincode" : "31644",
   "submit" : true,
   "network" : {
     "name" : "Rinkeby",
@@ -16,6 +16,7 @@ $ curl 'https://api.arkane.network/api/signatures' -i -X POST \
   "nonce" : 0,
   "value" : 10000000000,
   "data" : "0x",
-  "to" : "0xdc71b72db51e227e65a45004ab2798d31e8934c9"
+  "to" : "0xdc71b72db51e227e65a45004ab2798d31e8934c9",
+  "type" : "ETHEREUM_TRANSACTION"
 }'
 ----

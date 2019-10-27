@@ -1,15 +1,19 @@
 |===
 |Path|Type|Description|Constraints
+
 |`+walletIds+`
 |`+Array+`
 |Ids of the wallet we'd like to link
 |Mandatory, valid wallet ids
+
 |`+client+`
 |`+String+`
 |client we're trying to link for
 |Mandatory, one valid client
+
 |`+secretType+`
 |`+Null+`
 |Limits the wallets that will be unlinked to only the ones of the given secretType
 |Optional, only valid secret types
+
 |===

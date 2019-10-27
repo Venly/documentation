@@ -4,7 +4,9 @@ PATCH /api/wallets/1/security HTTP/1.1
 Host: api.arkane.network
 Content-Type: application/json;charset=UTF-8
 Content-Length: 102
+
 {
+  "pincode" : "1234",
   "newPincode" : "4321",
   "hasCustomPin" : "true",
   "recoverable" : "true"

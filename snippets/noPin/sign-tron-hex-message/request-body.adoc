@@ -1,8 +1,8 @@
 [source,options="nowrap"]
 ----
 {
-  "type" : "TRON_RAW",
   "walletId" : "1",
-  "data" : "Some data"
+  "data" : "Some data",
+  "type" : "TRON_RAW"
 }
 ----

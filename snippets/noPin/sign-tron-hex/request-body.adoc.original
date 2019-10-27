@@ -1,8 +1,9 @@
 [source,options="nowrap"]
 ----
 {
-  "type" : "TRON_RAW",
   "walletId" : "1",
-  "data" : "Some data"
+  "pincode" : "31345",
+  "data" : "Some data",
+  "type" : "TRON_RAW"
 }
 ----

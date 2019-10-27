@@ -4,6 +4,7 @@ POST /api/wallets/e30a6a01-8d9a-412e-b0c8-eb04d86d1daa/swaps HTTP/1.1
 Host: api.arkane.network
 Content-Length: 297
 Content-Type: application/json
+
 {
   "walletId" : "id",
   "destinationWalletId" : "id",

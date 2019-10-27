@@ -1,6 +1,7 @@
 [source,options="nowrap"]
 ----
 {
+  "pincode" : "12345",
   "transactionRequest" : {
     "type" : "TRANSFER",
     "walletId" : "adc4c08a-b8fa-4e4c-z5a2-92c87b80f174",

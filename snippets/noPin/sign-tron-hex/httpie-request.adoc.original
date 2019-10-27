@@ -1,9 +1,10 @@
 [source,bash]
 ----
 $ echo '{
-  "type" : "TRON_RAW",
   "walletId" : "1",
-  "data" : "Some data"
+  "pincode" : "31345",
+  "data" : "Some data",
+  "type" : "TRON_RAW"
 }' | http POST 'https://api.arkane.network/api/signatures' \
     'Content-Type:application/json;charset=UTF-8'
 ----

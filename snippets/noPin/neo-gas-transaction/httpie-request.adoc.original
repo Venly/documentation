@@ -2,6 +2,7 @@
 ----
 $ echo '{
   "walletId" : "a0173f54-11a5-474e-8c4e-40157ac27c45",
+  "pincode" : "2343",
   "to" : "ak_7x4HpPLRLfotVVcGzYU8ZZwKhoLW7NXg9hAi2pSEyRBo4Vq1c",
   "value" : 10,
   "type" : "NEO_GAS_TRANSACTION"

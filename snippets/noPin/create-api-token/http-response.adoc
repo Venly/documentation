@@ -10,6 +10,6 @@ Content-Type: application/json;charset=UTF-8
   "claim" : "SIGN_WALLETS",
   "enabled" : true,
   "description" : "Development API Key",
-  "tokenSecret" : "NFM5K0I8ZjIkLyp6OWIhc3dfZ0VERlIzP3A5MCE0QjkzMG10cWZuOVZYNGglMUI1SHI="
+  "tokenSecret" : "L1kxMFpkYi9mNlZOUTJdLkIxQjUyW1Z6JjNMbG15NjJIV0JobWpVXVRZJWxiMnJPPlE="
 }
 ----

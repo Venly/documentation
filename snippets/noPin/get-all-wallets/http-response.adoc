@@ -1,14 +1,14 @@
 [source,http,options="nowrap"]
 ----
 HTTP/1.1 200 OK
+Content-Length: 1219
 Content-Type: application/json;charset=UTF-8
-Content-Length: 1217
 [ {
   "id" : "1",
   "address" : "0xdc72b72db54e227e65a45004ab2798d31e8934c2",
   "walletType" : "THREEWAY_SHARED",
   "secretType" : "ETHEREUM",
-  "createdAt" : [ 2019, 10, 25, 7, 47, 33, 545882000 ],
+  "createdAt" : [ 2019, 10, 27, 11, 27, 58, 601306000 ],
   "archived" : false,
   "alias" : "aliasEth",
   "description" : "descriptionEth",
@@ -30,7 +30,7 @@ Content-Length: 1217
   "address" : "0xae52b72db54e137a65a42434ab2543d31f8454c3",
   "walletType" : "THREEWAY_SHARED",
   "secretType" : "VECHAIN",
-  "createdAt" : [ 2019, 10, 25, 7, 47, 33, 545930000 ],
+  "createdAt" : [ 2019, 10, 27, 11, 27, 58, 601359000 ],
   "archived" : false,
   "alias" : "aliasVechain",
   "description" : "descriptionVechain",

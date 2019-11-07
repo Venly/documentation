@@ -1,0 +1,6 @@
+[source,http,options="nowrap"]
+----
+GET /api/transaction/status?secretType=ETHEREUM&transactionId=txId HTTP/1.1
+Host: api.arkane.network
+
+----

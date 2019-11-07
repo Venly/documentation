@@ -1,12 +1,12 @@
 [source,http,options="nowrap"]
 ----
 HTTP/1.1 200 OK
-Content-Length: 206
+Content-Length: 207
 Content-Type: application/json;charset=UTF-8
 
 [ {
   "id" : 1,
-  "eventTimestamp" : [ 2019, 10, 25, 7, 47, 34, 741880000 ],
+  "eventTimestamp" : [ 2019, 10, 27, 11, 27, 59, 838900000 ],
   "client" : "Arkane",
   "apiToken" : "xxx-xxx-xxx",
   "type" : "MASTER_PIN_UPDATED",

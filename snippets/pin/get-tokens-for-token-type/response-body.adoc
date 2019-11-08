@@ -1,0 +1,7 @@
+[source,options="nowrap"]
+----
+[ {
+  "id" : 9983,
+  "contractTokenId" : 9388893
+} ]
+----

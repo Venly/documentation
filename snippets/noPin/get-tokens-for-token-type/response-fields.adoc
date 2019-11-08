@@ -1,0 +1,12 @@
+|===
+|Path|Type|Description
+|`+.[]+`
+|`+Array+`
+|The list of token types defined in given contract
+|`+[].id+`
+|`+Number+`
+|The id of the token
+|`+[].contractTokenId+`
+|`+Number+`
+|The id of the token on the blockchain contract
+|===

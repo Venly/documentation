@@ -84,23 +84,37 @@ Before generating tokens, we need to define the type which will describe the tok
 
 operation::create-token-type[snippets='curl-request,path-parameters,request-fields,http-response,response-fields']
 
+=== [[get-token-types]] List token types
+Returns the all token types for given contract
+
+operation::get-token-types[snippets='curl-request,path-parameters,http-response,response-fields']
+
+=== [[get-token-type]] Get Token Type
+Returns the details for a token type
+
+operation::get-token-type[snippets='curl-request,path-parameters,http-response,response-fields']
+
 === [[create-token]] Create token
 Creating a token is always based on a certain token type.
 
 
 ==== Fungible
 
-
 operation::create-fungible[snippets='curl-request,path-parameters,request-fields,http-response']
 
 
 ==== Non-fungible
 
-
 operation::create-non-fungible[snippets='curl-request,path-parameters,request-fields,http-response']
 
-=== [[list-tokens]] List Tokens.
+=== [[query-tokens]] Query Tokens
 
+==== [[query-tokens]] By token type
+Returns tokens for given token type
+
+operation::get-tokens-for-token-type[snippets='curl-request,path-parameters,http-response,response-fields']
+
+==== [[query-tokens-for-address]] By address
 List the tokens of an account. This is a public endpoint.
 
 operation::list-tokens[snippets='curl-request,path-parameters,http-response,response-fields']

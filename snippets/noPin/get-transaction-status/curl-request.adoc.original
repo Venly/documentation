@@ -1,4 +1,0 @@
-[source,bash]
-----
-$ curl 'https://api.arkane.network/api/transaction/status?secretType=ETHEREUM&transactionId=txId' -i -X GET
-----

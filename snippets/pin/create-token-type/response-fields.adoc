@@ -9,7 +9,7 @@
 |`+Number+`
 |internal id of the type
 
-|`+typeId+`
+|`+contractTypeId+`
 |`+Number+`
 |Blockchain-generated typeId
 

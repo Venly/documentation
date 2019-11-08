@@ -9,7 +9,7 @@
 |`+String+`
 |The address of the token contract
 
-|`+[].tokenId+`
+|`+[].contractTokenId+`
 |`+Number+`
 |The id of the token on the blockchain
 

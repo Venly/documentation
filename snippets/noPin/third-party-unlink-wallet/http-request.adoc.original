@@ -1,6 +1,0 @@
-[source,http,options="nowrap"]
-----
-DELETE /api/wallets/d91b644a-076f-44bf-ae90-29251df19784/link HTTP/1.1
-Host: api.arkane.network
-
-----

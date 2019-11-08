@@ -1,0 +1,16 @@
+[source,bash]
+----
+$ echo '{
+  "name" : "Magic Sword",
+  "description" : "A magical sword that can slay beasts",
+  "decimals" : 0,
+  "nft" : true,
+  "properties" : "{\"someProperty\": \"someValue\"}",
+  "backgroundColor" : "#000000",
+  "url" : "https://agame.com/magic-sword",
+  "image" : "https://via.placeholder.com/2000",
+  "imagePreview" : "https://via.placeholder.com/250",
+  "imageThumbnail" : "https://via.placeholder.com/128"
+}' | http POST 'https://business.arkane.network/api/apps/1f64ded9-2a05-4824-b682-661023359357/contracts/1/token-types' \
+    'Content-Type:application/json'
+----

@@ -1,6 +1,0 @@
-.+/api/{userAddress}/items+
-|===
-|Parameter|Description
-|`+userAddress+`
-|The address of the user of which you want to retrieve the digital items
-|===

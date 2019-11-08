@@ -1,13 +1,14 @@
 == Authentication
 
-* The client will authenticate to Arkane using a a Bearer token.
+
+=== Requesting access token
 
 
-=== [[clientId-client]] The `<clientId>`-client
+
+Here we'll describe how to obtain a bearer token from our authentication server using your `<clientId>_app`-client. For this you will need a registered user on the Arkane network
+. This needs to be a registered user within Arkane and not a user that is only user social logins (in case you already used a social login, simply register and the accounts will be linked)
 
 image::img/appclientauthentication.png[<clientId>_app flow]
-
-Here we'll describe how to obtain a bearer token from our authentication server using your `<clientId>_app`-client:
 
 .URL
 https://login.arkane.network/auth/realms/Arkane/protocol/openid-connect/token
@@ -25,9 +26,11 @@ otherwise the request will fail
 .Request Fields
 |===
 | Path | Type | Description | Constraints
-| grant_type | String | The OpenId Connect grant type you want to use | Mandatory, always `client_credentials`
-| client_id | String | The `<clientId>_app` you want to request a token for | Mandatory, e.g. `Arketype_app`
-| client_secret | String | The shared secret you've received when you requested your `<clientId>_app`-client | Mandatory
+| grant_type | String | The OpenId Connect grant type you want to use | Mandatory, always `password`
+| client_id | String | The `clientId` you want to request a token for | Mandatory, e.g. `Arketype_app`
+| client_secret | String | The shared secret you've received when you requested your `<clientId>`-client | Mandatory
+| username | String | The username you used when signing up (email address)  | Mandatory
+| password | String | The password that was used when signing up | Mandatory
 |===
 
 
@@ -54,39 +57,50 @@ otherwise the request will fail
 }
 ----
 
+=== Using access token
+When calling the API, the access token must be provided inside the HTTP authentication header:
+
+[source,bash]
+----
+curl -H "Authorization: Beaerer ACCESS-TOKEN" https://business.arkane.network
+----
+
 == Token Management
 
 This section describes all actions related to token management.
 
 === [[deploy-contract]] Deploy Contract
-Deploying a new Token Contract
+Deploying a new Token Contract. This token contract represents the game inventory (all items that can exist within the game).
 
-operation::deploy-contract[snippets='curl-request,request-fields,http-response,response-fields']
+operation::deploy-contract[snippets='curl-request,path-parameters,request-fields,http-response,response-fields']
 
 === [[get-contract]] Get Contract
 Get Information about a contract
 
-operation::get-contract[snippets='curl-request,http-response,response-fields']
+operation::get-contract[snippets='curl-request,path-parameters,http-response,response-fields']
 
-=== [[define-token-type]] Defining a Token Type
+=== [[create-token-type]] Create Token Type
 Before generating tokens, we need to define the type which will describe the token.
 
-operation::define-token-type[snippets='curl-request,request-fields,http-response,response-fields']
+operation::create-token-type[snippets='curl-request,path-parameters,request-fields,http-response,response-fields']
 
-=== [[create-fungible]] Create Fungible
+=== [[create-token]] Create token
+Creating a token is always based on a certain token type.
 
-Create a fungible token based off of a fungible token type.
 
-operation::create-fungible[snippets='curl-request,request-fields,http-response']
+==== Fungible
 
-=== [[create-non-fungible]] Create Non-Fungible
 
-Create a non-fungible token based off of a non-fungible token type.
+operation::create-fungible[snippets='curl-request,path-parameters,request-fields,http-response']
 
-operation::create-non-fungible[snippets='curl-request,request-fields,http-response']
+
+==== Non-fungible
+
+
+operation::create-non-fungible[snippets='curl-request,path-parameters,request-fields,http-response']
 
 === [[list-tokens]] List Tokens.
 
 List the tokens of an account. This is a public endpoint.
 
-operation::list-tokens[snippets='curl-request,http-response,response-fields']
+operation::list-tokens[snippets='curl-request,path-parameters,http-response,response-fields']

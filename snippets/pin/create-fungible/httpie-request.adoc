@@ -1,8 +1,8 @@
 [source,bash]
 ----
 $ echo '{
-  "type" : 12234,
+  "typeId" : 12234,
   "amount" : 2000
-}' | http POST 'https://business.arkane.network/api/apps/1/contracts/2/create-fungible' \
+}' | http POST 'https://business.arkane.network/api/apps/1f64ded9-2a05-4824-b682-661023359357/contracts/1/tokens' \
     'Content-Type:application/json'
 ----

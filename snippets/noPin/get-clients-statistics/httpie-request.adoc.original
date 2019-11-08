@@ -1,4 +1,0 @@
-[source,bash]
-----
-$ http GET 'https://api.arkane.network/api/wallets/clients/statistics?clients=Arketype'
-----

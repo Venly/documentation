@@ -1,11 +1,11 @@
 [source,http,options="nowrap"]
 ----
-POST /api/apps/1/contracts/2/create-fungible HTTP/1.1
+POST /api/apps/1f64ded9-2a05-4824-b682-661023359357/contracts/1/tokens HTTP/1.1
+Content-Length: 41
 Host: business.arkane.network
-Content-Length: 39
 Content-Type: application/json
 {
-  "type" : 12234,
+  "typeId" : 12234,
   "amount" : 2000
 }
 ----

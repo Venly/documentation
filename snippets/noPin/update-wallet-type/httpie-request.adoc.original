@@ -1,7 +1,0 @@
-[source,bash]
-----
-$ echo '{
-  "walletType" : "THREEWAY_SHARED"
-}' | http PATCH 'https://api.arkane.network/api/wallets/466e0920-cbaa-4be3-a800-1f00dbd0c989/walletType' \
-    'Content-Type:application/json;charset=UTF-8'
-----

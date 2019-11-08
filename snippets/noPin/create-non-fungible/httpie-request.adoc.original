@@ -1,7 +1,0 @@
-[source,bash]
-----
-$ echo '{
-  "type" : 12239
-}' | http POST 'https://business.arkane.network/api/apps/1/contracts/2/create-non-fungible' \
-    'Content-Type:application/json'
-----

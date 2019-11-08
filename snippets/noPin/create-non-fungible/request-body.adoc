@@ -1,6 +1,7 @@
 [source,options="nowrap"]
 ----
 {
-  "type" : 12239
+  "typeId" : 12239,
+  "amount" : 1
 }
 ----

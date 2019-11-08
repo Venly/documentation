@@ -1,8 +1,0 @@
-[source,options="nowrap"]
-----
-{
-  "@class" : ".SubmittedAndSignedTransactionSignature",
-  "signedTransaction" : "transaction",
-  "transactionHash" : "txHash"
-}
-----

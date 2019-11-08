@@ -1,9 +1,0 @@
-[source,bash]
-----
-$ curl 'https://business.arkane.network/api/apps/app-id/contracts' -i -X POST \
-    -H 'Content-Type: application/json;charset=UTF-8' \
-    -d '{
-  "name" : "Awesome Contract",
-  "description" : "This is my first contract"
-}'
-----

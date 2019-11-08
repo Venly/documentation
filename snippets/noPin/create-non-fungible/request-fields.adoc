@@ -1,6 +1,9 @@
 |===
 |Path|Type|Description
-|`+type+`
+|`+amount+`
 |`+Number+`
-|The id of the Token Type we wish to generate an item for
+|(Optional), default 1. The amount of tokens you wish to generate
+|`+typeId+`
+|`+Number+`
+|The id of the Token Type we wish to generate items for
 |===

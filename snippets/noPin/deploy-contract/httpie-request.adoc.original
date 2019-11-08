@@ -1,8 +1,0 @@
-[source,bash]
-----
-$ echo '{
-  "name" : "Awesome Contract",
-  "description" : "This is my first contract"
-}' | http POST 'https://business.arkane.network/api/apps/app-id/contracts' \
-    'Content-Type:application/json;charset=UTF-8'
-----

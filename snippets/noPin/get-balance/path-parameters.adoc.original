@@ -1,8 +1,0 @@
-.+/api/wallets/{id}/balance+
-|===
-|Parameter|Description
-
-|`+id+`
-|id of the wallet
-
-|===

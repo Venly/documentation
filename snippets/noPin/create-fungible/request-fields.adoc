@@ -3,7 +3,7 @@
 |`+amount+`
 |`+Number+`
 |The amount of tokens you wish to generate
-|`+type+`
+|`+typeId+`
 |`+Number+`
 |The id of the Token Type we wish to generate items for
 |===

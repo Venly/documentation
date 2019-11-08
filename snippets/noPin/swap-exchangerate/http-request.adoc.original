@@ -1,7 +1,0 @@
-[source,http,options="nowrap"]
-----
-GET /api/swaps/rates?fromSecretType=VECHAIN&toSecretType=VECHAIN&fromToken=&toToken=0x0000000000000000000000000000456e65726779&amount=100&orderType=SELL&fromToken= HTTP/1.1
-Host: api.arkane.network
-Content-Type: application/json
-
-----

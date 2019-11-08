@@ -1,4 +1,0 @@
-[source,bash]
-----
-$ curl 'https://api.arkane.network/api/wallets?clientId=ThorBlock' -i -X GET
-----

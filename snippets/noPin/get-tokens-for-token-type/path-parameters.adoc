@@ -1,4 +1,4 @@
-.+/api/apps/{applicationId}/contracts/{contractId}/token-type/{tokenTypeId}/tokens+
+.+/api/apps/{applicationId}/contracts/{contractId}/token-types/{tokenTypeId}/tokens+
 |===
 |Parameter|Description
 |`+applicationId+`

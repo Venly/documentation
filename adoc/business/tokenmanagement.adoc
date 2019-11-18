@@ -1,7 +1,7 @@
 == Authentication
 
 
-=== Requesting access token
+=== [[request-access-token]] Requesting access token
 
 
 
@@ -26,7 +26,7 @@ otherwise the request will fail
 .Request Fields
 |===
 | Path | Type | Description | Constraints
-| grant_type | String | The OpenId Connect grant type you want to use | Mandatory, always `password`
+| grant_type | String | The OpenId Connect grant type you want to use | Mandatory, always `client_credentials`
 | client_id | String | The `clientId` you want to request a token for | Mandatory, e.g. `Arketype_app`
 | client_secret | String | The shared secret you've received when you requested your `<clientId>`-client | Mandatory
 | username | String | The username you used when signing up (email address)  | Mandatory
@@ -56,6 +56,62 @@ otherwise the request will fail
     "token_type": "bearer"
 }
 ----
+
+=== Refresh access token
+Since the access token has a short lifespan, it is necessary to get a new access token before. In the case the login flow does not require input, you can request a new access token as above.
+It is also possible to regenerate a new access token using the refresh token:
+
+.URL
+https://login.arkane.network/auth/realms/Arkane/protocol/openid-connect/token
+
+.Example Curl Request
+[source,bash]
+----
+$ curl https://login.arkane.network/auth/realms/Arkane/protocol/openid-connect/token -i -X POST \
+    -H 'Content-Type: application/x-www-form-urlencoded' \
+    -d 'grant_type=client_credentials&client_id=Arketype_app&client_secret=02053a9d-8293-43c4-a201-f8669f1329af&client_secret=eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJlOTVlMDc2NC1lZmVkLTQyMmEtYmU0Mi1iZTcwYmY1Nzg2NDYifQ.eyJqdGkiOiIyMjI4ZDRmNy01ZWUyLTRjZmUtYjUxMC04NDVmYjNlZWU1MzkiLCJleHAiOjE1NzQ1MTI1NDQsIm5iZiI6MCwiaWF0IjoxNTc0MDgwNTQ0LCJpc3MiOiJodHRwczovL2xvZ2luLXFhLmFya2FuZS5uZXR3b3JrL2F1dGgvcmVhbG1zL0Fya2FuZSIsImF1ZCI6Imh0dHBzOi8vbG9naW4tcWEuYXJrYW5lLm5ldHdvcmsvYXV0aC9yZWFsbXMvQXJrYW5lIiwic3ViIjoiNzNiMDZjMDgtMTk3Zi00OGI2LWEwZjItY2MwMDI0YzliZDAwIiwidHlwIjoiUmVmcmVzaCIsImF6cCI6IkFya2V0eXBlX2FwcCIsImF1dGhfdGltZSI6MCwic2Vzc2lvbl9zdGF0ZSI6IjY2ZmE5NWExLWJhMmMtNDNiYS1iMjUyLWI3ODZiZTEyMTZlMyIsInJlc291cmNlX2FjY2VzcyI6eyJyZWFsbS1tYW5hZ2VtZW50Ijp7InJvbGVzIjpbInF1ZXJ5LWNsaWVudHMiXX19LCJzY29wZSI6InZpZXc6d2FsbGV0cyB1c2U6YWxsLXdhbGxldHMgdmlldzpjbGllbnRzLXN0YXRpc3RpY3Mgdmlldzpwcm9maWxlIHNhdmU6dHJhbnNhY3Rpb24gZW1haWwgcHJvZmlsZSJ9.Ik-KF71yMqrugzf7zUvj-DylkzZv6l-lltfwA_XxN6I'
+----
+IMPORTANT: Do not forget to set the `Content-Type: application/x-www-form-urlencoded` header (and to make the request body application/x-www-form-urlencoded),
+otherwise the request will fail
+
+.Request Fields
+|===
+| Path | Type | Description | Constraints
+| grant_type | String | The OpenId Connect grant type you want to use | Mandatory, always `client_credentials`
+| client_id | String | The `clientId` you want to request a token for | Mandatory, e.g. `Arketype_app`
+| client_secret | String | The shared secret you've received when you requested your `<clientId>`-client | Mandatory
+| username | String | The username you used when signing up (email address)  | Mandatory
+| password | String | The password that was used when signing up (see <<request-access-token>>) | Mandatory
+|===
+
+
+.Reponse Fields
+|===
+| Path | Type | Description
+| access_token | String | The JWT token to use as bearer token when doing the api calls
+| expires_in | number | The amount of seconds the access_token is valid
+| refresh_expires_in | number | The amount of seconds the refresh_token is valid
+| refresh_token | String | The JWT token which can be used to refresh the current token
+| token_type | String | bearer | The type of the access_token
+|===
+
+
+.Response Body
+[source,json]
+----
+{
+    "access_token": "eyJhbGciOiJSUzI1NdfqesInR5cCIgOiAiSldUIiwia2lkIiA6ICJmQi1UenBOb0hBVGhwT2J4aW9qTDBrdm83MldmRzRXRXh1eFpiaXlGQUhzIn0.eyJqdGkiOiJiNTc4ZGIwYi02YTBjLTQwNjctOWE3Zi05MmU1MjVmMWY0YTkiLCJleHAiOjE1NzQwODI0MDIsIm5iZiI6MCwiaWF0IjoxNTc0MDgwNjAyLCJpc3MiOiJodHRwczovL2xvZ2luLXFhLmFya2FuZS5uZXR3b3JrL2F1dGgvcmVhbG1zL0Fya2FuZSIsImF1ZCI6InJlYWxtLW1hbmFnZW1lbnQiLCJzdWIiOiI3M2IwNmMwOC0xOTdmLTQ4YjYtYTBmMi1jYzAwMjRjOWJkMDAiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJBcmtldHlwZV9hcHAiLCJhdXRoX3RpbWUiOjAsInNlc3Npb25fc3RhdGUiOiI2NmZhOTVhMS1iYTJjLTQzYmEtYjI1Mi1iNzg2YmUxMjE2ZTMiLCJhY3IiOiIxIiwicmVzb3VyY2VfYWNjZXNzIjp7InJlYWxtLW1hbmFnZW1lbnQiOnsicm9sZXMiOlsicXVlcnktY2xpZW50cyJdfX0sInNjb3BlIjoidmlldzp3YWxsZXRzIHVzZTphbGwtd2FsbGV0cyB2aWV3OmNsaWVudHMtc3RhdGlzdGljcyB2aWV3OnByb2ZpbGUgc2F2ZTp0cmFuc2FjdGlvbiBlbWFpbCBwcm9maWxlIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5hbWUiOiJKb2huIERvZSIsInByZWZlcnJlZF91c2VybmFtZSI6ImpvaG4iLCJnaXZlbl9uYW1lIjoiSm9obiIsImZhbWlseV9uYW1lIjoiRG9lIiwiZW1haWwiOiJqb2huZG9lX2tscWZkanFta2xmanFtQG1haWxpbmF0b3IuY29tIn0.OKzqoK9UpKGrKk9Mdl1wkDAX9u7RibIhVWtFQSQwL4VvTxcsFG9zjag3ZJlhA7jVe7KSkhRX3OFhfMXgOe5pGX-YYXwUbp-UkKEA2VsQ8VWQrUg_zFswxXlZP7uKDmCla9Hhu57hU2W0sMtiZnyBGWkFDvRNOfD95E4AtZpvXsH6NaKwaPZHuqt2jiwItxXWFNb1XPvxJEdEH6A1LLrHYiDqVbsOwrA_Wg9i6GxXEom_1vEfNruhcsmmkHolsCMjhApX-lh3YXFHm2rSMJgfW1lyfHZxSiY1QPxRQCChUhIogPbLbtI6bTysKCt4uPMIIbRPZ9LgYVQ3gNMIe9br3g",
+    "expires_in": 1800,
+    "refresh_expires_in": 432000,
+    "refresh_token": "eyJhbGciOiJIUzI1NiIsfqefCIgOiAiSldUIiwia2lkIiA6ICJlOTVlMDc2NC1lZmVkLTQyMmEtYmU0Mi1iZTcwYmY1Nzg2NDYifQ.eyJqdGkiOiI5Zjc0ZDYwMC1jYTBhLTQ4MzYtODBiZS1iMzU5ZTY5MTNjZTEiLCJleHAiOjE1NzQ1MTI2MDIsIm5iZiI6MCwiaWF0IjoxNTc0MDgwNjAyLCJpc3MiOiJodHRwczovL2xvZ2luLXFhLmFya2FuZS5uZXR3b3JrL2F1dGgvcmVhbG1zL0Fya2FuZSIsImF1ZCI6Imh0dHBzOi8vbG9naW4tcWEuYXJrYW5lLm5ldHdvcmsvYXV0aC9yZWFsbXMvQXJrYW5lIiwic3ViIjoiNzNiMDZjMDgtMTk3Zi00OGI2LWEwZjItY2MwMDI0YzliZDAwIiwidHlwIjoiUmVmcmVzaCIsImF6cCI6IkFya2V0eXBlX2FwcCIsImF1dGhfdGltZSI6MCwic2Vzc2lvbl9zdGF0ZSI6IjY2ZmE5NWExLWJhMmMtNDNiYS1iMjUyLWI3ODZiZTEyMTZlMyIsInJlc291cmNlX2FjY2VzcyI6eyJyZWFsbS1tYW5hZ2VtZW50Ijp7InJvbGVzIjpbInF1ZXJ5LWNsaWVudHMiXX19LCJzY29wZSI6InZpZXc6d2FsbGV0cyB1c2U6YWxsLXdhbGxldHMgdmlldzpjbGllbnRzLXN0YXRpc3RpY3Mgdmlldzpwcm9maWxlIHNhdmU6dHJhbnNhY3Rpb24gZW1haWwgcHJvZmlsZSJ9.56vlEy1o1uMEEGA4JTXhg0yqfXLmV8eWyjMLcR2VQvU",
+    "token_type": "bearer",
+    "not-before-policy": 1572970662,
+    "session_state": "66fa95a1-ba2c-43ba-b252-b8326be1216e3",
+    "scope": "view:wallets use:all-wallets view:clients-statistics view:profile save:transaction email profile"
+}
+----
+
+
 
 === Using access token
 When calling the API, the access token must be provided inside the HTTP authentication header:

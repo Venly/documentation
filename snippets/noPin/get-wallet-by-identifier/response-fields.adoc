@@ -2,5 +2,5 @@
 |Path|Type|Description
 |`+.[]+`
 |`+Array+`
-|An array of wallets of the user
+|An array of wallets for given identifier
 |===

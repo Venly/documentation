@@ -1,6 +1,6 @@
 [source,options="nowrap"]
 ----
-{
+[ {
   "id" : "1",
   "address" : "0xdc72b72db54e227e65a45004ab2798d31e8934c2",
   "walletType" : "THREEWAY_SHARED",
@@ -16,11 +16,11 @@
     "secretType" : "ETHEREUM",
     "balance" : 1.0,
     "gasBalance" : 1.0,
-    "symbol" : null,
-    "gasSymbol" : null,
+    "symbol" : "ETH",
+    "gasSymbol" : "ETH",
     "rawBalance" : "1000000000000000000",
     "rawGasBalance" : "1000000000000000000",
     "decimals" : 18
   }
-}
+} ]
 ----

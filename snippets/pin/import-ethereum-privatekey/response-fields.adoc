@@ -19,7 +19,7 @@
 
 |`+secretType+`
 |`+String+`
-|type of the secret (ex: ETHEREUM)
+|type of the secret (possible values: AETERNITY, BITCOIN, ETHEREUM, GOCHAIN, LITECOIN, TRON, VECHAIN, NEO)
 
 |`+createdAt+`
 |`+Null+`

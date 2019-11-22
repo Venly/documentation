@@ -1,7 +1,7 @@
 [source,http,options="nowrap"]
 ----
 HTTP/1.1 200 OK
-Content-Length: 274
+Content-Length: 273
 Content-Type: application/json;charset=UTF-8
 {
   "token" : "4efe60c8-53e5-41cf-a1c5-39104698d557",
@@ -10,6 +10,6 @@ Content-Type: application/json;charset=UTF-8
   "claim" : "SIGN_WALLETS",
   "enabled" : true,
   "description" : "Development API Key",
-  "tokenSecret" : "L1kxMFpkYi9mNlZOUTJdLkIxQjUyW1Z6JjNMbG15NjJIV0JobWpVXVRZJWxiMnJPPlE="
+  "tokenSecret" : "WDkpb0s5MSF5MGo1NTEsbVJOTHc0Um8hYUhGU1hVPmJ4NSh0XzE1PFI0d19IOSgtTiU"
 }
 ----

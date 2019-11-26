@@ -12,4 +12,7 @@
 |`+signature+`
 |`+String+`
 |The value of the signature
+|`+type+`
+|`+String+`
+|The signature type (E.g. HEX_SIGNATURE, SUBMITTED_AND_SIGNED_TRANSACTION_SIGNATURE,TRANSACTION_SIGNATURE)
 |===

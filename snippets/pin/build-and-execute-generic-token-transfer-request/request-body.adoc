@@ -1,0 +1,21 @@
+[source,options="nowrap"]
+----
+{
+  "pincode" : "1234",
+  "transactionRequest" : {
+    "type" : "TOKEN_TRANSFER",
+    "walletId" : "edc4c08a-b8fa-4e4c-z5a2-92c87b80f174",
+    "to" : "0xdc71b72db51e227e65a45004ab2798d31e8934c9",
+    "alias" : null,
+    "secretType" : "VECHAIN",
+    "network" : {
+      "name" : "Rinkeby",
+      "nodeUrl" : "https://rinkeby.infura.io",
+      "chainId" : null
+    },
+    "tokenAddress" : "0x4df47b4969b2911c966506e3592c41389493953b",
+    "value" : 1.15,
+    "tokenId" : null
+  }
+}
+----

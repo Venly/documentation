@@ -145,7 +145,7 @@ operation::list-non-fungibles[snippets='curl-request,path-parameters,request-par
 === Transfer
 
 .[[generic-transaction-request]] Data parameters
-operation::build-generic-transfer-request[snippets='request-fields'&pincode=true]
+operation::build-and-execute-generic-transfer-request[snippets='request-fields'&pincode=true]
 
 [NOTE]
 ====
@@ -154,77 +154,62 @@ This feature enables you to submit a transaction to any mainnet node of your cho
 ====
 
 .Data example
-operation::build-generic-transfer-request[snippets='curl-request'&pincode=true]
-
-.Result parameters
-|===
-|Path|Type|Description
-
-|`+transactionHash+`
-|`+String+`
-|The transaction hash
-
-|===
+operation::build-and-execute-generic-transfer-request[snippets='curl-request'&pincode=true]
 
 .Result example
-[source,json]
-----
-{
-  "transactionHash" : "0x621f692e386a8bc0c53d36aa793864893106e10f54f63fa9c063e24ad975d907"
-}
-----
+operation::build-and-execute-generic-transfer-request[snippets='response-body'&pincode=true]
 
 
 === Token Transfer
 
 .[[generic-token-transfer-request]] Data parameters
-operation::build-generic-token-transfer-request[snippets='request-fields'&pincode=true]
+operation::build-and-execute-generic-token-transfer-request[snippets='request-fields'&pincode=true]
 
 .Data example
-operation::build-generic-token-transfer-request[snippets='curl-request'&pincode=true]
+operation::build-and-execute-generic-token-transfer-request[snippets='curl-request'&pincode=true]
 
 .Result example
 
-operation::build-generic-token-transfer-request[snippets='response-body'&pincode=true]
+operation::build-and-execute-generic-token-transfer-request[snippets='response-body'&pincode=true]
 
 === NFT Transfer
 
 
 .[[generic-nft-transfer-request]] Data parameters
-operation::build-generic-nft-transfer-request[snippets='request-fields'&pincode=true]
+operation::build-and-execute-generic-nft-transfer-request[snippets='request-fields'&pincode=true]
 
 .Data example
-operation::build-generic-nft-transfer-request[snippets='curl-request'&pincode=true]
+operation::build-and-execute-generic-nft-transfer-request[snippets='curl-request'&pincode=true]
 
 .Result example
 
-operation::build-generic-nft-transfer-request[snippets='response-body'&pincode=true]
+operation::build-and-execute-generic-nft-transfer-request[snippets='response-body'&pincode=true]
 
 === Gas Transfer
 
 
 .[[generic-gas-transfer-request]] Data parameters
-operation::build-generic-gas-transfer-request[snippets='request-fields'&pincode=true]
+operation::build-and-execute-generic-gas-transfer-request[snippets='request-fields'&pincode=true]
 
 .Data example
-operation::build-generic-gas-transfer-request[snippets='curl-request'&pincode=true]
+operation::build-and-execute-generic-gas-transfer-request[snippets='curl-request'&pincode=true]
 
 .Result example
 
-operation::build-generic-gas-transfer-request[snippets='response-body'&pincode=true]
+operation::build-and-execute-generic-gas-transfer-request[snippets='response-body'&pincode=true]
 
 === Contract Execution
 
 
 .[[generic-contract-execution-request]] Data parameters
-operation::build-generic-contract-execution[snippets='request-fields'&pincode=true]
+operation::build-and-execute-generic-contract-execution[snippets='request-fields'&pincode=true]
 
 .Data example
-operation::build-generic-gas-transfer-request[snippets='curl-request'&pincode=true]
+operation::build-and-execute-generic-gas-transfer-request[snippets='curl-request'&pincode=true]
 
 .Result example
 
-operation::build-generic-gas-transfer-request[snippets='response-body'&pincode=true]
+operation::build-and-execute-generic-gas-transfer-request[snippets='response-body'&pincode=true]
 
 == Swap
 This section describes how to use the swapping functionality within Arkane. It allows you to swap/exchange a (native) token to (native) token.

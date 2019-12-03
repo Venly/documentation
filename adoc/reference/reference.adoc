@@ -614,12 +614,27 @@ respectively string, number and string. If "to" is a script hash, it will be tra
 }
 |===
 
-== [[native-transactions]] Native Transactions
+[[transaction-status]]
+=== Status link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
 
+Get the status of a specific transaction.
+Returns *UNKNOWN* when the specific chain is not supported yet.
+
+.Data example
+operation::get-transaction-status[snippets='curl-request']
+
+.Response Fields
+operation::get-transaction-status[snippets='response-fields']
+
+.Example Response
+operation::get-transaction-status[snippets='http-response']
+
+== [[native-transactions]] Native Transactions
 
 === Ethereum
 
 ==== [[execute-eth-transaction]] Execute ETH transaction link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
+
 To execute an Ethereum transaction, use the connect building block with:
 
 .URL

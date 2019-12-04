@@ -983,6 +983,23 @@ signer.sign({...signatureRequest...})
       });
 ----
 
+=== Get the status of a transaction link:reference.html#status-transaction[[.small]#+[Reference]+#]
+
+.Signature
+[source,javascript,options="nowrap"]
+----
+arkaneConnect.api.getTransactionStatus(transactionHash: string, secretType: SecretType): Promise<TxStatusResult>
+----
+Returns `Promise++<++<<tx-status-result,TxStatusResult>>++>++`
+
+.Parameters
+[cols="1,1,3"]
+|===
+| Parameter | Required | Description
+| `transactionHash` | true | Transaction hash
+| `secretType` | true | The secretType (`{secret-types}`)
+|===
+
 === Data types
 ==== [[signer-options]]Options
 IMPORTANT: Options are only applicable to the *redirect-signer*
@@ -1037,4 +1054,29 @@ The result after the user enters his PIN differs on the Signer type.
 c437f5beffb1 +
 d5d7b7'
 | `errors` | false, only when status `'ABORTED'` or `'ERROR'` | An array containing the errors of the transaction that you tried to execute. |
+|===
+
+
+==== [[tx-status-result]]TxStatusResult
+Status of a transaction
+
+.TxStatusResult
+[source,javascript,options="nowrap"]
+----
+{
+    status: 'UNKNOWN' | 'PENDING' | 'FAILED' | 'SUCCEEDED'
+}
+----
+[cols="1,1,3a,2"]
+|===
+| Parameter | Required | Description | Example
+| `status`
+| true
+a| The status of the transaction:
+
+* `UNKNOWN` means that the transaction is not yet visible on the chain.
+* `PENDING` means that the transaction is not yet completed (or failed).
+* `SUCCEEDED` means that the transaction is completed successful.
+* `FAILED` means that the transaction is failed.
+| `'SUCCESS'`
 |===

@@ -219,8 +219,8 @@ Returns *UNKNOWN* when the specific chain is not supported yet.
 .Data example
 operation::get-transaction-status[snippets='curl-request']
 
-.Request parameters
-operation::get-transaction-status[snippets='request-parameters']
+.Path parameters
+operation::get-transaction-status[snippets='path-parameters']
 
 .Response Fields
 operation::get-transaction-status[snippets='response-fields']

@@ -983,7 +983,7 @@ signer.sign({...signatureRequest...})
       });
 ----
 
-=== Get the status of a transaction link:reference.html#status-transaction[[.small]#+[Reference]+#]
+=== Get the status of a transaction link:reference.html#transaction-status[[.small]#+[Reference]+#]
 
 .Signature
 [source,javascript,options="nowrap"]

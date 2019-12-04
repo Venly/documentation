@@ -88,7 +88,7 @@ const arkaneConnect = new ArkaneConnect('Arketype', { environment: 'staging',
 |===
 | Option | Required | Description | Example
 | `environment` | false (default = 'prod') | The environment to which you want to connect, possible values are 'local', 'tst1', 'staging', 'prod' | 'staging'
-| `windowMode` | false (default = 'POPUP') | <<WindowMode>> The sign method you want to use, possible values are 'POPUP' or 'REDIRECT' | 'REDIRECT'
+| `windowMode` | false (default = 'POPUP') | <<WindowMode>> The sign method you want to use, possible values are 'POPUP', 'POPUP_WITH_OVERLAY' or 'REDIRECT' | 'REDIRECT'
 | `signMethod` | false (default = 'POPUP') | *Deprecated* Use windowMode instead |
 | `bearerTokenProvider` | false (default = the Arkane Connect JS authentication client) | You can implement all the authentication handling yourself and provide Arkane Connect JS with your own bearer token provider. The bearer token provider is a function returning the bearer token (access token) to login to Arkane. | `() => auth.token`
 |===
@@ -99,9 +99,16 @@ const arkaneConnect = new ArkaneConnect('Arketype', { environment: 'staging',
 ----
 {
     POPUP = 'POPUP',
+    POPUP_WITH_OVERLAY = 'POPUP_WITH_OVERLAY',
     REDIRECT = 'REDIRECT'
 }
 ----
+|===
+| Option | Description
+| `POPUP` | Open a popup to handle all signing and transactions
+| `POPUP_WITH_OVERLAY` | *Recommended*: Same as `POPUP` but also add an overlay to the current window to block other actions.
+| `REDIRECT` | Navigate to connect to handle all signing and transactions, afterwards redirect back to the page.
+|===
 
 == [[_authentication]]Authentication link:buildingblocks.html#arkane-identity[[.small]#+[Check buildingblock Arkane Identity]+#]
 === Check if a user is authenticated
@@ -150,7 +157,7 @@ Returns `Promise<<<authentication-result,AuthenticationResult>>>`
 This function will check if the user is authenticated (showing a login form if the user is not already authenticated).
 
 * For windowMode = 'REDIRECT', the user will be redirect to `options.redirectUri` (if present) with the result (after logging in).
-* For windowMode = 'POPUP', when the user finishes the popup closes and the promise resolves. No extra options are required.
+* For windowMode = 'POPUP' and 'POPUP_WITH_OVERLAY', when the user finishes the popup closes and the promise resolves. No extra options are required.
 
 IMPORTANT: If you set the redirectUri option, make sure that the SDK and the `AuthenticationResult` handling is also present on the page you redirect to.
 
@@ -700,7 +707,7 @@ To execute and sign transactions, the user needs to enter his PIN. To enable him
 .Signature
 [source,javascript,options="nowrap"]
 ----
-arkaneConnect.createSigner(signUsing?: 'POPUP' | 'REDIRECT'): Signer
+arkaneConnect.createSigner(signUsing?: WindowMode): Signer
 ----
 
 .Parameters

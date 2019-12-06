@@ -69,7 +69,7 @@
     "gulp-replace": "0.6.1",
     "gulp-sass": "4.0.2",
     "gulp-watch": "5.0.1",
-    "handlebars": "4.0.12",
+    "handlebars": "4.1.2",
     "http-server": "0.11.1",
     "logging-helpers": "1.0.0",
     "mocha": "5.1.1",
@@ -84,7 +84,7 @@
     "typescript": "3.2.2"
   },
   "dependencies": {
-    "jquery": "3.3.1",
+    "jquery": "3.4.0",
     "waypoints": "4.0.1"
   }
 }

@@ -221,7 +221,7 @@ https://connect-staging.arkane.network/confirm
 |`+secretType+`
 |`+String+`
 |Type of secret to be generated. (Ex. ETHEREUM)
-|Mandatory, allowed values: [AETERNITY, BITCOIN, ETHEREUM, GOCHAIN, LITECOIN, TRON, VECHAIN]
+|Mandatory, allowed values: `{secret-types}`
 
 |`+alias+`
 |`+String+`

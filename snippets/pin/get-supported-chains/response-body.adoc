@@ -1,4 +1,4 @@
 [source,options="nowrap"]
 ----
-[ "AETERNITY", "BITCOIN", "ETHEREUM", "GOCHAIN", "LITECOIN", "TRON", "VECHAIN", "NEO" ]
+[ "AETERNITY", "BITCOIN", "ETHEREUM", "GOCHAIN", "LITECOIN", "TRON", "VECHAIN", "MATIC", "NEO" ]
 ----

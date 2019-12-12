@@ -22,8 +22,8 @@
 |Optional, default false
 |`+secretType+`
 |`+String+`
-|Type of secret to be generated. (possible values: AETERNITY, BITCOIN, ETHEREUM, GOCHAIN, LITECOIN, TRON, VECHAIN, NEO)
-|mandator, allowed values: [AETERNITY, BITCOIN, ETHEREUM, GOCHAIN, LITECOIN, TRON, VECHAIN, NEO]
+|Type of secret to be generated. (possible values: AETERNITY, BITCOIN, ETHEREUM, GOCHAIN, LITECOIN, TRON, VECHAIN, MATIC, NEO)
+|mandator, allowed values: [AETERNITY, BITCOIN, ETHEREUM, GOCHAIN, LITECOIN, TRON, VECHAIN, MATIC, NEO]
 |`+hasCustomPin+`
 |`+Boolean+`
 |Whether the wallet should have a custom pincode, instead of the master pincode

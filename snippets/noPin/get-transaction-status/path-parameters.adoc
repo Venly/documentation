@@ -2,7 +2,7 @@
 |===
 |Parameter|Description
 |`+secretType+`
-|the secret type, possible values are: AETERNITY, BITCOIN, ETHEREUM, GOCHAIN, LITECOIN, TRON, VECHAIN, NEO
+|the secret type, possible values are: AETERNITY, BITCOIN, ETHEREUM, GOCHAIN, LITECOIN, TRON, VECHAIN, MATIC, NEO
 |`+transactionHash+`
 |The transaction hash (id)
 |===

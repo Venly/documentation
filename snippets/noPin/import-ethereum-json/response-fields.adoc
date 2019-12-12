@@ -14,7 +14,7 @@
 |type of the wallet
 |`+secretType+`
 |`+String+`
-|type of the secret (possible values: AETERNITY, BITCOIN, ETHEREUM, GOCHAIN, LITECOIN, TRON, VECHAIN, NEO)
+|type of the secret (possible values: AETERNITY, BITCOIN, ETHEREUM, GOCHAIN, LITECOIN, TRON, VECHAIN, MATIC, NEO)
 |`+createdAt+`
 |`+Null+`
 |date and time the secret was created or imported

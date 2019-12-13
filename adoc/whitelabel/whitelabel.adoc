@@ -139,6 +139,14 @@ operation::list-non-fungibles[snippets='curl-request,path-parameters,request-par
 |An unknown error occurred when trying to fetch the secret. Please contact support.
 |===
 
+== [[generic-signatures]] Signatures
+
+=== Sign message link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
+
+Signs arbitrary data using a specific account.
+
+operation::sign-generic-message[snippets='curl-request,request-fields,http-response,response-fields'&pincode=true]
+
 == [[transactions]] Transactions
 
 [[transfer]]

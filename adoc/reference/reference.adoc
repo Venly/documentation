@@ -286,16 +286,28 @@ In the case for a user wallet, the type of the wallet needs to be updated to:
 
 operation::update-wallet-type[snippets='http-request,path-parameters,http-response']
 
-
 == Whitelabel Wallet
 
 Arkane also offers whitelabel wallets. link:whitelabel.html[Go to documentation]
+
+== [[generic-signatures]] Signatures
+
+=== Sign message link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
+
+Signs arbitrary data using a specific account.
+
+.URL
+https://connect-staging.arkane.network/signatures
+
+operation::sign-generic-message[snippets='request-fields,request-body,response-fields,response-body']
 
 == [[generic-transactions]] Transactions
 
 [[transfer]]
 === Transfer link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
-This can be used to transfer native tokens from a wallet to another wallet. To start a transfer you need to:
+
+This can be used to transfer native tokens from a wallet to another wallet.
+To start a transfer you need to:
 
 .URL
 https://connect-staging.arkane.network/transaction/execute
@@ -305,7 +317,9 @@ operation::build-generic-transfer-request[snippets='request-fields']
 
 [IMPORTANT]
 ====
-[[build-value]] ^[1]^ As *value*, we expect the "*decimal value*". If a token has 18 decimals and you want to transfer 1 token, provide the value 1. Arkane will translate this to the correct non decimal value (1 * 10e18).
+[[build-value]]
+^[1]^ As *value*, we expect the "*decimal value*".
+If a token has 18 decimals and you want to transfer 1 token, provide the value 1. Arkane will translate this to the correct non decimal value (1 * 10e18).
 Using this, you don't have to take into account the number of decimals for different tokens.
 ====
 

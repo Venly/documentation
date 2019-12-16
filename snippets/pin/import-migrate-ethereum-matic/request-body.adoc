@@ -1,0 +1,10 @@
+[source,options="nowrap"]
+----
+{
+  "importWalletType" : "MIGRATION",
+  "pincode" : "1234",
+  "clients" : null,
+  "walletId" : "1",
+  "to" : "MATIC"
+}
+----

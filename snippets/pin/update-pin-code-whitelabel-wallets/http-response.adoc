@@ -1,0 +1,30 @@
+[source,http,options="nowrap"]
+----
+HTTP/1.1 200 OK
+Content-Length: 621
+Content-Type: application/json;charset=UTF-8
+
+{
+  "id" : "6a716bc3-59c4-46a5-bedc-66588017be51",
+  "address" : "0xdc72b72db54e227e65a45004ab2798d31e8934c2",
+  "walletType" : "WHITE_LABEL",
+  "secretType" : "ETHEREUM",
+  "createdAt" : [ 2019, 11, 23, 22, 46, 32 ],
+  "archived" : false,
+  "alias" : "aliasEth",
+  "description" : "descriptionEth",
+  "primary" : false,
+  "hasCustomPin" : false,
+  "balance" : {
+    "available" : false,
+    "secretType" : "ETHEREUM",
+    "balance" : 1.0,
+    "gasBalance" : 1.0,
+    "symbol" : null,
+    "gasSymbol" : null,
+    "rawBalance" : "1000000000000000000",
+    "rawGasBalance" : "1000000000000000000",
+    "decimals" : 18
+  }
+}
+----

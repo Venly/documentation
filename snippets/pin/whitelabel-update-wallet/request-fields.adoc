@@ -1,0 +1,14 @@
+|===
+|Path|Type|Description|Constraints
+
+|`+pincode+`
+|`+String+`
+|The pincode of the specified wallet
+|Mandatory, must be between 4-6 digits
+
+|`+newPincode+`
+|`+String+`
+|The new pincode of the wallet
+|Mandatory, must be between 4-6 digits
+
+|===

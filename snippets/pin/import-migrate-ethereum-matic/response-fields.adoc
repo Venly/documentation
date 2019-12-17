@@ -1,0 +1,48 @@
+|===
+|Path|Type|Description
+
+|`+id+`
+|`+Null+`
+|id of the wallet
+
+|`+hasCustomPin+`
+|`+Boolean+`
+|Whether the wallet has a custom pincode or not
+
+|`+address+`
+|`+String+`
+|address of the wallet
+
+|`+walletType+`
+|`+String+`
+|type of the wallet
+
+|`+secretType+`
+|`+String+`
+|type of the secret (possible values: AETERNITY, BITCOIN, ETHEREUM, GOCHAIN, LITECOIN, TRON, VECHAIN, MATIC, NEO)
+
+|`+createdAt+`
+|`+Null+`
+|date and time the secret was created or imported
+
+|`+archived+`
+|`+Boolean+`
+|is the wallet archived or not
+
+|`+primary+`
+|`+Boolean+`
+|is the wallet the primary wallet for the secrettype?
+
+|`+alias+`
+|`+String+`
+|alias of the wallet
+
+|`+description+`
+|`+String+`
+|description of the wallet
+
+|`+balance+`
+|`+Null+`
+|The native token balance of the wallet
+
+|===

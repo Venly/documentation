@@ -297,9 +297,19 @@ Arkane also offers whitelabel wallets. link:whitelabel.html[Go to documentation]
 Signs arbitrary data using a specific account.
 
 .URL
-https://connect-staging.arkane.network/signatures
+https://connect-staging.arkane.network/signature/execute
 
-operation::sign-generic-message[snippets='request-fields,request-body,response-fields,response-body']
+.Data parameters
+operation::build-sign-generic-message[snippets='request-fields']
+
+.Data example
+operation::build-sign-generic-message[snippets='request-body']
+
+.Result parameters
+operation::sign-and-execute-generic-message[snippets='response-fields']
+
+.Result example
+operation::sign-and-execute-generic-message[snippets='response-body']
 
 == [[generic-transactions]] Transactions
 

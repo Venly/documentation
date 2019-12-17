@@ -1,0 +1,23 @@
+|===
+|Path|Type|Description|Constraints
+|`+pincode+`
+|`+String+`
+|The pincode of the specified wallet
+|Mandatory, must be between 4-6 digits
+|`+signatureRequest+`
+|`+Object+`
+|The object containing the actual signature request
+|Mandatory
+|`+signatureRequest.type+`
+|`+String+`
+|Type of the signature request
+|Mandatory, possible values: [MESSAGE]
+|`+signatureRequest.walletId+`
+|`+String+`
+|The id of the wallet one wants to sign with.
+|Mandatory
+|`+signatureRequest.data+`
+|`+String+`
+|The arbitrary to sign
+|Mandatory
+|===

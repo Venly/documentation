@@ -299,7 +299,7 @@ Signs arbitrary data using a specific account.
 .URL
 https://connect-staging.arkane.network/signature/execute
 
-.Data parameters
+.[[generic-sign-message]] Data parameters
 operation::build-sign-generic-message[snippets='request-fields']
 
 .Data example
@@ -356,7 +356,7 @@ operation::build-generic-transfer-request[snippets='request-body']
 [source,json]
 ----
 {
-  "transactionHash" : "0x621f692e386a8bc0c53d36aa793864893106e10f54f63fa9c063e24ad975d907"e
+  "transactionHash" : "0x621f692e386a8bc0c53d36aa793864893106e10f54f63fa9c063e24ad975d907"
 }
 ----
 

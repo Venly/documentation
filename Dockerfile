@@ -6,6 +6,7 @@ RUN apk update && apk upgrade && \
     apk add --no-cache bash git openssh
 WORKDIR /app
 COPY package.json /app
+RUN npm rebuild node-sass
 RUN npm install
 COPY . /app
 RUN npm run build

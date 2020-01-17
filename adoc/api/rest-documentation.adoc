@@ -160,8 +160,25 @@ operation::build-generic-contract-execution[snippets='request-fields'&pincode=tr
 operation::build-generic-gas-transfer-request[snippets='curl-request'&pincode=true]
 
 .Result example
-
 operation::build-generic-gas-transfer-request[snippets='response-body'&pincode=true]
+
+=== Transaction Statuses
+
+Get the status of a specific transaction.
+Returns *UNKNOWN* when the specific chain is not supported yet.
+
+.Data example
+operation::get-transaction-status[snippets='curl-request']
+
+.Path parameters
+operation::get-transaction-status[snippets='path-parameters']
+
+.Response Fields
+operation::get-transaction-status[snippets='response-fields']
+
+.Example Response
+operation::get-transaction-status[snippets='http-response']
+
 
 == Swap
 This section describes how to use the swapping functionality within Arkane. It allows you to swap/exchange a (native) token to (native) token.

@@ -1,0 +1,8 @@
+[source,bash]
+----
+$ echo '{
+  "typeId" : 12239,
+  "amount" : 1
+}' | http POST 'https://business.arkane.network/api/apps/1f64ded9-2a05-4824-b682-661023359357/contracts/1/tokens' \
+    'Content-Type:application/json'
+----

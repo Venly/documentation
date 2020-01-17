@@ -19,6 +19,9 @@
   }, {
     "type" : "uint256",
     "value" : "73680000"
-  } ]
+  } ],
+  "chainSpecificFields" : {
+    "gasLimit" : "300000"
+  }
 }
 ----

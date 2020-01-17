@@ -1,6 +1,7 @@
 [source,options="nowrap"]
 ----
 {
+  "secretType" : "VECHAIN",
   "gasPriceCoefficients" : [ {
     "gasPriceCoef" : 0,
     "defaultPrice" : true

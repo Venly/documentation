@@ -1,0 +1,24 @@
+|===
+|Path|Type|Description
+
+|`+[].secretType+`
+|`+String+`
+|The chain on which the token lives
+
+|`+[].contractAddress+`
+|`+String+`
+|The address of the token contract
+
+|`+[].contractTokenId+`
+|`+Number+`
+|The id of the token on the blockchain
+
+|`+[].tokenType+`
+|`+Object+`
+|The type + details of the token
+
+|`+[].amount+`
+|`+Number+`
+|The amount the user owns of this token (in case of NFT, this is always 1)
+
+|===

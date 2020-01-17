@@ -1,0 +1,6 @@
+|===
+|Path|Type|Description
+|`+.[]+`
+|`+Array+`
+|An array of wallets for given identifier
+|===

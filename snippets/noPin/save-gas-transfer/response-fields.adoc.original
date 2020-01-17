@@ -1,8 +1,0 @@
-|===
-|Path|Type|Description
-
-|`+transactionRequestId+`
-|`+String+`
-|The ID of the requested transaction
-
-|===

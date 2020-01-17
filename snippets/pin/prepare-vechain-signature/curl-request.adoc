@@ -3,7 +3,6 @@
 $ curl 'https://api.arkane.network/api/signatures/prepare' -i -X POST \
     -H 'Content-Type: application/json;charset=UTF-8' \
     -d '{
-  "type" : "VECHAIN_TRANSACTION",
   "walletId" : "1",
   "pincode" : null,
   "submit" : false,
@@ -18,6 +17,7 @@ $ curl 'https://api.arkane.network/api/signatures/prepare' -i -X POST \
     "to" : "0xdc71b72db51e227e65a45004ab2798d31e8934c9",
     "amount" : 10000,
     "data" : "0x0"
-  } ]
+  } ],
+  "type" : "VECHAIN_TRANSACTION"
 }'
 ----

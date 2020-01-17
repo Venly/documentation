@@ -1,8 +1,0 @@
-.+/api/apitokens/{walletId}+
-|===
-|Parameter|Description
-
-|`+walletId+`
-|id of the wallet
-
-|===

@@ -18,10 +18,10 @@
 |Optional, max 200 chars
 |`+secretType+`
 |`+String+`
-|Type of secret to be generated. (possible values: ETHEREUM)
-|mandator, allowed values: [AETERNITY, BITCOIN, ETHEREUM, GOCHAIN, LITECOIN, TRON, VECHAIN, NEO]
+|Type of secret to be generated. (possible values: AETERNITY, BITCOIN, ETHEREUM, GOCHAIN, LITECOIN, TRON, VECHAIN, MATIC, NEO)
+|mandator, allowed values: [AETERNITY, BITCOIN, ETHEREUM, GOCHAIN, LITECOIN, TRON, VECHAIN, MATIC, NEO]
 |`+identifier+`
 |`+String+`
-|an identifier that can be used to discriminate between your wallets
+|Add a custom identifier that allows you to retrieve the wallet based on this identifier
 |Optional
 |===

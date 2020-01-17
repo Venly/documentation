@@ -21,6 +21,9 @@ $ curl 'https://api.arkane.network/api/transactions/build' -i -X POST \
   }, {
     "type" : "uint256",
     "value" : "73680000"
-  } ]
+  } ],
+  "chainSpecificFields" : {
+    "gasLimit" : "300000"
+  }
 }'
 ----

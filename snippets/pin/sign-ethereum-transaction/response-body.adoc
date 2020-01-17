@@ -1,7 +1,7 @@
 [source,options="nowrap"]
 ----
 {
-  "@class" : ".TransactionSignature",
+  "type" : "TRANSACTION_SIGNATURE",
   "signedTransaction" : "transaction"
 }
 ----

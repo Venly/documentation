@@ -221,7 +221,7 @@ https://connect-staging.arkane.network/confirm
 |`+secretType+`
 |`+String+`
 |Type of secret to be generated. (Ex. ETHEREUM)
-|Mandatory, allowed values: [AETERNITY, BITCOIN, ETHEREUM, GOCHAIN, LITECOIN, TRON, VECHAIN]
+|Mandatory, allowed values: `{secret-types}`
 
 |`+alias+`
 |`+String+`
@@ -286,16 +286,38 @@ In the case for a user wallet, the type of the wallet needs to be updated to:
 
 operation::update-wallet-type[snippets='http-request,path-parameters,http-response']
 
-
 == Whitelabel Wallet
 
 Arkane also offers whitelabel wallets. link:whitelabel.html[Go to documentation]
+
+== [[generic-signatures]] Signatures
+
+=== Sign message link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
+
+Signs arbitrary data using a specific account.
+
+.URL
+https://connect-staging.arkane.network/signature/execute
+
+.[[generic-sign-message]] Data parameters
+operation::build-sign-generic-message[snippets='request-fields']
+
+.Data example
+operation::build-sign-generic-message[snippets='request-body']
+
+.Result parameters
+operation::sign-and-execute-generic-message[snippets='response-fields']
+
+.Result example
+operation::sign-and-execute-generic-message[snippets='response-body']
 
 == [[generic-transactions]] Transactions
 
 [[transfer]]
 === Transfer link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
-This can be used to transfer native tokens from a wallet to another wallet. To start a transfer you need to:
+
+This can be used to transfer native tokens from a wallet to another wallet.
+To start a transfer you need to:
 
 .URL
 https://connect-staging.arkane.network/transaction/execute
@@ -305,7 +327,9 @@ operation::build-generic-transfer-request[snippets='request-fields']
 
 [IMPORTANT]
 ====
-[[build-value]] ^[1]^ As *value*, we expect the "*decimal value*". If a token has 18 decimals and you want to transfer 1 token, provide the value 1. Arkane will translate this to the correct non decimal value (1 * 10e18).
+[[build-value]]
+^[1]^ As *value*, we expect the "*decimal value*".
+If a token has 18 decimals and you want to transfer 1 token, provide the value 1. Arkane will translate this to the correct non decimal value (1 * 10e18).
 Using this, you don't have to take into account the number of decimals for different tokens.
 ====
 
@@ -332,7 +356,7 @@ operation::build-generic-transfer-request[snippets='request-body']
 [source,json]
 ----
 {
-  "transactionHash" : "0x621f692e386a8bc0c53d36aa793864893106e10f54f63fa9c063e24ad975d907"e
+  "transactionHash" : "0x621f692e386a8bc0c53d36aa793864893106e10f54f63fa9c063e24ad975d907"
 }
 ----
 
@@ -575,10 +599,10 @@ Byte values must be hex encoded.
 Supported types:
 [source]
 ----
-signature, boolean, integer, hash160, hash256, byte_array, address, public_key, string
+Signature, Boolean, Integer, Hash160, Hash256, ByteArray, Address, PublicKey, String
 ----
 
-For arrays, please provide the type from above followed by square braces ( ex: string[] ). The values for an array must be surrounded with square brackets and delimited with "," (ex. [1,2,3]).
+For arrays, please provide the type from above followed by square braces ( ex: String[] ). The values for an array must be surrounded with square brackets and delimited with "," (ex. [1,2,3]).
 
 Byte values must be hex encoded.
 
@@ -588,7 +612,17 @@ Supported chain specific fields:
 |Field name |Field value|Type | Example
 
 |networkFee
-|When specified, this network fee will be used for the contract call
+|When specified, this network fee will be used for the contract call. By default, 0.1 is used
+|Number
+|0.1
+
+|systemFee
+|When specified, this system fee will be used for the contract call
+|Number
+|0.1
+
+|systemFee
+|When specified, this system fee will be used for the contract call
 |Number
 |0.1
 
@@ -604,12 +638,30 @@ respectively string, number and string. If "to" is a script hash, it will be tra
 }
 |===
 
-== [[native-transactions]] Native Transactions
+[[transaction-status]]
+=== Status link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
 
+Get the status of a specific transaction.
+Returns *UNKNOWN* when the specific chain is not supported yet.
+
+.Data example
+operation::get-transaction-status[snippets='curl-request']
+
+.Path parameters
+operation::get-transaction-status[snippets='path-parameters']
+
+.Response Fields
+operation::get-transaction-status[snippets='response-fields']
+
+.Example Response
+operation::get-transaction-status[snippets='http-response']
+
+== [[native-transactions]] Native Transactions
 
 === Ethereum
 
 ==== [[execute-eth-transaction]] Execute ETH transaction link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
+
 To execute an Ethereum transaction, use the connect building block with:
 
 .URL
@@ -1069,6 +1121,25 @@ operation::execute-ae-transaction[snippets='response-fields']
 
 .Result example
 operation::execute-ae-transaction[snippets='response-body']
+
+==== [[sign-raw-aeternity-transaction]] Sign raw AEternity transaction link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
+To sign a raw AEternity transaction, use the connect building block with:
+
+.URL
+https://connect-staging.arkane.network/transaction/sign/aeternity_raw
+
+
+.Data parameters
+operation::sign-aeternity-raw[snippets='request-fields']
+
+.Data example
+operation::sign-aeternity-raw[snippets='request-body']
+
+.Result parameters
+operation::sign-aeternity-raw[snippets='response-fields']
+
+.Result example
+operation::sign-aeternity-raw[snippets='response-body']
 
 === Neo
 

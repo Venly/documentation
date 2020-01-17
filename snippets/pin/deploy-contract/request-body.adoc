@@ -1,0 +1,7 @@
+[source,options="nowrap"]
+----
+{
+  "name" : "Awesome Contract",
+  "description" : "This is my first contract"
+}
+----

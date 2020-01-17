@@ -1,13 +1,13 @@
 [source,bash]
 ----
 $ echo '{
-  "type" : "NEO_GAS_TRANSACTION",
   "walletId" : "1",
   "pincode" : "738276",
   "submit" : false,
   "network" : null,
   "to" : "AbArunq3PGYmQv4xhduTKva7r2ppUqeaDi",
-  "value" : 12
+  "value" : 12,
+  "type" : "NEO_GAS_TRANSACTION"
 }' | http POST 'https://api.arkane.network/api/signatures' \
     'Content-Type:application/json;charset=UTF-8'
 ----

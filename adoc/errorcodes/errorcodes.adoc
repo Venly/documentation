@@ -156,6 +156,23 @@
 |A problem occurred trying to submit the transaction to the Ethereum network
 |===
 
+.Matic Specific Errors
+|===
+|Error Code | Meaning
+
+|web3.internal-error
+|Something went wrong with the underlying web3 connection.
+
+|web3.estimate.gas.internal-error
+|A problem occurred trying to estimate the gas.
+
+|web3.nonce.internal-error
+|A problem occurred trying to get the next nonce
+
+|web3.transaction.submit.internal-error
+|A problem occurred trying to submit the transaction to the Matic network
+|===
+
 .Litecoin Specific Errors
 |===
 |Error Code | Meaning
@@ -198,6 +215,9 @@
 |Unable to create export format from secret key
 
 |export.ethereum
+|An error occurred while trying to export the key
+
+|export.matic
 |An error occurred while trying to export the key
 
 |export.gochain

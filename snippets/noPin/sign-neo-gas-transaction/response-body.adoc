@@ -1,7 +1,7 @@
 [source,options="nowrap"]
 ----
 {
-  "@class" : ".SubmittedAndSignedTransactionSignature",
+  "type" : "SUBMITTED_AND_SIGNED_TRANSACTION_SIGNATURE",
   "signedTransaction" : "transaction",
   "transactionHash" : "txHash"
 }

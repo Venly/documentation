@@ -1,0 +1,15 @@
+[source,http,options="nowrap"]
+----
+POST /api/wallets/import HTTP/1.1
+Host: api.arkane.network
+Content-Length: 118
+Content-Type: application/json;charset=UTF-8
+
+{
+  "importWalletType" : "MIGRATION",
+  "pincode" : "1234",
+  "clients" : null,
+  "walletId" : "1",
+  "to" : "MATIC"
+}
+----

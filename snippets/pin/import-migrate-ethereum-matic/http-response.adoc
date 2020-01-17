@@ -1,0 +1,20 @@
+[source,http,options="nowrap"]
+----
+HTTP/1.1 200 OK
+Content-Length: 314
+Content-Type: application/json;charset=UTF-8
+
+{
+  "id" : null,
+  "address" : "0xdc72b72db54e227e65a45004ab2798d31e8934c2",
+  "secretType" : "MATIC",
+  "walletType" : "THREEWAY_SHARED",
+  "createdAt" : null,
+  "archived" : false,
+  "alias" : "aliasMatic",
+  "description" : "descriptionMatic",
+  "primary" : false,
+  "hasCustomPin" : false,
+  "balance" : null
+}
+----

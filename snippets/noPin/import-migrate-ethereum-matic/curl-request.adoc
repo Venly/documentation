@@ -1,0 +1,11 @@
+[source,bash]
+----
+$ curl 'https://api.arkane.network/api/wallets/import' -i -X POST \
+    -H 'Content-Type: application/json;charset=UTF-8' \
+    -d '{
+  "importWalletType" : "MIGRATION",
+  "clients" : null,
+  "walletId" : "1",
+  "to" : "MATIC"
+}'
+----

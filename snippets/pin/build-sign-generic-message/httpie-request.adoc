@@ -1,0 +1,10 @@
+[source,bash]
+----
+$ echo '{
+  "type" : "MESSAGE",
+  "secretType" : "ETHEREUM",
+  "walletId" : "1def2753-a428-4fd2-9993-fc06917897c6",
+  "data" : "I agree with terms and conditions"
+}' | http POST 'https://api.arkane.network/api/signatures/build' \
+    'Content-Type:application/json;charset=UTF-8'
+----

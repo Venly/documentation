@@ -1,6 +1,6 @@
 = Arkane Connect: our JavaScript SDK
 
-:secret-types: 'AETERNITY', 'BITCOIN', 'ETHEREUM', 'GOCHAIN', 'LITECOIN', 'TRON', 'VECHAIN'
+:secret-types: 'AETERNITY', 'BITCOIN', 'ETHEREUM', 'MATIC', 'GOCHAIN', 'LITECOIN', 'TRON', 'VECHAIN'
 
 == Introduction
 In order to conveniently integrate Arkane into your JavaScript applications we've developed a JavaScript SDK: *Arkane Connect JS*.
@@ -80,7 +80,8 @@ const arkaneConnect = new ArkaneConnect('Arketype', { environment: 'staging',
   environment?: string,
   windowMode?: WindowMode,
   signMethod?: string,
-  bearerTokenProvider?: () => string
+  bearerTokenProvider?: () => string,
+  useOverlayWithPopup?: boolean;
 }
 ----
 
@@ -91,6 +92,7 @@ const arkaneConnect = new ArkaneConnect('Arketype', { environment: 'staging',
 | `windowMode` | false (default = 'POPUP') | <<WindowMode>> The sign method you want to use, possible values are 'POPUP' or 'REDIRECT' | 'REDIRECT'
 | `signMethod` | false (default = 'POPUP') | *Deprecated* Use windowMode instead |
 | `bearerTokenProvider` | false (default = the Arkane Connect JS authentication client) | You can implement all the authentication handling yourself and provide Arkane Connect JS with your own bearer token provider. The bearer token provider is a function returning the bearer token (access token) to login to Arkane. | `() => auth.token`
+| `useOverlayWithPopup` | false (default = true) | When using a popup, show an overlay on the parent screen | `false`
 |===
 
 ==== WindowMode
@@ -102,6 +104,24 @@ const arkaneConnect = new ArkaneConnect('Arketype', { environment: 'staging',
     REDIRECT = 'REDIRECT'
 }
 ----
+|===
+| Option | Description
+| `POPUP` | Open a popup to handle all signing and transactions
+| `REDIRECT` | Navigate to connect to handle all signing and transactions, afterwards redirect back to the page.
+|===
+
+==== PopupOptions
+.Signature
+[source]
+----
+{
+    useOverlay: boolean
+}
+----
+|===
+| Option | Description
+| `useOverlay` | When opening a popup, show an overlay on the parent screen
+|===
 
 == [[_authentication]]Authentication link:buildingblocks.html#arkane-identity[[.small]#+[Check buildingblock Arkane Identity]+#]
 === Check if a user is authenticated
@@ -150,7 +170,7 @@ Returns `Promise<<<authentication-result,AuthenticationResult>>>`
 This function will check if the user is authenticated (showing a login form if the user is not already authenticated).
 
 * For windowMode = 'REDIRECT', the user will be redirect to `options.redirectUri` (if present) with the result (after logging in).
-* For windowMode = 'POPUP', when the user finishes the popup closes and the promise resolves. No extra options are required.
+* For windowMode = 'POPUP', when the u``ser finishes the popup closes and the promise resolves. No extra options are required.
 
 IMPORTANT: If you set the redirectUri option, make sure that the SDK and the `AuthenticationResult` handling is also present on the page you redirect to.
 
@@ -269,6 +289,7 @@ arkaneConnect.addOnTokenRefreshCallback(token => {
 {
   redirectUri?: string,
   windowMode: WindowMode,
+  useOverlayWithPopup?: boolean;
   closePopup?: boolean
 }
 ----
@@ -276,8 +297,9 @@ arkaneConnect.addOnTokenRefreshCallback(token => {
 .Parameters
 |===
 | Parameter | Required | Description | Example
-| `redirectUri` | false (default = the current URI) | The URI you want the user to be redirected after checking authentication. Only used when windowMode=REDIRECT | 'https://arkane.network'
-| `windowMode`  | false (default = windowMode passed in ConstructorOptions) | `<<WindowMode>>` Show login form in POPUP, or login using redirect | 'REDIRECT'
+| `redirectUri` | false (default = the current URI) | The URI you want the user to be redirected after checking authentication. Only used when windowMode=REDIRECT | `'https://arkane.network'`
+| `windowMode`  | false (default = windowMode passed in ConstructorOptions) | `<<WindowMode>>` Show login form in POPUP, or login using redirect | `'REDIRECT'`
+| `useOverlayWithPopup`  | false (default = useOverlayWithPopup passed in ConstructorOptions) | When using a popup, show an overlay on the parent screen | `false`
 | `closePopup`  | false (default = true) | If true, the popup closes when the action is finished. When setting it to false the next action will be loaded in the same popup without first closing it (is used internally when multiple actions needing a popup are called in sequence).
 |===
 
@@ -700,14 +722,15 @@ To execute and sign transactions, the user needs to enter his PIN. To enable him
 .Signature
 [source,javascript,options="nowrap"]
 ----
-arkaneConnect.createSigner(signUsing?: 'POPUP' | 'REDIRECT'): Signer
+arkaneConnect.createSigner(signUsing?: WindowMode, popupOptions?: PopupOptions): Signer
 ----
 
 .Parameters
 [cols="1,2,3"]
 |===
 | Parameter | Required | Description
-| `signUsing` | false (default = the method supplied in the constructor, 'POPUP' if none was passed). | The method you want to use to sign this transaction.
+| `signUsing` | false (default = the method supplied in the constructor, 'POPUP' if none was passed). | The <<WindowMode>> you want to use to sign this transaction.
+| `popupOptions` | false | The <<PopupOptions>> you want to use to sign this transaction.
 |===
 
 WARNING: If you are using the popup signer and you want to execute a transaction as a reaction to an event (e.g. a button click), then call `arkaneConnect.createSigner(...)` as very first in your event handler, otherwise the popup might get blocked by the popup blocker of the browser.
@@ -983,6 +1006,39 @@ signer.sign({...signatureRequest...})
       });
 ----
 
+=== Sign Message link:reference.html#generic-signatures[[.small]#+[Reference]+#]
+.Signature
+[source,javascript,options="nowrap"]
+----
+signer.signMessage(messageSignRequestDto, options?): Promise<SignerResult>
+----
+Returns `Promise++<++<<signer-result,SignerResult>>++>++`
+
+.Parameters
+[cols="1,1,3"]
+|===
+| Parameter | Required | Description
+| `messageSignRequestDto` | true | The signature request you want to sign. For more info on how this request should look like, see link:reference.html#generic-sign-message[reference].
+| `options` | false | The <<signer-options,options>> you want to pass.
+|===
+
+=== Get the status of a transaction link:reference.html#transaction-status[[.small]#+[Reference]+#]
+
+.Signature
+[source,javascript,options="nowrap"]
+----
+arkaneConnect.api.getTransactionStatus(transactionHash: string, secretType: SecretType): Promise<TxStatusResult>
+----
+Returns `Promise++<++<<tx-status-result,TxStatusResult>>++>++`
+
+.Parameters
+[cols="1,1,3"]
+|===
+| Parameter | Required | Description
+| `transactionHash` | true | Transaction hash
+| `secretType` | true | The secretType (`{secret-types}`)
+|===
+
 === Data types
 ==== [[signer-options]]Options
 IMPORTANT: Options are only applicable to the *redirect-signer*
@@ -1037,4 +1093,29 @@ The result after the user enters his PIN differs on the Signer type.
 c437f5beffb1 +
 d5d7b7'
 | `errors` | false, only when status `'ABORTED'` or `'ERROR'` | An array containing the errors of the transaction that you tried to execute. |
+|===
+
+
+==== [[tx-status-result]]TxStatusResult
+Status of a transaction
+
+.TxStatusResult
+[source,javascript,options="nowrap"]
+----
+{
+    status: 'UNKNOWN' | 'PENDING' | 'FAILED' | 'SUCCEEDED'
+}
+----
+[cols="1,1,3a,2"]
+|===
+| Parameter | Required | Description | Example
+| `status`
+| true
+a| The status of the transaction:
+
+* `UNKNOWN` means that the transaction is not yet visible on the chain.
+* `PENDING` means that the transaction is not yet completed (or failed).
+* `SUCCEEDED` means that the transaction is completed successful.
+* `FAILED` means that the transaction is failed.
+| `'SUCCESS'`
 |===

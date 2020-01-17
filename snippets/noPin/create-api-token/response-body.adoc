@@ -7,6 +7,6 @@
   "claim" : "SIGN_WALLETS",
   "enabled" : true,
   "description" : "Development API Key",
-  "tokenSecret" : "QzhzUTdrbkohWzErMCs0cmdXMSQ5JXMhUjUsOTBOZW4oOF9KKi1nMUhEPHwoRUVQPVs="
+  "tokenSecret" : "WDkpb0s5MSF5MGo1NTEsbVJOTHc0Um8hYUhGU1hVPmJ4NSh0XzE1PFI0d19IOSgtTiU"
 }
 ----

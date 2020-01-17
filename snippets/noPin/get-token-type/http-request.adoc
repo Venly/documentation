@@ -1,0 +1,5 @@
+[source,http,options="nowrap"]
+----
+GET /api/apps/1f64ded9-2a05-4824-b682-661023359357/contracts/2/token-types/65 HTTP/1.1
+Host: business.arkane.network
+----

@@ -1,8 +1,0 @@
-|===
-|Path|Type|Description
-
-|`+hash+`
-|`+Null+`
-|userId of the logged in user
-
-|===

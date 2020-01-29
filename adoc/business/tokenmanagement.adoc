@@ -111,15 +111,20 @@ otherwise the request will fail
 }
 ----
 
-
-
 === Using access token
+
 When calling the API, the access token must be provided inside the HTTP authentication header:
 
 [source,bash]
 ----
 curl -H "Authorization: Beaerer ACCESS-TOKEN" https://business.arkane.network
 ----
+
+== Application Management
+
+=== [[list-applications]] List applications
+
+operation::get-apps[snippets='curl-request,http-response,response-fields']
 
 == Token Management
 

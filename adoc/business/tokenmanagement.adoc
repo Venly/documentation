@@ -126,16 +126,26 @@ curl -H "Authorization: Beaerer ACCESS-TOKEN" https://business.arkane.network
 This section describes all actions related to token management.
 
 === [[deploy-contract]] Deploy Contract
-Deploying a new Token Contract. This token contract represents the game inventory (all items that can exist within the game).
+
+Deploying a new Token Contract.
+This token contract represents the game inventory (all items that can exist within the game).
 
 operation::deploy-contract[snippets='curl-request,path-parameters,request-fields,http-response,response-fields']
 
+=== [[list-contracts]] List contracts
+
+List contracts that belong to an application
+
+operation::get-contracts[snippets='curl-request,path-parameters,http-response,response-fields']
+
 === [[get-contract]] Get Contract
-Get Information about a contract
+
+Get Information about a specific contract
 
 operation::get-contract[snippets='curl-request,path-parameters,http-response,response-fields']
 
 === [[create-token-type]] Create Token Type
+
 Before generating tokens, we need to define the type which will describe the token.
 
 operation::create-token-type[snippets='curl-request,path-parameters,request-fields,http-response,response-fields']

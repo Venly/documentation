@@ -1,0 +1,6 @@
+|===
+|Path|Type|Description
+|`+.[]+`
+|`+Array+`
+|A array containing your applications
+|===

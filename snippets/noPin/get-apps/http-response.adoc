@@ -1,0 +1,15 @@
+[source,http,options="nowrap"]
+----
+HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+Content-Length: 309
+[ {
+  "id" : "0c3c2ebf-3764-455c-bfe3-9808b05472e4",
+  "clientId" : "seabattle",
+  "clientSecret" : "<client_secret>",
+  "name" : "Sea Battle",
+  "description" : "Conquer the sea",
+  "rootURL" : "seabattle.arkane.network",
+  "imageUrl" : "https://via.placeholder.com/200/C8E2EB/ff5555.png?text=Sea Battle"
+} ]
+----

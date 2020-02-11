@@ -1,0 +1,6 @@
+|===
+|Path|Type|Description
+|`+.[]+`
+|`+Array+`
+|A list of contracts
+|===

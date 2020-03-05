@@ -4,6 +4,7 @@ $ curl 'https://business.arkane.network/api/apps/1f64ded9-2a05-4824-b682-6610233
     -H 'Content-Type: application/json;charset=UTF-8' \
     -d '{
   "name" : "Awesome Contract",
-  "description" : "This is my first contract"
+  "description" : "This is my first contract",
+  "chain" : "MATIC"
 }'
 ----

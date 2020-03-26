@@ -1,0 +1,5 @@
+[source,http,options="nowrap"]
+----
+GET /api/transactions/c16ec5aa-0699-471e-8a47-4a2aacaa5c19/cancel HTTP/1.1
+Host: api.arkane.network
+----

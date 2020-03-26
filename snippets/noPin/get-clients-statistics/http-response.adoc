@@ -4,7 +4,7 @@ HTTP/1.1 200 OK
 Content-Length: 50
 Content-Type: application/json;charset=UTF-8
 {
-  "numberOfUsers" : 1,
-  "numberOfWallets" : 2
+  "numberOfWallets" : 2,
+  "numberOfUsers" : 1
 }
 ----

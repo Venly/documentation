@@ -1,13 +1,13 @@
 [source,http,options="nowrap"]
 ----
 HTTP/1.1 200 OK
-Content-Length: 571
 Content-Type: application/json;charset=UTF-8
+Content-Length: 574
 [ {
   "walletId" : "e30a6a01-8d9a-412e-b0c8-eb04d86d1daa",
   "blockRef" : null,
   "chainTag" : null,
-  "expiration" : 0,
+  "expiration" : null,
   "gas" : null,
   "gasPriceCoef" : null,
   "nonce" : null,

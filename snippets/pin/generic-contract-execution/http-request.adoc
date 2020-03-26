@@ -1,9 +1,9 @@
 [source,http,options="nowrap"]
 ----
 POST /api/transactions/build HTTP/1.1
-Content-Length: 571
 Host: api.arkane.network
 Content-Type: application/json;charset=UTF-8
+Content-Length: 574
 
 {
   "type" : "CONTRACT_EXECUTION",
@@ -13,7 +13,7 @@ Content-Type: application/json;charset=UTF-8
   "secretType" : "ETHEREUM",
   "network" : {
     "name" : "Rinkeby",
-    "nodeUrl" : "https://rinkeby.infura.io",
+    "nodeUrl" : "https://rinkeby.arkane.network",
     "chainId" : null
   },
   "functionName" : "transfer",
@@ -23,7 +23,7 @@ Content-Type: application/json;charset=UTF-8
     "value" : "0x80cbb6c4342948e5be81987dce8251dbedd69138"
   }, {
     "type" : "uint256",
-    "value" : "73680000"
+    "value" : 73680000
   } ],
   "chainSpecificFields" : {
     "gasLimit" : "300000"

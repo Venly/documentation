@@ -3,7 +3,6 @@
 $ echo '{
   "walletId" : "1",
   "submit" : false,
-  "network" : null,
   "to" : "AbArunq3PGYmQv4xhduTKva7r2ppUqeaDi",
   "value" : 12,
   "type" : "NEO_GAS_TRANSACTION"

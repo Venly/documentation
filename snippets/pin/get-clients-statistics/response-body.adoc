@@ -1,7 +1,7 @@
 [source,options="nowrap"]
 ----
 {
-  "numberOfUsers" : 1,
-  "numberOfWallets" : 2
+  "numberOfWallets" : 2,
+  "numberOfUsers" : 1
 }
 ----

@@ -1,0 +1,4 @@
+[source,bash]
+----
+$ curl 'https://api.arkane.network/api/transactions/7be4161f-afe8-4200-ac18-fef9c27be72f/resubmit' -i -X GET
+----

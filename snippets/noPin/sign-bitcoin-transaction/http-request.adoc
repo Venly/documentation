@@ -2,12 +2,11 @@
 ----
 POST /api/signatures HTTP/1.1
 Host: api.arkane.network
+Content-Length: 182
 Content-Type: application/json;charset=UTF-8
-Content-Length: 202
 {
   "walletId" : "1",
   "submit" : true,
-  "network" : null,
   "to" : "mpi2SkK5vKipCNE9h1HtRgDg6UM44AuN9S",
   "value" : 10,
   "feePerByte" : 6,

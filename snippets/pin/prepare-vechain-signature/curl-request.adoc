@@ -6,11 +6,10 @@ $ curl 'https://api.arkane.network/api/signatures/prepare' -i -X POST \
   "walletId" : "1",
   "pincode" : null,
   "submit" : false,
-  "network" : null,
   "blockRef" : null,
   "chainTag" : null,
-  "expiration" : 0,
-  "gas" : 0,
+  "expiration" : null,
+  "gas" : null,
   "gasPriceCoef" : null,
   "nonce" : null,
   "clauses" : [ {

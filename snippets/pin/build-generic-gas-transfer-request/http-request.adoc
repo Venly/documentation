@@ -2,7 +2,7 @@
 ----
 POST /api/transactions/build HTTP/1.1
 Host: api.arkane.network
-Content-Length: 314
+Content-Length: 319
 Content-Type: application/json;charset=UTF-8
 
 {
@@ -13,7 +13,7 @@ Content-Type: application/json;charset=UTF-8
   "secretType" : "VECHAIN",
   "network" : {
     "name" : "Rinkeby",
-    "nodeUrl" : "https://rinkeby.infura.io",
+    "nodeUrl" : "https://rinkeby.arkane.network",
     "chainId" : null
   },
   "value" : 1.15

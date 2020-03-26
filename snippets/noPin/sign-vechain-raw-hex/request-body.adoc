@@ -1,0 +1,10 @@
+[source,options="nowrap"]
+----
+{
+  "walletId" : "1",
+  "data" : "Some data",
+  "hash" : true,
+  "prefix" : true,
+  "type" : "VECHAIN_RAW"
+}
+----

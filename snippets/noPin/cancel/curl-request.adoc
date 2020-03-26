@@ -1,0 +1,4 @@
+[source,bash]
+----
+$ curl 'https://api.arkane.network/api/transactions/c16ec5aa-0699-471e-8a47-4a2aacaa5c19/cancel' -i -X GET
+----

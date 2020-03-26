@@ -1,0 +1,8 @@
+[source,bash]
+----
+$ curl 'https://api.arkane.network/api/profile/intercom/untag' -i -X POST \
+    -H 'Content-Type: application/json;charset=UTF-8' \
+    -d '{
+  "tagName" : "testTagName"
+}'
+----

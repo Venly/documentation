@@ -6,9 +6,6 @@
 |`+[].tokenId+`
 |`+String+`
 |The token ID of this non fungible token
-|`+[].owner+`
-|`+String+`
-|The wallet address owning the item
 |`+[].name+`
 |`+String+`
 |Name of this item

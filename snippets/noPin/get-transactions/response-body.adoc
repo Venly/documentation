@@ -9,7 +9,7 @@
   "to" : "0xdc71b72db51e227e65a45004ab2798d31e8934c9",
   "network" : {
     "name" : "Rinkeby",
-    "nodeUrl" : "https://rinkeby.infura.io",
+    "nodeUrl" : "https://rinkeby.arkane.network",
     "chainId" : null
   },
   "data" : "0x",

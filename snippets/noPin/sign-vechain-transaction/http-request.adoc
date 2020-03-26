@@ -1,13 +1,12 @@
 [source,http,options="nowrap"]
 ----
 POST /api/signatures HTTP/1.1
+Content-Length: 350
 Host: api.arkane.network
-Content-Length: 370
 Content-Type: application/json;charset=UTF-8
 {
   "walletId" : "1",
   "submit" : false,
-  "network" : null,
   "blockRef" : "0x1",
   "chainTag" : "0x2",
   "expiration" : 10,

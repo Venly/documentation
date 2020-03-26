@@ -15,7 +15,7 @@
 |`+secretType+`
 |`+String+`
 |Which chain you want to do a transaction for
-|Mandatory. Must be one of: [AETERNITY, BITCOIN, ETHEREUM, GOCHAIN, LITECOIN, TRON, VECHAIN, NEO]
+|Mandatory. Must be one of: [AETERNITY, BITCOIN, ETHEREUM, GOCHAIN, LITECOIN, TRON, VECHAIN, MATIC, NEO]
 |`+type+`
 |`+String+`
 |Type of transaction request
@@ -37,12 +37,12 @@
 |The type of the input parameter (ex. uint256)
 |Mandatory
 |`+inputs[].value+`
-|`+String+`
+|`+Varies+`
 |The value of the input parameter. This needs to be passed as a string value, will be parsed by Arkane
 |Mandatory
 |`+chainSpecificFields+`
 |`+Object+`
-|Field that contains chain specific values. For possible values, please see <<contract-execution-supported-chains,chain specific fields documentation>>. 
+|Field that contains chain specific values. For possible values, please see <<contract-execution-supported-chains,chain specific fields documentation>>.
 |Mandatory
 |`+network+`
 |`+Object+`

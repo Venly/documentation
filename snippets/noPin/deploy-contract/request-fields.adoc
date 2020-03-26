@@ -6,4 +6,7 @@
 |`+description+`
 |`+String+`
 |A description of the contract to be deployed
+|`+chain+`
+|`+String+`
+|The chain for which we want to deploy a contract
 |===

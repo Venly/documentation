@@ -1,8 +1,8 @@
 [source,http,options="nowrap"]
 ----
 HTTP/1.1 200 OK
-Content-Length: 348
 Content-Type: application/json;charset=UTF-8
+Content-Length: 366
 
 {
   "secretType" : "ETHEREUM",
@@ -20,6 +20,7 @@ Content-Type: application/json;charset=UTF-8
     "defaultPrice" : false
   } ],
   "gasLimit" : 21000,
-  "reverted" : false
+  "reverted" : false,
+  "nonce" : null
 }
 ----

@@ -3,9 +3,10 @@
 POST /api/apps/1f64ded9-2a05-4824-b682-661023359357/contracts HTTP/1.1
 Content-Type: application/json;charset=UTF-8
 Host: business.arkane.network
-Content-Length: 80
+Content-Length: 101
 {
   "name" : "Awesome Contract",
-  "description" : "This is my first contract"
+  "description" : "This is my first contract",
+  "chain" : "MATIC"
 }
 ----

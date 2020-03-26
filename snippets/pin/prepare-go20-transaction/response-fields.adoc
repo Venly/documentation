@@ -9,6 +9,10 @@
 |`+Number+`
 |The estimated gas limit
 
+|`+nonce+`
+|`+Null+`
+|The nonce that will be used for the transaction
+
 |`+reverted+`
 |`+Boolean+`
 |True if transaction will likely fail, false otherwise

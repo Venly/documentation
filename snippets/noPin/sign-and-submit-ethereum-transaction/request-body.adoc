@@ -3,17 +3,17 @@
 {
   "walletId" : "1",
   "submit" : true,
-  "network" : {
-    "name" : "Rinkeby",
-    "nodeUrl" : "https://rinkeby.infura.io",
-    "chainId" : null
-  },
   "gasPrice" : 10000000000,
   "gas" : 23000,
   "nonce" : 0,
   "value" : 10000000000,
   "data" : "0x",
   "to" : "0xdc71b72db51e227e65a45004ab2798d31e8934c9",
+  "network" : {
+    "name" : "Rinkeby",
+    "nodeUrl" : "https://rinkeby.infura.io",
+    "chainId" : null
+  },
   "type" : "ETHEREUM_TRANSACTION"
 }
 ----

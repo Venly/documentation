@@ -1,13 +1,12 @@
 [source,http,options="nowrap"]
 ----
 POST /api/signatures HTTP/1.1
+Content-Length: 163
 Host: api.arkane.network
-Content-Length: 183
 Content-Type: application/json;charset=UTF-8
 {
   "walletId" : "1",
   "submit" : false,
-  "network" : null,
   "to" : "AbArunq3PGYmQv4xhduTKva7r2ppUqeaDi",
   "value" : 12,
   "type" : "NEO_GAS_TRANSACTION"

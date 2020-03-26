@@ -2,6 +2,7 @@
 ----
 {
   "name" : "Awesome Contract",
-  "description" : "This is my first contract"
+  "description" : "This is my first contract",
+  "chain" : "MATIC"
 }
 ----

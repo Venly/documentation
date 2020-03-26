@@ -4,7 +4,7 @@
   "walletId" : "1543",
   "blockRef" : null,
   "chainTag" : null,
-  "expiration" : 0,
+  "expiration" : null,
   "gas" : null,
   "gasPriceCoef" : null,
   "nonce" : null,

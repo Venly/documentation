@@ -1,0 +1,7 @@
+[source,bash]
+----
+$ echo '{
+  "tagName" : "testTagName"
+}' | http POST 'https://api.arkane.network/api/profile/intercom/tag' \
+    'Content-Type:application/json;charset=UTF-8'
+----

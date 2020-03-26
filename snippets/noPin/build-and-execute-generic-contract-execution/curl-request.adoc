@@ -11,7 +11,7 @@ $ curl 'https://api.arkane.network/api/transactions/execute' -i -X POST \
     "secretType" : "ETHEREUM",
     "network" : {
       "name" : "Rinkeby",
-      "nodeUrl" : "https://rinkeby.infura.io",
+      "nodeUrl" : "https://rinkeby.arkane.network",
       "chainId" : null
     },
     "functionName" : "transfer",
@@ -21,7 +21,7 @@ $ curl 'https://api.arkane.network/api/transactions/execute' -i -X POST \
       "value" : "0x80cbb6c4342948e5be81987dce8251dbedd69138"
     }, {
       "type" : "uint256",
-      "value" : "73680000"
+      "value" : 73680000
     } ],
     "chainSpecificFields" : {
       "gasLimit" : "300000"

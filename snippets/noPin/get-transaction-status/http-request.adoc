@@ -1,5 +1,5 @@
 [source,http,options="nowrap"]
 ----
-GET /api/transactions/ETHEREUM/0x4f2697187b720004d273e8ae67be50377a869622267595b1655d3c17af9452dc/status HTTP/1.1
+GET /api/transactions/ETHEREUM/0x4f2697187b720004d273e8ae67be50377a869622267595b1655d3c17af9452dc/status?endpoint=https://rinkeby.infura.io HTTP/1.1
 Host: api.arkane.network
 ----

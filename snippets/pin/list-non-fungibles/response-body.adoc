@@ -3,7 +3,6 @@
 [ {
   "id" : "7664",
   "tokenId" : "7664",
-  "owner" : "0xdc72b72db54e227e65a45004ab2798d31e8934c2",
   "name" : "Pixielock",
   "description" : "At the end of your turn, summon a 1/1 Nimble Pixie.",
   "url" : "https://godsunchained.com/card/359127",
@@ -23,7 +22,6 @@
 }, {
   "id" : "106965784547830847323236430761121909501263774393788267967702982783333772235688",
   "tokenId" : "106965784547830847323236430761121909501263774393788267967702982783333772235688",
-  "owner" : "0xdc72b72db54e227e65a45004ab2798d31e8934c2",
   "name" : "phonenumber.eth",
   "description" : "This is the ENS name for phonenumber.eth",
   "url" : "https://manager.ens.domains/name/phonenumber.eth",

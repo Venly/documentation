@@ -1,9 +1,9 @@
 [source,http,options="nowrap"]
 ----
 POST /api/transactions/execute HTTP/1.1
+Content-Length: 394
 Host: api.arkane.network
 Content-Type: application/json;charset=UTF-8
-Content-Length: 389
 {
   "transactionRequest" : {
     "type" : "GAS_TRANSFER",
@@ -13,7 +13,7 @@ Content-Length: 389
     "secretType" : "VECHAIN",
     "network" : {
       "name" : "Rinkeby",
-      "nodeUrl" : "https://rinkeby.infura.io",
+      "nodeUrl" : "https://rinkeby.arkane.network",
       "chainId" : null
     },
     "value" : 1.15

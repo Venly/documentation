@@ -170,7 +170,7 @@ Returns `Promise<<<authentication-result,AuthenticationResult>>>`
 This function will check if the user is authenticated (showing a login form if the user is not already authenticated).
 
 * For windowMode = 'REDIRECT', the user will be redirect to `options.redirectUri` (if present) with the result (after logging in).
-* For windowMode = 'POPUP', when the u``ser finishes the popup closes and the promise resolves. No extra options are required.
+* For windowMode = 'POPUP', when the user finishes the popup closes and the promise resolves. No extra options are required.
 
 IMPORTANT: If you set the redirectUri option, make sure that the SDK and the `AuthenticationResult` handling is also present on the page you redirect to.
 

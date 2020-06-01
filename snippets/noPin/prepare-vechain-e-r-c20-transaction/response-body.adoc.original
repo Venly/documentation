@@ -1,0 +1,12 @@
+[source,options="nowrap"]
+----
+{
+  "secretType" : "VECHAIN",
+  "gasPriceCoefficients" : [ {
+    "gasPriceCoef" : 0,
+    "defaultPrice" : true
+  } ],
+  "gasLimit" : 21000,
+  "reverted" : false
+}
+----

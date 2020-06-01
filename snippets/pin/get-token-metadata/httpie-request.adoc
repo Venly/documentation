@@ -1,0 +1,4 @@
+[source,bash]
+----
+$ http GET 'https://business.arkane.network/api/apps/app_id/contracts/25/token-types/56/metadata'
+----

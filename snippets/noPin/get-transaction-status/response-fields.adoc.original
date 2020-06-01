@@ -1,0 +1,6 @@
+|===
+|Path|Type|Description
+|`+status+`
+|`+String+`
+|The status of the transaction, possible values: [UNKNOWN, PENDING, FAILED, SUCCEEDED]
+|===

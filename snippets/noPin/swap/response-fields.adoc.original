@@ -1,0 +1,6 @@
+|===
+|Path|Type|Description
+|`+[]+`
+|`+Array+`
+|An array of transaction requests that need to be offered to the native transactions endpoint in order to execute the swap
+|===

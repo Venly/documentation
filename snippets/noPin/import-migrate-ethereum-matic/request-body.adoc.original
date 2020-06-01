@@ -1,0 +1,9 @@
+[source,options="nowrap"]
+----
+{
+  "importWalletType" : "MIGRATION",
+  "clients" : null,
+  "walletId" : "1",
+  "to" : "MATIC"
+}
+----

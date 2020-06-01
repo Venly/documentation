@@ -1,0 +1,6 @@
+.+/api/wallets/{id}+
+|===
+|Parameter|Description
+|`+id+`
+|the id of the wallet
+|===

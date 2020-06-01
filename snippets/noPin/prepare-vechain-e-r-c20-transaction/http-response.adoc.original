@@ -1,0 +1,15 @@
+[source,http,options="nowrap"]
+----
+HTTP/1.1 200 OK
+Content-Length: 162
+Content-Type: application/json;charset=UTF-8
+{
+  "secretType" : "VECHAIN",
+  "gasPriceCoefficients" : [ {
+    "gasPriceCoef" : 0,
+    "defaultPrice" : true
+  } ],
+  "gasLimit" : 21000,
+  "reverted" : false
+}
+----

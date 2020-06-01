@@ -1,11 +1,9 @@
 == Authentication
 
-
 === [[request-access-token]] Requesting access token
 
-
-
-Here we'll describe how to obtain a bearer token from our authentication server using your `<clientId>_app`-client. For this you will need a registered user on the Arkane network
+Here we'll describe how to obtain a bearer token from our authentication server using your `<clientId>_app`-client.
+For this you will need a registered user on the Arkane network
 . This needs to be a registered user within Arkane and not a user that is only user social logins (in case you already used a social login, simply register and the accounts will be linked)
 
 image::img/appclientauthentication.png[<clientId>_app flow]
@@ -20,8 +18,8 @@ $ curl https://login.arkane.network/auth/realms/Arkane/protocol/openid-connect/t
     -H 'Content-Type: application/x-www-form-urlencoded' \
     -d 'grant_type=client_credentials&client_id=Arketype_app&client_secret=02053a9d-8293-43c4-a201-f8669f1329af'
 ----
-IMPORTANT: Do not forget to set the `Content-Type: application/x-www-form-urlencoded` header (and to make the request body application/x-www-form-urlencoded),
-otherwise the request will fail
+
+IMPORTANT: Do not forget to set the `Content-Type: application/x-www-form-urlencoded` header (and to make the request body application/x-www-form-urlencoded), otherwise the request will fail
 
 .Request Fields
 |===
@@ -33,7 +31,6 @@ otherwise the request will fail
 | password | String | The password that was used when signing up | Mandatory
 |===
 
-
 .Reponse Fields
 |===
 | Path | Type | Description
@@ -43,7 +40,6 @@ otherwise the request will fail
 | refresh_token | String | The JWT token which can be used to refresh the current token
 | token_type | String | bearer | The type of the access_token
 |===
-
 
 .Response Body
 [source,json]
@@ -58,7 +54,9 @@ otherwise the request will fail
 ----
 
 === Refresh access token
-Since the access token has a short lifespan, it is necessary to get a new access token before. In the case the login flow does not require input, you can request a new access token as above.
+
+Since the access token has a short lifespan, it is necessary to get a new access token before.
+In the case the login flow does not require input, you can request a new access token as above.
 It is also possible to regenerate a new access token using the refresh token:
 
 .URL
@@ -71,8 +69,8 @@ $ curl https://login.arkane.network/auth/realms/Arkane/protocol/openid-connect/t
     -H 'Content-Type: application/x-www-form-urlencoded' \
     -d 'grant_type=refresh_token&client_id=Arketype_app&client_secret=02053a9d-8293-43c4-a201-f8669f1329af&refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJlOTVlMDc2NC1lZmVkLTQyMmEtYmU0Mi1iZTcwYmY1Nzg2NDYifQ.eyJqdGkiOiIyMjI4ZDRmNy01ZWUyLTRjZmUtYjUxMC04NDVmYjNlZWU1MzkiLCJleHAiOjE1NzQ1MTI1NDQsIm5iZiI6MCwiaWF0IjoxNTc0MDgwNTQ0LCJpc3MiOiJodHRwczovL2xvZ2luLXFhLmFya2FuZS5uZXR3b3JrL2F1dGgvcmVhbG1zL0Fya2FuZSIsImF1ZCI6Imh0dHBzOi8vbG9naW4tcWEuYXJrYW5lLm5ldHdvcmsvYXV0aC9yZWFsbXMvQXJrYW5lIiwic3ViIjoiNzNiMDZjMDgtMTk3Zi00OGI2LWEwZjItY2MwMDI0YzliZDAwIiwidHlwIjoiUmVmcmVzaCIsImF6cCI6IkFya2V0eXBlX2FwcCIsImF1dGhfdGltZSI6MCwic2Vzc2lvbl9zdGF0ZSI6IjY2ZmE5NWExLWJhMmMtNDNiYS1iMjUyLWI3ODZiZTEyMTZlMyIsInJlc291cmNlX2FjY2VzcyI6eyJyZWFsbS1tYW5hZ2VtZW50Ijp7InJvbGVzIjpbInF1ZXJ5LWNsaWVudHMiXX19LCJzY29wZSI6InZpZXc6d2FsbGV0cyB1c2U6YWxsLXdhbGxldHMgdmlldzpjbGllbnRzLXN0YXRpc3RpY3Mgdmlldzpwcm9maWxlIHNhdmU6dHJhbnNhY3Rpb24gZW1haWwgcHJvZmlsZSJ9.Ik-KF71yMqrugzf7zUvj-DylkzZv6l-lltfwA_XxN6I'
 ----
-IMPORTANT: Do not forget to set the `Content-Type: application/x-www-form-urlencoded` header (and to make the request body application/x-www-form-urlencoded),
-otherwise the request will fail
+
+IMPORTANT: Do not forget to set the `Content-Type: application/x-www-form-urlencoded` header (and to make the request body application/x-www-form-urlencoded), otherwise the request will fail
 
 .Request Fields
 |===
@@ -84,7 +82,6 @@ otherwise the request will fail
 | password | String | The password that was used when signing up (see <<request-access-token>>) | Mandatory
 |===
 
-
 .Reponse Fields
 |===
 | Path | Type | Description
@@ -94,7 +91,6 @@ otherwise the request will fail
 | refresh_token | String | The JWT token which can be used to refresh the current token
 | token_type | String | bearer | The type of the access_token
 |===
-
 
 .Response Body
 [source,json]
@@ -156,23 +152,24 @@ Before generating tokens, we need to define the type which will describe the tok
 operation::create-token-type[snippets='curl-request,path-parameters,request-fields,http-response,response-fields']
 
 === [[get-token-types]] List token types
+
 Returns the all token types for given contract
 
 operation::get-token-types[snippets='curl-request,path-parameters,http-response,response-fields']
 
 === [[get-token-type]] Get Token Type
+
 Returns the details for a token type
 
 operation::get-token-type[snippets='curl-request,path-parameters,http-response,response-fields']
 
 === [[create-token]] Create token
-Creating a token is always based on a certain token type.
 
+Creating a token is always based on a certain token type.
 
 ==== Fungible
 
 operation::create-fungible[snippets='curl-request,path-parameters,request-fields,http-response']
-
 
 ==== Non-fungible
 
@@ -181,11 +178,30 @@ operation::create-non-fungible[snippets='curl-request,path-parameters,request-fi
 === [[query-tokens]] Query Tokens
 
 ==== [[query-tokens]] By token type
+
 Returns tokens for given token type
 
 operation::get-tokens-for-token-type[snippets='curl-request,path-parameters,http-response,response-fields']
 
 ==== [[query-tokens-for-address]] By address
-List the tokens of an account. This is a public endpoint.
+
+List the tokens of an account.
+This is a public endpoint.
 
 operation::list-tokens[snippets='curl-request,path-parameters,http-response,response-fields']
+
+=== [[metadata]] Metadata
+
+The metadata is loosely based on a combination of the ERC721 (https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md) and ERC1155 (https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1155.md) and it's goal is to be compatible with most metadata standards.
+
+==== Get metadata
+
+Returns the metadata for a specific token type
+
+operation::get-token-metadata[snippets='curl-request,path-parameters,http-response,response-fields']
+
+==== Update metadata
+
+Updates the metadata for a specific token type
+
+operation::update-token-metadata[snippets='curl-request,path-parameters,request-fields,http-response']

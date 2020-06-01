@@ -1,0 +1,12 @@
+[source,bash]
+----
+$ echo '{
+  "walletId" : "1",
+  "submit" : true,
+  "network" : null,
+  "to" : "AbArunq3PGYmQv4xhduTKva7r2ppUqeaDi",
+  "value" : 55,
+  "type" : "NEO_NATIVE_TRANSACTION"
+}' | http POST 'https://api.arkane.network/api/signatures' \
+    'Content-Type:application/json;charset=UTF-8'
+----

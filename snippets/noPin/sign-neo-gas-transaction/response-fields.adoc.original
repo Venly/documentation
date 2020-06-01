@@ -1,0 +1,12 @@
+|===
+|Path|Type|Description
+|`+type+`
+|`+String+`
+|The signature type (E.g. HEX_SIGNATURE, SUBMITTED_AND_SIGNED_TRANSACTION_SIGNATURE,TRANSACTION_SIGNATURE)
+|`+signedTransaction+`
+|`+String+`
+|The signed transaction.
+|`+transactionHash+`
+|`+String+`
+|the transactionHash, which is only available if it has been submitted to the blockchain
+|===

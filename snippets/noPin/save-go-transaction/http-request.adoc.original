@@ -1,0 +1,17 @@
+[source,http,options="nowrap"]
+----
+POST /api/transactions HTTP/1.1
+Host: api.arkane.network
+Content-Length: 271
+Content-Type: application/json;charset=UTF-8
+{
+  "walletId" : "adc4c08a-b8fa-4e4c-z5a2-92c87b80f174",
+  "gasPrice" : 300000000000000,
+  "gas" : 23000,
+  "nonce" : 0,
+  "value" : 10000000000,
+  "to" : "0xdc71b72db51e227e65a45004ab2798d31e8934c9",
+  "data" : "0x",
+  "type" : "GO_TRANSACTION"
+}
+----

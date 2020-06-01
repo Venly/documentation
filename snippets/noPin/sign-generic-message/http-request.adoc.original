@@ -1,0 +1,13 @@
+[source,http,options="nowrap"]
+----
+POST /api/signatures HTTP/1.1
+Host: api.arkane.network
+Content-Type: application/json;charset=UTF-8
+Content-Length: 178
+{
+  "type" : "MESSAGE",
+  "secretType" : "ETHEREUM",
+  "walletId" : "1def2753-a428-4fd2-9993-fc06917897c6",
+  "data" : "I agree with terms and conditions"
+}
+----

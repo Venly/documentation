@@ -1,0 +1,19 @@
+|===
+|Path|Type|Description|Constraints
+|`+alias+`
+|`+String+`
+|Alias of the wallet. Needs to be unique across your account
+|Optional, max 50 chars, allowed charachters: A-Z, a-z, 0-9, - and _
+|`+description+`
+|`+String+`
+|General description of your wallet
+|Optional, max 200 chars
+|`+archived+`
+|`+Boolean+`
+|Archives/unarchives the wallet
+|Optional, true or false
+|`+primary+`
+|`+Primary+`
+|Updates the primary status of the wallet
+|Optional, true or false
+|===

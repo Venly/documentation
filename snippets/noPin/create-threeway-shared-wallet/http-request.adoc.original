@@ -1,0 +1,16 @@
+[source,http,options="nowrap"]
+----
+POST /api/wallets HTTP/1.1
+Host: api.arkane.network
+Content-Length: 208
+Content-Type: application/json
+{
+  "alias" : null,
+  "description" : null,
+  "primary" : false,
+  "secretType" : "ETHEREUM",
+  "clients" : [ "ThorBlock" ],
+  "hasCustomPin" : true,
+  "walletType" : "THREEWAY_SHARED"
+}
+----

@@ -7,7 +7,6 @@
   "name" : "Sea Battle",
   "description" : "Conquer the sea",
   "rootURL" : "https://seabattle.arkane.network",
-  "redirectURIs" : [ "https://app.arkane.network", "https://wallet.arkane.network" ],
   "imageUrl" : "https://via.placeholder.com/200/C8E2EB/ff5555.png?text=Sea Battle"
 } ]
 ----

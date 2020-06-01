@@ -1,0 +1,21 @@
+[source,options="nowrap"]
+----
+{
+  "secretType" : "ETHEREUM",
+  "gasPrices" : [ {
+    "gasPrice" : 1000000000,
+    "defaultPrice" : false
+  }, {
+    "gasPrice" : 2000000000,
+    "defaultPrice" : true
+  }, {
+    "gasPrice" : 10000000000,
+    "defaultPrice" : false
+  }, {
+    "gasPrice" : 40000000000,
+    "defaultPrice" : false
+  } ],
+  "gasLimit" : 21000,
+  "reverted" : false
+}
+----

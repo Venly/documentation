@@ -1,0 +1,19 @@
+[source,http,options="nowrap"]
+----
+HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+Content-Length: 433
+
+{
+  "name" : "Token Type",
+  "description" : "This is an example token type",
+  "image" : "https://via.placeholder.com/2000",
+  "properties" : "{\"property1\": \"test\"",
+  "attributes" : "{\"property1\": \"test\"",
+  "imagePreview" : "https://via.placeholder.com/250",
+  "url" : "https://token-type-url.com",
+  "imageThumbnail" : "https://via.placeholder.com/128",
+  "backgroundColor" : "#111111",
+  "background_color" : "#111111"
+}
+----

@@ -1,0 +1,23 @@
+[source,http,options="nowrap"]
+----
+HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+Content-Length: 591
+
+{
+  "contractAddress" : "0xB06e7986b7CA6de204D92ba6b32b5cbAC25fa16b",
+  "id" : 56,
+  "contractTypeId" : 57896044618658097711785492504343953927655839433583097410118915826251869454336,
+  "confirmed" : true,
+  "properties" : "{\"property1\": \"test\"",
+  "name" : "Token Type",
+  "description" : "This is an example token type",
+  "image" : "https://via.placeholder.com/2000",
+  "imagePreview" : "https://via.placeholder.com/250",
+  "url" : "https://token-type-url.com",
+  "imageThumbnail" : "https://via.placeholder.com/128",
+  "backgroundColor" : "#111111",
+  "nft" : true,
+  "decimals" : 0
+}
+----

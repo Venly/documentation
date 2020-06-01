@@ -5,9 +5,10 @@
   "description" : "A magical sword that can slay beasts",
   "decimals" : 0,
   "nft" : true,
-  "properties" : "{\"someProperty\": \"someValue\"}",
+  "properties" : {
+    "someProperty" : "someValue"
+  },
   "backgroundColor" : "#000000",
-  "url" : "https://agame.com/magic-sword",
   "image" : "https://via.placeholder.com/2000",
   "imagePreview" : "https://via.placeholder.com/250",
   "imageThumbnail" : "https://via.placeholder.com/128"

@@ -1,0 +1,8 @@
+.+/api/wallets/{id}/balance/tokens/{token}+
+|===
+|Parameter|Description
+|`+id+`
+|id of the wallet
+|`+token+`
+|Token to get the balance for
+|===

@@ -1,0 +1,33 @@
+|===
+|Path|Type|Description
+|`+name+`
+|`+String+`
+|The name of the token
+|`+description+`
+|`+String+`
+|The description of the token
+|`+image+`
+|`+String+`
+|The image of the token (high res)
+|`+imageThumbnail+`
+|`+String+`
+|The thumbnail image of the token
+|`+imagePreview+`
+|`+String+`
+|The preview image of the token
+|`+background_color+`
+|`+String+`
+|The background color to use when displaying the token
+|`+backgroundColor+`
+|`+String+`
+|Copy of background_color, present for compatibility reasons
+|`+url+`
+|`+String+`
+|The metadata url
+|`+properties+`
+|`+String+`
+|All properties related to the token
+|`+attributes+`
+|`+String+`
+|Copy of properties, attributes is present for compatibility reasons
+|===

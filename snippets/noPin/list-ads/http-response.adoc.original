@@ -1,0 +1,14 @@
+[source,http,options="nowrap"]
+----
+HTTP/1.1 200 OK
+Content-Length: 149
+Content-Type: application/json;charset=UTF-8
+[ {
+  "icon" : "myIcon",
+  "name" : "myName",
+  "description" : "myDesc",
+  "ctaText" : "myCtaText",
+  "ctaLink" : "myCtaLink",
+  "viewIn" : null
+} ]
+----

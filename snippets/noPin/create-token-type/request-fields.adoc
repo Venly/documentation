@@ -13,14 +13,11 @@
 |`+Boolean+`
 |Flag that indicates if this type is a non-fungible (true for non-fungible, false for fungible)
 |`+properties+`
-|`+String+`
-|Free text field of extra properties for the token
+|`+Object+`
+|Properties of the token, should be valid JSON object, pls see: https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md#specification
 |`+backgroundColor+`
 |`+String+`
 |The backgroundcolor of the image
-|`+url+`
-|`+String+`
-|The URL with more information about the token
 |`+imagePreview+`
 |`+String+`
 |Image url of the token, 250x250, preferably svg

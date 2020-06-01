@@ -1,0 +1,27 @@
+|===
+|Path|Type|Description
+|`+[].tokenAddress+`
+|`+String+`
+|Address of the token
+|`+[].rawBalance+`
+|`+String+`
+|Raw token balance of the wallet
+|`+[].balance+`
+|`+Number+`
+|Normalized token balance of the wallet
+|`+[].type+`
+|`+String+`
+|The type of token, which depends on the specific blockchain
+|`+[].transferable+`
+|`+Boolean+`
+|Indicates whether or not the token can be transferred
+|`+[].symbol+`
+|`+String+`
+|The symbol of the token
+|`+[].logo+`
+|`+String+`
+|Logo of the token (url)
+|`+[].decimals+`
+|`+Number+`
+|Decimals of the token
+|===

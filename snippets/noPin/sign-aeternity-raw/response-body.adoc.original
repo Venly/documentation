@@ -1,0 +1,4 @@
+[source,options="nowrap"]
+----
+{"type":"TRANSACTION_SIGNATURE","signedTransaction":"transaction"}
+----

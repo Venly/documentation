@@ -34,11 +34,11 @@
 |The metadata url
 
 |`+properties+`
-|`+String+`
-|All properties related to the token
+|`+Object+`
+|Contains all properties related to the token, in JSON format. This can be any valid JSON.
 
 |`+attributes+`
-|`+String+`
+|`+Object+`
 |Copy of properties, attributes is present for compatibility reasons
 
 |===

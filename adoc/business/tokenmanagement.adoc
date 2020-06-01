@@ -192,7 +192,7 @@ operation::list-tokens[snippets='curl-request,path-parameters,http-response,resp
 
 === [[metadata]] Metadata
 
-The metadata is loosely based on a combination of the ERC721 (https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md) and ERC1155 (https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1155.md) and it's goal is to be compatible with most metadata standards.
+The metadata is loosely based on a combination of the https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md[ERC721] and https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1155.md[ERC1155] metadata standards and it's goal is to be compatible with most metadata standards.
 
 ==== Get metadata
 
@@ -204,4 +204,4 @@ operation::get-token-metadata[snippets='curl-request,path-parameters,http-respon
 
 Updates the metadata for a specific token type
 
-operation::update-token-metadata[snippets='curl-request,path-parameters,request-fields,http-response']
+operation::update-token-metadata[snippets='curl-request,path-parameters,request-body,http-response']

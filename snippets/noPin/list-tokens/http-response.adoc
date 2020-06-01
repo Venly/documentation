@@ -2,7 +2,7 @@
 ----
 HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
-Content-Length: 1244
+Content-Length: 1551
 [ {
   "secretType" : "VECHAIN",
   "contractAddress" : "0x9385a0ab5e85c60f4e091d6afd58f9c11aef8325",
@@ -16,21 +16,21 @@ Content-Length: 1244
     "contractTypeId" : 57896044618658097711785492504343953927655839433583097410118915826251869454336,
     "transactionHash" : "0xAAA",
     "confirmed" : true,
-    "mineDate" : "2020-06-01T08:37:48.443+0000",
-    "transactionDate" : "2020-06-01T08:37:48.443+0000",
+    "mineDate" : "2020-06-01T11:22:25.724+0000",
+    "transactionDate" : "2020-06-01T11:22:25.724+0000",
     "tokenContract" : {
       "id" : 25,
       "address" : "0xB06e7986b7CA6de204D92ba6b32b5cbAC25fa16b",
       "confirmed" : true,
-      "deployDate" : "2020-06-01T08:37:48.443+0000",
-      "mineDate" : "2020-06-01T08:37:48.443+0000",
+      "deployDate" : "2020-06-01T11:22:25.724+0000",
+      "mineDate" : "2020-06-01T11:22:25.724+0000",
       "description" : "description",
       "applicationId" : "app_id",
       "name" : "name",
       "transactionHash" : "hash",
       "owner" : "id"
     },
-    "properties" : "{\"property1\": \"test\"",
+    "properties" : "{\"simple_property\":\"example value\",\"rich_property\":{\"name\":\"Name\",\"value\":\"123\",\"display_value\":\"123 Example Value\",\"class\":\"emphasis\",\"css\":{\"color\":\"#ffffff\",\"font-weight\":\"bold\",\"text-decoration\":\"underline\"}},\"array_property\":{\"name\":\"Name\",\"value\":[1,2,3,4],\"class\":\"emphasis\"}}",
     "url" : "https://token-type-url.com",
     "backgroundColor" : "#111111",
     "image" : "https://via.placeholder.com/2000",

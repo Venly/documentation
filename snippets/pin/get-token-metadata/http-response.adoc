@@ -2,14 +2,50 @@
 ----
 HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
-Content-Length: 433
+Content-Length: 1249
 
 {
   "name" : "Token Type",
   "description" : "This is an example token type",
   "image" : "https://via.placeholder.com/2000",
-  "properties" : "{\"property1\": \"test\"",
-  "attributes" : "{\"property1\": \"test\"",
+  "properties" : {
+    "simple_property" : "example value",
+    "rich_property" : {
+      "name" : "Name",
+      "value" : "123",
+      "display_value" : "123 Example Value",
+      "class" : "emphasis",
+      "css" : {
+        "color" : "#ffffff",
+        "font-weight" : "bold",
+        "text-decoration" : "underline"
+      }
+    },
+    "array_property" : {
+      "name" : "Name",
+      "value" : [ 1, 2, 3, 4 ],
+      "class" : "emphasis"
+    }
+  },
+  "attributes" : {
+    "simple_property" : "example value",
+    "rich_property" : {
+      "name" : "Name",
+      "value" : "123",
+      "display_value" : "123 Example Value",
+      "class" : "emphasis",
+      "css" : {
+        "color" : "#ffffff",
+        "font-weight" : "bold",
+        "text-decoration" : "underline"
+      }
+    },
+    "array_property" : {
+      "name" : "Name",
+      "value" : [ 1, 2, 3, 4 ],
+      "class" : "emphasis"
+    }
+  },
   "imagePreview" : "https://via.placeholder.com/250",
   "url" : "https://token-type-url.com",
   "imageThumbnail" : "https://via.placeholder.com/128",

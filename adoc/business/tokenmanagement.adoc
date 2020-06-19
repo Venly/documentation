@@ -116,6 +116,12 @@ When calling the API, the access token must be provided inside the HTTP authenti
 curl -H "Authorization: Beaerer ACCESS-TOKEN" https://business.arkane.network
 ----
 
+== Environment
+
+Returns information about the current system/environment.
+
+operation::get-env[snippets='curl-request,http-response,response-fields']
+
 == Application Management
 
 === [[list-applications]] List applications

@@ -5,6 +5,10 @@
 |`+String+`
 |The name of the contract to be deployed
 
+|`+symbol+`
+|`+String+`
+|(Optional) An optional symbol to be used in the contract (displayed by some explorers)
+
 |`+description+`
 |`+String+`
 |A description of the contract to be deployed

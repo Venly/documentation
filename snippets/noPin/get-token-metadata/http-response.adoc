@@ -2,11 +2,11 @@
 ----
 HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
-Content-Length: 1249
+Content-Length: 1200
 {
-  "name" : "Token Type",
-  "description" : "This is an example token type",
-  "image" : "https://via.placeholder.com/2000",
+  "name" : "name",
+  "description" : "description",
+  "image" : "https://images.com/image_high_res.png",
   "properties" : {
     "simple_property" : "example value",
     "rich_property" : {
@@ -45,10 +45,9 @@ Content-Length: 1249
       "class" : "emphasis"
     }
   },
-  "imagePreview" : "https://via.placeholder.com/250",
-  "url" : "https://token-type-url.com",
-  "imageThumbnail" : "https://via.placeholder.com/128",
-  "backgroundColor" : "#111111",
-  "background_color" : "#111111"
+  "imagePreview" : "https://images.com/image_preview.png",
+  "imageThumbnail" : "https://images.com/image_thumbnail.png",
+  "backgroundColor" : "#fffff",
+  "background_color" : "#fffff"
 }
 ----

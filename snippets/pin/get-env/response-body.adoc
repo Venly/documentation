@@ -1,0 +1,6 @@
+[source,options="nowrap"]
+----
+{
+  "supportedChainsForItemCreation" : [ "ETHEREUM", "VECHAIN", "MATIC" ]
+}
+----

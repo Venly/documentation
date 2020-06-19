@@ -21,9 +21,6 @@
 |`+backgroundColor+`
 |`+String+`
 |Copy of background_color, present for compatibility reasons
-|`+url+`
-|`+String+`
-|The metadata url
 |`+properties+`
 |`+Object+`
 |Contains all properties related to the token, in JSON format. This can be any valid JSON.

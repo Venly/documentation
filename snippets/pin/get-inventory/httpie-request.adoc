@@ -1,0 +1,4 @@
+[source,bash]
+----
+$ http GET 'https://api.arkane.network/api/wallets/89dbcffc-1e83-4d04-be8c-8cb705053570/inventory?contract-addresses=0x583925da4969ca4674a113248b42825b63fb7cc1'
+----

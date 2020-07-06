@@ -1,0 +1,18 @@
+|===
+|Path|Type|Description
+|`+contracts[]+`
+|`+Array+`
+|A list of contracts for which there is an inventory
+|`+contracts[].tokenTypes[]+`
+|`+Array+`
+|An inventory of token types for contract
+|`+contracts[].tokenTypes[].fungible+`
+|`+Boolean+`
+|True if fungible, false if non-fungible
+|`+contracts[].tokenTypes[].tokenTypeId+`
+|`+Number+`
+|The id of the token type
+|`+contracts[].tokenTypes[].tokenIds+`
+|`+Array+`
+|A list of ids of tokens for contract and token type (only applicable for non-fungible tokens)
+|===

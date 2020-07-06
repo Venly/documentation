@@ -77,7 +77,7 @@ Returns the "native" balance for a wallet. This is the balance of the native tok
 operation::get-balance[snippets='curl-request,path-parameters,http-response,response-fields']
 
 === [[get-token-balances]] Token balances link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
-Returns the balance of all tokens currently supported by Arkane. The list of supported tokens can be found on https://github.com/ArkaneNetwork/content-management/tree/master/tokens[Github].
+Returns the balance of all tokens currently supported by Arkane.The list of supported tokens can be found on https://github.com/ArkaneNetwork/content-management/tree/master/tokens[Github].
 
 operation::get-token-balances[snippets='curl-request,http-response,response-fields']
 
@@ -96,6 +96,17 @@ Currently this functionallity is only supported for Ethereum wallets (ERC-721), 
 Returns the list of NFT's owned by a wallet
 
 operation::list-non-fungibles[snippets='curl-request,path-parameters,request-parameters,http-response,response-fields']
+
+=== [[inventory-for-wallet]] Get inventory link:buildingblocks.html#_arkane_api[[.bb-api]#Arkane API#]
+
+[WARNING]
+====
+Currently this functionallity is only supported for MATIC wallets and items minted by Arkane
+====
+
+Returns the inventory for a given wallet
+
+operation::get-inventory[snippets='curl-request,path-parameters,request-parameters,http-response,response-fields'&pincode=true]
 
 === [[wallet-error-codes]] Error codes
 

@@ -2,7 +2,8 @@
 ----
 $ echo '{
   "typeId" : 56,
-  "amount" : 2000
-}' | http POST 'https://business.arkane.network/api/apps/1f64ded9-2a05-4824-b682-661023359357/contracts/25/tokens' \
+  "destinations" : [ "0x82363319ea1852582afeeca0c5d1e6370cbb8ca8" ],
+  "amounts" : [ 100 ]
+}' | http POST 'https://business.arkane.network/api/apps/1f64ded9-2a05-4824-b682-661023359357/contracts/25/tokens/fungible' \
     'Content-Type:application/json'
 ----

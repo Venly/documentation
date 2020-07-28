@@ -2,6 +2,6 @@
 ----
 {
   "typeId" : 56,
-  "amount" : 1
+  "destinations" : [ "0x82363319ea1852582afeeca0c5d1e6370cbb8ca8" ]
 }
 ----

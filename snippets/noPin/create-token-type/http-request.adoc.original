@@ -4,6 +4,7 @@ POST /api/apps/1f64ded9-2a05-4824-b682-661023359357/contracts/25/token-types HTT
 Content-Type: application/json
 Host: business.arkane.network
 Content-Length: 368
+
 {
   "name" : "Magic Sword",
   "description" : "A magical sword that can slay beasts",

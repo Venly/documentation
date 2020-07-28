@@ -1,8 +1,11 @@
 .+/api/apps/{applicationId}/contracts/{contractId}+
 |===
 |Parameter|Description
+
 |`+applicationId+`
 |The ID of the application
+
 |`+contractId+`
 |The ID of the contract
+
 |===

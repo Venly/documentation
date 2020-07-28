@@ -2,4 +2,5 @@
 ----
 GET /api/apps/app_id/contracts/25/token-types/56/metadata HTTP/1.1
 Host: business.arkane.network
+
 ----

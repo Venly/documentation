@@ -1,12 +1,12 @@
 [source,http,options="nowrap"]
 ----
-POST /api/apps/1f64ded9-2a05-4824-b682-661023359357/contracts/25/tokens HTTP/1.1
+POST /api/apps/1f64ded9-2a05-4824-b682-661023359357/contracts/25/tokens/non-fungible HTTP/1.1
 Content-Type: application/json
 Host: business.arkane.network
-Content-Length: 35
+Content-Length: 88
 
 {
   "typeId" : 56,
-  "amount" : 1
+  "destinations" : [ "0x82363319ea1852582afeeca0c5d1e6370cbb8ca8" ]
 }
 ----

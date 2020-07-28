@@ -1,8 +1,11 @@
 .+/api/apps/app_id/contracts/{contractId}/token-types/{typeId}/metadata+
 |===
 |Parameter|Description
+
 |`+contractId+`
 |The id of the contract
+
 |`+typeId+`
 |The id of the token type
+
 |===

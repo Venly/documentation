@@ -1,18 +1,24 @@
 |===
 |Path|Type|Description
+
 |`+contractAddress+`
 |`+String+`
 |Address of the deployed contract
+
 |`+id+`
 |`+Number+`
 |internal id of the type
+
 |`+contractTypeId+`
 |`+Number+`
 |Blockchain-generated typeId
+
 |`+confirmed+`
 |`+Boolean+`
 |Whether or not the transaction has been confirmed or not.
+
 |`+properties+`
 |`+String+`
 |The properties of the Token Type
+
 |===

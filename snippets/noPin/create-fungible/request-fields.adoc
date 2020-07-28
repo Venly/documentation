@@ -1,9 +1,15 @@
 |===
 |Path|Type|Description
-|`+amount+`
-|`+Number+`
+|`+amounts+`
+|`+Array+`
 |The amount of tokens you wish to generate
 |`+typeId+`
 |`+Number+`
 |The id of the Token Type we wish to generate items for
+|`+destinations+`
+|`+Array+`
+|The addresses (list) for which  you want to generate fungible tokens. (Optional) if empty primary Arkane wallet will be used as destination
+|`+amounts+`
+|`+Array+`
+|The amount of tokens you wish to generate (list respectively to destinations). Ex. if you want to generate 100 tokens for 0x82363319ea1852582afeeca0c5d1e6370cbb8ca8, pass [100] for amounts and ["0x82363319ea1852582afeeca0c5d1e6370cbb8ca8"] for destinations. (Optional) if empty 1 will be used
 |===

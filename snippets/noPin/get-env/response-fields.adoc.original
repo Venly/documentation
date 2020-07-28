@@ -1,6 +1,8 @@
 |===
 |Path|Type|Description
+
 |`+supportedChainsForItemCreation+`
 |`+Array+`
 |A list of chains that are supported to be used for item creation
+
 |===

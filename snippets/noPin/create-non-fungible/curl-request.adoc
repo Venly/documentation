@@ -1,9 +1,9 @@
 [source,bash]
 ----
-$ curl 'https://business.arkane.network/api/apps/1f64ded9-2a05-4824-b682-661023359357/contracts/25/tokens' -i -X POST \
+$ curl 'https://business.arkane.network/api/apps/1f64ded9-2a05-4824-b682-661023359357/contracts/25/tokens/non-fungible' -i -X POST \
     -H 'Content-Type: application/json' \
     -d '{
   "typeId" : 56,
-  "amount" : 1
+  "destinations" : [ "0x82363319ea1852582afeeca0c5d1e6370cbb8ca8" ]
 }'
 ----

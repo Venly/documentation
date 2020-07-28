@@ -1,30 +1,40 @@
 |===
 |Path|Type|Description
+
 |`+name+`
 |`+String+`
 |name of the token type
+
 |`+description+`
 |`+String+`
 |description of the token type
+
 |`+decimals+`
 |`+Number+`
 |Only applicable in case of a fungible token, this indicates the number of decimals the fungible token has
+
 |`+nft+`
 |`+Boolean+`
 |Flag that indicates if this type is a non-fungible (true for non-fungible, false for fungible)
+
 |`+properties+`
 |`+Object+`
 |Properties of the token, should be valid JSON object, pls see: https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md#specification
+
 |`+backgroundColor+`
 |`+String+`
 |The backgroundcolor of the image
+
 |`+imagePreview+`
 |`+String+`
 |Image url of the token, 250x250, preferably svg
+
 |`+imageThumbnail+`
 |`+String+`
 |Image url of the token, 128x128, preferably svg
+
 |`+image+`
 |`+String+`
 |Image url of the token, 2000x2000, preferably svg
+
 |===

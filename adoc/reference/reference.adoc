@@ -1192,6 +1192,110 @@ operation::execute-neo-gas-transaction[snippets='response-fields']
 .Result example
 operation::execute-neo-gas-transaction[snippets='response-body']
 
+
+=== Binance Smart Chain (BSC)
+
+==== [[execute-bsc-transaction]] Execute BSC transaction link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
+
+To execute an Bsc transaction, use the connect building block with:
+
+.URL
+https://connect-staging.arkane.network/transaction/execute/bsc_transaction
+
+
+.Data parameters
+operation::execute-bsc-transaction[snippets='request-fields']
+
+[NOTE]
+====
+[[bsc-network]] ^[1]^ The node to which the transaction will be send can be set manually. This can be done using the `network` parameter. +
+This feature enables you to submit a transaction to any mainnet node of your choosing, a testnet node or a different (private) network altogbsc.
+====
+
+.Data example
+operation::execute-bsc-transaction[snippets='request-body']
+
+.Result parameters
+operation::execute-bsc-transaction[snippets='response-fields']
+
+.Result example
+operation::execute-bsc-transaction[snippets='response-body']
+
+==== Execute BEP20 transfer link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
+
+To execute an BEP20 transaction transfer, use the connect building block with:
+
+.URL
+https://connect-staging.arkane.network/transaction/execute/bsc_bep20_transaction
+
+
+.Data parameters
+operation::execute-bsc-bep20-transaction[snippets='request-fields']
+
+[NOTE]
+====
+[[erc20-network]] ^[1]^ The node to which the transaction will be send can be set manually. This can be done using the `network` parameter. +
+This feature enables you to submit a transaction to any mainnet node of your choosing, a testnet node (e.g. Kovan, Rinkeby, …​) or a different (private) network altogbsc.
+====
+
+.Data example
+operation::execute-bsc-bep20-transaction[snippets='request-body']
+
+.Result parameters
+operation::execute-bsc-bep20-transaction[snippets='response-fields']
+
+.Result example
+operation::execute-bsc-bep20-transaction[snippets='response-body']
+
+==== Execute ERC721 transfer link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
+
+To execute an ERC721 transaction transfer, use the connect building block with:
+
+.URL
+https://connect-staging.arkane.network/transaction/execute/bsc_erc721_transaction
+
+
+.Data parameters
+operation::execute-bsc-erc721-transaction[snippets='request-fields']
+
+[NOTE]
+====
+[[erc721-network]] ^[1]^ The node to which the transaction will be send can be set manually. This can be done using the `network` parameter. +
+This feature enables you to submit a transaction to any mainnet node of your choosing, a testnet node (e.g. Kovan, Rinkeby, …​) or a different (private) network altogbsc.
+====
+
+.Data example
+operation::execute-bsc-erc721-transaction[snippets='request-body']
+
+.Result parameters
+operation::execute-bsc-erc721-transaction[snippets='response-fields']
+
+.Result example
+operation::execute-bsc-erc721-transaction[snippets='response-body']
+
+
+==== Sign link:buildingblocks.html#_arkane_connect[[.bb-connect]#Arkane Connect#]
+Signs arbitrary data. This data is before UTF-8 HEX decoded and enveloped as followed:
+
+`"\Ethereum Signed Message:\n" + message.length + message.`
+
+To sign data, use the connect building block with:
+
+.URL
+https://connect-staging.arkane.network/transaction/sign/bsc_raw
+
+.Data parameters
+operation::sign-bsc-hex-message[snippets='request-fields']
+
+.Data example
+operation::sign-bsc-hex-message[snippets='request-body']
+
+.Result parameters
+operation::sign-bsc-hex-message[snippets='response-fields']
+
+.Result example
+operation::sign-bsc-hex-message[snippets='response-body']
+
 === [[transaction-error-codes]] Transaction Error Codes
 
 |===

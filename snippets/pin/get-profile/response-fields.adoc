@@ -25,4 +25,8 @@
 |`+Null+`
 |last name of the logged in user
 
+|`+nickname+`
+|`+Null+`
+|Nickname of the userProfileServiceTest
+
 |===

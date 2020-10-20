@@ -2,11 +2,10 @@
 ----
 HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
-Content-Length: 2093
+Content-Length: 2127
 [ {
   "id" : "7664",
   "tokenId" : "7664",
-  "owner" : "0xdc72b72db54e227e65a45004ab2798d31e8934c2",
   "name" : "Pixielock",
   "description" : "At the end of your turn, summon a 1/1 Nimble Pixie.",
   "url" : "https://godsunchained.com/card/359127",
@@ -22,11 +21,16 @@ Content-Length: 2093
     "url" : "https://godsunchained.com/",
     "imageUrl" : "https://storage.opensea.io/0x6ebeaf8e8e946f0716e6533a6f2cefc83f60e8ab-featured-1556588688.png",
     "type" : "ERC_721"
-  }
+  },
+  "attributes" : [ {
+    "traitType" : "level",
+    "value" : "1",
+    "displayType" : "number",
+    "traitCount" : 1000
+  } ]
 }, {
   "id" : "106965784547830847323236430761121909501263774393788267967702982783333772235688",
   "tokenId" : "106965784547830847323236430761121909501263774393788267967702982783333772235688",
-  "owner" : "0xdc72b72db54e227e65a45004ab2798d31e8934c2",
   "name" : "phonenumber.eth",
   "description" : "This is the ENS name for phonenumber.eth",
   "url" : "https://manager.ens.domains/name/phonenumber.eth",
@@ -42,6 +46,7 @@ Content-Length: 2093
     "url" : "https://ens.domains/",
     "imageUrl" : "https://storage.opensea.io/0xfac7bea255a6990f749363002136af6556b31e04-1557985746.png",
     "type" : "ERC_721"
-  }
+  },
+  "attributes" : [ ]
 } ]
 ----

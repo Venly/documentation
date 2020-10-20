@@ -4,6 +4,7 @@ $ curl 'https://api.arkane.network/api/wallets/import' -i -X POST \
     -H 'Content-Type: application/json;charset=UTF-8' \
     -d '{
   "importWalletType" : "VECHAIN_KEYSTORE",
+  "pincode" : "1234",
   "clients" : null,
   "keystore" : "\"{\\\"address\\\":\\\"7d5c8b4826472f48e918b5fdd9b0f9ab3efe971c\\\",\"\n                                                                                   + \"\\\"id\\\":\\\"417540ff-0a05-4bd1-9d35-0879f0208ec4\\\",\\\"version\\\":3,\\\"crypto\\\":{\\\"cipher\\\":\\\"aes-128-ctr\\\",\\\"ciphertext\\\":\\\"6f02140c22674055bc34750011163bac71062f0ec00dd09ccbbe9ded14783324\\\",\\\"cipherparams\\\":{\\\"iv\\\":\\\"d5d5330d89b57a5b71a4f3ef4f8fa74f\\\"},\\\"kdf\\\":\\\"scrypt\\\",\\\"kdfparams\\\":{\\\"dklen\\\":32,\\\"n\\\":262144,\\\"p\\\":1,\\\"r\\\":8,\\\"salt\\\":\\\"a2110f7dd9d3ec219634f455e0a25c76bf5329c5915a0ba9c748d813b1b21fdc\\\"},\\\"mac\\\":\\\"74d9c18dad028f55989bf878ba21b3696d2d2ff4119b6bddbaefbb1a0c76b116\\\"}}\"",
   "password" : "password"

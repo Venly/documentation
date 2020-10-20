@@ -3,7 +3,7 @@
 $ echo '{
   "walletId" : "1",
   "claim" : "SIGN_WALLETS",
-  "description" : "description"
+  "description" : "description",
 }' | http POST 'https://api.arkane.network/api/apitokens' \
     'Content-Type:application/json'
 ----

@@ -1,12 +1,12 @@
 [source,http,options="nowrap"]
 ----
 POST /api/apitokens HTTP/1.1
-Host: api.arkane.network
-Content-Length: 83
 Content-Type: application/json
+Host: api.arkane.network
+Content-Length: 105
 {
   "walletId" : "1",
   "claim" : "SIGN_WALLETS",
-  "description" : "description"
+  "description" : "description",
 }
 ----

@@ -1,6 +1,8 @@
 |===
 |Path|Type|Description
+
 |`+.[]+`
 |`+Array+`
 |An array of transactions queued for the user
+
 |===

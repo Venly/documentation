@@ -3,7 +3,6 @@
 HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
 Content-Length: 1551
-
 [ {
   "secretType" : "VECHAIN",
   "contractAddress" : "0x9385a0ab5e85c60f4e091d6afd58f9c11aef8325",

@@ -1,16 +1,16 @@
 [source,http,options="nowrap"]
 ----
 POST /api/transactions/prepare HTTP/1.1
-Host: api.arkane.network
-Content-Length: 328
 Content-Type: application/json;charset=UTF-8
+Host: api.arkane.network
+Content-Length: 331
 
 {
   "walletId" : "1543",
   "pincode" : null,
   "blockRef" : null,
   "chainTag" : null,
-  "expiration" : 0,
+  "expiration" : null,
   "gas" : null,
   "gasPriceCoef" : null,
   "nonce" : null,

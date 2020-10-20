@@ -1,11 +1,13 @@
 [source,http,options="nowrap"]
 ----
 POST /api/signatures HTTP/1.1
-Host: api.arkane.network
 Content-Type: application/json;charset=UTF-8
+Host: api.arkane.network
 Content-Length: 122
+
 {
   "walletId" : "1",
+  "pincode" : "31345",
   "data" : "the message to sign",
   "hash" : true,
   "type" : "NEO_MESSAGE"

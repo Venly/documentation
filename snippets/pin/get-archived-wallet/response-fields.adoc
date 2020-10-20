@@ -11,7 +11,7 @@
 
 |`+secretType+`
 |`+String+`
-|type of the secret (possible values: AETERNITY, BITCOIN, ETHEREUM, GOCHAIN, LITECOIN, TRON, VECHAIN, MATIC, NEO)
+|type of the secret (possible values: AETERNITY, BITCOIN, BSC, ETHEREUM, GOCHAIN, LITECOIN, TRON, VECHAIN, MATIC, NEO)
 
 |`+archived+`
 |`+Boolean+`

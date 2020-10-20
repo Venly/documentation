@@ -1,9 +1,9 @@
 [source,http,options="nowrap"]
 ----
 POST /api/signatures HTTP/1.1
+Content-Type: application/json;charset=UTF-8
 Host: api.arkane.network
 Content-Length: 280
-Content-Type: application/json;charset=UTF-8
 
 {
   "walletId" : "1",

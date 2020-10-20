@@ -4,7 +4,6 @@ POST /api/apps/1f64ded9-2a05-4824-b682-661023359357/contracts/25/tokens/non-fung
 Content-Type: application/json
 Host: business.arkane.network
 Content-Length: 88
-
 {
   "typeId" : 56,
   "destinations" : [ "0x82363319ea1852582afeeca0c5d1e6370cbb8ca8" ]

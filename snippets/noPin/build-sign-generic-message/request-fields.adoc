@@ -3,11 +3,11 @@
 |`+secretType+`
 |`+String+`
 |Which chain you want to do a transaction for
-|Mandatory. Must be one of: [AETERNITY, BITCOIN, ETHEREUM, GOCHAIN, LITECOIN, TRON, VECHAIN, MATIC, NEO]
+|Mandatory. Must be one of: [AETERNITY, BITCOIN, BSC, ETHEREUM, GOCHAIN, LITECOIN, TRON, VECHAIN, MATIC, NEO]
 |`+type+`
 |`+String+`
 |Type of the signature request
-|Mandatory, possible values: [MESSAGE]
+|Mandatory, possible values: [MESSAGE, EIP712]
 |`+walletId+`
 |`+String+`
 |The id of the wallet one wants to sign with.

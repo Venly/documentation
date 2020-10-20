@@ -1,27 +1,34 @@
 |===
 |Path|Type|Description|Constraints
+
 |`+type+`
 |`+String+`
 |type of the signature request
-|Mandatory, possible values: ETHEREUM_TRANSACTION,, VECHAIN_TRANSACTION, GOCHAIN_TRANSACTION, BITCOIN_TRANSACTION, LITECOIN_TRANSACTION, TRX_TRANSACTION, TRC10_TRANSACTION
+|Mandatory, possible values: AETERNITY_RAW, AETERNITY_TRANSACTION, BSC_RAW, BSC_TRANSACTION, BITCOIN_TRANSACTION, ETHEREUM_RAW, ETHEREUM_TRANSACTION, GOCHAIN_RAW, GOCHAIN_TRANSACTION, LITECOIN_TRANSACTION, MATIC_RAW, MATIC_TRANSACTION, NEO_CONTRACT_EXECUTION, NEO_GAS_TRANSACTION, NEO_MESSAGE, NEO_NATIVE_TRANSACTION, TRC10_TRANSACTION, TRON_RAW, TRON_TRANSACTION, VECHAIN_TRANSACTION
+
 |`+walletId+`
 |`+String+`
 |The id of the wallet one wants to sign with.
 |Mandatory
+
 |`+clauses+`
 |`+Array+`
 |Each transaction may contain multiple clauses, and each clause contains the “To”, “Value”, and “Data” fields that can be used to commence different tasks such as payment or smart contracts
 |At least 1 must be present
+
 |`+clauses[].to+`
 |`+String+`
 |address of the to clause
 |Mandatory, valid vechain address
+
 |`+clauses[].amount+`
 |`+Number+`
 |amount of the to clause
 |Mandatory, must be >= 0
+
 |`+clauses[].data+`
 |`+String+`
 |data of the to clause
 |Optional
+
 |===

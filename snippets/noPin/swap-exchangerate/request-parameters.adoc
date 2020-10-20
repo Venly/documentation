@@ -1,9 +1,9 @@
 |===
 |Parameter|Description
 |`+fromSecretType+`
-|The input secret type (Possible values: [AETERNITY, BITCOIN, ETHEREUM, GOCHAIN, LITECOIN, TRON, VECHAIN, MATIC, NEO])
+|The input secret type (Possible values: [AETERNITY, BITCOIN, BSC, ETHEREUM, GOCHAIN, LITECOIN, TRON, VECHAIN, MATIC, NEO])
 |`+toSecretType+`
-|The output secret type (Possible values: [AETERNITY, BITCOIN, ETHEREUM, GOCHAIN, LITECOIN, TRON, VECHAIN, MATIC, NEO])
+|The output secret type (Possible values: [AETERNITY, BITCOIN, BSC, ETHEREUM, GOCHAIN, LITECOIN, TRON, VECHAIN, MATIC, NEO])
 |`+fromToken+`
 |The type of token as input
 |`+toToken+`

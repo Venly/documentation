@@ -1,5 +1,7 @@
 |===
 |Parameter|Description
+
 |`+contract-addresses+`
 |(Optional) When set, the result will only contain tokens of these contract addresses. Multiple values can be set.
+
 |===

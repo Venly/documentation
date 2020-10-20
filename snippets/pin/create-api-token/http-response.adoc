@@ -1,8 +1,8 @@
 [source,http,options="nowrap"]
 ----
 HTTP/1.1 200 OK
-Content-Length: 273
 Content-Type: application/json;charset=UTF-8
+Content-Length: 273
 
 {
   "token" : "4efe60c8-53e5-41cf-a1c5-39104698d557",

@@ -1,21 +1,28 @@
 |===
 |Path|Type|Description
+
 |`+[].token+`
 |`+String+`
 |The id of the secret that was written
+
 |`+[].userId+`
 |`+String+`
 |The user that is the owner of the token
+
 |`+[].walletId+`
 |`+String+`
 |The id of the wallet associated to this token
+
 |`+[].claim+`
 |`+String+`
 |The claim associated to this token (can the token only view the wallet (VIEW_WALLETS) or also sign transactions (SIGN_WALLETS))
+
 |`+[].enabled+`
 |`+Boolean+`
 |True if the token is enabled
+
 |`+[].description+`
 |`+String+`
 |Description of the wallet
+
 |===

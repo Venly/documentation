@@ -12,7 +12,7 @@
   "tokenId" : null,
   "network" : {
     "name" : "Rinkeby",
-    "nodeUrl" : "https://rinkeby.infura.io",
+    "nodeUrl" : "https://rinkeby.arkane.network",
     "chainId" : null
   }
 }

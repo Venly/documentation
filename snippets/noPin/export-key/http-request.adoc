@@ -1,9 +1,9 @@
 [source,http,options="nowrap"]
 ----
 POST /api/wallets/export HTTP/1.1
-Content-Length: 76
-Host: api.arkane.network
 Content-Type: application/json;charset=UTF-8
+Host: api.arkane.network
+Content-Length: 76
 {
   "walletId" : "1",
   "password" : "secret-password"

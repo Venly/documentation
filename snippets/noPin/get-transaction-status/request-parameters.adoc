@@ -1,7 +1,5 @@
 |===
 |Parameter|Description
-|`+secretType+`
-|the secret type, possible values are: AETERNITY, BITCOIN, ETHEREUM, GOCHAIN, LITECOIN, TRON, VECHAIN, NEO
-|`+transactionHash+`
-|The transaction hash (id)
+|`+endpoint+`
+|The endpoint to use to check the status
 |===

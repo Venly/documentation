@@ -16,6 +16,7 @@
     "defaultPrice" : false
   } ],
   "gasLimit" : 21000,
-  "reverted" : false
+  "reverted" : false,
+  "nonce" : null
 }
 ----

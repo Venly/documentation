@@ -29,7 +29,7 @@
 |`+transactionRequest.secretType+`
 |`+String+`
 |Which chain you want to do a transaction for
-|Mandatory. Must be one of: [AETERNITY, BITCOIN, ETHEREUM, GOCHAIN, LITECOIN, TRON, VECHAIN, MATIC, NEO]
+|Mandatory. Must be one of: [AETERNITY, BITCOIN, BSC, ETHEREUM, GOCHAIN, LITECOIN, TRON, VECHAIN, MATIC, NEO]
 
 |`+transactionRequest.type+`
 |`+String+`
@@ -57,7 +57,7 @@
 |Mandatory
 
 |`+transactionRequest.inputs[].value+`
-|`+String+`
+|`+Varies+`
 |The value of the input parameter. This needs to be passed as a string value, will be parsed by Arkane
 |Mandatory
 

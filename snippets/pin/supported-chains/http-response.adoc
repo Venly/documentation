@@ -1,8 +1,8 @@
 [source,http,options="nowrap"]
 ----
 HTTP/1.1 200 OK
-Content-Length: 96
 Content-Type: application/json;charset=UTF-8
+Content-Length: 103
 
-[ "AETERNITY", "BITCOIN", "ETHEREUM", "GOCHAIN", "LITECOIN", "TRON", "VECHAIN", "MATIC", "NEO" ]
+[ "AETERNITY", "BITCOIN", "BSC", "ETHEREUM", "GOCHAIN", "LITECOIN", "TRON", "VECHAIN", "MATIC", "NEO" ]
 ----

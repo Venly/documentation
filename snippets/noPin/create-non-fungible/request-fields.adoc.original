@@ -1,12 +1,9 @@
 |===
 |Path|Type|Description
-
 |`+typeId+`
 |`+Number+`
 |The id of the Token Type we wish to generate items for
-
 |`+destinations+`
 |`+Array+`
 |The addresses (list) for which  you want to generate the non-fungible token. In case you wantto generate multiple tokens for the same address, you can supply the same address multiple times.(Optional) if empty primary Arkane wallet will be used as destination
-
 |===

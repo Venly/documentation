@@ -3,7 +3,6 @@
 HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
 Content-Length: 317
-
 [ {
   "id" : "0c3c2ebf-3764-455c-bfe3-9808b05472e4",
   "clientId" : "seabattle",

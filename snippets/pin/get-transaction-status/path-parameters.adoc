@@ -3,7 +3,7 @@
 |Parameter|Description
 
 |`+secretType+`
-|the secret type, possible values are: AETERNITY, BITCOIN, ETHEREUM, GOCHAIN, LITECOIN, TRON, VECHAIN, MATIC, NEO
+|the secret type, possible values are: AETERNITY, BITCOIN, BSC, ETHEREUM, GOCHAIN, LITECOIN, TRON, VECHAIN, MATIC, NEO
 
 |`+transactionHash+`
 |The transaction hash (id)

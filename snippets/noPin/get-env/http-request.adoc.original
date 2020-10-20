@@ -2,5 +2,4 @@
 ----
 GET /api/env HTTP/1.1
 Host: business.arkane.network
-
 ----

@@ -1,9 +1,10 @@
 [source,http,options="nowrap"]
 ----
 POST /api/signatures/build HTTP/1.1
-Host: api.arkane.network
 Content-Type: application/json;charset=UTF-8
+Host: api.arkane.network
 Content-Length: 156
+
 {
   "type" : "MESSAGE",
   "secretType" : "ETHEREUM",

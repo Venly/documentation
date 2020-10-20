@@ -3,6 +3,7 @@
 {
   "walletId" : "1",
   "claim" : "SIGN_WALLETS",
-  "description" : "description"
+  "description" : "description",
+  "pincode" : "1234"
 }
 ----

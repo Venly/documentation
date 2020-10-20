@@ -1,9 +1,10 @@
 [source,http,options="nowrap"]
 ----
 POST /api/wallets/link?override=false HTTP/1.1
-Host: api.arkane.network
 Content-Type: application/json
+Host: api.arkane.network
 Content-Length: 78
+
 {
   "client" : "cindercloud",
   "walletIds" : [ "1" ],

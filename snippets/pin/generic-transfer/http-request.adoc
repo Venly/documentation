@@ -1,9 +1,9 @@
 [source,http,options="nowrap"]
 ----
 POST /api/transactions/build HTTP/1.1
-Host: api.arkane.network
-Content-Length: 328
 Content-Type: application/json;charset=UTF-8
+Host: api.arkane.network
+Content-Length: 333
 
 {
   "type" : "TRANSFER",
@@ -13,7 +13,7 @@ Content-Type: application/json;charset=UTF-8
   "secretType" : "ETHEREUM",
   "network" : {
     "name" : "Rinkeby",
-    "nodeUrl" : "https://rinkeby.infura.io",
+    "nodeUrl" : "https://rinkeby.arkane.network",
     "chainId" : null
   },
   "data" : "0x",

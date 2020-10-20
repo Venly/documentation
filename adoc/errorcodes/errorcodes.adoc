@@ -204,6 +204,23 @@
 |An error occurred trying to create a tron signature
 |===
 
+.BSC Specific Errors
+|===
+|Error Code | Meaning
+
+|web3.internal-error
+|Something went wrong with the underlying web3 connection.
+
+|web3.estimate.gas.internal-error
+|A problem occurred trying to estimate the gas.
+
+|web3.nonce.internal-error
+|A problem occurred trying to get the next nonce
+
+|web3.transaction.submit.internal-error
+|A problem occurred trying to submit the transaction to the BSC network
+|===
+
 .Key Export Errors
 |===
 |Error Code | Meaning
@@ -227,5 +244,8 @@
 |An error occurred while trying to export the key
 
 |export.tron
+|An error occurred while trying to export the key
+
+|export.bsc
 |An error occurred while trying to export the key
 |===

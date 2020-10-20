@@ -3,6 +3,7 @@
 $ curl 'https://api.arkane.network/api/wallets/6a716bc3-59c4-46a5-bedc-66588017be51/security' -i -X PATCH \
     -H 'Content-Type: application/json;charset=UTF-8' \
     -d '{
+  "pincode" : "1234",
   "newPincode" : "4321"
 }'
 ----

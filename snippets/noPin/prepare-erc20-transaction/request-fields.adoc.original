@@ -1,19 +1,24 @@
 |===
 |Path|Type|Description|Constraints
+
 |`+type+`
 |`+String+`
 |The type of the transaction
 |Mandatory
+
 |`+walletId+`
 |`+String+`
 |The id of the wallet one wants to sign with.
 |Mandatory
+
 |`+tokenAddress+`
 |`+String+`
 |The address of the ERC20 token to be used in this transaction
 |Mandatory, valid ethereum contract address
+
 |`+to+`
 |`+String+`
 |The destination address of the transaction.
 |Mandatory, a valid ethereum address
+
 |===

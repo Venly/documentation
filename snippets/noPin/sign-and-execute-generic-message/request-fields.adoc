@@ -11,7 +11,7 @@
 |`+signatureRequest.type+`
 |`+String+`
 |Type of the signature request
-|Mandatory, possible values: [MESSAGE]
+|Mandatory, possible values: [MESSAGE, EIP712]
 |`+signatureRequest.walletId+`
 |`+String+`
 |The id of the wallet one wants to sign with.

@@ -6,9 +6,6 @@
 |`+tokenId+`
 |`+String+`
 |The token ID of this non fungible token
-|`+owner+`
-|`+String+`
-|The wallet address owning the item
 |`+name+`
 |`+String+`
 |Name of this item
@@ -33,6 +30,9 @@
 |`+contract+`
 |`+Object+`
 |The contract that manages this item
+|`+attributes+`
+|`+Array+`
+|The attributes for this item in the form of traits
 |`+contract.name+`
 |`+String+`
 |Name of the contract

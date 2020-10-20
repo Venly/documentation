@@ -1,8 +1,9 @@
 [source,http,options="nowrap"]
 ----
 HTTP/1.1 200 OK
-Content-Length: 130
 Content-Type: application/json;charset=UTF-8
+Content-Length: 130
+
 {
   "type" : "SUBMITTED_AND_SIGNED_TRANSACTION_SIGNATURE",
   "signedTransaction" : "transaction",

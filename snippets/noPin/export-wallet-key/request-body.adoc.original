@@ -2,6 +2,7 @@
 ----
 {
   "walletId" : "1",
+  "pincode" : null,
   "password" : "secret-password"
 }
 ----

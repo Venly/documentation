@@ -2,6 +2,7 @@
 ----
 $ echo '{
   "walletId" : "1",
+  "pincode" : "31345",
   "data" : "Some data",
   "type" : "TRON_RAW"
 }' | http POST 'https://api.arkane.network/api/signatures' \

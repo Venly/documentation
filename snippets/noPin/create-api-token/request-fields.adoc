@@ -4,6 +4,10 @@
 |`+String+`
 |The id of the wallet
 |Must not be null.
+|`+pincode+`
+|`+String+`
+|The master pincoce/pincode of the wallet
+|Not empty
 |`+claim+`
 |`+String+`
 |The claims associated to this token

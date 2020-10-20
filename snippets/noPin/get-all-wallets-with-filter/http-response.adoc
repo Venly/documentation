@@ -1,8 +1,8 @@
 [source,http,options="nowrap"]
 ----
 HTTP/1.1 200 OK
-Content-Length: 603
 Content-Type: application/json;charset=UTF-8
+Content-Length: 603
 [ {
   "id" : "3",
   "address" : "0xae52b72db54e137a65a42434ab2543d31f8454c3",

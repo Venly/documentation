@@ -4,12 +4,12 @@ $ curl 'https://api.arkane.network/api/signatures/prepare' -i -X POST \
     -H 'Content-Type: application/json;charset=UTF-8' \
     -d '{
   "walletId" : "1",
+  "pincode" : null,
   "submit" : false,
-  "network" : null,
   "blockRef" : null,
   "chainTag" : null,
-  "expiration" : 0,
-  "gas" : 0,
+  "expiration" : null,
+  "gas" : null,
   "gasPriceCoef" : null,
   "nonce" : null,
   "clauses" : [ {

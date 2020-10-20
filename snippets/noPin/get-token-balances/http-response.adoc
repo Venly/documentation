@@ -1,8 +1,8 @@
 [source,http,options="nowrap"]
 ----
 HTTP/1.1 200 OK
-Content-Length: 1163
 Content-Type: application/json;charset=UTF-8
+Content-Length: 1163
 [ {
   "tokenAddress" : "0x4df47b4969b2911c966506e3592c41389493953b",
   "rawBalance" : "10000000283000000000000",

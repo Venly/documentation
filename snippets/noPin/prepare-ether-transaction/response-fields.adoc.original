@@ -1,21 +1,32 @@
 |===
 |Path|Type|Description
+
 |`+secretType+`
 |`+String+`
 |The SecretType this transactionPreparation is for
+
 |`+gasLimit+`
 |`+Number+`
 |The estimated gas limit
+
+|`+nonce+`
+|`+Null+`
+|The nonce that will be used for the transaction
+
 |`+reverted+`
 |`+Boolean+`
 |True if transaction will likely fail, false otherwise
+
 |`+gasPrices+`
 |`+Array+`
 |List containing possible gasPrices (from low to high)
+
 |`+gasPrices.[].gasPrice+`
 |`+Number+`
 |The proposed gasprice (in WEI)
+
 |`+gasPrices.[].defaultPrice+`
 |`+Boolean+`
 |True if used as default gasprice, false otherwise
+
 |===

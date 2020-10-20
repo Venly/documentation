@@ -2,11 +2,11 @@
 ----
 HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
-Content-Length: 1029
+Content-Length: 1099
+
 {
   "id" : "7664",
   "tokenId" : "7664",
-  "owner" : "0xdc72b72db54e227e65a45004ab2798d31e8934c2",
   "name" : "Pixielock",
   "description" : "At the end of your turn, summon a 1/1 Nimble Pixie.",
   "url" : "https://godsunchained.com/card/359127",
@@ -22,6 +22,12 @@ Content-Length: 1029
     "url" : "https://godsunchained.com/",
     "imageUrl" : "https://storage.opensea.io/0x6ebeaf8e8e946f0716e6533a6f2cefc83f60e8ab-featured-1556588688.png",
     "type" : "ERC_721"
-  }
+  },
+  "attributes" : [ {
+    "traitType" : "level",
+    "value" : "1",
+    "displayType" : "number",
+    "traitCount" : 1000
+  } ]
 }
 ----

@@ -1,6 +1,8 @@
 .+/api/wallets/{id}/security+
 |===
 |Parameter|Description
+
 |`+id+`
 |Id of the wallet to update
+
 |===

@@ -1,9 +1,0 @@
-[source,http,options="nowrap"]
-----
-HTTP/1.1 200 OK
-Content-Type: application/json;charset=UTF-8
-Content-Length: 98
-[ {
-  "transactionHash" : "0x3028ff4e9e444e02d842664f51059aeec0953cf3292fc7820b8be1e0c5343eeb"
-} ]
-----

@@ -1,9 +1,0 @@
-[source,options="nowrap"]
-----
-{
-  "name" : "Awesome Contract",
-  "symbol" : "AWS CTRT",
-  "description" : "This is my first contract",
-  "chain" : "MATIC"
-}
-----

@@ -1,6 +1,0 @@
-|===
-|Path|Type|Description
-|`+.[]+`
-|`+Array+`
-|A list of transaction hashes that will create the items. The amount of transaction hashes is equal to the amount that were requested
-|===

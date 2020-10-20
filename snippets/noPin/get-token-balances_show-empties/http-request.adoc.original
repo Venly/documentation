@@ -1,6 +1,0 @@
-[source,http,options="nowrap"]
-----
-GET /api/wallets/1/balance/tokens?all=true HTTP/1.1
-Host: api.arkane.network
-
-----

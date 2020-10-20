@@ -1,6 +1,0 @@
-|===
-|Path|Type|Description
-|`+.[]+`
-|`+Array+`
-|The list of token types defined in given contract
-|===

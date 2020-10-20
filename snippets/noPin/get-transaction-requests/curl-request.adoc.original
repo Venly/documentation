@@ -1,4 +1,0 @@
-[source,bash]
-----
-$ curl 'https://api.arkane.network/api/transactions' -i -X GET
-----

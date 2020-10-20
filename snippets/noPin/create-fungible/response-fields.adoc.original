@@ -1,6 +1,0 @@
-|===
-|Path|Type|Description
-|`+.[]+`
-|`+Array+`
-|A list of transaction hashes that will create the items. Only 1 transaction hash will be present when minting fungible tokens.
-|===

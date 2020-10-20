@@ -1,8 +1,0 @@
-.+/api/wallets/{walletId}/inventory+
-|===
-|Parameter|Description
-
-|`+walletId+`
-|The ID of the wallet to get inventory for
-
-|===

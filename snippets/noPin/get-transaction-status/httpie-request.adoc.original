@@ -1,4 +1,0 @@
-[source,bash]
-----
-$ http GET 'https://api.arkane.network/api/transactions/ETHEREUM/0x4f2697187b720004d273e8ae67be50377a869622267595b1655d3c17af9452dc/status?endpoint=https://rinkeby.infura.io'
-----

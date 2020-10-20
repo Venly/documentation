@@ -1,8 +1,0 @@
-[source,options="nowrap"]
-----
-{
-  "type" : "SUBMITTED_AND_SIGNED_TRANSACTION_SIGNATURE",
-  "signedTransaction" : "transaction",
-  "transactionHash" : "txHash"
-}
-----

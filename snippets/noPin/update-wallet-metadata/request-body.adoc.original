@@ -1,9 +1,0 @@
-[source,options="nowrap"]
-----
-{
-  "alias" : "alias",
-  "description" : "description",
-  "archived" : "false",
-  "primary" : "false"
-}
-----

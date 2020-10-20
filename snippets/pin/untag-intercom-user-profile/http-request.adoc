@@ -1,0 +1,11 @@
+[source,http,options="nowrap"]
+----
+POST /api/profile/intercom/untag HTTP/1.1
+Content-Type: application/json;charset=UTF-8
+Host: api.arkane.network
+Content-Length: 31
+
+{
+  "tagName" : "testTagName"
+}
+----

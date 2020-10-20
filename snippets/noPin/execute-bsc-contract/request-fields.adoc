@@ -1,0 +1,51 @@
+|===
+|Path|Type|Description|Constraints
+|`+type+`
+|`+String+`
+|The type of the transaction
+|Mandatory
+|`+walletId+`
+|`+String+`
+|The id of the wallet one wants to sign with.
+|Mandatory
+|`+gasPrice+`
+|`+Number+`
+|The gas price of the transaction
+|Optional (default gas price is used otherwise), must be > 0
+|`+gas+`
+|`+Number+`
+|The amount of gas to use for the transaction (unused gas is refunded)
+|Optional (by default calculated), must be >= 0
+|`+value+`
+|`+Number+`
+|The value transferred for the transaction in Wei, also the endowment if it's a contract-creation transaction
+|Mandatory, must be >= 0
+|`+nonce+`
+|`+Number+`
+|Integer of a nonce. This allows to overwrite your own pending transactions that use the same nonce.
+|Optional (next nonce will be used by defaut), must be >= 0
+|`+to+`
+|`+String+`
+|The destination address of the transaction.
+|Mandatory, a valid ethereum address
+|`+functionName+`
+|`+String+`
+|Name of the function on the contract that needs to be executed
+|Mandatory
+|`+inputs[]+`
+|`+Array+`
+|Array of inputs needed to execute the function
+|Mandatory
+|`+inputs[].type+`
+|`+String+`
+|The type of the input parameter (ex. uint256)
+|Mandatory
+|`+inputs[].value+`
+|`+Varies+`
+|The value of the input parameter. This needs to be passed as a string value, will be parsed by Arkane
+|Mandatory
+|`+network+`
+|`+Null+`
+|<<bsc-network, ^[1]^>> The network to submit the transaction to
+|Optional
+|===

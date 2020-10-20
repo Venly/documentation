@@ -1,0 +1,11 @@
+[source,bash]
+----
+$ echo '{
+  "walletId" : "1",
+  "data" : "Some data",
+  "hash" : true,
+  "prefix" : true,
+  "type" : "BSC_RAW"
+}' | http POST 'https://api.arkane.network/api/signatures' \
+    'Content-Type:application/json;charset=UTF-8'
+----

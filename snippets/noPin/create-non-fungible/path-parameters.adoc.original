@@ -1,8 +1,0 @@
-.+/api/apps/{applicationId}/contracts/{contractId}/tokens/non-fungible+
-|===
-|Parameter|Description
-|`+applicationId+`
-|The ID of the application
-|`+contractId+`
-|The ID of the contract
-|===

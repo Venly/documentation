@@ -1,4 +1,0 @@
-[source,bash]
-----
-$ http GET 'https://business.arkane.network/api/apps'
-----

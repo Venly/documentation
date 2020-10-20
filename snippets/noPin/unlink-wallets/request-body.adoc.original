@@ -1,7 +1,0 @@
-[source,options="nowrap"]
-----
-{
-  "client" : "cindercloud",
-  "walletIds" : [ "1" ]
-}
-----

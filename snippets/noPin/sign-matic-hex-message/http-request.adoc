@@ -1,0 +1,14 @@
+[source,http,options="nowrap"]
+----
+POST /api/signatures HTTP/1.1
+Content-Type: application/json;charset=UTF-8
+Host: api.arkane.network
+Content-Length: 129
+{
+  "walletId" : "1",
+  "data" : "Some data",
+  "hash" : true,
+  "prefix" : true,
+  "type" : "MATIC_RAW"
+}
+----

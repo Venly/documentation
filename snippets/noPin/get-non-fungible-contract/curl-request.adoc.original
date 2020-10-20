@@ -1,4 +1,0 @@
-[source,bash]
-----
-$ curl 'https://api.arkane.network/api/nonfungibles/ETHEREUM/0x6ebeaf8e8e946f0716e6533a6f2cefc83f60e8ab' -i -X GET
-----

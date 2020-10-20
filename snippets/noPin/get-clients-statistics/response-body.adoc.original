@@ -1,7 +1,0 @@
-[source,options="nowrap"]
-----
-{
-  "numberOfWallets" : 2,
-  "numberOfUsers" : 1
-}
-----

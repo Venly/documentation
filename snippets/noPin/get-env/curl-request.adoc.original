@@ -1,4 +1,0 @@
-[source,bash]
-----
-$ curl 'https://business.arkane.network/api/env' -i -X GET
-----

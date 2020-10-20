@@ -1,5 +1,0 @@
-[source,http,options="nowrap"]
-----
-GET /api/0x852d055f226c50Bd5059888B380b151c07afafB8/items HTTP/1.1
-Host: business.arkane.network
-----

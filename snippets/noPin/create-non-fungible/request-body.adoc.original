@@ -1,7 +1,0 @@
-[source,options="nowrap"]
-----
-{
-  "typeId" : 56,
-  "destinations" : [ "0x82363319ea1852582afeeca0c5d1e6370cbb8ca8" ]
-}
-----

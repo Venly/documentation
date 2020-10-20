@@ -1,0 +1,24 @@
+[source,bash]
+----
+$ curl 'https://api.arkane.network/api/transactions/execute' -i -X POST \
+    -H 'Content-Type: application/json;charset=UTF-8' \
+    -d '{
+  "walletId" : "adc4c08a-b8fa-4e4c-z5a2-92c87b80f174",
+  "pincode" : "549644",
+  "gasPrice" : 300000000000000,
+  "gas" : 23000,
+  "nonce" : 0,
+  "network" : null,
+  "value" : 10000000000,
+  "to" : "0xdc71b72db51e227e65a45004ab2798d31e8934c9",
+  "functionName" : "transfer",
+  "inputs" : [ {
+    "type" : "address",
+    "value" : "0x80cbb6c4342948e5be81987dce8251dbedd69138"
+  }, {
+    "type" : "uint256",
+    "value" : 73680000
+  } ],
+  "type" : "MATIC_CONTRACT_EXECUTION"
+}'
+----

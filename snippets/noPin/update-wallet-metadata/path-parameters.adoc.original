@@ -1,8 +1,0 @@
-.+/api/wallets/{id}+
-|===
-|Parameter|Description
-
-|`+id+`
-|Id of the wallet to update
-
-|===

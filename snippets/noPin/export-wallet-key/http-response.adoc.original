@@ -1,8 +1,0 @@
-[source,http,options="nowrap"]
-----
-HTTP/1.1 200 OK
-Content-Disposition: attachment; filename=export-1.txt
-Content-Type: application/octet-stream
-Accept-Ranges: bytes
-
-----

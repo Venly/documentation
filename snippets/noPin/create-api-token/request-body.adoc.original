@@ -1,9 +1,0 @@
-[source,options="nowrap"]
-----
-{
-  "walletId" : "1",
-  "claim" : "SIGN_WALLETS",
-  "description" : "description",
-  "pincode" : "1234"
-}
-----
